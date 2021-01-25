@@ -6,7 +6,7 @@ import LinearGradient from "react-native-linear-gradient";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { FlatList, TextInput, TouchableOpacity } from "react-native-gesture-handler";
 
-const SecondScreen = ({ navigation }) => {
+const SecondScreen = ({ navigation}) => {
     const [data, setData] = useState({
         phone : '',
     })
@@ -62,7 +62,7 @@ const SecondScreen = ({ navigation }) => {
                         style={AppStyle.StyleFirst.linear}
                         colors={['#8B3BFF', '#B738FF']}
                     >
-                        <TouchableOpacity onPress={() => navigation.navigate('SecondScreen')} >
+                        <TouchableOpacity onPress={() => navigation.navigate('ScreenXacThucSDT', data)} >
                             <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
                         </TouchableOpacity>
                     </LinearGradient>
