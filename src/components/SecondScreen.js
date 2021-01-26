@@ -8,8 +8,8 @@ import { FlatList, TextInput, TouchableOpacity } from "react-native-gesture-hand
 
 const SecondScreen = ({ navigation}) => {
     const [data, setData] = useState({
-        phone : '',
-    })
+    });
+    const [data2, setData2] = useState('hdgahsdfjhzshj');
     // const handlePhone = (val) => {
     //     if (val.trim().length > 0) {
     //         setData({
@@ -62,7 +62,7 @@ const SecondScreen = ({ navigation}) => {
                         style={AppStyle.StyleFirst.linear}
                         colors={['#8B3BFF', '#B738FF']}
                     >
-                        <TouchableOpacity onPress={() => navigation.navigate('ScreenXacThucSDT', data)} >
+                        <TouchableOpacity onPress={() => navigation.navigate('ScreenXacThucSDT', {data: data} )} >
                             <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
                         </TouchableOpacity>
                     </LinearGradient>
