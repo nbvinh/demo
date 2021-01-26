@@ -36,7 +36,7 @@ const ScreenXacThucSDT = ( {route}) => {
             <View style={AppStyle.StyleScreenXacNhanSDT.header}>
             </View>
             <View style={AppStyle.StyleScreenXacNhanSDT.content}>
-                <Text style={AppStyle.StyleScreenXacNhanSDT.tieude }> Xác thực số điện thoại</Text>
+                <Text style={AppStyle.StyleScreenXacNhanSDT.tieude }> XXác thực số điện thoại</Text>
                 <Text style={AppStyle.StyleScreenXacNhanSDT.chube }>Vui lòng nhập mã OTP vừa được gửi vào số điện thoại {route.params.data.phone} </Text>
                 {/* {data.isChecked &&(
                     <Text style={AppStyle.StyleFirst.text}>{data.phone}</Text>
