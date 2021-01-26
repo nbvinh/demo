@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StatusBar } from 'react-native';
+import { View, Text, StatusBar , Image} from 'react-native';
 import AppStyle from "../theme";
 import StyleFirst from "../theme/StyleFirst";
 import LinearGradient from "react-native-linear-gradient";
@@ -9,7 +9,7 @@ import { FlatList, TextInput, TouchableOpacity } from "react-native-gesture-hand
 const SecondScreen = ({ navigation}) => {
     const [data, setData] = useState({
     });
-    const [data2, setData2] = useState('hdgahsdfjhzshj');
+    
     // const handlePhone = (val) => {
     //     if (val.trim().length > 0) {
     //         setData({
@@ -41,8 +41,12 @@ const SecondScreen = ({ navigation}) => {
         <View style={AppStyle.StyleFirst.container}>
             <StatusBar backgroundColor='black' barStyle="light-content" />
             <View style={AppStyle.StyleSecond.content}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Icon name="chevron-left" color='#FFFFFF' size={22} style={AppStyle.StyleSecond.icon} />
+           
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{marginTop: 50, marginLeft: 10}}>
+                    <Image
+                        width={10} height={18}
+                        source={require('../img/back.png')}
+                    />
                 </TouchableOpacity>
 
                 <View style={{ marginTop: 90 }}>
@@ -54,6 +58,7 @@ const SecondScreen = ({ navigation}) => {
                     placeholder="Nhập số điện thoại"
                     placeholderTextColor="#FFFFFF"
                     keyboardType="number-pad"
+                    
 
                     onChangeText={(val) => handlePhone(val)}
                 />

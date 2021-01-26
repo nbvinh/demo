@@ -9,7 +9,7 @@ const StyleScreenXacNhanSDT = StyleSheet.create({
         paddingHorizontal: 10
     },
     header:{
-        flex: 2
+        flex: 2,
     },
     content:{
         flex: 3,

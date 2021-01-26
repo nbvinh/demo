@@ -5,6 +5,7 @@ import 'react-native-gesture-handler';
 import SecondScreen from "../../components/SecondScreen";
 import {createStackNavigator} from '@react-navigation/stack'
 import ScreenXacThucSDT from "../../components/ScreenXacThucSDT";
+import Profile from '../../components/Profile'
 const Root= createStackNavigator();
 const RootStack =()=>{
     return(
@@ -13,6 +14,7 @@ const RootStack =()=>{
             <Root.Screen name ="ScreenFirst" component={ScreenFirst} />
             <Root.Screen name ="SecondScreen" component={SecondScreen} />
             <Root.Screen name ="ScreenXacThucSDT" component={ScreenXacThucSDT} />
+            <Root.Screen name ="Profile" component={Profile} />
         </Root.Navigator>
     )
 }

@@ -18,7 +18,9 @@ const StyleSecond = StyleSheet.create({
     textinput:{ 
         backgroundColor: '#272738', 
         marginBottom: 50, 
-        borderRadius: 8 
+        borderRadius: 8,
+        padding: 18,
+        color:'white'
     },
     text2:{
         color: '#9C9C9C', fontSize: 17,
