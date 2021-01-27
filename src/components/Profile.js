@@ -1,7 +1,8 @@
+import axios from 'axios';
 import React,{useState} from 'react';
-import { View, Text, StyleSheet, TextInput,TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput,TouchableOpacity, Image ,Alert} from 'react-native';
 import LinearGradient from "react-native-linear-gradient";
-
+import {update_info  } from "./api";
 
 const Profile = ({route, navigation}) => {
     
@@ -14,7 +15,32 @@ const Profile = ({route, navigation}) => {
     const [Email,setEmail] = useState("");
     const[follow_email,setFollow_email] = useState(false);
 
-
+  
+    const onupdate_info = async () =>{
+        try {
+            // const result = await update_info ({
+            //     "email": Email,
+            //     "full_name": hoten,
+            //     "phone_number": SDT +""
+            // }, {
+                
+            // })
+            axios.post(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
+                email: "test",
+                full_name:  "test",
+                phone_number:  "0834006171",
+            }, { headers: { 'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCJ9.LsOjrZSEwL1ZWeKpgAZ7kIlwV-JRl0CT1N5i_c11ws0` } })
+                .then((response) => response.data)
+                .then((json) => {
+                  console.log(json)
+                })
+            // console.log("token là :"+ result);
+              Alert.alert('Thông báo', 'Bạn đã CẬP nhật thành công');
+              
+          } catch (error) {
+              Alert.alert('Thông báo', error + '');
+          }
+    }
     //ho ten  
     function onchangText(text) {
          if(text.length  == 0){
@@ -96,7 +122,7 @@ const Profile = ({route, navigation}) => {
                <LinearGradient start={{x: 0.0, y: 0.25}} end={{x: 0.5, y: 1.0}} 
                colors={['#8B3BFF','#B738FF']} style={{opacity:1, height: 48, justifyContent:'center', alignItems: 'center',   borderRadius:8}}>
                    <TouchableOpacity follow_hoten={follow_hoten}  
-                    style={[styles.touchable]}>
+                    style={[styles.touchable]} onPress = {onupdate_info}>
                        <Text style={styles.button1}>Hoàn thành</Text>
                    </TouchableOpacity>
                </LinearGradient>

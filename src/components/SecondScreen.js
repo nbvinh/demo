@@ -1,31 +1,17 @@
 import React, { useState } from "react";
-import { View, Text, StatusBar , Image} from 'react-native';
+import { View, Text, StatusBar , Image, Alert} from 'react-native';
 import AppStyle from "../theme";
 import StyleFirst from "../theme/StyleFirst";
 import LinearGradient from "react-native-linear-gradient";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { FlatList, TextInput, TouchableOpacity } from "react-native-gesture-handler";
-
+import axios from "axios";
+import { send_otp } from "./api";
 const SecondScreen = ({ navigation}) => {
     const [data, setData] = useState({
     });
     
-    // const handlePhone = (val) => {
-    //     if (val.trim().length > 0) {
-    //         setData({
-    //             ...data,
-    //             phone: val,
-    //             check_textInPut: true,
-    //         });
-    //     }
-    //     else {
-    //         setData({
-    //             ...data,
-    //             phone: val,
-    //             check_textInPut: false,
-    //         })
-    //     }
-    // }
+    const [tocken,setTocken] = useState('')
     const handlePhone = (val) => {
         let clonedata = data;
         if (val.trim().length > 0) {
@@ -36,6 +22,18 @@ const SecondScreen = ({ navigation}) => {
             clonedata.isChecked =false;
         }
         setData({ ...clonedata })
+    }
+    const onsend_otp = async () =>{
+        try {
+            const result = await send_otp({
+                "phone_number": data.phone ,  
+            })
+            // console.log("token là :"+ result.data.data.token);
+              Alert.alert('Thông báo', 'Bạn đã nhập SDT thành công');
+              navigation.navigate('ScreenXacThucSDT', {data: data, token : result.data.data.token});
+          } catch (error) {
+              Alert.alert('Thông báo', error + '');
+          }
     }
     return (
         <View style={AppStyle.StyleFirst.container}>
@@ -67,7 +65,7 @@ const SecondScreen = ({ navigation}) => {
                         style={AppStyle.StyleFirst.linear}
                         colors={['#8B3BFF', '#B738FF']}
                     >
-                        <TouchableOpacity onPress={() => navigation.navigate('ScreenXacThucSDT', {data: data} )} >
+                        <TouchableOpacity onPress={onsend_otp} >
                             <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
                         </TouchableOpacity>
                     </LinearGradient>
