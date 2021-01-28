@@ -53,7 +53,7 @@ const StyleMain = StyleSheet.create({
     },
     poin_your:{
         flex: 1.7,
-        marginTop: 25,
+        marginTop: 12,
         backgroundColor: 'blue',
         height: 85,
         backgroundColor:'#272738',
@@ -130,7 +130,7 @@ const StyleMain = StyleSheet.create({
         overflow:'hidden'
     },
     DichVu_Bottom:{
-        flex: 3,
+        flex: 2.5,
         marginTop: 5
     },
     DichVu_Bottom_Top:{
