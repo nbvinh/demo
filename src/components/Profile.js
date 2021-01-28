@@ -38,6 +38,7 @@ const Profile = ({route, navigation}) => {
                 // console.log(result)
             // console.log("token là :"+ result);
               Alert.alert('Thông báo', 'Bạn đã CẬP nhật thành công');
+              navigation.navigate('Main');
               
           } catch (error) {
               Alert.alert('Thông báo', error + '');
