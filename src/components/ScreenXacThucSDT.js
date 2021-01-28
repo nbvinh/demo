@@ -32,15 +32,16 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const onfirm_otp = async () => {
         try {
             const result = await confirm_otp({
-                "otp": "999999",
+                "otp": MaPin1 + "" +MaPin2 + MaPin3 + MaPin4 + MaPin5 + MaPin6 + "",
                 "phone_number": SDT,
                 "token": route.params.token,
-            }).then((response) => response.data)
-                .then((json) => { console.log(json) })
+            })
+            // .then((response) =>console.log( response.data.data.access_token))
+            //     .then((json) => { console.log(json) })
+            let abc = result.data.data.access_token;
             Alert.alert('Thông báo', 'Bạn đã nhập thành công');
-            navigation.navigate('Profile', { SDT: SDT });
-            console.log(result)
-                ;
+            navigation.navigate('Profile', { SDT: SDT, abc : abc});
+            
         } catch (error) {
             Alert.alert('Thông báo', error + '');
         }
@@ -59,9 +60,7 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
             <View style={AppStyle.StyleScreenXacNhanSDT.content}>
                 <Text style={AppStyle.StyleScreenXacNhanSDT.tieude}> Xác thực số điện thoại</Text>
                 <Text style={AppStyle.StyleScreenXacNhanSDT.chube}>Vui lòng nhập mã OTP vừa được gửi vào số điện thoại {SDT} </Text>
-                {/* {data.isChecked &&(
-                    <Text style={AppStyle.StyleFirst.text}>{data.phone}</Text>
-                ) } */}
+              
                 <View style={AppStyle.StyleScreenXacNhanSDT.inputOTP}>
                     <TextInput maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin1(val)} value={MaPin1} />
                     <TextInput maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin2(val)} value={MaPin2} />

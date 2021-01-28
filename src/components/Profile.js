@@ -11,7 +11,7 @@ const Profile = ({route, navigation}) => {
 
    
     const SDT = route.params.SDT;
-    
+    const result = route.params.abc;
     const [Email,setEmail] = useState("");
     const[follow_email,setFollow_email] = useState(false);
 
@@ -26,14 +26,16 @@ const Profile = ({route, navigation}) => {
                 
             // })
             axios.post(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
-                email: "test",
-                full_name:  "test",
-                phone_number:  "0834006171",
-            }, { headers: { 'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhdXRoMCJ9.LsOjrZSEwL1ZWeKpgAZ7kIlwV-JRl0CT1N5i_c11ws0` } })
+                email: Email,
+                full_name:  hoten,
+                phone_number: SDT,
+            }, { headers: { 'Authorization': `Bearer + ${result}` } })
+            
                 .then((response) => response.data)
                 .then((json) => {
                   console.log(json)
                 })
+                // console.log(result)
             // console.log("token là :"+ result);
               Alert.alert('Thông báo', 'Bạn đã CẬP nhật thành công');
               
