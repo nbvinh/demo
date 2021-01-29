@@ -156,8 +156,8 @@ const Main = () =>{
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image
@@ -206,8 +206,8 @@ const Main = () =>{
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image
@@ -256,8 +256,8 @@ const Main = () =>{
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image

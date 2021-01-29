@@ -6,7 +6,9 @@ import SecondScreen from "../../components/SecondScreen";
 import {createStackNavigator} from '@react-navigation/stack'
 import ScreenXacThucSDT from "../../components/ScreenXacThucSDT";
 import Main  from "../../components/Main";
-import Profile from '../../components/Profile'
+import Profile from '../../components/Profile';
+import TabVoucher from "../Tabview/tabheaderVoucher";
+import ThongTin from "../../components/ThongTin/ThongTin";
 const Root= createStackNavigator();
 const RootStack =()=>{
     return(
@@ -17,6 +19,8 @@ const RootStack =()=>{
             <Root.Screen name ="ScreenXacThucSDT" component={ScreenXacThucSDT} />
             <Root.Screen name ="Profile" component={Profile} />
             <Root.Screen name ="Main" component={Main} />
+            <Root.Screen name ="TabVoucher" component={TabVoucher} />
+            <Root.Screen name ="ThongTin" component={ThongTin} />
         </Root.Navigator>
     )
 }

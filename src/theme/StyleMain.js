@@ -101,7 +101,7 @@ const StyleMain = StyleSheet.create({
     DichVu : {
         flex: 2,
         backgroundColor: "#272738",
-        height: 268,
+        height: 229,
         marginTop: 8,
         borderRadius: 8,
         padding: 8,
@@ -113,12 +113,12 @@ const StyleMain = StyleSheet.create({
 
     },
     DichVu_Left:{
-        flex: 7,
+        flex: 6.2,
         borderRadius: 8,
         overflow:'hidden'
     },
     DichVu_Right:{
-        flex: 4,
+        flex: 3.8,
        
     },
     DichVu_RightItem:{
