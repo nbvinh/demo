@@ -11,15 +11,19 @@ const StyleLichSu = StyleSheet.create({
     },
     item:{
         height: 24,
-        flexDirection:'row'
+        flexDirection:'row',
+        marginVertical: 20
     },
     item_left:{
         flex: 8,
-        
+        flexDirection: 'row',
+        alignItems:'center',
+        marginLeft: 6
     },
     item_right:{
-        flex: 2,
-        justifyContent:'flex-end'
+        flex: 1,
+        justifyContent:'flex-end',
+        alignItems:'center'
     }
 });
 export default StyleLichSu;
