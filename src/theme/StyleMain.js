@@ -7,13 +7,13 @@ const StyleMain = StyleSheet.create({
         flex: 1,
         padding: 12,
         backgroundColor: "black",
-        paddingTop: 30
+        
        
     },
     header:{
         flex: 1.5,
         height: 55,
-        marginTop: 20,
+        
         flexDirection:'row'
     },
     header_left:{
@@ -34,7 +34,7 @@ const StyleMain = StyleSheet.create({
     },
     search:{
         flex: 1,
-        marginTop: 12,
+        marginTop: 8,
         height: 50,
         flexDirection: 'row'
     },
@@ -53,7 +53,7 @@ const StyleMain = StyleSheet.create({
     },
     poin_your:{
         flex: 1.7,
-        marginTop: 12,
+        marginTop: 8,
         backgroundColor: 'blue',
         height: 85,
         backgroundColor:'#272738',
@@ -74,13 +74,13 @@ const StyleMain = StyleSheet.create({
     },
     option:{
         flex: 2,
-        marginTop: 12,
+        marginTop: 8,
         backgroundColor: "#272738",
         height: 168,
         borderTopStartRadius: 8,
         borderTopEndRadius: 8,
         padding: 12,
-        justifyContent:'space-between'
+        justifyContent:'space-around'
     },
     option_top:{
         flexDirection: 'row'
@@ -102,19 +102,18 @@ const StyleMain = StyleSheet.create({
         flex: 2,
         backgroundColor: "#272738",
         height: 268,
-        marginTop: 12,
+        marginTop: 8,
         borderRadius: 8,
-        padding: 12,
+        padding: 8,
         position: 'relative'
     },
     DichVu_Top:{
-        flex: 3,
+        flex: 6,
         flexDirection:'row'
 
     },
     DichVu_Left:{
-        flex: 6,
-       
+        flex: 7,
         borderRadius: 8,
         overflow:'hidden'
     },
@@ -125,20 +124,20 @@ const StyleMain = StyleSheet.create({
     DichVu_RightItem:{
         flex: 1,
         marginLeft: 5,
+       justifyContent:'space-between',
        
-        borderRadius: 8,
-        overflow:'hidden'
     },
     DichVu_Bottom:{
-        flex: 2.5,
+        flex: 4,
         marginTop: 5
     },
     DichVu_Bottom_Top:{
         flex: 1,
-        flexDirection:'row',
-        borderTopColor: 'rgba(0, 0, 0, 0.5)',
-        borderTopWidth: 1,
+        // borderStyle : 'dashed',
         borderStyle : 'dashed',
+        flexDirection:'row',
+        borderBottomColor: 'rgba(0, 0, 0, 0.5)',
+        borderBottomWidth: 0.5,
         marginTop: 10
     },
     DichVu_Bottom_Top_TextTieuDe:{

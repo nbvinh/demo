@@ -1,21 +1,9 @@
-
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import LinearGradient from 'react-native-linear-gradient';
 const Main = () =>{
-
-    // const Data = [
-    //     {
-    //         img : "require('../img/Discount.png')",
-    //         text : 'Khuyến Mai',
-    //     },
-    //     {
-    //         img : "require('../img/Discount.png')",
-    //         text : 'Khuyến Mai',
-    //     },
-    // ];
   return(
    <ScrollView style={AppStyle.StyleMain.container}>
        <StatusBar barStyle='light-content'></StatusBar>
@@ -72,7 +60,7 @@ const Main = () =>{
            <View style={AppStyle.StyleMain.option_top}>
             <TouchableOpacity style={AppStyle.StyleMain.option_item}>
                 <Image
-                            style={{width: 32, height: 32}}
+                            style={{width: 28, height: 28}}
                             source={require('../img/Discount.png')}
                         />
                     <Text style={AppStyle.StyleMain.option_itemtext}>
@@ -81,8 +69,8 @@ const Main = () =>{
             </TouchableOpacity>
             <TouchableOpacity style={AppStyle.StyleMain.option_item}>
                 <Image
-                            style={{width: 32, height: 32}}
-                            source={require('../img/đồuống_32px.png')}
+                            style={{width: 28, height: 28}}
+                            source={require('../img/douong_32px.png')}
                         />
                     <Text style={AppStyle.StyleMain.option_itemtext}>
                         Đồ Uống
@@ -90,8 +78,8 @@ const Main = () =>{
             </TouchableOpacity>
             <TouchableOpacity style={AppStyle.StyleMain.option_item}>
                 <Image
-                            style={{width: 38, height: 38}}
-                            source={require('../img/ẩmthực_32px.png')}
+                            style={{width: 28, height: 28}}
+                            source={require('../img/amthuc_32px.png')}
                         />
                     <Text style={AppStyle.StyleMain.option_itemtext}>
                         Ẩm thực
@@ -99,7 +87,7 @@ const Main = () =>{
             </TouchableOpacity>
             <TouchableOpacity style={AppStyle.StyleMain.option_item}>
                 <Image
-                            style={{width: 38, height: 38}}
+                            style={{width: 28, height: 28}}
                             source={require('../img/CombinedShape.png')}
                         />
                     <Text style={AppStyle.StyleMain.option_itemtext}>
@@ -110,7 +98,7 @@ const Main = () =>{
            <View style={AppStyle.StyleMain.option_bottom}>
            <TouchableOpacity style={AppStyle.StyleMain.option_item}>
                 <Image
-                            style={{width: 35, height: 35}}
+                            style={{width: 28, height: 28}}
                             source={require('../img/Vector.png')}
                         />
                     <Text style={AppStyle.StyleMain.option_itemtext}>
@@ -119,7 +107,7 @@ const Main = () =>{
             </TouchableOpacity>
             <TouchableOpacity style={AppStyle.StyleMain.option_item}>
                 <Image
-                            style={{width: 36, height: 36}}
+                            style={{width: 28, height: 28}}
                             source={require('../img/giaitri_32px.png')}
                         />
                     <Text style={AppStyle.StyleMain.option_itemtext}>
@@ -128,7 +116,7 @@ const Main = () =>{
             </TouchableOpacity>
             <TouchableOpacity style={AppStyle.StyleMain.option_item}>
                 <Image
-                            style={{width: 38, height: 38}}
+                            style={{width: 28, height: 28}}
                             source={require('../img/cashack_32px.png')}
                         />
                     <Text style={AppStyle.StyleMain.option_itemtext}>
@@ -149,27 +137,27 @@ const Main = () =>{
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image
-                        style={{width:"100%"}}
+                        style={{width:"100%", height:'100%'}}
                         source={require('../img/Rectangle7.png')}
                     />
                 </View>
                 <View style={AppStyle.StyleMain.DichVu_Right}>
                     <View style={AppStyle.StyleMain.DichVu_RightItem}>
                         <Image
-                            style={{width:"100%"}}
+                            style={{width:"100%", height:'95%', borderRadius: 8}}
                             source={require('../img/Rectangle8.png')}
                         />
                     </View>
                     <View style={AppStyle.StyleMain.DichVu_RightItem}>
                         <Image
-                            style={{width:"100%"}}
+                            style={{width:"100%", height:'95%',  borderRadius: 8}}
                             source={require('../img/Rectangle9.png')}
                         />
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 50, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 50, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image
@@ -199,27 +187,27 @@ const Main = () =>{
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image
-                        style={{width:"100%"}}
+                        style={{width:"100%", height:'100%'}}
                         source={require('../img/Rectangle07.png')}
                     />
                 </View>
                 <View style={AppStyle.StyleMain.DichVu_Right}>
                     <View style={AppStyle.StyleMain.DichVu_RightItem}>
                         <Image
-                            style={{width:"100%"}}
+                            style={{width:"100%", height:'95%', borderRadius: 8}}
                             source={require('../img/Rectangle08.png')}
                         />
                     </View>
                     <View style={AppStyle.StyleMain.DichVu_RightItem}>
                         <Image
-                            style={{width:"100%"}}
+                            style={{width:"100%", height:'95%', borderRadius: 8}}
                             source={require('../img/Rectangle09.png')}
                         />
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 50, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 50, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image
@@ -249,27 +237,27 @@ const Main = () =>{
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image
-                        style={{width:"100%"}}
+                        style={{width:"100%", height:'100%'}}
                         source={require('../img/Rectangle007.png')}
                     />
                 </View>
                 <View style={AppStyle.StyleMain.DichVu_Right}>
                     <View style={AppStyle.StyleMain.DichVu_RightItem}>
                         <Image
-                            style={{width:"100%"}}
+                            style={{width:"100%", height:'95%', borderRadius: 8}}
                             source={require('../img/Rectangle008.png')}
                         />
                     </View>
                     <View style={AppStyle.StyleMain.DichVu_RightItem}>
                         <Image
-                            style={{width:"100%"}}
+                            style={{width:"100%",  height:'95%' , borderRadius: 8}}
                             source={require('../img/Rectangle009.png')}
                         />
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 50, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 50, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image
