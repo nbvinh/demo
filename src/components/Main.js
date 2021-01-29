@@ -133,7 +133,7 @@ const Main = () =>{
             source={require('../img/Rectangle5.png')}
         />
       
-       <View style={AppStyle.StyleMain.DichVu}>
+       <TouchableOpacity style={AppStyle.StyleMain.DichVu}>
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image
@@ -182,8 +182,8 @@ const Main = () =>{
                         </View>
                 </View>
             </View>
-       </View>
-       <View style={AppStyle.StyleMain.DichVu}>
+       </TouchableOpacity>
+       <TouchableOpacity style={AppStyle.StyleMain.DichVu}>
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image
@@ -232,8 +232,8 @@ const Main = () =>{
                 </View>
             </View>
            
-       </View>
-       <View style={AppStyle.StyleMain.DichVu}>
+       </TouchableOpacity>
+       <TouchableOpacity style={AppStyle.StyleMain.DichVu}>
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image
@@ -282,7 +282,7 @@ const Main = () =>{
                 </View>
             </View>
            
-       </View>
+       </TouchableOpacity>
       
     </ScrollView>
   )
