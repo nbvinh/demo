@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity,StatusBar } from "react-native
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AppStyle from "../theme";
-const A= '';
+
 const ScreenFirst = ({navigation}) => {
     return (
         <View style={AppStyle.StyleFirst.container}>
