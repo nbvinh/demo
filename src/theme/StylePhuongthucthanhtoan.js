@@ -13,7 +13,8 @@ const StylePhuongthucthanhtoan = StyleSheet.create({
         backgroundColor:'#272738',
         marginHorizontal:5,
         marginVertical:10,
-        height:48
+        height:48,
+        borderRadius: 8
     },
     touchable: {
         marginTop:13,

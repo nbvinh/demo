@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 const StyleChonVoucher = StyleSheet.create({
-    img1:{ width: 87, height: 40, marginLeft: 23 },
+    img1:{ width: 87, height: 40, marginLeft: 23, marginTop: 50 },
     img2:{ width: 90, height: 90 },
     content1:{ margin: 10, marginLeft: 20 },
     text1:{ color: '#FFFFFF', fontSize: 15, fontWeight: '500' },
