@@ -38,7 +38,7 @@ const History_Transform = () => {
                                 <TouchableOpacity onPress={() => {
                                     setIsShowCalendar(false)
                                 }}>
-                                    <Text style={{ color: '#9B9EA3', fontSize: 14, fontWeight: '500' }}>XXóa</Text>
+                                    <Text style={{ color: '#9B9EA3', fontSize: 14, fontWeight: '500' }}>Xóa delete</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity>
                                     <Text style={{ color: '#8B3BFF', fontSize: 14, fontWeight: '500' }}>Áp dụng</Text>
