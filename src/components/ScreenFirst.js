@@ -25,7 +25,7 @@ const ScreenFirst = ({navigation}) => {
                         style={AppStyle.StyleFirst.linear}
                         colors={['#8B3BFF', '#B738FF']}
                     >
-                        <TouchableOpacity onPress={()=>navigation.navigate('Main')}>
+                        <TouchableOpacity onPress={()=>navigation.navigate('Tabviewmain')}>
                         <Text style={AppStyle.StyleFirst.text}>Dùng Thử</Text>
                         </TouchableOpacity>
                     </LinearGradient>
@@ -35,6 +35,3 @@ const ScreenFirst = ({navigation}) => {
     )
 }
 export default ScreenFirst;
-// const styles = StyleSheet.create({
-    
-// })

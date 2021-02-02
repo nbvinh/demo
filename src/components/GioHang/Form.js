@@ -1,0 +1,75 @@
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, Image, Modal } from "react-native";
+import { TextInput } from "react-native-gesture-handler";
+import { set } from "react-native-reanimated";
+import AppStyle from "../../theme";
+
+const Form = (props) => {
+    const show = props.show;
+    const setShow = props.setShow;
+    return (
+        <Modal
+            animationType='fade'
+            transparent={true}
+            visible={show}
+        >
+            <View style={AppStyle.StyleGioHang.modal1}>
+                <TouchableOpacity onPress={() => setShow(!show)} style={{ height: '72%' }}></TouchableOpacity>
+                <View style={AppStyle.StyleGioHang.content5}>
+                    <View style={{ margin: 10 }}>
+                        <View style={AppStyle.StyleGioHang.content6}>
+                            <Image
+                                source={require('../../img/vinh18.png')}
+                            />
+                            <View>
+                                <Text style={AppStyle.StyleGioHang.text4}>Voucher CGV Cinema</Text>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Text style={AppStyle.StyleGioHang.text5}>88.000 đ </Text>
+                                    <Text style={[AppStyle.StyleVoucherCGV.text3, { marginTop: 2 }]}>100.000 đ</Text>
+                                    <TouchableOpacity
+                                        style={AppStyle.StyleGioHang.touchable1}
+                                    >
+                                        <Image
+                                            style={AppStyle.StyleGioHang.img5}
+                                            source={require('../../img/vinh19.png')}
+                                        />
+                                    </TouchableOpacity>
+                                    <Text style={AppStyle.StyleGioHang.text6}>5</Text>
+                                    <TouchableOpacity>
+                                        <Image
+                                            style={AppStyle.StyleGioHang.img6}
+                                            source={require('../../img/vinh3.png')}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </View>
+
+                        <View style={AppStyle.StyleGioHang.content7}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Image
+                                    style={{
+                                        width: 30.04,
+                                        height: 22.48,
+                                    }}
+                                    source={require('../../img/vinh20.png')}
+                                />
+                                <Text style={AppStyle.StyleGioHang.text7}>440.000 đ</Text>
+                            </View>
+                            <View style={AppStyle.StyleGioHang.content8}>
+                                <Text style={AppStyle.StyleVoucherCGV.text10}>5</Text>
+                            </View>
+                            <TouchableOpacity>
+                                <Image
+                                    style={{ width: 158, height: 44 }}
+                                    source={require('../../img/vinh21.png')}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </View>
+        </Modal>
+    )
+}
+export default Form

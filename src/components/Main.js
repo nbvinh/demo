@@ -1,20 +1,23 @@
+
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import LinearGradient from 'react-native-linear-gradient';
-const Main = () =>{
+const Main = ({navigation}) =>{
   return(
    <ScrollView style={AppStyle.StyleMain.container}>
        <StatusBar barStyle='light-content'></StatusBar>
        <View style={AppStyle.StyleMain.header}>
            <View style={AppStyle.StyleMain.header_left}>
-            <Image
-                style={{width: 40, height: 40, borderRadius: 50}}
-                source={{
-                uri: 'https://scontent.fhan4-1.fna.fbcdn.net/v/t1.15752-9/141162747_190481106106245_2204885355751272197_n.jpg?_nc_cat=104&ccb=2&_nc_sid=ae9488&_nc_ohc=EKf625AzIeYAX91-s3-&_nc_ht=scontent.fhan4-1.fna&oh=3df2f2e9c188d6d61703f31bc20e5d82&oe=602FFFA0',
-                    }}
-            />
+               <TouchableOpacity onPress={() =>{navigation.navigate('DoiAvatar')}}>
+                    <Image
+                        style={{width: 40, height: 40, borderRadius: 50}}
+                        source={{
+                        uri: 'https://scontent.fhan4-1.fna.fbcdn.net/v/t1.15752-9/141162747_190481106106245_2204885355751272197_n.jpg?_nc_cat=104&ccb=2&_nc_sid=ae9488&_nc_ohc=EKf625AzIeYAX91-s3-&_nc_ht=scontent.fhan4-1.fna&oh=3df2f2e9c188d6d61703f31bc20e5d82&oe=602FFFA0',
+                            }}
+                    />
+            </TouchableOpacity>
             <Text style={AppStyle.StyleMain.css_text}> Hi, Quy</Text>
            </View>
            <View style={AppStyle.StyleMain.header_right}>
@@ -49,7 +52,7 @@ const Main = () =>{
                        style={{width: 27, height: 27, borderRadius: 8, justifyContent:'center', alignItems:'center', marginRight: 15}}
                         colors={['#8B3BFF', '#B738FF']}
                     >
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() =>   navigation.navigate('GiaoDich')}>
                          <Text style={{color:'white', fontSize: 22}}>+</Text>
                         </TouchableOpacity>
                     </LinearGradient>
@@ -58,7 +61,7 @@ const Main = () =>{
        </View>
        <View style={AppStyle.StyleMain.option}>
            <View style={AppStyle.StyleMain.option_top}>
-            <TouchableOpacity style={AppStyle.StyleMain.option_item}>
+            <TouchableOpacity style={AppStyle.StyleMain.option_item} onPress = {() => navigation.navigate('VoucherNam')}>
                 <Image
                             style={{width: 28, height: 28}}
                             source={require('../img/Discount.png')}
@@ -133,7 +136,7 @@ const Main = () =>{
             source={require('../img/Rectangle5.png')}
         />
       
-       <TouchableOpacity style={AppStyle.StyleMain.DichVu}>
+       <TouchableOpacity style={AppStyle.StyleMain.DichVu} onPress={()=>navigation.navigate('VoucherCGV')}>
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image
@@ -156,8 +159,8 @@ const Main = () =>{
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image
@@ -206,8 +209,8 @@ const Main = () =>{
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image
@@ -256,8 +259,8 @@ const Main = () =>{
                     </View>
                 </View>
             </View>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 40, zIndex: 99}}/>
-            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 40, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99}}/>
+            <View style={{width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99}}/>
             <View style={AppStyle.StyleMain.DichVu_Bottom}>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                     <Image
