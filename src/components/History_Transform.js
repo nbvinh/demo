@@ -107,7 +107,7 @@ const History_Transform = () => {
                                 style={AppStyle.Style_History_Tranform.ImageStatus}
                                 source={require('../img/thatbai.png')}
                             />
-                            <Text style={AppStyle.Style_History_Tranform.status}>TTThất bại</Text>
+                            <Text style={AppStyle.Style_History_Tranform.status}>Thất bại</Text>
                         </View>
                     </View>
 
