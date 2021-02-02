@@ -56,6 +56,7 @@ import GioHang from "../../components/GioHang";
 import ChonVoucher from "../../components/ChonVoucher";
 import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
 import { NavigationContainer } from '@react-navigation/native'
+import VoucherBanhMi from "../../components/VoucherBanhMi";
 const Root= createStackNavigator();
 const RootStack =()=>{
     return(
@@ -78,6 +79,7 @@ const RootStack =()=>{
             <Root.Screen name ="NapDiem" component={NapDiem} />
             <Root.Screen name ="DoiAvatar" component={DoiAvatar} />
             <Root.Screen name="VoucherCGV" component={VoucherCGV} />
+            <Root.Screen name="VoucherBanhMi" component={VoucherBanhMi} />
             <Root.Screen name="GioHang" component={GioHang} />
             <Root.Screen name="ChonVoucher" component={ChonVoucher} />
             <Root.Screen name="PhuongThucThanhToan" component={PhuongThucThanhToan} />

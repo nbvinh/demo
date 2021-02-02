@@ -4,9 +4,12 @@ import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, 
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import LinearGradient from 'react-native-linear-gradient';
+
 const Main = ({navigation}) =>{
+   
   return(
    <ScrollView style={AppStyle.StyleMain.container}>
+       
        <StatusBar barStyle='light-content'></StatusBar>
        <View style={AppStyle.StyleMain.header}>
            <View style={AppStyle.StyleMain.header_left}>
@@ -236,7 +239,7 @@ const Main = ({navigation}) =>{
             </View>
            
        </TouchableOpacity>
-       <TouchableOpacity style={AppStyle.StyleMain.DichVu}>
+       <TouchableOpacity style={AppStyle.StyleMain.DichVu} onPress={() =>{navigation.navigate('VoucherBanhMi')}}>
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image

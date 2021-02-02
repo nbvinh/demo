@@ -11,6 +11,7 @@ import StyleVoucherCGV from "./StyleVoucherCGV";
 import StyleGioHang from "./StyleGioHang";
 import StyleChonVoucher from "./StyleChonVoucher";
 import StylePhuongthucthanhtoan from "./StylePhuongthucthanhtoan";
+import StyleBanhMi from "./StyleBanhMi";
 const AppStyle = {
     StyleFirst,
     StyleSecond,
@@ -24,6 +25,7 @@ const AppStyle = {
     StyleVoucherCGV,
     StyleGioHang,
     StyleChonVoucher,
-    StylePhuongthucthanhtoan 
+    StylePhuongthucthanhtoan ,
+    StyleBanhMi
 }
 export default AppStyle;
