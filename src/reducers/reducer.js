@@ -3,16 +3,15 @@ const initState = {
         {
             id: 1,
             isChecked: false,
+            tongdiem : false,
             text: 'Thanh toán bằng điểm',
-            text1: 'Điểm của bạn không đủ thực hiện giao dịch',
-            text2: 'Số dư hiện tại: 15 điểm',
             img: 'https://media1.nguoiduatin.vn/thumb_x600x600/media/duong-thi-thu-nga/2018/04/09/mau-tim.jpg',
         },
         {
             id: 2,
             isChecked: false,
             text: 'ATM/ VISA/ MASTER/ JCB hoặc Cửa hàng tiện lợi.',
-            img: 'http://theme.hstatic.net/200000051220/1000555598/14/egageneralbadgeelements2img.jpg?v=692',   
+            img: 'http://theme.hstatic.net/200000051220/1000555598/14/egageneralbadgeelements2img.jpg?v=692',
         },
         {
             id: 3,
@@ -35,10 +34,11 @@ const reducer = (state = initState, action) => {
         case 'ISCHECK':
             const temp = [...state.data]
             temp.map((e) => {
-                if (e.id === action.id){
-                        e.isChecked = true
-                } else{
-                        e.isChecked = false
+                if (e.id === action.id) {
+                    e.isChecked = true
+                }
+                else {
+                    e.isChecked = false
                 }
             })
             return {
@@ -48,9 +48,22 @@ const reducer = (state = initState, action) => {
             return {
                 ...state, isShow: true
             }
-        case 'CHECKPOINT' :
+        case 'CHECKPOINT':
             return {
-                ...state , checkpoint : true
+                ...state, checkpoint: true
+            }
+        case 'TONGDIEM':
+            const arr = [...state.data]
+            arr.map((e) => {
+                if (e.id === 3) {
+                    e.tongdiem = true
+                }
+                else {
+                    e.tongdiem = false
+                }
+            })
+            return {
+                ...state, data: arr
             }
         default:
             return state

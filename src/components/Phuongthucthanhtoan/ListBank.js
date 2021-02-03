@@ -5,12 +5,19 @@ import AppStyle from "../../theme";
 
 const ListBank = (props) => {
     const dispatch = useDispatch();
-    
-    const { id, isChecked, img, text, text1, text2 } = props.myData;
+    const { id, isChecked, img, text} = props.myData;
+    const data = useSelector(state => state.data)
     const onCheck = () => {
         dispatch({ type: 'ISCHECK', id: id });
         dispatch({ type: 'ISSHOW' });
         dispatch({ type: 'CHECKPOINT' });
+        dispatch({ type: 'TONGDIEM' });
+        if ( id===1 ) {
+            data[0].tongdiem = true
+        }
+        else {
+            data[0].tongdiem = false 
+        }
     }
     // const point =()=>{
     //     if(data)

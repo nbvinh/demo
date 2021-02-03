@@ -12,6 +12,7 @@ const PaymentMethods = ({ navigation }) => {
     const isChecked = useSelector(state => state.isChecked)
     const isShow = useSelector(state => state.isShow)
     const checkpoint = useSelector(state => state.checkpoint)
+    const tongdiem = useSelector(state => state.tongdiem)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -47,7 +48,7 @@ const PaymentMethods = ({ navigation }) => {
                     />
                     {checkpoint ? null
                         :
-                        <View style={{position:'absolute', top:145, left:83}}>
+                        <View style={{ position: 'absolute', top: 145, left: 83 }}>
                             <Text style={{ color: 'red' }}>Điểm của bạn không đủ thực hiện giao dịch</Text>
                             <Text style={{ color: 'red' }}>Số dư hiện tại: 15 điểm</Text>
                         </View>
@@ -59,6 +60,14 @@ const PaymentMethods = ({ navigation }) => {
                     <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
                     <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>400.000 đ</Text>
                 </View>
+                {data[0].tongdiem ?
+                    <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Điểm thanh toán</Text>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>-430 điểm</Text>
+                    </View>
+                    :
+                    null
+                }
                 {isShow ?
                     <TouchableOpacity style={{ margin: 10, marginTop: 30 }}>
                         <Image
