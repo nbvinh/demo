@@ -37,7 +37,8 @@ const StyleBanhMi = StyleSheet.create({
     Content_BottomRight:{
         flex: 3.5,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-around',
+        alignItems:'center'
     },
     ListButtonMon:{
         flexDirection :'row',
@@ -58,7 +59,8 @@ const StyleBanhMi = StyleSheet.create({
 
     },
     ListMon:{
-        marginTop: 16,
+        marginTop: 12,
+        height: 400
     },
     TenLoai:{
         fontSize:17,
@@ -70,15 +72,30 @@ const StyleBanhMi = StyleSheet.create({
         padding: 8,
         borderRadius: 8,
         backgroundColor:'#272738',
-        flexDirection:'row'
+        flexDirection:'row',
+        marginTop: 12,
     },
     MonAn_Content:{
         justifyContent:'space-between',
         padding: 10,
-        
-        
+        flex: 2.5
+    },
+    MonAn_ContentText:{
+        color:'white',
+        fontSize:15,
+        fontWeight:'400'
+    },
+    NutChonMua:{
+        height: 28, width: 28,justifyContent:'center', alignItems:'center', borderRadius: 8
+    },
+    TextNutChonMua:{
+        color:'white',
+        fontWeight: '500',
+        fontSize:24
+    },
+    IMG_item :{
+        height: 70, width:115, marginHorizontal: 5,borderRadius: 8
     }
-    
     
 });
 export default StyleBanhMi;

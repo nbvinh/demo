@@ -1,39 +1,69 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
-import { ScrollView } from 'react-native-gesture-handler';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import AppStyle from "../theme";
-import SlideImg from "./VoucherCGV/sildeImg";
-
+import Data from "./VoucherBanhMi/Data";
+import MonAn from "./VoucherBanhMi/MonBanhMi";
+import Header from "./VoucherBanhMi/Header";
 const VoucherBanhMi= ({ navigation }) => {
+    const [SoLuong, setSoLuong] = React.useState(0);
+    const OnClick = () => setSoLuong(SoLuong + 1);
     return (
         <View style={AppStyle.StyleBanhMi.container}>
-            <View style={AppStyle.StyleBanhMi.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
-                    <Image
-                        width={10} height={18}
-                        source={require('../img/back.png')}
-                    />
-                </TouchableOpacity>
-                <Text style={AppStyle.StyleBanhMi.Text_Header}>King Bread</Text>
-                <TouchableOpacity  >
-                    <Image
-                        width={24} height={24}
-                        source={require('../img/search_24px.png')}
-                    />
-                </TouchableOpacity>
-            </View>
+           {/* <Header /> */}
+           <View style={AppStyle.StyleBanhMi.header}>
+            <TouchableOpacity onPress={() => navigation.goBack()} >
+                <Image
+                    width={10} height={18}
+                    source={require('../img/back.png')}
+                />
+            </TouchableOpacity>
+            <Text style={AppStyle.StyleBanhMi.Text_Header}>King Bread</Text>
+            <TouchableOpacity  >
+                <Image
+                    width={24} height={24}
+                    source={require('../img/search_24px.png')}
+                />
+            </TouchableOpacity>
+        </View>
+           <ScrollView>
             {/* hết header */}
-
             <View style={{ flex: 11, justifyContent: 'center'}}>
-                <ScrollView>
-                    <View style={{height: 160, width: '95%', marginVertical:  20,}}>
+                    <View style={{height: 160, width: '100%',justifyContent:'center', marginVertical: 10, alignItems:'center'}}>
                         <Image
-                            height = {160} width = {359}
-                            source={require('../img/banhmito.png')}
+                            style={{height: 160, width:'100%', borderRadius: 8}} resizeMode='cover'
+                            source={{uri : 'https://blog.beemart.vn/wp-content/uploads/2019/09/cach-lam-banh-mi-thit-de-ban-1-e1569653919220.jpg'}}
                         />
                     </View>
-                    <SlideImg />
+                   <ScrollView horizontal>
+                        <Image
+                            style={AppStyle.StyleBanhMi.IMG_item} resizeMode='cover'
+                            source={{uri : 'https://image.thanhnien.vn/800/uploaded/giangvu/2020_03_24/tamcaubanhmi_dtds.jpg'}}
+                        />
+                        <Image
+                            style={AppStyle.StyleBanhMi.IMG_item} resizeMode='cover'
+                            source={{uri : 'https://cdn.daylambanh.edu.vn/wp-content/uploads/2017/07/cach-lam-banh-mi-thit-nuong-600x325.jpg'}}
+                        />
+                        <Image
+                            style={AppStyle.StyleBanhMi.IMG_item} resizeMode='cover'
+                            source={{uri : 'https://static.wixstatic.com/media/d96518_a8a02679a0484c6ca37caa0f1fc7387c~mv2.jpg/v1/fill/w_800,h_489,al_c,q_90/d96518_a8a02679a0484c6ca37caa0f1fc7387c~mv2.jpg'}}
+                        />
+                        <Image
+                            style={AppStyle.StyleBanhMi.IMG_item} resizeMode='cover'
+                            source={{uri : 'https://image.thanhnien.vn/980/uploaded/giangvu/2020_03_24/banhmichaca_hzfk.jpg'}}
+                        />
+                   </ScrollView>
+                    <View style={{alignItems:'center', marginVertical: 10,}}>
+                        <View style={{flexDirection:'row', justifyContent:'space-around', height: 12, width: 60}}>
+                        <View style={{width: 8, height: 8, borderRadius:50, backgroundColor:'rgba(255, 255, 255, 0.3)'}}></View>
+                        <View style={{width: 8, height: 8, borderRadius:50, backgroundColor:'rgba(255, 255, 255, 0.3)'}}></View>
+                        <View style={{width: 8, height: 8, borderRadius:50, backgroundColor:'#ffffff'}}></View>
+                        <View style={{width: 8, height: 8, borderRadius:50, backgroundColor:'rgba(255, 255, 255, 0.3)'}}></View>
+                        <View style={{width: 8, height: 8, borderRadius:50, backgroundColor:'rgba(255, 255, 255, 0.3)'}}></View>
+                        
+                    </View>
+                    </View>
                     <View style={AppStyle.StyleBanhMi.Content}>
                         <Text style={AppStyle.StyleBanhMi.Text_Header}>King Bread - Vua bánh mỳ kẹp</Text>
                         <Text style={AppStyle.StyleBanhMi.DiaChi}>28 Hồ Tùng Mậu, p. Mai Dịch, q. Cầu Giấy, Hà Nội</Text>
@@ -43,7 +73,18 @@ const VoucherBanhMi= ({ navigation }) => {
                                 <Text style={{color:'#C9C9C9' ,paddingVertical: 3}}>Đóng cửa:<Text style={{color: '#B738FF'}}>22:00</Text> </Text>
                             </View>
                             <View style={AppStyle.StyleBanhMi.Content_BottomRight}>
-                                
+                                <TouchableOpacity>
+                                    <Image
+                                        width={24} height={24}
+                                        source={require('../img/call.png')}
+                                    />
+                                </TouchableOpacity>
+                                <TouchableOpacity>
+                                    <Image
+                                        width={24} height={24}
+                                        source={require('../img/share.png')}
+                                    />
+                                </TouchableOpacity>
                             </View>
                         </View>
                         <View style={AppStyle.StyleBanhMi.ListButtonMon}>
@@ -61,21 +102,13 @@ const VoucherBanhMi= ({ navigation }) => {
                         </View>
                         <View style={AppStyle.StyleBanhMi.ListMon}>
                             <Text style={AppStyle.StyleBanhMi.TenLoai}>Combo</Text>
-                            <View style={AppStyle.StyleBanhMi.MonAn}>
-                                <Image
-                                    height = {82} width = {82} resizeMode='cover'
-                                    source={require('../img/BANHMI01.png')}
-                                />
-                                <View style={AppStyle.StyleBanhMi.MonAn_Content}>
-                                    <Text>Bánh mì Pate chả + Cafe sữa đá</Text>
-                                    <Text>45.000 đ</Text>
-                                </View>
-                            </View>
+                            <FlatList data={Data}
+                                renderItem={({item}) => <MonAn item = {item}/>}
+                                keyExtractor={item => item.id}/>
                         </View>
                     </View>
-                    
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         </View>
     )
 }
