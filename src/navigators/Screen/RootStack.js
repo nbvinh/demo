@@ -56,6 +56,8 @@ import GioHang from "../../components/GioHang";
 import ChonVoucher from "../../components/ChonVoucher";
 import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
 import { NavigationContainer } from '@react-navigation/native'
+import Chitiet_giaodich from '../../components/Chitiet_giaodich';
+import Giao_Dich_Thanh_Cong from '../../components/Giao_Dich_Thanh_Cong';
 const Root= createStackNavigator();
 const RootStack =()=>{
     return(
@@ -81,6 +83,8 @@ const RootStack =()=>{
             <Root.Screen name="GioHang" component={GioHang} />
             <Root.Screen name="ChonVoucher" component={ChonVoucher} />
             <Root.Screen name="PhuongThucThanhToan" component={PhuongThucThanhToan} />
+            <Root.Screen name="Chitiet_giaodich" component={Chitiet_giaodich} />
+            <Root.Screen name="Giao_Dich_Thanh_Cong" component={Giao_Dich_Thanh_Cong} />
         </Root.Navigator>
         </NavigationContainer>
     )

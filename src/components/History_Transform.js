@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, Alert, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import AppStyle from "../theme";
 import { Calendar } from 'react-native-calendars'; // 1.5.3
-const History_Transform = () => {
+const History_Transform = ({navigation}) => {
 
     const [isShowCalendar, setIsShowCalendar] = useState(false);
 
@@ -57,10 +57,12 @@ const History_Transform = () => {
         /> */}
             <View style={AppStyle.Style_History_Tranform.container}>
                 <View style={AppStyle.Style_History_Tranform.header}>
+                <TouchableOpacity onPress={() => navigation.goBack()} >
                     <Image
                         style={AppStyle.Style_History_Tranform.Image}
                         source={require('../img/back.png')}
                     />
+                </TouchableOpacity>
                     <Text style={AppStyle.Style_History_Tranform.header_title}>Lịch sử giao dịch </Text>
                     <TouchableOpacity onPress={_onPress} style={{ zIndex: 1 }}>
                         <Image
@@ -73,25 +75,30 @@ const History_Transform = () => {
                     <Text style={AppStyle.Style_History_Tranform.text}>Tháng 11/2020</Text>
                 </View>
                 <ScrollView style={AppStyle.Style_History_Tranform.content}>
+                <TouchableOpacity onPress = {() => navigation.navigate('Giao_Dich_Thanh_Cong')} >
                     <View style={AppStyle.Style_History_Tranform.item}>
                         <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                         <View style={AppStyle.Style_History_Tranform.cost}>
                             <Text style={AppStyle.Style_History_Tranform.content_cost}>1.500.000 đ</Text>
-                            <Text></Text>
+                            <Text></Text>   
+                            
                             <Image
                                 style={AppStyle.Style_History_Tranform.Image_right}
                                 source={require('../img/chevron_right.png')}
                             />
+                           
                         </View>
                         <View style={AppStyle.Style_History_Tranform.bottom}>
+                     
                             <Image
                                 style={AppStyle.Style_History_Tranform.ImageStatus}
                                 source={require('../img/thanhcong.png')}
                             />
+                           
                             <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
                         </View>
                     </View>
-
+                    </TouchableOpacity>
                     <View style={AppStyle.Style_History_Tranform.item}>
                         <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                         <View style={AppStyle.Style_History_Tranform.cost}>

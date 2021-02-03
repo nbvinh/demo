@@ -4,14 +4,16 @@ import App from '../../App';
 import AppStyle from "../theme";
 import LinearGradient from "react-native-linear-gradient";
 
-const Giao_Dich_Thanh_Cong = () => {
+const Giao_Dich_Thanh_Cong = ({navigation}) => {
     return (
         <View style={AppStyle.Style_Giao_Dich_TCong.container}>
             <View style={AppStyle.Style_Giao_Dich_TCong.header}>
+            <TouchableOpacity onPress={() => navigation.goBack()} >
                 <Image
                     style={AppStyle.Style_Giao_Dich_TCong.Image}
                     source={require('../img/back.png')}
                 />
+            </TouchableOpacity>
                 <Text style={AppStyle.Style_Giao_Dich_TCong.State}>Chi tiết giao dịch</Text>
                 <Text></Text>
             </View>

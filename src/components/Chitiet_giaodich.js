@@ -4,7 +4,7 @@ import AppStyle from "../theme";
 import StepIndicator from 'react-native-step-indicator';
 import LinearGradient from "react-native-linear-gradient";
 
-const Chitiet_giaodich = () => {
+const Chitiet_giaodich = ({navigation}) => {
     const labels = ["Đặt hàng thành công", "Đang chuẩn bị hàng", "Sẵn sàng lấy hàng", "Lấy hàng hoàn thành"];
     const customStyles = {
         stepIndicatorSize: 5,
@@ -35,7 +35,7 @@ const Chitiet_giaodich = () => {
 
         <View style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
             <View style={AppStyle.Style_Chitiet_giaodich.content_top}>
-                <TouchableOpacity  >
+                <TouchableOpacity onPress={() => navigation.goBack()} >
                     <Image
                         width={10} height={18} style={{left:14}}
                         source={require('../img/back.png')}
