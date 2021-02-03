@@ -75,7 +75,7 @@ const History_Transform = ({navigation}) => {
                     <Text style={AppStyle.Style_History_Tranform.text}>Tháng 11/2020</Text>
                 </View>
                 <ScrollView style={AppStyle.Style_History_Tranform.content}>
-                <TouchableOpacity onPress = {() => navigation.navigate('Giao_Dich_Thanh_Cong')} >
+                <TouchableOpacity onPress = {() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
                     <View style={AppStyle.Style_History_Tranform.item}>
                         <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                         <View style={AppStyle.Style_History_Tranform.cost}>
@@ -99,7 +99,7 @@ const History_Transform = ({navigation}) => {
                         </View>
                     </View>
                     </TouchableOpacity>
-                    <View style={AppStyle.Style_History_Tranform.item}>
+                    <TouchableOpacity style={AppStyle.Style_History_Tranform.item} >
                         <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                         <View style={AppStyle.Style_History_Tranform.cost}>
                             <Text style={AppStyle.Style_History_Tranform.content_cost}>505.200 đ</Text>
@@ -116,9 +116,9 @@ const History_Transform = ({navigation}) => {
                             />
                             <Text style={AppStyle.Style_History_Tranform.status}>Thất bại</Text>
                         </View>
-                    </View>
+                    </TouchableOpacity>
 
-                    <View style={AppStyle.Style_History_Tranform.item}>
+                    <TouchableOpacity style={AppStyle.Style_History_Tranform.item} onPress={() => navigation.navigate('Giao_Dich_Thanh_Cong')}>
                         <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                         <View style={AppStyle.Style_History_Tranform.cost}>
                             <Text style={AppStyle.Style_History_Tranform.content_cost}>440.000 đ</Text>
@@ -135,9 +135,9 @@ const History_Transform = ({navigation}) => {
                             />
                             <Text style={AppStyle.Style_History_Tranform.status}>Chưa hoàn thành</Text>
                         </View>
-                    </View>
+                    </TouchableOpacity >
 
-                    <View style={AppStyle.Style_History_Tranform.item}>
+                    <TouchableOpacity style={AppStyle.Style_History_Tranform.item} onPress={() => navigation.navigate('Chitiet_giaodich')}>
                         <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                         <View style={AppStyle.Style_History_Tranform.cost}>
                             <Text style={AppStyle.Style_History_Tranform.content_cost}>225.000 đ</Text>
@@ -150,11 +150,11 @@ const History_Transform = ({navigation}) => {
                         <View style={AppStyle.Style_History_Tranform.bottom}>
                             <Image
                                 style={AppStyle.Style_History_Tranform.ImageStatus}
-                                source={require('../img/dahuy.png')}
+                                source={require('../img/chuahoanthanh.png')}
                             />
-                            <Text style={AppStyle.Style_History_Tranform.status}>Đã hủy</Text>
+                            <Text style={AppStyle.Style_History_Tranform.status}>Chưa hoàn thành</Text>
                         </View>
-                    </View>
+                    </TouchableOpacity>
 
                     <View style={AppStyle.Style_History_Tranform.item}>
                         <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>

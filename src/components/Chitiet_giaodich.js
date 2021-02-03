@@ -124,10 +124,10 @@ const Chitiet_giaodich = ({navigation}) => {
                 </View>
             </ScrollView>
 
-            <View style={{ backgroundColor: '#272738', position: 'absolute', bottom: 0, width: '100%', height: 160 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 12,paddingHorizontal:13 }}>
+            <View style={{ backgroundColor: '#272738', position: 'absolute', bottom: 0, width: '100%', height: 200 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 12,paddingHorizontal:13, }}>
                     <Text style={AppStyle.Style_Chitiet_giaodich.text} >Tổng Thanh toán</Text>
-                    <Text style={AppStyle.Style_Chitiet_giaodich.text}>250 .0000 đ</Text>
+                    <Text style={AppStyle.Style_Chitiet_giaodich.text}>250.000 đ</Text>
                 </View>
                 {/* <LinearGradient  
                colors={['#8B3BFF','#B738FF']} style={{opacity:1, height: 48, justifyContent:'center', alignItems: 'center',   borderRadius:8}}>

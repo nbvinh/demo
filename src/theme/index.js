@@ -12,6 +12,8 @@ import StyleGioHang from "./StyleGioHang";
 import StyleChonVoucher from "./StyleChonVoucher";
 import StylePhuongthucthanhtoan from "./StylePhuongthucthanhtoan";
 import StyleBanhMi from "./StyleBanhMi";
+import Style_Giao_Dich_TCong from "./Style_Giao_Dich_TCong";
+import Style_Chitiet_giaodich from "./Style_Chitiet_giaodich";
 const AppStyle = {
     StyleFirst,
     StyleSecond,
@@ -19,13 +21,15 @@ const AppStyle = {
     StyleMain,
     StyleLichSu,
     Style_Voucher,
-    Style_Giao_Dich_TCong,
+    StyleLichSuDiem,
     Style_History_Tranform,
     StyleGiaoDich,
     StyleVoucherCGV,
     StyleGioHang,
     StyleChonVoucher,
     StylePhuongthucthanhtoan ,
-    StyleBanhMi
+    StyleBanhMi,
+    Style_Giao_Dich_TCong,
+    Style_Chitiet_giaodich
 }
 export default AppStyle;
