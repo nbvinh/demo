@@ -177,7 +177,8 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         borderRadius: 8,
         marginVertical: 10,
-        padding: 18,
+        paddingVertical: 10,
+        paddingLeft: 20
     },
     block:{
         marginVertical:22

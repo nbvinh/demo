@@ -18,7 +18,7 @@ const NapDiem = ({navigation}) =>{
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Thông tin Gift Card</Text>
             <TextInput  placeholder='Thông tin Gift Card'  placeholderTextColor = 'rgba(255, 255, 255, 0.6)' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color: 'rgba(255, 255, 255, 0.3)'}]}/>
             <Image
-                 width={10} height={18} style={{position:'absolute', top: 147, right: 30, zIndex: 999999}}
+                 width={10} height={18} style={{position:'absolute', top: 140, right: 30, zIndex: 999999}}
                 source={require('../../img/img_icon_24px/scan_24px.png')}
                 />
                 <View style={{height: 50}}></View>
@@ -26,8 +26,8 @@ const NapDiem = ({navigation}) =>{
                         style={AppStyle.StyleFirst.linear}
                         colors={['#8B3BFF', '#B738FF']}
                     >
-                        <TouchableOpacity  >
-                        <Text style={AppStyle.StyleFirst.text}>Tiếp tục</Text>
+                        <TouchableOpacity >
+                        <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
                         </TouchableOpacity>
                     </LinearGradient>
         </View>

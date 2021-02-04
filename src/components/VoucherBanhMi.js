@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
-import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image,  FlatList, ScrollView } from "react-native";
+// import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import AppStyle from "../theme";
 import Data from "./VoucherBanhMi/Data";
@@ -69,8 +69,8 @@ const VoucherBanhMi= ({ navigation }) => {
                         <Text style={AppStyle.StyleBanhMi.DiaChi}>28 Hồ Tùng Mậu, p. Mai Dịch, q. Cầu Giấy, Hà Nội</Text>
                         <View style={AppStyle.StyleBanhMi.Content_Bottom}>
                             <View style={AppStyle.StyleBanhMi.Content_BottomLeft}>
-                                <Text style={{color:'#C9C9C9', paddingVertical: 3}}>Mở cửa :<Text style={{color: '#B738FF'}}>7:30</Text></Text>
-                                <Text style={{color:'#C9C9C9' ,paddingVertical: 3}}>Đóng cửa:<Text style={{color: '#B738FF'}}>22:00</Text> </Text>
+                                <Text style={{color:'#C9C9C9', paddingVertical: 3}}>Mở cửa : <Text style={{color: '#B738FF'}}>7:30</Text></Text>
+                                <Text style={{color:'#C9C9C9' ,paddingVertical: 3}}>Đóng cửa : <Text style={{color: '#B738FF'}}>22:00</Text> </Text>
                             </View>
                             <View style={AppStyle.StyleBanhMi.Content_BottomRight}>
                                 <TouchableOpacity>

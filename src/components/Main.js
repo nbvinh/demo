@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
@@ -130,15 +129,11 @@ const Main = ({navigation}) =>{
                     </Text>
             </TouchableOpacity>
            </View>
-           
-
-           
        </View>
         <Image
             style={{height: 100, width:"100%", borderBottomLeftRadius: 8, borderBottomRightRadius: 8}}
             source={require('../img/Rectangle5.png')}
         />
-      
        <TouchableOpacity style={AppStyle.StyleMain.DichVu} onPress={()=>navigation.navigate('VoucherCGV')}>
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>

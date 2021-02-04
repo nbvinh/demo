@@ -6,6 +6,7 @@ import AppStyle from "../../theme";
 const MonAn = ({item}) =>{
     return (
             <View style={AppStyle.StyleBanhMi.MonAn}>
+                {console.log('đã chạy file này !!!')}
                 <Image
                     style={{width: 82, height: 82}} resizeMode='cover'
                     source={{uri : item.img}}

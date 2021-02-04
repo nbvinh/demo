@@ -23,30 +23,26 @@ const MuaDiem = ({navigation}) =>{
             </View>
             <View style={AppStyle.StyleGiaoDich.PhuongThucThanhToan}>
                 <Text style={AppStyle.StyleGiaoDich.Text_White}>Chọn Phương thức thanh toán</Text>
-                <Text style={AppStyle.StyleGiaoDich.Text_ChonThanhToan}>
+                <View style={AppStyle.StyleGiaoDich.Item_ThanhToan}>
                     <TouchableOpacity style={{marginHorizontal: 8}}>
                         <Image
                                 width={16} height={16}
-                                source={require('../../img/img_icon_24px/check0.png')}
-                            />
+                                source={require('../../img/img_icon_24px/check0.png')} />
                     </TouchableOpacity>
-                    ATM/ VISA/ MASTER/ JCB hoặc Cửa hàng 
-                        tiện lợi.
-                </Text>
-                <Text style={AppStyle.StyleGiaoDich.Text_ChonThanhToan}>
+                    <Text style={AppStyle.StyleGiaoDich.Text_ChonThanhToan}>ATM/ VISA/ MASTER/ JCB hoặc Cửa hàng tiện lợi.</Text>
+                </View>
+                <View style={AppStyle.StyleGiaoDich.Item_ThanhToan}>
                     <TouchableOpacity style={{marginHorizontal: 8}}>
                         <Image
                                 width={16} height={16}
-                                source={require('../../img/img_icon_24px/check0.png')}
-                            />
+                                source={require('../../img/img_icon_24px/check0.png')} />
                     </TouchableOpacity>
-                   Thanh toán bằng Momo
-                </Text>
+                    <Text style={AppStyle.StyleGiaoDich.Text_ChonThanhToan}>Thanh toán bằng Momo</Text>
+                </View>
             </View>
-            <LinearGradient
+                <LinearGradient
                         style={AppStyle.StyleFirst.linear}
-                        colors={['#8B3BFF', '#B738FF']}
-                    >
+                        colors={['#8B3BFF', '#B738FF']} >
                         <TouchableOpacity  >
                         <Text style={AppStyle.StyleFirst.text}>Tiến hành thanh toán</Text>
                         </TouchableOpacity>

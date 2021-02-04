@@ -15,7 +15,7 @@ const DoiAvatar = ({navigation}) =>{
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleGiaoDich.header_text}>Thông tin cá nhân</Text>
             </View>
-            <View style={{height: 120, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{height: 80, justifyContent: 'center', alignItems: 'center'}}>
                         <Image
                             style={{width: 84, height: 84, borderRadius: 50, opacity: 0.4,}}
                             source={{
@@ -61,15 +61,16 @@ const DoiAvatar = ({navigation}) =>{
                     </View>
                 </View>          
            </View>
-           <View style={{height: 48, backgroundColor:'#272738', borderRadius: 8, padding: 16, flexDirection:'row', alignItems:'center', marginBottom: 40, justifyContent:'space-between'}} >
+           <View style={{height: 48, backgroundColor:'#272738', borderRadius: 8, padding: 16, flexDirection:'row', alignItems:'center', marginBottom: 30, justifyContent:'space-between'}} >
                 <Text style={{color:'#ffffff', fontSize: 16, fontWeight: '400'}}>Quản lý thẻ/ tài khoản</Text>
                 <Image
                     width={18} height={18}
                     source={require('../../img/img_icon_24px/chevron_right_24px.png')}
                 />
-            </View>  
-           <LinearGradient style={AppStyle.StyleFirst.linear}  colors={['#8B3BFF', '#B738FF']}>
-                        <TouchableOpacity  >
+            </View>
+            
+                    <LinearGradient style={AppStyle.StyleFirst.linear}  colors={['#8B3BFF', '#B738FF']}>
+                        <TouchableOpacity >
                         <Text style={AppStyle.StyleFirst.text}>Lưu</Text>
                         </TouchableOpacity>
                     </LinearGradient>
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'black'
     },
     body:{
-        height: 360,
+        height: 340,
     },
     header: {
         marginTop: 110,
@@ -109,7 +110,8 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         borderRadius: 8,
         marginVertical: 10,
-        padding: 18,
+        paddingVertical: 10,
+        paddingLeft: 20
     },
     block:{
         marginVertical:22

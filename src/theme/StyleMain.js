@@ -134,10 +134,11 @@ const StyleMain = StyleSheet.create({
     DichVu_Bottom_Top:{
         flex: 1,
         // borderStyle : 'dashed',
-        borderStyle : 'dashed',
+        
         flexDirection:'row',
         borderBottomColor: 'rgba(0, 0, 0, 0.5)',
-        borderBottomWidth: 0.5,
+        borderBottomWidth: 0.3,
+        borderStyle : 'dashed',
         marginTop: 10
     },
     DichVu_Bottom_Top_TextTieuDe:{
