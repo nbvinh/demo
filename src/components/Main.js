@@ -186,7 +186,7 @@ const Main = ({navigation}) =>{
                 </View>
             </View>
        </TouchableOpacity>
-       <TouchableOpacity style={AppStyle.StyleMain.DichVu}>
+       <TouchableOpacity style={AppStyle.StyleMain.DichVu}  >
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image
@@ -236,7 +236,7 @@ const Main = ({navigation}) =>{
             </View>
            
        </TouchableOpacity>
-       <TouchableOpacity style={AppStyle.StyleMain.DichVu}>
+       <TouchableOpacity onPress={()=> navigation.navigate('KingBread')} style={AppStyle.StyleMain.DichVu}>
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
                     <Image

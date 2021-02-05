@@ -1,11 +1,26 @@
-  import React from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import SlideImg from "./VoucherCGV/sildeImg";
 import TextFooter from "./VoucherCGV/Text";
 import Footer from "./VoucherCGV/Footer";
+import { useDispatch, useSelector } from "react-redux";
 const VoucherCGV = ({ navigation }) => {
+    const dispatch = useDispatch();
+    const value = useSelector(state => state.value)
+    const priceCGV = useSelector(state => state.priceCGV)
+    const UP = () => {
+        dispatch({ type: 'UPVALUE' })
+        dispatch ({type:'PRICECGV'})
+    }
+    const DOWN = () => {
+        if (value > 0) {
+
+            dispatch({ type: 'DOWNVALUE' })
+            dispatch ({type:'PRICECGV'})
+        }
+    }
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -47,14 +62,14 @@ const VoucherCGV = ({ navigation }) => {
                         <View style={AppStyle.StyleVoucherCGV.soluong}>
                             <Text style={AppStyle.StyleVoucherCGV.text5}>Số Lượng:</Text>
                             <View style={{ flexDirection: 'row' }}>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={() => DOWN()}>
                                     <Image
                                         style={{ width: 32, height: 32 }}
                                         source={require('../img/vinh9.png')}
                                     />
-                                </TouchableOpacity>
-                                <Text style={AppStyle.StyleVoucherCGV.text6}>5</Text>
-                                <TouchableOpacity>
+                                </TouchableOpacity >
+                                <Text style={AppStyle.StyleVoucherCGV.text6}>{value}</Text>
+                                <TouchableOpacity onPress={() => UP()}>
                                     <Image
                                         style={{ width: 32, height: 32 }}
                                         source={require('../img/vinh3.png')}
@@ -72,10 +87,10 @@ const VoucherCGV = ({ navigation }) => {
                         style={AppStyle.StyleVoucherCGV.img3}
                         source={require('../img/vinh8.png')}
                     />
-                    <Text style={AppStyle.StyleVoucherCGV.text9}>440.000 đ</Text>
+                    <Text style={AppStyle.StyleVoucherCGV.text9}>{priceCGV} đ</Text>
                 </View>
                 <View style={AppStyle.StyleVoucherCGV.footer1}>
-                    <Text style={AppStyle.StyleVoucherCGV.text10}>5</Text>
+                    <Text style={AppStyle.StyleVoucherCGV.text10}>{value}</Text>
                 </View>
                 <TouchableOpacity onPress={() => navigation.navigate('GioHang')}>
                     <Image

@@ -10,6 +10,7 @@ import Style_History_Tranform from "./Style_History_Tranform";
 import StyleVoucherCGV from "./StyleVoucherCGV";
 import StyleGioHang from "./StyleGioHang";
 import StyleChonVoucher from "./StyleChonVoucher";
+import StyleKingBread from "./StyleKingBread";
 import StylePhuongthucthanhtoan from "./StylePhuongthucthanhtoan";
 const AppStyle = {
     StyleFirst,
@@ -24,6 +25,7 @@ const AppStyle = {
     StyleVoucherCGV,
     StyleGioHang,
     StyleChonVoucher,
-    StylePhuongthucthanhtoan 
+    StylePhuongthucthanhtoan ,
+    StyleKingBread
 }
 export default AppStyle;

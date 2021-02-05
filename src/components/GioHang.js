@@ -4,9 +4,16 @@ import { TextInput } from "react-native-gesture-handler";
 import { set } from "react-native-reanimated";
 import AppStyle from "../theme";
 import Form from "../components/GioHang/Form";
-
+import { useDispatch, useSelector } from "react-redux";
 const GioHang = ({ navigation }) => {
     const [show, setShow] = useState(false);
+    const dispatch = useDispatch();
+    const value = useSelector(state => state.value)
+    const priceCGV = useSelector(state => state.priceCGV)
+    const [pricefollows, setPricefollows] = useState(priceCGV);
+    const onpricefollows = () => {
+        setPricefollows(pricefollows - 10000)
+    }
     return (
         <View style={[AppStyle.StyleVoucherCGV.container]}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -37,7 +44,7 @@ const GioHang = ({ navigation }) => {
                             <TouchableOpacity onPress={() => setShow(true)}>
                                 <Text style={AppStyle.StyleGioHang.text1} >Thay đổi</Text>
                             </TouchableOpacity>
-                            <Text style={AppStyle.StyleGioHang.text2}>x5</Text>
+                            <Text style={AppStyle.StyleGioHang.text2}>x{value}</Text>
                         </View>
                     </View>
                 </View>
@@ -47,9 +54,12 @@ const GioHang = ({ navigation }) => {
                             style={AppStyle.StyleGioHang.img2}
                             source={require('../img/vinh17.png')}
                         />
-                        <View style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 30 }]}>
-                            <Text style={AppStyle.StyleGioHang.text3}>Giảm 10k cho hóa đơn tối thiểu 300k</Text>
-                        </View>
+                        <TouchableOpacity onPress={()=>onpricefollows()}>
+
+                            <View style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 30 }]}>
+                                <Text style={AppStyle.StyleGioHang.text3}>Giảm 10k cho hóa đơn tối thiểu 300k</Text>
+                            </View>
+                        </TouchableOpacity>
                         <TouchableOpacity onPress={() => navigation.navigate('ChonVoucher')}>
                             <Image
                                 style={AppStyle.StyleGioHang.img3}
@@ -67,7 +77,7 @@ const GioHang = ({ navigation }) => {
                 <View style={{ margin: 15 }}>
                     <View style={AppStyle.StyleGioHang.content2}>
                         <Text style={AppStyle.StyleVoucherCGV.text5}>Tạm tính</Text>
-                        <Text style={AppStyle.StyleVoucherCGV.text5}>440.000 đ</Text>
+                        <Text style={AppStyle.StyleVoucherCGV.text5}>{priceCGV} đ</Text>
                     </View>
                     <View style={AppStyle.StyleGioHang.content3}>
                         <Text style={AppStyle.StyleVoucherCGV.text8}>Khuyến mãi</Text>
@@ -77,7 +87,7 @@ const GioHang = ({ navigation }) => {
                         <Text style={AppStyle.StyleVoucherCGV.text2}>Tổng thanh toán</Text>
                         <Text style={AppStyle.StyleVoucherCGV.text2}>430.000 đ</Text>
                     </View>
-                    <TouchableOpacity onPress={()=> navigation.navigate('PhuongThucThanhToan')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('PhuongThucThanhToan')}>
                         <Image
                             style={AppStyle.StyleGioHang.img4}
                             source={require('../img/vinh1.png')}
