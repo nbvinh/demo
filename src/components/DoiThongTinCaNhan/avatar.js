@@ -56,6 +56,8 @@ const DoiAvatar = ({navigation}) =>{
                     <View style={styles.parent_input}>
                         <TextInput placeholder='Mời nhập Email của bạn' 
                         style={styles.textinput}
+                    //    /*  */
+                    //    /*  */
                          placeholderTextColor='rgba(255, 255, 255, 0.3)'
                          />
                     </View>
