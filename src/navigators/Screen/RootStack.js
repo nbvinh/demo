@@ -47,7 +47,7 @@ const RootStack =()=>{
             <Root.Screen name ="NapDiem" component={NapDiem} />
             <Root.Screen name ="DoiAvatar" component={DoiAvatar} />
             <Root.Screen name="VoucherCGV" component={VoucherCGV} />
-            <Root.Screen name="VoucherBanhMi" component={VoucherBanhMi} />
+            {/* <Root.Screen name="VoucherBanhMi" component={VoucherBanhMi} /> */}
             <Root.Screen name="GioHang" component={GioHang} />
             <Root.Screen name="ChonVoucher" component={ChonVoucher} />
             <Root.Screen name="PhuongThucThanhToan" component={PhuongThucThanhToan} />
