@@ -12,9 +12,6 @@ const ListBank = (props) => {
         dispatch({ type: 'ISSHOW' });
         dispatch({ type: 'CHECKPOINT' });
     }
-    // const point =()=>{
-    //     if(data)
-    // }
     return (
         <View>
             <View style={AppStyle.StylePhuongthucthanhtoan.content3}>
@@ -42,13 +39,6 @@ const ListBank = (props) => {
                 />
                 <View>
                     <Text style={{ color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100, marginBottom:40 }}>{text}</Text>
-                    {/* {checkpoint ? null
-                        :
-                        <View>
-                            <Text style={{ color: 'red' }}>{text1}</Text>
-                            <Text style={{ color: 'red' }}>{text2}</Text>
-                        </View>
-                    } */}
                 </View>
             </View>
         </View>
