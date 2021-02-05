@@ -3,9 +3,11 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import AppStyle from "../theme";
 import Khuyenmai from "../components/ChonVoucher/Khuyenmai";
-
+import { useSelector, useDispatch } from "react-redux";
 
 const ChonVoucher = ({ navigation }) => {
+    const dispatch = useDispatch();
+    const arrPromotion = useSelector(state => state.arrPromotion)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -19,10 +21,30 @@ const ChonVoucher = ({ navigation }) => {
                 <Text style={AppStyle.StyleVoucherCGV.text}>Chọn Voucher</Text>
             </View>
             <View style={{ flex: 10 }}>
-                <Khuyenmai />
+                <ScrollView>
+                    <View style={AppStyle.StyleVoucherCGV.address}>
+                        <View style={AppStyle.StyleGioHang.address2}>
+                            <TextInput
+                                style={[AppStyle.StyleGioHang.content1, { paddingLeft: 20 }]}
+                                placeholder="Nhập mã khuyến mãi"
+                                placeholderTextColor="#3E3E56"
+                            />
+                            <Image
+                                style={AppStyle.StyleChonVoucher.img1}
+                                source={require('../img/vinh6.png')}
+                            />
+                        </View>
+                    </View>
+                    <FlatList 
+                        data ={arrPromotion}
+                        renderItem={({ item }) => <Khuyenmai myarrPromotion={item} />}
+                        keyExtractor={item => item?.id?.toString()}
+                    />
+                    <View style={{ height: 200 }}></View>
+                </ScrollView>
             </View>
             <View style={{ flex: 1, margin: 15 }}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Image
                         style={{ width: '100%', height: 48, borderRadius: 8 }}
                         source={require('../img/vinh2.png')}

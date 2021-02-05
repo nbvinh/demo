@@ -5,17 +5,29 @@ import AppStyle from "../../theme";
 
 const ListBank = (props) => {
     const dispatch = useDispatch();
-    
-    const { id, isChecked, img, text, text1, text2 } = props.myData;
-    const onCheck = () => {
+    const { id, isChecked, img, text } = props.myData;
+    const data = useSelector(state => state.data);
+    const lienket = useSelector(state => state.lienket);
+    const onCheck = (choosediem) => {
         dispatch({ type: 'ISCHECK', id: id });
         dispatch({ type: 'ISSHOW' });
-        dispatch({ type: 'CHECKPOINT' });
+        dispatch({ type: 'TONGDIEM' });
+        dispatch({ type: 'LIENKET' });
+        if (id === 1) {
+            choosediem.tongdiem = true
+        }
+        else {
+            choosediem.tongdiem = false
+        }
     }
+    const stylepoint = lienket ? {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100} : {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100, marginBottom: 40}
+    // const point =()=>{
+    //     if(data)
+    // }
     return (
         <View>
             <View style={AppStyle.StylePhuongthucthanhtoan.content3}>
-                <TouchableOpacity onPress={() => onCheck()}>
+                <TouchableOpacity onPress={() => onCheck(props.myData)}>
                     {isChecked ?
                         <View>
                             <Image source={require('../../img/vinh23.png')}
@@ -32,16 +44,17 @@ const ListBank = (props) => {
                         />
                     }
                 </TouchableOpacity>
-
                 <Image
                     style={{ height: 32, width: 32, borderRadius: 5, marginRight: 10 }}
                     source={{ uri: img }}
                 />
                 <View>
-                    <Text style={{ color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100, marginBottom:40 }}>{text}</Text>
+                    <Text style={stylepoint}>{text}</Text>
+
                 </View>
             </View>
         </View>
+
     )
 }
 export default ListBank;

@@ -1,36 +1,3 @@
-// import React from "react";
-// import { View, Text } from 'react-native';
-// import ScreenFirst from '../../components/ScreenFirst';
-// import 'react-native-gesture-handler';
-// import SecondScreen from "../../components/SecondScreen";
-// import { createStackNavigator } from '@react-navigation/stack'
-// import ScreenXacThucSDT from "../../components/ScreenXacThucSDT";
-// import Main from "../../components/Main";
-// import Profile from '../../components/Profile';
-// import VoucherCGV from "../../components/VoucherCGV";
-// import GioHang from "../../components/GioHang";
-// import ChonVoucher from "../../components/ChonVoucher";
-// import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
-// import { NavigationContainer } from '@react-navigation/native'
-// const Root = createStackNavigator();
-// const RootStack = () => {
-//     return (
-//         <NavigationContainer>
-//             <Root.Navigator headerMode="none" initialRouteName={ScreenFirst}>
-//                 <Root.Screen name="ScreenFirst" component={ScreenFirst} />
-//                 <Root.Screen name="SecondScreen" component={SecondScreen} />
-//                 <Root.Screen name="ScreenXacThucSDT" component={ScreenXacThucSDT} />
-//                 <Root.Screen name="Profile" component={Profile} />
-//                 <Root.Screen name="Main" component={Main} />
-//                 <Root.Screen name="VoucherCGV" component={VoucherCGV} />
-//                 <Root.Screen name="GioHang" component={GioHang} />
-//                 <Root.Screen name="ChonVoucher" component={ChonVoucher} />
-//                 <Root.Screen name="PhuongThucThanhToan" component={PhuongThucThanhToan} />
-//             </Root.Navigator>
-//         </NavigationContainer>
-//     )
-// }
-// export default RootStack;
 
 import React from "react";
 import {View, Text} from 'react-native';
@@ -55,11 +22,9 @@ import VoucherCGV from "../../components/VoucherCGV";
 import GioHang from "../../components/GioHang";
 import ChonVoucher from "../../components/ChonVoucher";
 import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
-import { NavigationContainer } from '@react-navigation/native'
-import VoucherBanhMi from "../../components/VoucherBanhMi";
-import Chitiet_giaodich from "../../components/Chitiet_giaodich";
-import Giao_Dich_Thanh_Cong from "../../components/Giao_Dich_Thanh_Cong";
-import Giao_Dich_Chua_Thanh_Toan from "../../components/Giao_Dich_Chua_Thanh_Toan";
+import { NavigationContainer } from '@react-navigation/native';
+import PaymentConfirmation from "../../components/PaymentConfirmation";
+import KingBread from "../../components/KingBread";
 const Root= createStackNavigator();
 const RootStack =()=>{
     return(
@@ -86,9 +51,8 @@ const RootStack =()=>{
             <Root.Screen name="GioHang" component={GioHang} />
             <Root.Screen name="ChonVoucher" component={ChonVoucher} />
             <Root.Screen name="PhuongThucThanhToan" component={PhuongThucThanhToan} />
-            <Root.Screen name="Chitiet_giaodich" component={Chitiet_giaodich} />
-            <Root.Screen name="Giao_Dich_Chua_Thanh_Toan" component={Giao_Dich_Chua_Thanh_Toan} />
-            <Root.Screen name="Giao_Dich_Thanh_Cong" component={Giao_Dich_Thanh_Cong} />
+            <Root.Screen name="PaymentConfirmation" component={PaymentConfirmation} />
+            <Root.Screen name="KingBread" component={KingBread} />
         </Root.Navigator>
         </NavigationContainer>
     )

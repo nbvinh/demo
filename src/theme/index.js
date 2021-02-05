@@ -10,6 +10,7 @@ import Style_History_Tranform from "./Style_History_Tranform";
 import StyleVoucherCGV from "./StyleVoucherCGV";
 import StyleGioHang from "./StyleGioHang";
 import StyleChonVoucher from "./StyleChonVoucher";
+import StyleKingBread from "./StyleKingBread";
 import StylePhuongthucthanhtoan from "./StylePhuongthucthanhtoan";
 import StyleBanhMi from "./StyleBanhMi";
 import Style_Giao_Dich_TCong from "./Style_Giao_Dich_TCong";
@@ -28,8 +29,6 @@ const AppStyle = {
     StyleGioHang,
     StyleChonVoucher,
     StylePhuongthucthanhtoan ,
-    StyleBanhMi,
-    Style_Giao_Dich_TCong,
-    Style_Chitiet_giaodich
+    StyleKingBread
 }
 export default AppStyle;
