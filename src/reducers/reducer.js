@@ -73,6 +73,10 @@ const initState = {
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'ADDDATA1' :
+            return {...state, data1: action.data1}
+        case 'ADD' :
+            return {...state, hoten: action.hoten}
         case 'CHOOSE':
             const arr1 = [...state.arrPromotion]
             arr1.map((e) => {

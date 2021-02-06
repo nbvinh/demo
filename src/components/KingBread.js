@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, FlatList } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import SlideImg from "../components/KingBread/SlideImg";
@@ -74,6 +74,7 @@ const KingBread = ({ navigation }) => {
                             </View>
                             <View>
                                 <Text style={AppStyle.StyleKingBread.text1}>Combo</Text>
+                                
                             </View>
                         </View>
                     </View>
