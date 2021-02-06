@@ -14,7 +14,7 @@ const images = [
     'https://baoquocte.vn/stores/news_dataimages/khanhchi/062017/06/07/074726_World-Environment-Day-1.jpg',
     'https://bizweb.dktcdn.net/thumb/grande/100/119/128/files/tranhphongcanh-35.jpg?v=1484234572430',
     'https://thegioitranhsondau.com/upload/sanpham/large/tranh-ve-ngoi-nha-voi-khung-canh-thien-nhien-mua-xuan.jpg',
-    // 'https://i.pinimg.com/originals/a8/45/76/a84576a04c1874304735604d9f47d5a4.jpg'
+    'https://i.pinimg.com/originals/a8/45/76/a84576a04c1874304735604d9f47d5a4.jpg'
 ]
 
 const SlideImg = () => {
@@ -23,10 +23,10 @@ const SlideImg = () => {
         <View style={AppStyle.StyleVoucherCGV.silde}>
             <View style={AppStyle.StyleVoucherCGV.silde1}>
                 <ScrollView
-                    pagingEnabled
+                    pagingEnabled ={true}
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    style={{width:128, height:70}}
+                    // style={{width:'100%', height:70}}
                 >
                     {images.map((item, index) => (
                         <Image
