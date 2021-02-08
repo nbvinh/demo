@@ -31,7 +31,6 @@ const Profile = ({ route, navigation }) => {
                 .then((response)=>response.json())
                 .then((json)=>{console.log(json)})
                 dispatch({type:'ADD', hoten: hoten.hoten})
-            Alert.alert('Thông báo', 'Bạn đã CẬP nhật thành công');
             navigation.navigate('Tabviewmain');
 
         } catch (error) {
