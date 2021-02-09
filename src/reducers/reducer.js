@@ -51,7 +51,7 @@ const initState = {
             Gia: 500000,
             text1: 'Giảm 20k cho hóa đơn tối thiểu 500k',
             hsd: '30/12/2020',
-            dieukien: false,
+            dieukien: true,
             img: 'https://www.onlinefabricstore.net/images/product-images/lg/PP1128_1.jpg',
 
         },

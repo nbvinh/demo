@@ -9,7 +9,7 @@ const StyleGioHang =StyleSheet.create({
     img2:{ width: 18.5, height: 16.67, marginTop: 10 },
     content1:{ width: 239, height: 40, backgroundColor: '#222222', borderRadius: 28 },
     text3:{ color: '#DCDCDC', fontSize: 13, fontWeight: '400', marginTop: 10, textAlign: 'center' },
-    img3:{ width: 6.59, height: 11.17, marginTop: 13, marginLeft: 10 },
+    img3:{ width: 6.59, height: 11.17, marginTop: 13, marginLeft: 10,marginBottom:13 },
     footer:{ flex: 4, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16 },
     content2:{ flexDirection: 'row', justifyContent: 'space-between' },
     content3: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 7 },

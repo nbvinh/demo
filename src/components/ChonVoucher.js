@@ -8,6 +8,12 @@ import { useSelector, useDispatch } from "react-redux";
 const ChonVoucher = ({ navigation }) => {
     const dispatch = useDispatch();
     const arrPromotion = useSelector(state => state.arrPromotion)
+    const [ischeck, setIscheck] = useState();
+    const [id, setId] = useState();
+    const onGetCheck = (value) => {
+        setIscheck(value);
+    }
+    
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -35,22 +41,31 @@ const ChonVoucher = ({ navigation }) => {
                             />
                         </View>
                     </View>
-                    <FlatList 
-                        data ={arrPromotion}
-                        renderItem={({ item }) => <Khuyenmai myarrPromotion={item} />}
-                        keyExtractor={item => item?.id?.toString()}
-                    />
+                    {arrPromotion.map((item, index) => (
+                        <Khuyenmai key={index.toString()} myarrPromotion={item} sendCheck={(value) => onGetCheck(value)}/>
+                    ))}
                     <View style={{ height: 200 }}></View>
                 </ScrollView>
             </View>
             <View style={{ flex: 1, margin: 15 }}>
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Image
-                        style={{ width: '100%', height: 48, borderRadius: 8 }}
-                        source={require('../img/vinh2.png')}
-                    />
-                </TouchableOpacity>
+                {ischeck ?
+
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <Image
+                            style={{ width: '100%', height: 48, borderRadius: 8 }}
+                            source={require('../img/vinh2.png')}
+                        />
+                    </TouchableOpacity>
+                    :
+                    <TouchableOpacity>
+                        <Image
+                            style={{ width: '100%', height: 48, borderRadius: 8 }}
+                            source={require('../img/vinh33.png')}
+                        />
+                    </TouchableOpacity>
+                }
             </View>
+            {console.log('check',ischeck)}
         </View>
     )
 }
