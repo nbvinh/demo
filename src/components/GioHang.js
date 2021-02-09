@@ -9,11 +9,8 @@ const GioHang = ({ navigation }) => {
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();
     const value = useSelector(state => state.value)
+    const arrPromotion = useSelector(state => state.arrPromotion)
     const priceCGV = useSelector(state => state.priceCGV)
-    const [pricefollows, setPricefollows] = useState(priceCGV);
-    const onpricefollows = () => {
-        setPricefollows(pricefollows - 10000)
-    }
     return (
         <View style={[AppStyle.StyleVoucherCGV.container]}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -54,11 +51,15 @@ const GioHang = ({ navigation }) => {
                             style={AppStyle.StyleGioHang.img2}
                             source={require('../img/vinh17.png')}
                         />
-                        <TouchableOpacity onPress={()=>onpricefollows()}>
+                        <TouchableOpacity>
+                            {arrPromotion.map((item, index) => (
 
-                            <View style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 30 }]}>
-                                <Text style={AppStyle.StyleGioHang.text3}>Giảm 10k cho hóa đơn tối thiểu 300k</Text>
-                            </View>
+                                item.isChoose ? item.dieukien ?
+                                    <View key={index.toString()} style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 30 }]}>
+                                        <Text style={AppStyle.StyleGioHang.text3}>{item.text1}</Text>
+                                    </View>
+                                    : null : null
+                            ))}
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => navigation.navigate('ChonVoucher')}>
                             <Image
@@ -81,11 +82,19 @@ const GioHang = ({ navigation }) => {
                     </View>
                     <View style={AppStyle.StyleGioHang.content3}>
                         <Text style={AppStyle.StyleVoucherCGV.text8}>Khuyến mãi</Text>
-                        <Text style={AppStyle.StyleVoucherCGV.text8}>-10đ</Text>
+                        {arrPromotion.map((item, index) => (
+                            item.isChoose ? item.dieukien ?
+                                <Text key={index.toString()} style={AppStyle.StyleVoucherCGV.text8}>- {item.Promotion} đ</Text>
+                                : null : null
+                        ))}
                     </View>
                     <View style={AppStyle.StyleGioHang.content4}>
                         <Text style={AppStyle.StyleVoucherCGV.text2}>Tổng thanh toán</Text>
-                        <Text style={AppStyle.StyleVoucherCGV.text2}>430.000 đ</Text>
+                        {arrPromotion.map((item, index) => (
+                            item.isChoose ? item.dieukien ?
+                                <Text key={index.toString()} style={AppStyle.StyleVoucherCGV.text8}>{priceCGV - item.Promotion} đ</Text>
+                                : null : null
+                        ))}
                     </View>
                     <TouchableOpacity onPress={() => navigation.navigate('PhuongThucThanhToan')}>
                         <Image
