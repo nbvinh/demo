@@ -10,11 +10,11 @@ import AppStyle from "../../theme";
 //     '../../img/vinh13.png'
 // ]
 const images = [
-    'https://khoahocphattrien.vn/Images/Uploaded/Share/2019/03/13/dGhpZW5uaGllbg.jpg',
-    'https://baoquocte.vn/stores/news_dataimages/khanhchi/062017/06/07/074726_World-Environment-Day-1.jpg',
-    'https://bizweb.dktcdn.net/thumb/grande/100/119/128/files/tranhphongcanh-35.jpg?v=1484234572430',
-    'https://thegioitranhsondau.com/upload/sanpham/large/tranh-ve-ngoi-nha-voi-khung-canh-thien-nhien-mua-xuan.jpg',
-    'https://i.pinimg.com/originals/a8/45/76/a84576a04c1874304735604d9f47d5a4.jpg'
+    'https://www.brandsvietnam.com/upload/news/480px/2018/15391_CGV.jpg',
+    'https://i.vietgiaitri.com/2020/5/10/cgv-mo-lai-cac-cum-rap-e22-4920532.jpg',
+    'https://lh3.googleusercontent.com/proxy/K2uDggTd7Yu6ZlqnEjMg7xyg5CzKwcTgtEIMB8X2o6CdWVDIlFvM5DHgSAYwksvOj97wsxTBaIywrbkrCgYlY_vYT0b5XEY7Ar7ygHwthBE-Goa2sXZmyBTku_dBA8s',
+    'https://bmtcogi.com/wp-content/uploads/2019/10/cgv-bmttong-hop-rap-chieu-phim-hang-dau-tai-buon-ma-thuot-ma-ban-nen-xem-bmtcogi.com-1.jpg',
+    'https://media.ex-cdn.com/EXP/media.taichinhdoanhnghiep.net.vn/files/thanhtan/2020/03/20/a-2116.jpg'
 ]
 
 const SlideImg = () => {

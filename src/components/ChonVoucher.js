@@ -48,24 +48,13 @@ const ChonVoucher = ({ navigation }) => {
                 </ScrollView>
             </View>
             <View style={{ flex: 1, margin: 15 }}>
-                {ischeck ?
-
                     <TouchableOpacity onPress={() => navigation.goBack()}>
                         <Image
                             style={{ width: '100%', height: 48, borderRadius: 8 }}
                             source={require('../img/vinh2.png')}
                         />
                     </TouchableOpacity>
-                    :
-                    <TouchableOpacity>
-                        <Image
-                            style={{ width: '100%', height: 48, borderRadius: 8 }}
-                            source={require('../img/vinh33.png')}
-                        />
-                    </TouchableOpacity>
-                }
             </View>
-            {console.log('check',ischeck)}
         </View>
     )
 }

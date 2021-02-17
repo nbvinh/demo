@@ -39,7 +39,6 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
             // .then((response) =>console.log( response.data.data.access_token))
             //     .then((json) => { console.log(json) })
             let abc = result.data.data.access_token;
-            Alert.alert('Thông báo', 'Bạn đã nhập thành công');
             navigation.navigate('Profile', { SDT: SDT, abc : abc});
             
         } catch (error) {
