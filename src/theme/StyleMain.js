@@ -39,7 +39,7 @@ const StyleMain = StyleSheet.create({
         flexDirection: 'row'
     },
     search_left:{
-        flex: 7.5,
+        flex: 7.2,
         backgroundColor:'#272738',
         borderRadius: 8,
         justifyContent:'space-around',
@@ -47,9 +47,9 @@ const StyleMain = StyleSheet.create({
         flexDirection:'row'
     },
     search_right:{
-        flex: 2.5,
+        flex: 2.8,
         alignItems:'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     poin_your:{
         flex: 1.7,

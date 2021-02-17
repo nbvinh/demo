@@ -70,13 +70,32 @@ const initState = {
     priceCGV: 0,
     price: 88000,
     value: 0,
+    choosevoucher: true,
+    province:false
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case 'ADDDATA1' :
-            return {...state, data1: action.data1}
-        case 'ADD' :
-            return {...state, hoten: action.hoten}
+        case 'ADDDATA1':
+            return { ...state, data1: action.data1 }
+        case 'CHOOSEDATA1' :
+            const arr2 = [...state.data1]
+            arr2.map((e) => {
+                if (e.provinceId === action.provinceId) {
+                    e.isChooseProvince = true
+                }
+                else {
+                    e.isChooseProvince = false
+                }
+            })
+            return {
+                ...state, data1: arr2
+            }
+        case 'MODALPROVINCE' :
+            return {...state, province:!state.province}
+        case 'CHOOSEVOUCHER':
+            return {...state,choosevoucher:false}
+        case 'ADD':
+            return { ...state, hoten: action.hoten }
         case 'CHOOSE':
             const arr1 = [...state.arrPromotion]
             arr1.map((e) => {

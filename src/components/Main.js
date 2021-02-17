@@ -1,22 +1,29 @@
-import React,{useEffect} from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import React, { useEffect, useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, FlatList } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector, useDispatch } from "react-redux";
 import { changedata1 } from "../reducers/action";
+import Province from "../components/Main/Province"
 const Main = ({ navigation }) => {
     const dispatch = useDispatch();
     const hoten = useSelector(state => state.hoten)
     const data1 = useSelector(state => state.data1)
+    const province = useSelector(state => state.province)
+    const [test, setTest] = useState(true)
     useEffect(() => {
-        fetch('http://175.41.184.177:6061/category',{
-            method:'GET'
+        fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
+            method: 'GET'
         })
             .then((response) => response.json())
             .then((jsonn) => { dispatch(changedata1(jsonn.data)) })
             .catch((error) => console.error(error))
     }, [])
+    const modal = () => {
+        setTest(false)
+        dispatch({ type: 'MODALPROVINCE' })
+    }
     return (
         <ScrollView style={AppStyle.StyleMain.container}>
 
@@ -49,10 +56,30 @@ const Main = ({ navigation }) => {
                     <TextInput style={{ width: '82%' }} placeholder='Nhập từ khoá tìm kiếm...' placeholderTextColor='gray' />
                 </View>
                 <View style={AppStyle.StyleMain.search_right}>
-                    <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Hà Nội <Image
-                        style={{ width: 14, height: 8 }}
-                        source={require('../img/expand_more_24px.png')}
-                    /></Text>
+                    <TouchableOpacity onPress={() => modal()}>
+                        {test ?
+                            <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Tỉnh <Image
+                                style={{ width: 14, height: 8 }}
+                                source={require('../img/expand_more_24px.png')}
+                            /></Text>
+                            :
+                            <FlatList
+                                data={data1}
+                                renderItem={({ item }) => (
+                                    item.isChooseProvince && (
+                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: '400', marginTop:10 }}> {item.name} <Image
+                                            style={{ width: 14, height: 8 }}
+                                            source={require('../img/expand_more_24px.png')}
+                                        /></Text>
+                                    )
+                                )}
+                                keyExtractor={item => item?.provinceId?.toString()}
+                            />
+                        }
+
+
+                    </TouchableOpacity>
+                    <Province />
                 </View>
             </View>
             <View style={AppStyle.StyleMain.poin_your}>

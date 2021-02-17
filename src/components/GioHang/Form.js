@@ -10,6 +10,7 @@ const Form = (props) => {
     const setShow = props.setShow;
     const dispatch = useDispatch();
     const value = useSelector(state => state.value)
+    const priceCGV = useSelector(state => state.priceCGV)
     const UP = () => {
         dispatch({ type: 'UPVALUE' })
         dispatch ({type:'PRICECGV'})
@@ -69,7 +70,7 @@ const Form = (props) => {
                                     }}
                                     source={require('../../img/vinh20.png')}
                                 />
-                                <Text style={AppStyle.StyleGioHang.text7}>440.000 đ</Text>
+                                <Text style={AppStyle.StyleGioHang.text7}>{priceCGV} đ</Text>
                             </View>
                             <View style={AppStyle.StyleGioHang.content8}>
                                 <Text style={AppStyle.StyleVoucherCGV.text10}>{value}</Text>

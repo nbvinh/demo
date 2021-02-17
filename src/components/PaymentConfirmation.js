@@ -14,6 +14,10 @@ const PaymentConfirmation = ({ navigation }) => {
     const checkpoint = useSelector(state => state.checkpoint)
     const tongdiem = useSelector(state => state.tongdiem)
     const lienket = useSelector(state => state.lienket)
+    const value = useSelector(state => state.value)
+    const arrPromotion = useSelector(state => state.arrPromotion)
+    const priceCGV = useSelector(state => state.priceCGV)
+    const choosevoucher = useSelector(state => state.choosevoucher)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -35,24 +39,30 @@ const PaymentConfirmation = ({ navigation }) => {
                             />
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text3}>VoucherCGV Cinema</Text>
                         </View>
-                        <View style ={AppStyle.StylePhuongthucthanhtoan.content4}>
+                        <View style={AppStyle.StylePhuongthucthanhtoan.content4}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text4}>Số lượng</Text>
-                            <Text style={AppStyle.StylePhuongthucthanhtoan.text4}>x5</Text>
+                            <Text style={AppStyle.StylePhuongthucthanhtoan.text4}>x{value}</Text>
                         </View>
-                        <View style ={AppStyle.StylePhuongthucthanhtoan.content4}>
+                        <View style={AppStyle.StylePhuongthucthanhtoan.content4}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text4}>Khuyến mại</Text>
-                            <Text style={AppStyle.StylePhuongthucthanhtoan.text4}>-0đ</Text>
+                            {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text4}>- 0 đ</Text>
+                                :
+                                arrPromotion.map((item, index) => (
+                                    item.isChoose ? item.dieukien ?
+                                        <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text4}>- {item.Promotion} đ</Text>
+                                        : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text4}>- 0 đ</Text> : null
+                                ))}
                         </View>
-                        <View style ={AppStyle.StylePhuongthucthanhtoan.content4}>
+                        <View style={AppStyle.StylePhuongthucthanhtoan.content4}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text4}>Mã giao dịch</Text>
-                            <Text style={[AppStyle.StylePhuongthucthanhtoan.text4,{marginBottom:15}]}>DH65741671616</Text>
+                            <Text style={[AppStyle.StylePhuongthucthanhtoan.text4, { marginBottom: 15 }]}>DH65741671616</Text>
                         </View>
                     </View>
                     <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Phương thức thanh toán</Text>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content5}>
-                        <Image 
-                            source={{uri:'https://static.mservice.io/img/logo-momo.png'}}
-                            style={{height:32, width:32}}
+                        <Image
+                            source={{ uri: 'https://static.mservice.io/img/logo-momo.png' }}
+                            style={{ height: 32, width: 32 }}
                         />
                         <Text style={AppStyle.StylePhuongthucthanhtoan.text5}>Ví điện tử MoMo</Text>
                     </View>
@@ -61,12 +71,18 @@ const PaymentConfirmation = ({ navigation }) => {
             <View style={{ flex: 3, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
                 <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                     <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
-                    <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>400.000 đ</Text>
+                    {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV} đ</Text>
+                        :
+                        arrPromotion.map((item, index) => (
+                            item.isChoose ? item.dieukien ?
+                                <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV - item.Promotion} đ</Text>
+                                : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV} đ</Text> : null
+                        ))}
                 </View>
                 {data[0].tongdiem ?
                     <View style={{ marginHorizontal: 10, justifyContent: 'space-between', flexDirection: 'row' }}>
                         <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Điểm thanh toán</Text>
-                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>-430 điểm</Text>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>- điểm</Text>
                     </View>
                     :
                     null

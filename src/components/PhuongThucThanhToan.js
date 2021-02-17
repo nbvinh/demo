@@ -12,10 +12,12 @@ const PaymentMethods = ({ navigation }) => {
     const isShow = useSelector(state => state.isShow)
     const tongdiem = useSelector(state => state.tongdiem)
     const lienket = useSelector(state => state.lienket)
+    const arrPromotion = useSelector(state => state.arrPromotion)
+    const priceCGV = useSelector(state => state.priceCGV)
+    const choosevoucher = useSelector(state => state.choosevoucher)
     const onLienket = () => {
         dispatch({ type: 'LIENKET' })
     }
-    const priceCGV = useSelector(state => state.priceCGV)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -31,7 +33,7 @@ const PaymentMethods = ({ navigation }) => {
                 <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
                     <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tài khoản đã liên kết</Text>
                     {lienket ?
-                        <View style={[AppStyle.StylePhuongthucthanhtoan.content2, {height:48}]}>
+                        <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
                             <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable}>
                                 <Image
                                     style={AppStyle.StylePhuongthucthanhtoan.img1}
@@ -44,9 +46,9 @@ const PaymentMethods = ({ navigation }) => {
                                 />
                             </TouchableOpacity>
                         </View>
-                    : null
-                }
-                    <View style={[AppStyle.StylePhuongthucthanhtoan.content2, {height:48}]}>
+                        : null
+                    }
+                    <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
                         <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable} onPress={() => onLienket()}>
                             <Image
                                 style={AppStyle.StylePhuongthucthanhtoan.img1}
@@ -58,7 +60,6 @@ const PaymentMethods = ({ navigation }) => {
                                 source={require('../img/vinh5.png')}
                             />
                         </TouchableOpacity>
-                        {console.log('lk', lienket)}
                     </View>
                     <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Chọn phương thức thanh toán</Text>
                     <FlatList
@@ -78,7 +79,13 @@ const PaymentMethods = ({ navigation }) => {
             <View style={{ flex: 3, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
                 <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                     <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
-                    <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV} đ</Text>
+                    {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV} đ</Text>
+                        :
+                        arrPromotion.map((item, index) => (
+                            item.isChoose ? item.dieukien ?
+                                <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV - item.Promotion} đ</Text>
+                                : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV} đ</Text> : null
+                        ))}
                 </View>
                 {data[0].tongdiem ?
                     <View style={{ marginHorizontal: 10, marginTop: 10, justifyContent: 'space-between', flexDirection: 'row' }}>
@@ -89,7 +96,7 @@ const PaymentMethods = ({ navigation }) => {
                     null
                 }
                 {isShow ?
-                    <TouchableOpacity style={{ margin: 10, marginTop: 30 }} onPress={()=> navigation.navigate('PaymentConfirmation')} >
+                    <TouchableOpacity style={{ margin: 10, marginTop: 30 }} onPress={() => navigation.navigate('PaymentConfirmation')} >
                         <Image
                             style={{ width: '100%', height: 48 }}
                             source={require('../img/vinh26.png')}
