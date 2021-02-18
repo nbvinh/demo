@@ -151,6 +151,12 @@ const reducer = (state = initState, action) => {
             }
         case 'LIENKET':
             return { ...state, lienket: true }
+        case 'CATEGORY':
+            return { ...state, phanloai: action.phanloai }
+        case 'DATA_VOUCHER':
+            return { ...state, voucher: action.voucher }
+        case 'IDLOAI':
+            return { ...state, id: action.id }
         default:
             return state
     }

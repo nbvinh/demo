@@ -80,18 +80,16 @@ const StyleMain = StyleSheet.create({
         borderTopStartRadius: 8,
         borderTopEndRadius: 8,
         padding: 12,
-        justifyContent:'space-around'
-    },
-    option_top:{
-        flexDirection: 'row'
-    },
-    option_bottom:{
-        flexDirection: 'row'
+        justifyContent:'flex-start',
+        flexDirection:'row',
+        flexWrap:'wrap'
+
     },
     option_item:{
         width: '25%',
         justifyContent:'center',
         alignItems:'center',
+        marginBottom: 18
     },
     option_itemtext:{
         color:'white',
