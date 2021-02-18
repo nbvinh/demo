@@ -12,7 +12,7 @@ import AppStyle from "../../theme";
 const images = [
     'https://www.brandsvietnam.com/upload/news/480px/2018/15391_CGV.jpg',
     'https://i.vietgiaitri.com/2020/5/10/cgv-mo-lai-cac-cum-rap-e22-4920532.jpg',
-    'https://lh3.googleusercontent.com/proxy/K2uDggTd7Yu6ZlqnEjMg7xyg5CzKwcTgtEIMB8X2o6CdWVDIlFvM5DHgSAYwksvOj97wsxTBaIywrbkrCgYlY_vYT0b5XEY7Ar7ygHwthBE-Goa2sXZmyBTku_dBA8s',
+    'https://cdn.vietnambiz.vn/2020/2/14/ticketview-15816704441281296608294.jpg',
     'https://bmtcogi.com/wp-content/uploads/2019/10/cgv-bmttong-hop-rap-chieu-phim-hang-dau-tai-buon-ma-thuot-ma-ban-nen-xem-bmtcogi.com-1.jpg',
     'https://media.ex-cdn.com/EXP/media.taichinhdoanhnghiep.net.vn/files/thanhtan/2020/03/20/a-2116.jpg'
 ]
