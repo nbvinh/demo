@@ -13,7 +13,7 @@ const ProvinceItem = (props) => {
     const { name,provinceId,isChooseProvince } = props.myData1;
     return (
         <View>
-            <TouchableOpacity style={{ borderRadius: 8, borderWidth: 1, marginBottom: 5, height: 40 }} onPress={()=>Chooseprovince()}>
+            <TouchableOpacity style={{ borderRadius: 8, borderWidth: 0.5, marginBottom: 5, height: 40,borderColor:'#FFFFFF' }} onPress={()=>Chooseprovince()}>
                 <Text style={{ color: 'white', fontSize: 15, fontWeight: '400', textAlign: 'center' }}>{name}</Text>
 
             </TouchableOpacity>

@@ -63,18 +63,16 @@ const Main = ({ navigation }) => {
                                 source={require('../img/expand_more_24px.png')}
                             /></Text>
                             :
-                            <FlatList
-                                data={data1}
-                                renderItem={({ item }) => (
+                            data1.map((item) => {
+                                return (
                                     item.isChooseProvince && (
-                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: '400', marginTop:10 }}> {item.name} <Image
+                                        <Text key={item.provinceId.toString()} style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> {item.name} <Image
                                             style={{ width: 14, height: 8 }}
                                             source={require('../img/expand_more_24px.png')}
                                         /></Text>
                                     )
-                                )}
-                                keyExtractor={item => item?.provinceId?.toString()}
-                            />
+                                )
+                            })
                         }
 
 
