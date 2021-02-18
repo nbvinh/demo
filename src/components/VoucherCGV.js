@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
@@ -10,9 +10,13 @@ const VoucherCGV = ({ navigation }) => {
     const dispatch = useDispatch();
     const value = useSelector(state => state.value)
     const priceCGV = useSelector(state => state.priceCGV)
+    const ShowpaymentCGV = useSelector(state => state.ShowpaymentCGV)
     const UP = () => {
         dispatch({ type: 'UPVALUE' })
         dispatch ({type:'PRICECGV'})
+        if(value>=0){
+            dispatch({type:'SHOWPAYMENTCGV'})
+        }
     }
     const DOWN = () => {
         if (value > 0) {

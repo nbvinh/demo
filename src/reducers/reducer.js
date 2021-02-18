@@ -71,10 +71,13 @@ const initState = {
     price: 88000,
     value: 0,
     choosevoucher: true,
-    province:false
+    province:false,
+    ShowpaymentCGV: false
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'SHOWPAYMENTCGV' :
+            return{...state,ShowpaymentCGV: true}
         case 'ADDDATA1':
             return { ...state, data1: action.data1 }
         case 'CHOOSEDATA1' :

@@ -13,9 +13,10 @@ const GioHang = ({ navigation }) => {
     const priceCGV = useSelector(state => state.priceCGV)
     const choosevoucher = useSelector(state => state.choosevoucher)
     const Choose = () => {
-        dispatch({type:'CHOOSEVOUCHER'})
+        dispatch({ type: 'CHOOSEVOUCHER' })
         navigation.navigate('ChonVoucher')
     }
+    const ShowpaymentCGV = useSelector(state => state.ShowpaymentCGV)
     return (
         <View style={[AppStyle.StyleVoucherCGV.container]}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -30,25 +31,29 @@ const GioHang = ({ navigation }) => {
             </View>
             <View style={{ flex: 7 }}>
                 <View style={AppStyle.StyleVoucherCGV.address}>
-                    <View style={AppStyle.StyleGioHang.address1}>
-                        <Image
-                            style={AppStyle.StyleGioHang.img1}
-                            source={require('../img/vinh7.png')}
-                        />
-                        <View>
-                            <Text style={AppStyle.StyleVoucherCGV.text7}>Voucher CGV Cinema</Text>
-                            <View style={{ flexDirection: 'row' }}>
-                                <Text style={AppStyle.StyleVoucherCGV.text2}>88.000 đ </Text>
-                                <Text style={AppStyle.StyleVoucherCGV.text3}>100.000 đ</Text>
+                    {ShowpaymentCGV ?
+                        <View style={AppStyle.StyleGioHang.address1}>
+                            <Image
+                                style={AppStyle.StyleGioHang.img1}
+                                source={require('../img/vinh7.png')}
+                            />
+                            <View>
+                                <Text style={AppStyle.StyleVoucherCGV.text7}>Voucher CGV Cinema</Text>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Text style={AppStyle.StyleVoucherCGV.text2}>88.000 đ </Text>
+                                    <Text style={AppStyle.StyleVoucherCGV.text3}>100.000 đ</Text>
+                                </View>
+                            </View>
+                            <View style={{ marginLeft: 80 }}>
+                                <TouchableOpacity onPress={() => setShow(true)}>
+                                    <Text style={AppStyle.StyleGioHang.text1} >Thay đổi</Text>
+                                </TouchableOpacity>
+                                <Text style={AppStyle.StyleGioHang.text2}>x{value}</Text>
                             </View>
                         </View>
-                        <View style={{ marginLeft: 80 }}>
-                            <TouchableOpacity onPress={() => setShow(true)}>
-                                <Text style={AppStyle.StyleGioHang.text1} >Thay đổi</Text>
-                            </TouchableOpacity>
-                            <Text style={AppStyle.StyleGioHang.text2}>x{value}</Text>
-                        </View>
-                    </View>
+                        :
+                        null
+                    }
                 </View>
                 <View style={AppStyle.StyleVoucherCGV.address}>
                     <View style={AppStyle.StyleGioHang.address2}>
