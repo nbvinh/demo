@@ -15,7 +15,7 @@ const Profile = ({ route, navigation }) => {
     const result = route.params.abc;
     const [Email, setEmail] = useState("");
     const [follow_email, setFollow_email] = useState(false);
-
+    
 
     const onupdate_info = async () => {
         try {
@@ -30,7 +30,7 @@ const Profile = ({ route, navigation }) => {
             })
                 .then((response)=>response.json())
                 .then((json)=>{console.log(json)})
-                dispatch({type:'ADD', hoten: hoten.hoten})
+                dispatch({type:'DATA_VOUCHER', hoten: hoten.hoten})
             navigation.navigate('Tabviewmain');
 
         } catch (error) {

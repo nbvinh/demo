@@ -5,14 +5,34 @@ import AppStyle from "../theme";
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector, useDispatch } from "react-redux";
 import { changedata1 } from "../reducers/action";
+import axios from "axios";
+
 import Province from "../components/Main/Province"
 const Main = ({ navigation }) => {
     const dispatch = useDispatch();
     const hoten = useSelector(state => state.hoten)
     const data1 = useSelector(state => state.data1)
     const province = useSelector(state => state.province)
+    const [DuLieuApi, setDuLieuApi] = React.useState([]);
+    const [DuLieuVoucher, setDuLieuVoucher] = React.useState([]);
     const [test, setTest] = useState(true)
     useEffect(() => {
+        axios.get('http://175.41.184.177:6061/category').then(function (res) {
+            const dulieu = res.data.data;
+            Object.entries(dulieu);
+            setDuLieuApi(dulieu);
+            dispatch({type:'CATEGORY', phanloai: phanloai.DuLieuApi})
+        }).catch(function (error) {
+            console.log(error);
+        });
+        axios.get('http://175.41.184.177:6061/voucher').then(function (res) {
+            const dulieuvoucher = res.data.data;
+            Object.entries(dulieuvoucher);
+            setDuLieuVoucher(dulieuvoucher);
+            dispatch({type:'DATA_VOUCHER', voucher: voucher.DuLieuVoucher})
+        }).catch(function (error) {
+            console.log(error);
+        });
         fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
             method: 'GET'
         })
@@ -34,14 +54,14 @@ const Main = ({ navigation }) => {
                         <Image
                             style={{ width: 40, height: 40, borderRadius: 50 }}
                             source={{
-                                uri: 'https://scontent.fhan4-1.fna.fbcdn.net/v/t1.15752-9/141162747_190481106106245_2204885355751272197_n.jpg?_nc_cat=104&ccb=2&_nc_sid=ae9488&_nc_ohc=EKf625AzIeYAX91-s3-&_nc_ht=scontent.fhan4-1.fna&oh=3df2f2e9c188d6d61703f31bc20e5d82&oe=602FFFA0',
+                                uri: 'https://scontent.fhan2-5.fna.fbcdn.net/v/t1.0-9/149827309_2185987718215959_615074836695332874_o.jpg?_nc_cat=107&ccb=3&_nc_sid=09cbfe&_nc_ohc=m6k_81KFp-YAX9E8TVa&_nc_ht=scontent.fhan2-5.fna&oh=4c576ca5b9049d60b03b68737415e725&oe=6051E0A1',
                             }}
                         />
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleMain.css_text}> Hi, {hoten}</Text>
                 </View>
                 <View style={AppStyle.StyleMain.header_right}>
-                    <    Image
+                    <Image
                         style={{ width: 32, height: 32, marginLeft: 15 }}
                         source={require('../img/Iconly-Light-Notification.png')}
                     />
@@ -53,7 +73,7 @@ const Main = ({ navigation }) => {
                         style={{ width: 20, height: 20, marginLeft: 15 }}
                         source={require('../img/search_24px.png')}
                     />
-                    <TextInput style={{ width: '82%' }} placeholder='Nhập từ khoá tìm kiếm...' placeholderTextColor='gray' />
+                    <TextInput style={{ width: '82%', color: '#fff' }} placeholder='Nhập từ khoá tìm kiếm...' placeholderTextColor='gray' />
                 </View>
                 <View style={AppStyle.StyleMain.search_right}>
                     <TouchableOpacity onPress={() => modal()}>
@@ -100,78 +120,86 @@ const Main = ({ navigation }) => {
                 </View>
             </View>
             <View style={AppStyle.StyleMain.option}>
-                <View style={AppStyle.StyleMain.option_top}>
-                    <TouchableOpacity style={AppStyle.StyleMain.option_item} onPress={() => navigation.navigate('VoucherNam')}>
-                        <Image
-                            style={{ width: 28, height: 28 }}
-                            source={require('../img/Discount.png')}
-                        />
-                        <Text style={AppStyle.StyleMain.option_itemtext}>
-                            Khuyến mại
-                    </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={AppStyle.StyleMain.option_item}>
-                        <Image
-                            style={{ width: 28, height: 28 }}
-                            source={require('../img/douong_32px.png')}
-                        />
-                        <Text style={AppStyle.StyleMain.option_itemtext}>
-                            Đồ Uống
-                    </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={AppStyle.StyleMain.option_item}>
-                        <Image
-                            style={{ width: 28, height: 28 }}
-                            source={require('../img/amthuc_32px.png')}
-                        />
-                        <Text style={AppStyle.StyleMain.option_itemtext}>
-                            Ẩm thực
-                    </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={AppStyle.StyleMain.option_item}>
-                        <Image
-                            style={{ width: 28, height: 28 }}
-                            source={require('../img/CombinedShape.png')}
-                        />
-                        <Text style={AppStyle.StyleMain.option_itemtext}>
-                            Mua Sắm
-                    </Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={AppStyle.StyleMain.option_bottom}>
-                    <TouchableOpacity style={AppStyle.StyleMain.option_item}>
-                        <Image
-                            style={{ width: 28, height: 28 }}
-                            source={require('../img/Vector.png')}
-                        />
-                        <Text style={AppStyle.StyleMain.option_itemtext}>
-                            Làm đẹp
-                    </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={AppStyle.StyleMain.option_item}>
-                        <Image
-                            style={{ width: 28, height: 28 }}
-                            source={require('../img/giaitri_32px.png')}
-                        />
-                        <Text style={AppStyle.StyleMain.option_itemtext}>
-                            Giải trí
-                    </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={AppStyle.StyleMain.option_item}>
-                        <Image
-                            style={{ width: 28, height: 28 }}
-                            source={require('../img/cashack_32px.png')}
-                        />
-                        <Text style={AppStyle.StyleMain.option_itemtext}>
-                            Cashback
-                    </Text>
-                    </TouchableOpacity>
-                </View>
+                            {
+                                DuLieuApi.map(item => {
+                                    const ChiTietVoucherTheoLoai = () =>{
+                                        navigation.navigate('VoucherNam');
+                                        dispatch({type:'IDLOAI', id: item.id})
+                                    }
+                                    return(
+                                    <TouchableOpacity style={AppStyle.StyleMain.option_item} onPress={ChiTietVoucherTheoLoai}>
+                                        <Image
+                                            style={{ width: 24, height: 24 }}
+                                            source={{uri : 'http://175.41.184.177:6063/image/' + item.avatar}}
+                                        />
+                                        <Text style={AppStyle.StyleMain.option_itemtext}>{item.name}</Text>
+                                    </TouchableOpacity>
+                                    );
+                               
+                                })
+                            }
             </View>
             <Image
                 style={{ height: 100, width: "100%", borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
                 source={require('../img/Rectangle5.png')}
             />
+            {
+                DuLieuVoucher.map(item => {
+                   
+                     return(
+                        <TouchableOpacity style={AppStyle.StyleMain.DichVu} onPress={() => navigation.navigate('VoucherCGV')}>
+                        <View style={AppStyle.StyleMain.DichVu_Top}>
+                            <View style={AppStyle.StyleMain.DichVu_Left}>
+                                <Image
+                                    style={{ width: "100%", height: '100%' }} resizeMode='cover'
+                                    source={{uri : 'http://175.41.184.177:6063/image/' + item.showImage}}
+                                />
+                            </View>
+                            <View style={AppStyle.StyleMain.DichVu_Right}>
+                                <View style={AppStyle.StyleMain.DichVu_RightItem}>
+                                    <Image
+                                        style={{ width: "100%", height: '95%', borderRadius: 8 }}
+                                        source={{uri : 'http://175.41.184.177:6063/image/' + item.images[0]}}
+                                    />
+                                </View>
+                                <View style={AppStyle.StyleMain.DichVu_RightItem}>
+                                    <Image
+                                        style={{ width: "100%", height: '95%', borderRadius: 8 }}
+                                        source={{uri : 'http://175.41.184.177:6063/image/' + item.images[1]}}
+                                    />
+                                </View>
+                            </View>
+                        </View>
+                        <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99 }} />
+                        <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99 }} />
+                        <View style={AppStyle.StyleMain.DichVu_Bottom}>
+                            <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
+                                <Image
+                                    style={{ width: 36, height: 36, borderRadius: 50}}
+                                    source={{uri : 'http://175.41.184.177:6063/image/' + item.shop.avatar}}
+                                />
+                                <View style={{ width: '80%', marginLeft: 10 }}>
+                                    <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}>{item.name} </Text>
+                                    <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> {item.address}</Text>
+                                </View>
+                            </View>
+                            <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
+                                <View style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
+                                    <Text style={{ marginLeft: 5, color: 'white', fontSize: 17, fontWeight: '700' }}>{item.price}.000 đ</Text>
+                                    <Text style={{ color: '#9B9EA3', fontSize: 15, fontWeight: '400', textDecorationLine: 'line-through', marginLeft: 10 }}>{item.priceSale}.000 đ</Text>
+                                </View>
+                                <View style={AppStyle.StyleMain.DichVu_Bottom_BottomRight}>
+                                    <Text style={{ marginRight: 5, color: 'white', fontSize: 13, fontWeight: '400' }}><Image
+                                        style={{ width: 18, height: 18 }}
+                                        source={require('../img/Iconly-Light-Location2.png')}
+                                    /> 2,5 km</Text>
+                                </View>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                     )
+                })
+            }
             <TouchableOpacity style={AppStyle.StyleMain.DichVu} onPress={() => navigation.navigate('VoucherCGV')}>
                 <View style={AppStyle.StyleMain.DichVu_Top}>
                     <View style={AppStyle.StyleMain.DichVu_Left}>
