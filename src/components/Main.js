@@ -125,7 +125,7 @@ const Main = ({ navigation }) => {
                                         dispatch({type:'IDLOAI', id: item.id})
                                     }
                                     return(
-                                    <TouchableOpacity style={AppStyle.StyleMain.option_item} onPress={ChiTietVoucherTheoLoai}>
+                                    <TouchableOpacity key={item.id.toString()} style={AppStyle.StyleMain.option_item} onPress={ChiTietVoucherTheoLoai}>
                                         <Image
                                             style={{ width: 24, height: 24 }}
                                             source={{uri : 'http://175.41.184.177:6063/image/' + item.avatar}}
