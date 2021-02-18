@@ -145,7 +145,7 @@ const Main = ({ navigation }) => {
                 DuLieuVoucher.map(item => {
                    
                      return(
-                        <TouchableOpacity style={AppStyle.StyleMain.DichVu} onPress={() => navigation.navigate('VoucherCGV')}>
+                        <TouchableOpacity key={item.id.toString()} style={AppStyle.StyleMain.DichVu} onPress={() => navigation.navigate('VoucherCGV')}>
                         <View style={AppStyle.StyleMain.DichVu_Top}>
                             <View style={AppStyle.StyleMain.DichVu_Left}>
                                 <Image
