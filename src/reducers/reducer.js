@@ -76,6 +76,14 @@ const initState = {
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'IMAGESBANHMI':
+            return{...state,imagesbanhmi: action.imagesbanhmi}
+        case 'BanhMiPEWPEW':
+            return{...state,temp1: action.temp1}
+        case 'HOTEN':
+            return{...state, hoten: action.hoten}
+        case 'TOCKEN':
+            return{...state,abc:action.abc}
         case 'SHOWPAYMENTCGV' :
             return{...state,ShowpaymentCGV: true}
         case 'ADDDATA1':

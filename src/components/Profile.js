@@ -9,13 +9,11 @@ const Profile = ({ route, navigation }) => {
     const dispatch = useDispatch();
     const [hoten, setHoten] = useState("");
     const [follow_hoten, setFollow_hoten] = useState(false);
-
-
     const SDT = route.params.SDT;
-    const result = route.params.abc;
+    const result = useSelector(state=>state.abc)
     const [Email, setEmail] = useState("");
     const [follow_email, setFollow_email] = useState(false);
-    
+    console.log('tocken',result)
 
     const onupdate_info = async () => {
         try {
@@ -30,7 +28,7 @@ const Profile = ({ route, navigation }) => {
             })
                 .then((response)=>response.json())
                 .then((json)=>{console.log(json)})
-                dispatch({type:'DATA_VOUCHER', hoten: hoten.hoten})
+                dispatch({type:'HOTEN', hoten: hoten.hoten})
             navigation.navigate('Tabviewmain');
 
         } catch (error) {

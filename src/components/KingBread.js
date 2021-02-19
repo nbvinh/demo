@@ -3,8 +3,29 @@ import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, 
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import SlideImg from "../components/KingBread/SlideImg";
-
+import { useSelector, useDispatch } from "react-redux";
 const KingBread = ({ navigation }) => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        loadData();
+    }, [])
+    const loadData = async () => {
+        fetch('http://175.41.184.177:6061/shop/1', {
+            method: 'GET'
+        })
+
+            .then((response) => response.json())
+            .then((res) => {
+                let temp1 = [res]
+                let imagesbanhmi = temp1[0].images
+                console.log(imagesbanhmi)
+                dispatch({ type: 'IMAGESBANHMI', imagesbanhmi: imagesbanhmi })
+                dispatch({ type: 'BanhMiPEWPEW', temp1: temp1 })
+            })
+            .catch((error) => console.error(error))
+    }
+
+    const temp1 = useSelector(state => state.temp1)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -14,7 +35,14 @@ const KingBread = ({ navigation }) => {
                         source={require('../img/back.png')}
                     />
                 </TouchableOpacity>
-                <Text style={[AppStyle.StyleVoucherCGV.text, { marginLeft: 130 }]}>King Bread</Text>
+                <FlatList
+                    data={temp1}
+                    keyExtractor={(item) => item.id.toString()}
+                    renderItem={({ item }) => (
+                        <Text style={[AppStyle.StyleVoucherCGV.text, { marginLeft: 120 }]}>{item.name}</Text>
+                    )}
+                />
+
             </View>
             <View style={{ flex: 11 }}>
                 <ScrollView>
@@ -26,7 +54,13 @@ const KingBread = ({ navigation }) => {
                     </View>
                     <SlideImg />
                     <View style={{ margin: 15 }}>
-                        <Text style={AppStyle.StyleKingBread.text1}>King Bread - Vua bánh mì kẹp</Text>
+                        <FlatList
+                            data={temp1}
+                            keyExtractor={(item) => item.id.toString()}
+                            renderItem={({ item }) => (
+                                <Text style={AppStyle.StyleKingBread.text1}>{item.name} - Vua bánh mì kẹp</Text>
+                            )}
+                        />
                         <View style={AppStyle.StyleKingBread.content2}>
                             <Image
                                 style={AppStyle.StyleKingBread.img1}
@@ -74,7 +108,9 @@ const KingBread = ({ navigation }) => {
                             </View>
                             <View>
                                 <Text style={AppStyle.StyleKingBread.text1}>Combo</Text>
-                                
+
+
+
                             </View>
                         </View>
                     </View>

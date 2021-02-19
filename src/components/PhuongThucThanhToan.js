@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { useState } from 'react/cjs/react.development';
@@ -15,6 +15,7 @@ const PaymentMethods = ({ navigation }) => {
     const arrPromotion = useSelector(state => state.arrPromotion)
     const priceCGV = useSelector(state => state.priceCGV)
     const choosevoucher = useSelector(state => state.choosevoucher)
+    const result = useSelector(state => state.abc)
     const onLienket = () => {
         dispatch({ type: 'LIENKET' })
     }
