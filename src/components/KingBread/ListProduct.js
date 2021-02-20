@@ -7,17 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 const ListProduct = (props) => {
     const dispatch = useDispatch();
     const UP = (choosediem) => {
-        if (id === choosediem.id) {
-            choosediem.quantity += 1
-        }
+        dispatch({type:'UPITEMPRODUCTBANHMI',id:choosediem.id})
     }
     const DOWN = (choosediem) => {
-        if (id === choosediem.id) {
             if(quantity>0){
-                choosediem.quantity -= 1
+                dispatch({type:'DOWNITEMPRODUCTBANHMI',id:choosediem.id})
 
             }
-        }
     }
     const { name, avatar, price, quantity, id } = props.myListProduct
     return (

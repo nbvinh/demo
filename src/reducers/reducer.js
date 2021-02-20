@@ -77,6 +77,16 @@ const initState = {
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'UPITEMPRODUCTBANHMI':
+            let newStateUP = [...state.DataProduct]
+            let newItemUP = newStateUP.find((item) => item.id == action.id)
+            newItemUP.quantity++
+            return { ...state, productcombo: newStateUP }
+        case 'DOWNITEMPRODUCTBANHMI':
+            let newState = [...state.DataProduct]
+            let newItem = newState.find((item) => item.id == action.id)
+            newItem.quantity--
+            return { ...state, productcombo: newState }
         case 'FILTERCOMBO':
             return { ...state, filterStatus: "COMBO" }
         case 'FILTERNUOC':
