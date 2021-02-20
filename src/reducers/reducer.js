@@ -71,24 +71,39 @@ const initState = {
     price: 88000,
     value: 0,
     choosevoucher: true,
-    province:false,
-    ShowpaymentCGV: false
+    province: false,
+    ShowpaymentCGV: false,
+    filterStatus: 'COMBO'
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'FILTERCOMBO':
+            return { ...state, filterStatus: "COMBO" }
+        case 'FILTERNUOC':
+            return { ...state, filterStatus: "NUOC" }
+        case 'FILTERBANHMI':
+            return { ...state, filterStatus: "BANHMI" }
+        case 'PRODUCTBANHMI':
+            return { ...state, productbanhmi: action.productbanhmi }
+        case 'PRODUCTNUOC':
+            return { ...state, productnuoc: action.productnuoc }
+        case 'PRODUCTCOMBO':
+            return { ...state, productcombo: action.productcombo }
+        case 'CATEGORIESPRODUCT':
+            return { ...state, DataProduct: action.DataProduct }
         case 'IMAGESBANHMI':
-            return{...state,imagesbanhmi: action.imagesbanhmi}
+            return { ...state, imagesbanhmi: action.imagesbanhmi }
         case 'BanhMiPEWPEW':
-            return{...state,temp1: action.temp1}
+            return { ...state, temp1: action.temp1 }
         case 'HOTEN':
-            return{...state, hoten: action.hoten}
+            return { ...state, hoten: action.hoten }
         case 'TOCKEN':
-            return{...state,abc:action.abc}
-        case 'SHOWPAYMENTCGV' :
-            return{...state,ShowpaymentCGV: true}
+            return { ...state, abc: action.abc }
+        case 'SHOWPAYMENTCGV':
+            return { ...state, ShowpaymentCGV: true }
         case 'ADDDATA1':
             return { ...state, data1: action.data1 }
-        case 'CHOOSEDATA1' :
+        case 'CHOOSEDATA1':
             const arr2 = [...state.data1]
             arr2.map((e) => {
                 if (e.provinceId === action.provinceId) {
@@ -101,10 +116,10 @@ const reducer = (state = initState, action) => {
             return {
                 ...state, data1: arr2
             }
-        case 'MODALPROVINCE' :
-            return {...state, province:!state.province}
+        case 'MODALPROVINCE':
+            return { ...state, province: !state.province }
         case 'CHOOSEVOUCHER':
-            return {...state,choosevoucher:false}
+            return { ...state, choosevoucher: false }
         case 'ADD':
             return { ...state, hoten: action.hoten }
         case 'CHOOSE':

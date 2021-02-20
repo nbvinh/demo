@@ -21,9 +21,6 @@ const ListBank = (props) => {
         }
     }
     const stylepoint = lienket ? {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100} : {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100, marginBottom: 40}
-    // const point =()=>{
-    //     if(data)
-    // }
     return (
         <View>
             <View style={AppStyle.StylePhuongthucthanhtoan.content3}>
