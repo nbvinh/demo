@@ -17,12 +17,12 @@ const StyleMain = StyleSheet.create({
         flexDirection:'row'
     },
     header_left:{
-        flex: 1,
+        flex: 8,
         alignItems:'center',
         flexDirection:'row'
     },
     header_right:{
-        flex: 1,
+        flex: 2,
         alignItems:'flex-end',
         justifyContent:'center'
     },
@@ -34,7 +34,7 @@ const StyleMain = StyleSheet.create({
     },
     search:{
         flex: 1,
-        marginTop: 8,
+        marginTop: 4,
         height: 50,
         flexDirection: 'row'
     },
@@ -55,7 +55,7 @@ const StyleMain = StyleSheet.create({
         flex: 1.7,
         marginTop: 8,
         backgroundColor: 'blue',
-        height: 85,
+        height: 75,
         backgroundColor:'#272738',
         borderRadius: 8,
         flexDirection:'row',
@@ -76,7 +76,7 @@ const StyleMain = StyleSheet.create({
         flex: 2,
         marginTop: 8,
         backgroundColor: "#272738",
-        height: 168,
+        height: 150,
         borderTopStartRadius: 8,
         borderTopEndRadius: 8,
         padding: 12,

@@ -70,6 +70,7 @@ const initState = {
     priceCGV: 0,
     price: 88000,
     value: 0,
+    diem : 1000,
     choosevoucher: true,
     province: false,
     ShowpaymentCGV: false,
@@ -284,6 +285,8 @@ const reducer = (state = initState, action) => {
             return { ...state, voucher: action.voucher }
         case 'IDLOAI':
             return { ...state, id: action.id }
+        case 'UPDIEM':
+            return { ...state, diem: action.diem + state.diem }
         default:
             return state
     }

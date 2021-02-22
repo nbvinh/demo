@@ -9,9 +9,17 @@ import axios from "axios";
 
 import Province from "../components/Main/Province"
 const Main = ({ navigation }) => {
+    function numberWithCommas(x) {
+        x = x.toString();
+        var pattern = /(-?\d+)(\d{3})/;
+        while (pattern.test(x))
+            x = x.replace(pattern, "$1.$2");
+        return x;
+    }
     const dispatch = useDispatch();
     const hoten = useSelector(state => state.hoten)
     const data1 = useSelector(state => state.data1)
+    const diem = useSelector(state => state.diem)
     const province = useSelector(state => state.province)
     const [DuLieuApi, setDuLieuApi] = React.useState([]);
     const [DuLieuVoucher, setDuLieuVoucher] = React.useState([]);
@@ -103,7 +111,7 @@ const Main = ({ navigation }) => {
             <View style={AppStyle.StyleMain.poin_your}>
                 <View style={AppStyle.StyleMain.poin_your_left}>
                     <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Điểm của bạn </Text>
-                    <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> 0</Text>
+                    <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {numberWithCommas(diem)}</Text>
                 </View>
                 <View style={AppStyle.StyleMain.poin_your_right}>
                     <LinearGradient
@@ -138,7 +146,7 @@ const Main = ({ navigation }) => {
                             }
             </View>
             <Image
-                style={{ height: 100, width: "100%", borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
+                style={{ height: 80, width: "100%", borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
                 source={require('../img/Rectangle5.png')}
             />
             {
@@ -178,7 +186,7 @@ const Main = ({ navigation }) => {
                                 />
                                 <View style={{ width: '80%', marginLeft: 10 }}>
                                     <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}>{item.name} </Text>
-                                    <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> {item.address}</Text>
+                                    <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> {item.shop.address}</Text>
                                 </View>
                             </View>
                             <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
