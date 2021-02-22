@@ -48,9 +48,12 @@ const KingBread = ({ navigation }) => {
         if (filterStatus === 'NUOC') return productnuoc
         if (filterStatus === 'COMBO') return productcombo
     }
-    let DataProduct= getListProduct();
-    dispatch({type:'CATEGORIESPRODUCT',DataProduct: DataProduct})
-    
+    let DataProduct = getListProduct();
+    dispatch({ type: 'CATEGORIESPRODUCT', DataProduct: DataProduct })
+    const sum = DataProduct && DataProduct.reduce((acc, curr) => {
+        return (acc + curr.tongleprice)
+    }, 0)
+    const checkKingBread = useSelector(state => state.checkKingBread)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -144,7 +147,7 @@ const KingBread = ({ navigation }) => {
                                     <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Đồ Uống</Text>
                                 </TouchableOpacity>
                             </View>
-                            {DataProduct && DataProduct.map((item)=><ListProduct key={item.id.toString()} myListProduct={item} />)}
+                            {DataProduct && DataProduct.map((item) => <ListProduct key={item.id.toString()} myListProduct={item} />)}
                         </View>
                     </View>
                 </ScrollView>
@@ -155,7 +158,12 @@ const KingBread = ({ navigation }) => {
                         style={AppStyle.StyleVoucherCGV.img3}
                         source={require('../img/vinh8.png')}
                     />
-                    <Text style={AppStyle.StyleVoucherCGV.text9}>60.000 đ</Text>
+                    {checkKingBread ?
+                        <Text style={AppStyle.StyleVoucherCGV.text9}>0 đ</Text>
+                        :
+                        <Text style={AppStyle.StyleVoucherCGV.text9}>{sum}.000 đ</Text>
+                    }
+
                 </View>
                 <View style={AppStyle.StyleVoucherCGV.footer1}>
                     <Text style={AppStyle.StyleVoucherCGV.text10}>5</Text>

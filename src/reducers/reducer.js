@@ -73,20 +73,114 @@ const initState = {
     choosevoucher: true,
     province: false,
     ShowpaymentCGV: false,
-    filterStatus: 'COMBO'
+    filterStatus: 'COMBO',
+    checkKingBread: true
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'CHECKKINGBREAD':
+            return { ...state, checkKingBread: false }
+        case 'CHECKCOMBO':
+            let tongcheck = [...state.productcombo]
+            tongcheck.map((item) => {
+                if (item.id > 0) {
+                    item.tongleprice = 0
+                }
+            })
+            return { ...state, productcombo: tongcheck }
+        case 'CHECKNUOC':
+            let tongcheck1 = [...state.productnuoc]
+            tongcheck1.map((item) => {
+                if (item.id > 0) {
+                    item.tongleprice = 0
+                }
+            })
+            return { ...state, productnuoc: tongcheck1 }
+        case 'CHECKBANHMI':
+            let tongcheck2 = [...state.productbanhmi]
+            tongcheck2.map((item) => {
+                if (item.id > 0) {
+                    item.tongleprice = 0
+                }
+            })
+            return { ...state, productbanhmi: tongcheck2 }
+        case 'OPENUPCOMBO':
+            let openUp = [...state.productcombo]
+            let openUpitem = openUp.find((comboitem) => comboitem.id == action.id)
+            if (openUpitem) {
+                openUpitem.OpenUP = true
+                openUpitem.amount = 0
+            }
+            return { ...state, productcombo: openUp }
+        case 'OPENUPNUOC':
+            let openUp1 = [...state.productnuoc]
+            let openUpitem1 = openUp1.find((comboitem) => comboitem.id == action.id)
+            if (openUpitem1) {
+                openUpitem1.OpenUP = true
+                openUpitem1.amount = 0
+            }
+            return { ...state, productnuoc: openUp1 }
+        case 'OPENUPBANHMI':
+            let openUp2 = [...state.productbanhmi]
+            let openUpitem2 = openUp2.find((comboitem) => comboitem.id == action.id)
+            if (openUpitem2) {
+                openUpitem2.OpenUP = true
+                openUpitem2.amount = 0
+            }
+            return { ...state, productbanhmi: openUp2 }
+        case 'PRICEITEMPRODUCTBANHMI':
+            let PriceState = [...state.DataProduct]
+            PriceState.find((item) => {
+                if (item.id == action.id) {
+                    item.tongleprice = item.price * item.amount
+                }
+            })
+            return { ...state, DataProduct: PriceState }
+        case 'UPITEMPRODUCTCOMBO':
+            let newStateUP1 = [...state.productcombo]
+            let newItem1 = newStateUP1.find((item) => {
+                return item.id == action.id
+            })
+            newItem1.amount++
+            return { ...state, productcombo: newStateUP1 }
+        case 'UPITEMPRODUCTNUOC':
+            let newStateUP2 = [...state.productnuoc]
+            let newItem2 = newStateUP2.find((item) => {
+                return item.id == action.id
+            })
+            newItem2.amount++
+            return { ...state, productnuoc: newStateUP2 }
         case 'UPITEMPRODUCTBANHMI':
-            let newStateUP = [...state.DataProduct]
-            let newItemUP = newStateUP.find((item) => item.id == action.id)
-            newItemUP.quantity++
-            return { ...state, productcombo: newStateUP }
+            let newStateUP3 = [...state.productbanhmi]
+            let newItem3 = newStateUP3.find((item) => {
+                return item.id == action.id
+            })
+            newItem3.amount++
+            return { ...state, productbanhmi: newStateUP3 }
+        case 'DOWNITEMPRODUCTCOMBO':
+            let newState0 = [...state.productcombo]
+            newState0.find((item) => {
+                if (item.id == action.id) {
+                    item.amount--
+                }
+            })
+            return { ...state, productcombo: newState0 }
         case 'DOWNITEMPRODUCTBANHMI':
-            let newState = [...state.DataProduct]
-            let newItem = newState.find((item) => item.id == action.id)
-            newItem.quantity--
-            return { ...state, productcombo: newState }
+            let newState2 = [...state.productbanhmi]
+            newState2.find((item) => {
+                if (item.id == action.id) {
+                    item.amount--
+                }
+            })
+            return { ...state, productbanhmi: newState2 }
+        case 'DOWNITEMPRODUCTNUOC':
+            let newState1 = [...state.productnuoc]
+            newState1.find((item) => {
+                if (item.id == action.id) {
+                    item.amount--
+                }
+            })
+            return { ...state, productnuoc: newState1 }
         case 'FILTERCOMBO':
             return { ...state, filterStatus: "COMBO" }
         case 'FILTERNUOC':
