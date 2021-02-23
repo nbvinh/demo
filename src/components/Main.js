@@ -52,6 +52,10 @@ const Main = ({ navigation }) => {
         setTest(false)
         dispatch({ type: 'MODALPROVINCE' })
     }
+    const Kingbread =()=>{
+        dispatch({type:'KINGBREAD'})
+        navigation.navigate('KingBread')
+    }
     return (
         <ScrollView style={AppStyle.StyleMain.container}>
 
@@ -306,7 +310,7 @@ const Main = ({ navigation }) => {
                 </View>
 
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('KingBread')} style={AppStyle.StyleMain.DichVu}>
+            <TouchableOpacity onPress={() => Kingbread() } style={AppStyle.StyleMain.DichVu}>
                 <View style={AppStyle.StyleMain.DichVu_Top}>
                     <View style={AppStyle.StyleMain.DichVu_Left}>
                         <Image
@@ -356,7 +360,6 @@ const Main = ({ navigation }) => {
                 </View>
 
             </TouchableOpacity>
-
         </ScrollView>
     )
 }

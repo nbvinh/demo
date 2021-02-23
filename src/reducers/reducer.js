@@ -29,56 +29,66 @@ const initState = {
     arrPromotion: [
         {
             id: 1,
-            Promotion: 10000,
+            Promotion: 10,
             Gia: 300000,
             text1: 'Giảm 10k cho hóa đơn tối thiểu 300k',
             hsd: '30/12/2020',
-            dieukien: true,
             img: 'https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/4c/61/7e/4c617e02-c308-78c9-b220-58c3474caec0/source/512x512bb.jpg'
         },
         {
             id: 2,
-            Promotion: 20000,
+            Promotion: 20,
             Gia: 500000,
             text1: 'Giảm 20k cho hóa đơn tối thiểu 500k',
             hsd: "30/12/2020",
-            dieukien: false,
             img: 'https://www.onlinefabricstore.net/images/product-images/lg/PP1128_1.jpg',
         },
         {
             id: 3,
-            Promotion: 20000,
+            Promotion: 20,
             Gia: 500000,
             text1: 'Giảm 20k cho hóa đơn tối thiểu 500k',
             hsd: '30/12/2020',
-            dieukien: true,
             img: 'https://www.onlinefabricstore.net/images/product-images/lg/PP1128_1.jpg',
 
         },
         {
             id: 4,
-            Promotion: 10000,
+            Promotion: 10,
             Gia: 300000,
             text1: 'Giảm 10k cho hóa đơn tối thiểu 300k',
             hsd: '30/12/2020',
-            dieukien: false,
             img: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUtXYUFKLzfAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC',
         },
     ],
     isShow: false,
     lienket: false,
     priceCGV: 0,
-    price: 88000,
+    price: 88,
     value: 0,
-    diem : 1000,
+    diem: 1000,
     choosevoucher: true,
     province: false,
     ShowpaymentCGV: false,
     filterStatus: 'COMBO',
-    checkKingBread: true
+    checkKingBread: true,
+    kingbread: false
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'SUMGIOHANG':
+            const sumarr = [...state.arrPromotion]
+            sumarr.map((e) => {
+                if (e.id == 1)  e.dieukien = true    
+                else e.dieukien = false
+            })
+            return {
+                ...state, arrPromotion: sumarr
+            }
+        case 'KINGBREAD':
+            return { ...state, kingbread: true }
+        case 'KINGBREADFALSE':
+            return { ...state, kingbread: false }
         case 'CHECKKINGBREAD':
             return { ...state, checkKingBread: false }
         case 'CHECKCOMBO':
@@ -86,6 +96,7 @@ const reducer = (state = initState, action) => {
             tongcheck.map((item) => {
                 if (item.id > 0) {
                     item.tongleprice = 0
+                    item.amount = 0
                 }
             })
             return { ...state, productcombo: tongcheck }
@@ -94,6 +105,7 @@ const reducer = (state = initState, action) => {
             tongcheck1.map((item) => {
                 if (item.id > 0) {
                     item.tongleprice = 0
+                    item.amount = 0
                 }
             })
             return { ...state, productnuoc: tongcheck1 }
@@ -102,6 +114,7 @@ const reducer = (state = initState, action) => {
             tongcheck2.map((item) => {
                 if (item.id > 0) {
                     item.tongleprice = 0
+                    item.amount = 0
                 }
             })
             return { ...state, productbanhmi: tongcheck2 }
@@ -110,7 +123,6 @@ const reducer = (state = initState, action) => {
             let openUpitem = openUp.find((comboitem) => comboitem.id == action.id)
             if (openUpitem) {
                 openUpitem.OpenUP = true
-                openUpitem.amount = 0
             }
             return { ...state, productcombo: openUp }
         case 'OPENUPNUOC':
@@ -118,7 +130,6 @@ const reducer = (state = initState, action) => {
             let openUpitem1 = openUp1.find((comboitem) => comboitem.id == action.id)
             if (openUpitem1) {
                 openUpitem1.OpenUP = true
-                openUpitem1.amount = 0
             }
             return { ...state, productnuoc: openUp1 }
         case 'OPENUPBANHMI':
@@ -126,7 +137,6 @@ const reducer = (state = initState, action) => {
             let openUpitem2 = openUp2.find((comboitem) => comboitem.id == action.id)
             if (openUpitem2) {
                 openUpitem2.OpenUP = true
-                openUpitem2.amount = 0
             }
             return { ...state, productbanhmi: openUp2 }
         case 'PRICEITEMPRODUCTBANHMI':
@@ -194,6 +204,8 @@ const reducer = (state = initState, action) => {
             return { ...state, productnuoc: action.productnuoc }
         case 'PRODUCTCOMBO':
             return { ...state, productcombo: action.productcombo }
+        case 'SUM':
+            return { ...state, sum: action.sum }
         case 'CATEGORIESPRODUCT':
             return { ...state, DataProduct: action.DataProduct }
         case 'IMAGESBANHMI':
@@ -225,6 +237,8 @@ const reducer = (state = initState, action) => {
             return { ...state, province: !state.province }
         case 'CHOOSEVOUCHER':
             return { ...state, choosevoucher: false }
+        case 'CHOOSEVOUCHERTRUE':
+            return { ...state, choosevoucher: true }
         case 'ADD':
             return { ...state, hoten: action.hoten }
         case 'CHOOSE':
@@ -240,7 +254,6 @@ const reducer = (state = initState, action) => {
             return {
                 ...state, arrPromotion: arr1
             }
-
         case 'PRICECGV':
             return { ...state, priceCGV: state.price * state.value }
         case 'UPVALUE':

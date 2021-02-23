@@ -91,7 +91,7 @@ const VoucherCGV = ({ navigation }) => {
                         style={AppStyle.StyleVoucherCGV.img3}
                         source={require('../img/vinh8.png')}
                     />
-                    <Text style={AppStyle.StyleVoucherCGV.text9}>{priceCGV} đ</Text>
+                    <Text style={AppStyle.StyleVoucherCGV.text9}>{priceCGV}.000 đ</Text>
                 </View>
                 <View style={AppStyle.StyleVoucherCGV.footer1}>
                     <Text style={AppStyle.StyleVoucherCGV.text10}>{value}</Text>

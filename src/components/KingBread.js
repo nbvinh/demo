@@ -53,11 +53,20 @@ const KingBread = ({ navigation }) => {
     const sum = DataProduct && DataProduct.reduce((acc, curr) => {
         return (acc + curr.tongleprice)
     }, 0)
+    dispatch({ type: 'SUM', sum: sum })
+    const sumamount = DataProduct && DataProduct.reduce((accc, currr) => {
+        return (accc + currr.amount)
+    }, 0)
     const checkKingBread = useSelector(state => state.checkKingBread)
+    const kingbread = useSelector(state=> state.kingbread)
+    const GOback=()=>{
+        navigation.goBack()
+        dispatch({type:'KINGBREADFALSE'})
+    }
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
+                <TouchableOpacity onPress={() =>GOback() } >
                     <Image
                         width={10} height={18}
                         source={require('../img/back.png')}
@@ -166,9 +175,13 @@ const KingBread = ({ navigation }) => {
 
                 </View>
                 <View style={AppStyle.StyleVoucherCGV.footer1}>
-                    <Text style={AppStyle.StyleVoucherCGV.text10}>5</Text>
+                    {checkKingBread ?
+                        <Text style={AppStyle.StyleVoucherCGV.text10}>0</Text>
+                        :
+                        <Text style={AppStyle.StyleVoucherCGV.text10}>{sumamount}</Text>
+                    }
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('GioHang')}>
+                <TouchableOpacity onPress={() => navigation.navigate('GioHang',{sum:sum})}>
                     <Image
                         style={AppStyle.StyleVoucherCGV.img4}
                         source={require('../img/vinh0.png')}

@@ -19,6 +19,9 @@ const PaymentMethods = ({ navigation }) => {
     const onLienket = () => {
         dispatch({ type: 'LIENKET' })
     }
+    const DataProduct = useSelector(state => state.DataProduct)
+    const sum = useSelector(state => state.sum)
+    const kingbread = useSelector(state => state.kingbread)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -78,16 +81,29 @@ const PaymentMethods = ({ navigation }) => {
                 </View>
             </View>
             <View style={{ flex: 3, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
-                <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
-                    <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
-                    {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV} đ</Text>
-                        :
-                        arrPromotion.map((item, index) => (
-                            item.isChoose ? item.dieukien ?
-                                <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV - item.Promotion} đ</Text>
-                                : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV} đ</Text> : null
-                        ))}
-                </View>
+                {kingbread ?
+                    <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
+                        {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{sum}.000 đ</Text>
+                            :
+                            arrPromotion.map((item, index) => (
+                                item.isChoose ? item.dieukien ?
+                                    <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{sum - item.Promotion}.000 đ</Text>
+                                    : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{sum}.000 đ</Text> : null
+                            ))}
+                    </View>
+                    :
+                    <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
+                        {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV}.000 đ</Text>
+                            :
+                            arrPromotion.map((item, index) => (
+                                item.isChoose ? item.dieukien ?
+                                    <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV - item.Promotion}.000 đ</Text>
+                                    : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV}.000 đ</Text> : null
+                            ))}
+                    </View>
+                }
                 {data[0].tongdiem ?
                     <View style={{ marginHorizontal: 10, marginTop: 10, justifyContent: 'space-between', flexDirection: 'row' }}>
                         <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Điểm thanh toán</Text>

@@ -13,11 +13,14 @@ const ChonVoucher = ({ navigation }) => {
     const onGetCheck = (value) => {
         setIscheck(value);
     }
-    
+    const Goback =()=>{
+        navigation.goBack()
+        dispatch({type:'CHOOSEVOUCHERTRUE'})
+    }
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
+                <TouchableOpacity onPress={() => Goback()} >
                     <Image
                         width={10} height={18}
                         source={require('../img/back.png')}

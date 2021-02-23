@@ -70,7 +70,7 @@ const Form = (props) => {
                                     }}
                                     source={require('../../img/vinh20.png')}
                                 />
-                                <Text style={AppStyle.StyleGioHang.text7}>{priceCGV} đ</Text>
+                                <Text style={AppStyle.StyleGioHang.text7}>{priceCGV}.000 đ</Text>
                             </View>
                             <View style={AppStyle.StyleGioHang.content8}>
                                 <Text style={AppStyle.StyleVoucherCGV.text10}>{value}</Text>

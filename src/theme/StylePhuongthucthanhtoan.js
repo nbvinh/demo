@@ -40,7 +40,7 @@ const StylePhuongthucthanhtoan = StyleSheet.create({
     },
     img1:{ width: 24, height: 24, marginLeft:10 },
     img4: {width: 52, height: 52, marginLeft:10},
-    content5:{flexDirection:'row', marginTop:20},
+    content5:{flexDirection:'row', marginTop:20,marginRight:40},
     text5:{marginLeft:10,marginTop:5,color:'#FAFAFA',fontSize:15,fontWeight:'400'},
     text4:{color:'#FFFFFF', fontSize: 15, fontWeight:'400'},
     content4:{flexDirection:'row', margin:10, justifyContent:'space-between'},
