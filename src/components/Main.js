@@ -17,6 +17,7 @@ const Main = ({ navigation }) => {
         return x;
     }
     const dispatch = useDispatch();
+    const [Name, setName] = React.useState(hoten);
     const hoten = useSelector(state => state.hoten)
     const data1 = useSelector(state => state.data1)
     const diem = useSelector(state => state.diem)
@@ -56,9 +57,11 @@ const Main = ({ navigation }) => {
         dispatch({type:'KINGBREAD'})
         navigation.navigate('KingBread')
     }
+  
     return (
+        
         <ScrollView style={AppStyle.StyleMain.container}>
-
+           
             <StatusBar barStyle='light-content'></StatusBar>
             <View style={AppStyle.StyleMain.header}>
                 <View style={AppStyle.StyleMain.header_left}>
@@ -70,7 +73,7 @@ const Main = ({ navigation }) => {
                             }}
                         />
                     </TouchableOpacity>
-                    <Text style={AppStyle.StyleMain.css_text}> Hi, {hoten}</Text>
+                    <Text style={AppStyle.StyleMain.css_text}> Hi, {hoten} !</Text>
                 </View>
                 <View style={AppStyle.StyleMain.header_right}>
                     <Image

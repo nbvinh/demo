@@ -72,7 +72,7 @@ const DoiAvatar = ({navigation}) =>{
             </View>
             
                     <LinearGradient style={AppStyle.StyleFirst.linear}  colors={['#8B3BFF', '#B738FF']}>
-                        <TouchableOpacity >
+                        <TouchableOpacity onPress={() =>Alert.alert('Thông Báo', 'Cập Nhật Thông Tin Thành Công')}>
                         <Text style={AppStyle.StyleFirst.text}>Lưu</Text>
                         </TouchableOpacity>
                     </LinearGradient>

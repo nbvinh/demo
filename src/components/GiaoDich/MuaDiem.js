@@ -7,6 +7,8 @@ import LinearGradient from 'react-native-linear-gradient';
 const MuaDiem = ({navigation}) =>{
     const dispatch = useDispatch();
     const [diem, setDiem] = React.useState(0);
+    const [check, setcheck] = React.useState(false);
+    const [check2, setcheck2] = React.useState(false);
     function numberWithCommas(x) {
         x = x.toString();
         var pattern = /(-?\d+)(\d{3})/;
@@ -34,33 +36,70 @@ const MuaDiem = ({navigation}) =>{
             <View style={AppStyle.StyleGiaoDich.PhuongThucThanhToan}>
                 <Text style={AppStyle.StyleGiaoDich.Text_White}>Chọn Phương thức thanh toán</Text>
                 <View style={AppStyle.StyleGiaoDich.Item_ThanhToan}>
-                    <TouchableOpacity style={{marginHorizontal: 8}}>
-                        <Image
+                    <TouchableOpacity style={{marginHorizontal: 8}} onPress={() =>{
+                        setcheck(true);
+                        setcheck2(false);
+                    }}>
+                        {
+                            check === false ?  <Image
                                 width={16} height={16}
-                                source={require('../../img/img_icon_24px/check0.png')} />
+                                source={require('../../img/img_icon_24px/check0.png')}/> : <View><Image
+                                width={16} height={16}
+                                source={require('../../img/img_icon_24px/check0.png')}/>
+                                <Image source={require('../../img/img_icon_24px/check1.png')}
+                                style={{ width: 12, height: 12, position: 'absolute', top: 2, left: 2 }}
+                            /></View>
+                        }
+                       
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleGiaoDich.Text_ChonThanhToan}>ATM/ VISA/ MASTER/ JCB hoặc Cửa hàng tiện lợi.</Text>
                 </View>
                 <View style={AppStyle.StyleGiaoDich.Item_ThanhToan}>
-                    <TouchableOpacity style={{marginHorizontal: 8}}>
-                        <Image
+                    <TouchableOpacity style={{marginHorizontal: 8}} onPress={() =>{
+                        setcheck2(true);
+                        setcheck(false);
+                    }}>
+                        {
+                            check2 === false ?  <Image
                                 width={16} height={16}
-                                source={require('../../img/img_icon_24px/check0.png')} />
+                                source={require('../../img/img_icon_24px/check0.png')}/> : <View><Image
+                                width={16} height={16}
+                                source={require('../../img/img_icon_24px/check0.png')}/>
+                                <Image source={require('../../img/img_icon_24px/check1.png')}
+                                style={{ width: 12, height: 12, position: 'absolute', top: 2, left: 2 }}
+                            /></View>
+                        } 
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleGiaoDich.Text_ChonThanhToan}>Thanh toán bằng Momo</Text>
                 </View>
             </View>
-                <LinearGradient
-                        style={AppStyle.StyleFirst.linear}
-                        colors={['#8B3BFF', '#B738FF']} >
-                        <TouchableOpacity  onPress={() => {
+            {
+                (check === false  && check2 === false)  || diem === 0 ? 
+                <LinearGradient style={AppStyle.StyleScreenXacNhanSDT.linearnotactive} colors={['#B738FF', '#8B3BFF']} >
+                    <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiến hành thanh toán</Text>
+                </LinearGradient>
+                :
+                <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
+                    <TouchableOpacity  onPress={() => {
+                    if(check=== false && check2 === false){
+                            Alert.alert('Thông báo', 'Bạn chưa chọn phương thức thanh toán!');
+                        }
+                        if(diem == 0){
+                            Alert.alert('Thông báo', 'Bạn chưa nhập số điểm cần mua !');
+                        }
+                        else{
                             Alert.alert('Thông báo', 'Bạn đã thanh toán thành công!');
-                             dispatch({type: 'UPDIEM', diem : diem.diem});
+                            dispatch({type: 'UPDIEM', diem : diem});
                             navigation.navigate('Tabviewmain');
-                        }}>
+                        }
+                        
+                    }}>
                         <Text style={AppStyle.StyleFirst.text}>Tiến hành thanh toán</Text>
-                        </TouchableOpacity>
-                    </LinearGradient>
+                    </TouchableOpacity>
+            </LinearGradient>
+            }
+                        
+               
         </View>
     );
 }
