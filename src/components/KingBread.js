@@ -60,7 +60,7 @@ const KingBread = ({ navigation }) => {
     const checkKingBread = useSelector(state => state.checkKingBread)
     const kingbread = useSelector(state=> state.kingbread)
     const GOback=()=>{
-        navigation.goBack()
+        navigation.navigate('Main')
         dispatch({type:'KINGBREADFALSE'})
     }
     const filterbanhmi =()=>{
