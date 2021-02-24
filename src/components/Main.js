@@ -30,7 +30,7 @@ const Main = ({ navigation }) => {
             const dulieu = res.data.data;
             Object.entries(dulieu);
             setDuLieuApi(dulieu);
-            dispatch({type:'CATEGORY', phanloai: phanloai.DuLieuApi})
+            dispatch({ type: 'CATEGORY', phanloai: phanloai.DuLieuApi })
         }).catch(function (error) {
             console.log(error);
         });
@@ -38,7 +38,7 @@ const Main = ({ navigation }) => {
             const dulieuvoucher = res.data.data;
             Object.entries(dulieuvoucher);
             setDuLieuVoucher(dulieuvoucher);
-            dispatch({type:'DATA_VOUCHER', voucher: voucher.DuLieuVoucher})
+            dispatch({ type: 'DATA_VOUCHER', voucher: voucher.DuLieuVoucher })
         }).catch(function (error) {
             console.log(error);
         });
@@ -53,15 +53,14 @@ const Main = ({ navigation }) => {
         setTest(false)
         dispatch({ type: 'MODALPROVINCE' })
     }
-    const Kingbread =()=>{
-        dispatch({type:'KINGBREAD'})
+    const Kingbread = () => {
+        dispatch({ type: 'KINGBREAD' })
         navigation.navigate('KingBread')
     }
-  
     return (
-        
+
         <ScrollView style={AppStyle.StyleMain.container}>
-           
+
             <StatusBar barStyle='light-content'></StatusBar>
             <View style={AppStyle.StyleMain.header}>
                 <View style={AppStyle.StyleMain.header_left}>
@@ -133,24 +132,29 @@ const Main = ({ navigation }) => {
                 </View>
             </View>
             <View style={AppStyle.StyleMain.option}>
-                            {
-                                DuLieuApi.map(item => {
-                                    const ChiTietVoucherTheoLoai = () =>{
-                                        navigation.navigate('VoucherNam');
-                                        dispatch({type:'IDLOAI', id: item.id})
-                                    }
-                                    return(
-                                    <TouchableOpacity key={item.id.toString()} style={AppStyle.StyleMain.option_item} onPress={ChiTietVoucherTheoLoai}>
-                                        <Image
-                                            style={{ width: 24, height: 24 }}
-                                            source={{uri : 'http://175.41.184.177:6063/image/' + item.avatar}}
-                                        />
-                                        <Text style={AppStyle.StyleMain.option_itemtext}>{item.name}</Text>
-                                    </TouchableOpacity>
-                                    );
-                               
-                                })
+                {
+                    DuLieuApi.map(item => {
+                        const ChiTietVoucherTheoLoai = () => {
+                            dispatch({ type: 'IDLOAI', id: item.id })
+                            if (item.id === 1) {
+                                navigation.navigate('VoucherNam');
                             }
+                            if(item.id === 3){
+                                Kingbread()
+                            }
+                        }
+                        return (
+                            <TouchableOpacity key={item.id.toString()} style={AppStyle.StyleMain.option_item} onPress={ChiTietVoucherTheoLoai}>
+                                <Image
+                                    style={{ width: 24, height: 24 }}
+                                    source={{ uri: 'http://175.41.184.177:6063/image/' + item.avatar }}
+                                />
+                                <Text style={AppStyle.StyleMain.option_itemtext}>{item.name}</Text>
+                            </TouchableOpacity>
+                        );
+
+                    })
+                }
             </View>
             <Image
                 style={{ height: 80, width: "100%", borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
@@ -158,211 +162,65 @@ const Main = ({ navigation }) => {
             />
             {
                 DuLieuVoucher.map(item => {
-                   
-                     return(
-                        <TouchableOpacity key={item.id.toString()} style={AppStyle.StyleMain.DichVu} onPress={() => navigation.navigate('VoucherCGV')}>
-                        <View style={AppStyle.StyleMain.DichVu_Top}>
-                            <View style={AppStyle.StyleMain.DichVu_Left}>
-                                <Image
-                                    style={{ width: "100%", height: '100%' }} resizeMode='cover'
-                                    source={{uri : 'http://175.41.184.177:6063/image/' + item.showImage}}
-                                />
-                            </View>
-                            <View style={AppStyle.StyleMain.DichVu_Right}>
-                                <View style={AppStyle.StyleMain.DichVu_RightItem}>
+                    const ListDuLieuVoucher =()=>{
+                        if(item.id ===11){
+                            navigation.navigate('VoucherCGV')
+                        }
+                    }
+                    return (
+                        <TouchableOpacity key={item.id.toString()} style={AppStyle.StyleMain.DichVu} onPress={() => ListDuLieuVoucher()}>
+                            <View style={AppStyle.StyleMain.DichVu_Top}>
+                                <View style={AppStyle.StyleMain.DichVu_Left}>
                                     <Image
-                                        style={{ width: "100%", height: '95%', borderRadius: 8 }}
-                                        source={{uri : 'http://175.41.184.177:6063/image/' + item.images[0]}}
+                                        style={{ width: "100%", height: '100%' }} resizeMode='cover'
+                                        source={{ uri: 'http://175.41.184.177:6063/image/' + item.showImage }}
                                     />
                                 </View>
-                                <View style={AppStyle.StyleMain.DichVu_RightItem}>
+                                <View style={AppStyle.StyleMain.DichVu_Right}>
+                                    <View style={AppStyle.StyleMain.DichVu_RightItem}>
+                                        <Image
+                                            style={{ width: "100%", height: '95%', borderRadius: 8 }}
+                                            source={{ uri: 'http://175.41.184.177:6063/image/' + item.images[0] }}
+                                        />
+                                    </View>
+                                    <View style={AppStyle.StyleMain.DichVu_RightItem}>
+                                        <Image
+                                            style={{ width: "100%", height: '95%', borderRadius: 8 }}
+                                            source={{ uri: 'http://175.41.184.177:6063/image/' + item.images[1] }}
+                                        />
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99 }} />
+                            <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99 }} />
+                            <View style={AppStyle.StyleMain.DichVu_Bottom}>
+                                <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
                                     <Image
-                                        style={{ width: "100%", height: '95%', borderRadius: 8 }}
-                                        source={{uri : 'http://175.41.184.177:6063/image/' + item.images[1]}}
+                                        style={{ width: 36, height: 36, borderRadius: 50 }}
+                                        source={{ uri: 'http://175.41.184.177:6063/image/' + item.shop.avatar }}
                                     />
+                                    <View style={{ width: '80%', marginLeft: 10 }}>
+                                        <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}>{item.name} </Text>
+                                        <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> {item.shop.address}</Text>
+                                    </View>
+                                </View>
+                                <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
+                                    <View style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
+                                        <Text style={{ marginLeft: 5, color: 'white', fontSize: 17, fontWeight: '700' }}>{item.price}.000 đ</Text>
+                                        <Text style={{ color: '#9B9EA3', fontSize: 15, fontWeight: '400', textDecorationLine: 'line-through', marginLeft: 10 }}>{item.priceSale}.000 đ</Text>
+                                    </View>
+                                    <View style={AppStyle.StyleMain.DichVu_Bottom_BottomRight}>
+                                        <Text style={{ marginRight: 5, color: 'white', fontSize: 13, fontWeight: '400' }}><Image
+                                            style={{ width: 18, height: 18 }}
+                                            source={require('../img/Iconly-Light-Location2.png')}
+                                        /> 2,5 km</Text>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
-                        <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99 }} />
-                        <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99 }} />
-                        <View style={AppStyle.StyleMain.DichVu_Bottom}>
-                            <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
-                                <Image
-                                    style={{ width: 36, height: 36, borderRadius: 50}}
-                                    source={{uri : 'http://175.41.184.177:6063/image/' + item.shop.avatar}}
-                                />
-                                <View style={{ width: '80%', marginLeft: 10 }}>
-                                    <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}>{item.name} </Text>
-                                    <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> {item.shop.address}</Text>
-                                </View>
-                            </View>
-                            <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
-                                <View style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
-                                    <Text style={{ marginLeft: 5, color: 'white', fontSize: 17, fontWeight: '700' }}>{item.price}.000 đ</Text>
-                                    <Text style={{ color: '#9B9EA3', fontSize: 15, fontWeight: '400', textDecorationLine: 'line-through', marginLeft: 10 }}>{item.priceSale}.000 đ</Text>
-                                </View>
-                                <View style={AppStyle.StyleMain.DichVu_Bottom_BottomRight}>
-                                    <Text style={{ marginRight: 5, color: 'white', fontSize: 13, fontWeight: '400' }}><Image
-                                        style={{ width: 18, height: 18 }}
-                                        source={require('../img/Iconly-Light-Location2.png')}
-                                    /> 2,5 km</Text>
-                                </View>
-                            </View>
-                        </View>
-                    </TouchableOpacity>
-                     )
+                        </TouchableOpacity>
+                    )
                 })
             }
-            <TouchableOpacity style={AppStyle.StyleMain.DichVu} onPress={() => navigation.navigate('VoucherCGV')}>
-                <View style={AppStyle.StyleMain.DichVu_Top}>
-                    <View style={AppStyle.StyleMain.DichVu_Left}>
-                        <Image
-                            style={{ width: "100%", height: '100%' }}
-                            source={require('../img/Rectangle7.png')}
-                        />
-                    </View>
-                    <View style={AppStyle.StyleMain.DichVu_Right}>
-                        <View style={AppStyle.StyleMain.DichVu_RightItem}>
-                            <Image
-                                style={{ width: "100%", height: '95%', borderRadius: 8 }}
-                                source={require('../img/Rectangle8.png')}
-                            />
-                        </View>
-                        <View style={AppStyle.StyleMain.DichVu_RightItem}>
-                            <Image
-                                style={{ width: "100%", height: '95%', borderRadius: 8 }}
-                                source={require('../img/Rectangle9.png')}
-                            />
-                        </View>
-                    </View>
-                </View>
-                <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99 }} />
-                <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99 }} />
-                <View style={AppStyle.StyleMain.DichVu_Bottom}>
-                    <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
-                        <Image
-                            style={{ width: 36, height: 36 }}
-                            source={require('../img/cgv.png')}
-                        />
-                        <View style={{ width: '80%', marginLeft: 10 }}>
-                            <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}> Voucher CGV Cinema </Text>
-                            <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> CGV Cinema - Tầng 5 Hà Nội Center Point</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
-                        <View style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
-                            <Text style={{ marginLeft: 5, color: 'white', fontSize: 17, fontWeight: '700' }}>88.000 đ</Text>
-                            <Text style={{ color: '#9B9EA3', fontSize: 15, fontWeight: '400', textDecorationLine: 'line-through', marginLeft: 10 }}>100.000 đ</Text>
-                        </View>
-                        <View style={AppStyle.StyleMain.DichVu_Bottom_BottomRight}>
-                            <Text style={{ marginRight: 5, color: 'white', fontSize: 13, fontWeight: '400' }}><Image
-                                style={{ width: 18, height: 18 }}
-                                source={require('../img/Iconly-Light-Location2.png')}
-                            /> 2,5 km</Text>
-                        </View>
-                    </View>
-                </View>
-            </TouchableOpacity>
-            <TouchableOpacity style={AppStyle.StyleMain.DichVu}  >
-                <View style={AppStyle.StyleMain.DichVu_Top}>
-                    <View style={AppStyle.StyleMain.DichVu_Left}>
-                        <Image
-                            style={{ width: "100%", height: '100%' }}
-                            source={require('../img/Rectangle07.png')}
-                        />
-                    </View>
-                    <View style={AppStyle.StyleMain.DichVu_Right}>
-                        <View style={AppStyle.StyleMain.DichVu_RightItem}>
-                            <Image
-                                style={{ width: "100%", height: '95%', borderRadius: 8 }}
-                                source={require('../img/Rectangle08.png')}
-                            />
-                        </View>
-                        <View style={AppStyle.StyleMain.DichVu_RightItem}>
-                            <Image
-                                style={{ width: "100%", height: '95%', borderRadius: 8 }}
-                                source={require('../img/Rectangle09.png')}
-                            />
-                        </View>
-                    </View>
-                </View>
-                <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99 }} />
-                <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99 }} />
-                <View style={AppStyle.StyleMain.DichVu_Bottom}>
-                    <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
-                        <Image
-                            style={{ width: 36, height: 36 }}
-                            source={require('../img/Ellipse04.png')}
-                        />
-                        <View style={{ width: '80%', marginLeft: 10 }}>
-                            <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}> Voucher Manwah giảm 10%</Text>
-                            <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> K-Pub - Tầng 4 Lê Văn Lương</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
-                        <View style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
-                            <Text style={{ marginLeft: 5, color: 'white', fontSize: 17, fontWeight: '700' }}>280.000 đ</Text>
-                            <Text style={{ color: '#9B9EA3', fontSize: 15, fontWeight: '400', textDecorationLine: 'line-through', marginLeft: 10 }}>300.000 đ</Text>
-                        </View>
-                        <View style={AppStyle.StyleMain.DichVu_Bottom_BottomRight}>
-                            <Text style={{ marginRight: 5, color: 'white', fontSize: 13, fontWeight: '400' }}><Image
-                                style={{ width: 18, height: 18 }}
-                                source={require('../img/Iconly-Light-Location2.png')} /> 0,5 km</Text>
-                        </View>
-                    </View>
-                </View>
-
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => Kingbread() } style={AppStyle.StyleMain.DichVu}>
-                <View style={AppStyle.StyleMain.DichVu_Top}>
-                    <View style={AppStyle.StyleMain.DichVu_Left}>
-                        <Image
-                            style={{ width: "100%", height: '100%' }}
-                            source={require('../img/Rectangle007.png')}
-                        />
-                    </View>
-                    <View style={AppStyle.StyleMain.DichVu_Right}>
-                        <View style={AppStyle.StyleMain.DichVu_RightItem}>
-                            <Image
-                                style={{ width: "100%", height: '95%', borderRadius: 8 }}
-                                source={require('../img/Rectangle008.png')}
-                            />
-                        </View>
-                        <View style={AppStyle.StyleMain.DichVu_RightItem}>
-                            <Image
-                                style={{ width: "100%", height: '95%', borderRadius: 8 }}
-                                source={require('../img/Rectangle009.png')}
-                            />
-                        </View>
-                    </View>
-                </View>
-                <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99 }} />
-                <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99 }} />
-                <View style={AppStyle.StyleMain.DichVu_Bottom}>
-                    <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
-                        <Image
-                            style={{ width: 36, height: 36 }}
-                            source={require('../img/Ellipse004.png')}
-                        />
-                        <View style={{ width: '80%', marginLeft: 10 }}>
-                            <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}> King Bread</Text>
-                            <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> 28 Hồ Tùng Mậu, p. Mai Dịch, q. Cầu Giấy, Hà Nội</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
-                        <View style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
-
-                            <Text style={{ color: '#9B9EA3', fontSize: 15, fontWeight: '400', marginLeft: 10 }}>Hoàn 20% khi đặt món</Text>
-                        </View>
-                        <View style={AppStyle.StyleMain.DichVu_Bottom_BottomRight}>
-                            <Text style={{ marginRight: 5, color: 'white', fontSize: 13, fontWeight: '400' }}><Image
-                                style={{ width: 18, height: 18 }}
-                                source={require('../img/Iconly-Light-Location2.png')} /> 3,5 km</Text>
-                        </View>
-                    </View>
-                </View>
-
-            </TouchableOpacity>
         </ScrollView>
     )
 }
