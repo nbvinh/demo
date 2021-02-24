@@ -118,7 +118,7 @@ const PaymentConfirmation = ({ navigation }) => {
             </ScrollView>
             <View style={{ flex: 1.5, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
                 {kingbread ?
-                    <View key={item.id.toString()} style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                    <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                         <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
                         {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{sum}.000 đ</Text>
                             :
