@@ -3,7 +3,14 @@ import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput
 import { ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import AppStyle from "../../theme";
+import Modal from 'react-native-modal';
+import { CameraScreen } from 'react-native-camera-kit';
 const DoiAvatar = ({navigation}) =>{
+    const [isModalVisible, setModalVisible] = React.useState(false);
+  
+    const toggleModal = () => {
+      setModalVisible(!isModalVisible);
+    };
     return(
         <View style={AppStyle.StyleGiaoDich.container}>
             <View style={AppStyle.StyleGiaoDich.header}>
@@ -22,13 +29,23 @@ const DoiAvatar = ({navigation}) =>{
                             uri: 'https://scontent.fhan2-5.fna.fbcdn.net/v/t1.0-9/149827309_2185987718215959_615074836695332874_o.jpg?_nc_cat=107&ccb=3&_nc_sid=09cbfe&_nc_ohc=m6k_81KFp-YAX9E8TVa&_nc_ht=scontent.fhan2-5.fna&oh=4c576ca5b9049d60b03b68737415e725&oe=6051E0A1',
                                 }}
                         />
-                        <TouchableOpacity style={{position: 'absolute'}}>
+                        <TouchableOpacity style={{position: 'absolute'}} onPress={toggleModal}>
                             <Image
                                 width={18} height={16}
                                 source={require('../../img/img_icon_24px/Iconly-Light-Camera.png')}
                             />
                         </TouchableOpacity>  
              </View>
+             <Modal isVisible={isModalVisible} style={{justifyContent:'center', alignItems:'center'}}>
+                <View style={{height: 100, width: '60%',borderRadius: 8, justifyContent: 'space-around', backgroundColor: 'rgba(255, 255, 255, 0.3)', paddingHorizontal: 10}}>
+                   <TouchableOpacity>
+                       <Text  style={{color: '#ffffff', fontSize: 16}}>Chụp ảnh</Text>
+                   </TouchableOpacity>
+                   <TouchableOpacity>
+                       <Text  style={{color: '#ffffff', fontSize: 16}}>Chọn từ ảnh của bạn</Text>
+                   </TouchableOpacity>
+                </View>
+            </Modal>
              <View style={styles.body}>
                 <View style={styles.block}>
                     <Text style={styles.title}>Họ và Tên <Text style={{color: 'red'}}>*</Text></Text>
