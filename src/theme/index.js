@@ -29,6 +29,7 @@ const AppStyle = {
     StyleGioHang,
     StyleChonVoucher,
     StylePhuongthucthanhtoan ,
-    StyleKingBread
+    StyleKingBread,
+    Style_Giao_Dich_TCong
 }
 export default AppStyle;
