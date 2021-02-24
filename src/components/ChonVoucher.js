@@ -35,7 +35,6 @@ const ChonVoucher = ({ navigation }) => {
                         source={require('../img/back.png')}
                     />
                 </TouchableOpacity>
-                <Text style={{ marginHorizontal: 20 }} />
                 <Text style={AppStyle.StyleVoucherCGV.text}>Chọn Voucher</Text>
             </View>
             <View style={{ flex: 10 }}>

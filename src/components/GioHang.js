@@ -38,7 +38,6 @@ const GioHang = ({ navigation }) => {
                         source={require('../img/back.png')}
                     />
                 </TouchableOpacity>
-                <Text style={{ marginHorizontal: 20 }} />
                 <Text style={AppStyle.StyleVoucherCGV.text}>Giỏ Hàng</Text>
             </View>
 

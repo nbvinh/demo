@@ -107,14 +107,15 @@ const StyleVoucherCGV = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 20
+        marginLeft: 20,
+        marginRight:20
     },
     text: {
         color: '#FFFFFF',
-        marginHorizontal: 100,
         fontSize: 17,
-        lineHeight: 22
-
+        lineHeight: 22,
+        textAlign:'center',
+        flex:1
     },
     img1: {
         width: '100%',

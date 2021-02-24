@@ -86,10 +86,9 @@ const KingBread = ({ navigation }) => {
                 </TouchableOpacity>
                 {temp1 && temp1.map((item) => {
                     return (
-                        <Text key={item.id.toString()} style={[AppStyle.StyleVoucherCGV.text, { marginLeft: 120 }]}>{item.name}</Text>
+                        <Text key={item.id.toString()} style={AppStyle.StyleVoucherCGV.text}>{item.name}</Text>
                     )
                 })}
-
             </View>
             <View style={{ flex: 11 }}>
                 <ScrollView>

@@ -17,7 +17,10 @@ const StylePhuongthucthanhtoan = StyleSheet.create({
     },
     touchable: {
         marginTop:13,
-        flexDirection:'row'
+        flexDirection:'row',
+        flex:1,
+        justifyContent:'space-between',
+        marginRight:20
     },
     text2:{
         fontWeight:'400',
@@ -36,7 +39,6 @@ const StylePhuongthucthanhtoan = StyleSheet.create({
         width:6.59,
         height:11.17,
         marginTop:5,
-        marginLeft:200
     },
     img1:{ width: 24, height: 24, marginLeft:10 },
     img4: {width: 52, height: 52, marginLeft:10},
