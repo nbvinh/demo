@@ -3,14 +3,20 @@ import React, { useState } from 'react';
 import { View, Text, Image, Alert, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import AppStyle from "../theme";
 import { Calendar } from 'react-native-calendars'; // 1.5.3
+import CalendarPicker from 'react-native-calendar-picker';
+
 const History_Transform = ({navigation}) => {
 
     const [isShowCalendar, setIsShowCalendar] = useState(false);
-
+    const [selectedDate, setSelectedDate] = useState();
     const _onPress = () => {
         setIsShowCalendar(true)
         console.log('da kick');
     }
+    const onDatechange =(date)=>{
+        setSelectedDate(date)
+    }
+    const startDate = selectedDate ? selectedDate.toString() : '';
     return (
         <View style={{ flex: 1 }}>
             <Modal
@@ -21,16 +27,18 @@ const History_Transform = ({navigation}) => {
                     Alert.alert('Modal has been closed.');
                 }}>
                 <View style={{
-                    flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', alignItem: 'center',
+                    flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', alignItem: 'center',
                     justifyContent: 'center', marginHorizontal: 10,
                     marginTop: 22
                 }}>
-                    <View>
-                        <Calendar
-                            theme={{
-                                textSectionTitleDisabledColor: '#d9e1e8'
-                            }}
-                        />
+                    <View style={{backgroundColor:'#FFFFFF'}}>
+                    <CalendarPicker
+          onDateChange={onDatechange}
+          format="YYYY-MM-DD"
+          todayBackgroundColor="red" selectedDayColor="#7300e6"
+          selectedDayTextColor="#FFFFFF" 
+          customDatesStyles={{}} 
+        />
 
 
                         <View>
@@ -72,7 +80,7 @@ const History_Transform = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={AppStyle.Style_History_Tranform.calendar}>
-                    <Text style={AppStyle.Style_History_Tranform.text}>Tháng 11/2020</Text>
+                    <Text style={AppStyle.Style_History_Tranform.text}>SELECTED DATE:{startDate}</Text>
                 </View>
                 <ScrollView style={AppStyle.Style_History_Tranform.content}>
                 <TouchableOpacity onPress = {() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
