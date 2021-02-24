@@ -13,10 +13,19 @@ const ChonVoucher = ({ navigation }) => {
     const onGetCheck = (value) => {
         setIscheck(value);
     }
-    const Goback =()=>{
-        navigation.goBack()
-        dispatch({type:'CHOOSEVOUCHERTRUE'})
+    const Goback = () => {
+        // navigation.goBack()
+        navigation.reset({
+            index: 0,
+            routes: [
+                {
+                    name: 'GioHang',
+                },
+            ],
+        })
+        dispatch({ type: 'CHOOSEVOUCHERTRUE' })
     }
+    const conmfirmvoucher = useSelector(state => state.conmfirmvoucher)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -45,18 +54,27 @@ const ChonVoucher = ({ navigation }) => {
                         </View>
                     </View>
                     {arrPromotion.map((item, index) => (
-                        <Khuyenmai key={index.toString()} myarrPromotion={item} sendCheck={(value) => onGetCheck(value)}/>
+                        <Khuyenmai key={index.toString()} myarrPromotion={item} sendCheck={(value) => onGetCheck(value)} />
                     ))}
                     <View style={{ height: 200 }}></View>
                 </ScrollView>
             </View>
             <View style={{ flex: 1, margin: 15 }}>
-                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                {conmfirmvoucher ?
+                    <TouchableOpacity onPress={() => navigation.navigate('GioHang')}>
                         <Image
                             style={{ width: '100%', height: 48, borderRadius: 8 }}
                             source={require('../img/vinh2.png')}
                         />
                     </TouchableOpacity>
+                    :
+                    <View >
+                        <Image
+                            style={{ width: '100%', height: 48, borderRadius: 8 }}
+                            source={require('../img/vinh33.png')}
+                        />
+                    </View>
+                }
             </View>
         </View>
     )

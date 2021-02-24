@@ -9,6 +9,7 @@ const Khuyenmai = (props) => {
 
     const onchoose = () => {
         dispatch({ type: 'CHOOSE', id: id })
+        dispatch ({type:'CONFIRMVOUCHER'})
         if (dieukien === true) {
             Alert.alert(
                 "Title",

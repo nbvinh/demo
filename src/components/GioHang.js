@@ -15,7 +15,15 @@ const GioHang = ({ navigation }) => {
     const Choose = () => {
         dispatch({ type: 'CHOOSEVOUCHER' })
         dispatch({ type: 'SUMGIOHANG' })
-        navigation.navigate('ChonVoucher')
+        // navigation.navigate('ChonVoucher')
+        navigation.reset({
+            index: 0,
+            routes: [
+                {
+                    name: 'ChonVoucher',
+                },
+            ],
+        })
     }
     const ShowpaymentCGV = useSelector(state => state.ShowpaymentCGV)
     const DataProduct = useSelector(state => state.DataProduct)
@@ -24,7 +32,7 @@ const GioHang = ({ navigation }) => {
     return (
         <View style={[AppStyle.StyleVoucherCGV.container]}>
             <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
+                <TouchableOpacity onPress={() => navigation.navigate('Main')} >
                     <Image
                         width={10} height={18}
                         source={require('../img/back.png')}
@@ -53,7 +61,7 @@ const GioHang = ({ navigation }) => {
                                                 </View>
                                             </View>
                                             <View style={{ alignItems: 'flex-end', flex: 1 }}>
-                                                <TouchableOpacity onPress={() => navigation.navigate('KingBread')}>
+                                                <TouchableOpacity onPress={() => navigation.goBack()}>
                                                     <Text style={AppStyle.StyleGioHang.text1} >Thay đổi</Text>
                                                 </TouchableOpacity>
                                                 <Text style={AppStyle.StyleGioHang.text2}>x{item.amount}</Text>

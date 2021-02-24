@@ -21,6 +21,10 @@ const PaymentConfirmation = ({ navigation }) => {
     const DataProduct = useSelector(state => state.DataProduct)
     const sum = useSelector(state => state.sum)
     const kingbread = useSelector(state => state.kingbread)
+    const ConfirmHistory=()=>{
+        dispatch({type:'COMFIRM'})
+        navigation.navigate('Main')
+    }
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -32,9 +36,10 @@ const PaymentConfirmation = ({ navigation }) => {
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleVoucherCGV.text}>Xác nhận thanh toán </Text>
             </View>
-            <ScrollView>
-                <View style={{ flex: 9 }}>
-                    <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
+
+            <View style={{ flex: 9 }}>
+                <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
+                    <ScrollView>
                         {kingbread ?
                             DataProduct && DataProduct.map((item) => {
                                 return (
@@ -98,6 +103,7 @@ const PaymentConfirmation = ({ navigation }) => {
                                 </View>
                             </View>
                         }
+
                         <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Phương thức thanh toán</Text>
                         {data.map((item) => {
                             return (
@@ -113,10 +119,11 @@ const PaymentConfirmation = ({ navigation }) => {
                                 )
                             )
                         })}
-                    </View>
+                    </ScrollView>
                 </View>
-            </ScrollView>
-            <View style={{ flex: 1.5, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
+            </View>
+
+            <View style={{ flex: 3, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
                 {kingbread ?
                     <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                         <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
@@ -149,7 +156,10 @@ const PaymentConfirmation = ({ navigation }) => {
                     null
                 }
 
-                <TouchableOpacity style={{ margin: 10, marginTop: 30 }}>
+                <TouchableOpacity
+                    style={{ margin: 10, marginTop: 30 }}
+                    onPress={()=>ConfirmHistory()}
+                >
                     <Image
                         style={{ width: '100%', height: 48 }}
                         source={require('../img/vinh28.png')}

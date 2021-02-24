@@ -55,6 +55,7 @@ const Main = ({ navigation }) => {
     }
     const Kingbread = () => {
         dispatch({ type: 'KINGBREAD' })
+        dispatch({ type: 'CHECKKINGBREAD' })
         navigation.navigate('KingBread')
     }
     return (
