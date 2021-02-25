@@ -29,10 +29,14 @@ const GioHang = ({ navigation }) => {
     const DataProduct = useSelector(state => state.DataProduct)
     const sum = useSelector(state => state.sum)
     const kingbread = useSelector(state => state.kingbread)
+    const filterStatus = useSelector(state => state.filterStatus)
+    const GOback = () => {
+        navigation.goBack()
+    }
     return (
         <View style={[AppStyle.StyleVoucherCGV.container]}>
             <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.navigate('Main')} >
+                <TouchableOpacity onPress={() => GOback()} >
                     <Image
                         width={10} height={18}
                         source={require('../img/back.png')}

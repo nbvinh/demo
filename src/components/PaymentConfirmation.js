@@ -23,7 +23,8 @@ const PaymentConfirmation = ({ navigation }) => {
     const kingbread = useSelector(state => state.kingbread)
     const ConfirmHistory=()=>{
         dispatch({type:'COMFIRM'})
-        navigation.navigate('Main')
+        navigation.navigate('Tabviewmain')
+        dispatch({ type: 'FILTERSTATUS'})
     }
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
