@@ -4,7 +4,6 @@ import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, 
 import AppStyle from "../../theme";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react/cjs/react.development';
-
 const ListProduct = (props) => {
     const dispatch = useDispatch();
     const filterStatus = useSelector(state => state.filterStatus)

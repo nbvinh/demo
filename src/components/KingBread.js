@@ -75,6 +75,9 @@ const KingBread = ({ navigation }) => {
         dispatch({ type: 'FILTERCOMBO' })
         dispatch({ type: 'CHECKCOMBO' })
     }
+    const buynow =()=>{
+        navigation.navigate('GioHang')
+    }
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -197,7 +200,7 @@ const KingBread = ({ navigation }) => {
                         <Text style={AppStyle.StyleVoucherCGV.text10}>{sumamount}</Text>
                     }
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('GioHang', { sum: sum })}>
+                <TouchableOpacity onPress={() =>buynow() }>
                     <Image
                         style={AppStyle.StyleVoucherCGV.img4}
                         source={require('../img/vinh0.png')}

@@ -74,6 +74,8 @@ const initState = {
     checkKingBread: true,
     kingbread: false,
     confirm: false,
+    bills: [],
+    billsCGV: []
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
@@ -195,6 +197,14 @@ const reducer = (state = initState, action) => {
                 }
             })
             return { ...state, productnuoc: newState1 }
+        case 'ADDBILL':
+            let newBills = [...state.bills]
+            newBills.push({ id: action.id, sum: action.sum })
+            return { ...state, bills: newBills }
+        case 'ADDBILLCGV':
+            let newBillsCGV = [...state.billsCGV]
+            newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV })
+            return { ...state, billsCGV: newBillsCGV }
         case 'FILTERSTATUS':
             return { ...state, filterStatus: "" }
         case 'FILTERCOMBO':

@@ -18,6 +18,8 @@ const History_Transform = ({ navigation }) => {
     const priceCGV = useSelector(state => state.priceCGV)
     const kingbread = useSelector(state => state.kingbread)
     const sum = useSelector(state => state.sum)
+    const bills = useSelector(state => state.bills)
+    const billsCGV = useSelector(state => state.billsCGV)
     return (
         <View style={{ flex: 1 }}>
             <Modal
@@ -84,67 +86,62 @@ const History_Transform = ({ navigation }) => {
                 <ScrollView style={AppStyle.Style_History_Tranform.content}>
                     {confirm ?
                         <View>
+                            {bills.map((item) => {
+                                return (
+                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
+                                        <View style={AppStyle.Style_History_Tranform.item}>
+                                            <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
+                                            <View style={AppStyle.Style_History_Tranform.cost}>
+                                                <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.sum}.000 đ</Text>
+                                                <Text></Text>
 
-                            <TouchableOpacity onPress={() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
-                                <View style={AppStyle.Style_History_Tranform.item}>
-                                    <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                                    <View style={AppStyle.Style_History_Tranform.cost}>
-                                        {choosevoucher ? <Text style={AppStyle.Style_History_Tranform.content_cost}>{sum}.000 đ</Text>
-                                            :
-                                            arrPromotion.map((item, index) => (
-                                                item.isChoose ? item.dieukien ?
-                                                    <Text key={index.toString()} style={AppStyle.Style_History_Tranform.content_cost}>{sum - item.Promotion}.000 đ</Text>
-                                                    : <Text key={index.toString()} style={AppStyle.Style_History_Tranform.content_cost}>{sum}.000 đ</Text> : null
-                                            ))}
-                                        <Text></Text>
+                                                <Image
+                                                    style={AppStyle.Style_History_Tranform.Image_right}
+                                                    source={require('../img/chevron_right.png')}
+                                                />
 
-                                        <Image
-                                            style={AppStyle.Style_History_Tranform.Image_right}
-                                            source={require('../img/chevron_right.png')}
-                                        />
+                                            </View>
+                                            <View style={AppStyle.Style_History_Tranform.bottom}>
 
-                                    </View>
-                                    <View style={AppStyle.Style_History_Tranform.bottom}>
+                                                <Image
+                                                    style={AppStyle.Style_History_Tranform.ImageStatus}
+                                                    source={require('../img/thanhcong.png')}
+                                                />
 
-                                        <Image
-                                            style={AppStyle.Style_History_Tranform.ImageStatus}
-                                            source={require('../img/thanhcong.png')}
-                                        />
+                                                <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                )
+                            })}
+                            {billsCGV.map((item) => {
+                                return (
+                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
+                                        <View style={AppStyle.Style_History_Tranform.item}>
+                                            <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
+                                            <View style={AppStyle.Style_History_Tranform.cost}>
+                                                <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.priceCGV}.000 đ</Text>
+                                                <Text></Text>
 
-                                        <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
-                                <View style={AppStyle.Style_History_Tranform.item}>
-                                    <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                                    <View style={AppStyle.Style_History_Tranform.cost}>
-                                        {choosevoucher ? <Text style={AppStyle.Style_History_Tranform.content_cost}>{priceCGV}.000 đ</Text>
-                                            :
-                                            arrPromotion.map((item, index) => (
-                                                item.isChoose ? item.dieukien ?
-                                                    <Text key={index.toString()} style={AppStyle.Style_History_Tranform.content_cost}>{priceCGV - item.Promotion}.000 đ</Text>
-                                                    : <Text key={index.toString()} style={AppStyle.Style_History_Tranform.content_cost}>{priceCGV}.000 đ</Text> : null
-                                            ))}
-                                        <Text></Text>
+                                                <Image
+                                                    style={AppStyle.Style_History_Tranform.Image_right}
+                                                    source={require('../img/chevron_right.png')}
+                                                />
 
-                                        <Image
-                                            style={AppStyle.Style_History_Tranform.Image_right}
-                                            source={require('../img/chevron_right.png')}
-                                        />
+                                            </View>
+                                            <View style={AppStyle.Style_History_Tranform.bottom}>
 
-                                    </View>
-                                    <View style={AppStyle.Style_History_Tranform.bottom}>
+                                                <Image
+                                                    style={AppStyle.Style_History_Tranform.ImageStatus}
+                                                    source={require('../img/thanhcong.png')}
+                                                />
 
-                                        <Image
-                                            style={AppStyle.Style_History_Tranform.ImageStatus}
-                                            source={require('../img/thanhcong.png')}
-                                        />
-
-                                        <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
-                                    </View>
-                                </View>
-                            </TouchableOpacity>
+                                                <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                )
+                            })}
                         </View>
                         :
                         null
