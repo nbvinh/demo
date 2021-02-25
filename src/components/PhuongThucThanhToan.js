@@ -39,11 +39,13 @@ const PaymentMethods = ({ navigation }) => {
                     {lienket ?
                         <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
                             <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable}>
-                                <Image
-                                    style={AppStyle.StylePhuongthucthanhtoan.img1}
-                                    source={require('../img/vinh27.png')}
-                                />
-                                <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Master Card</Text>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Image
+                                        style={AppStyle.StylePhuongthucthanhtoan.img1}
+                                        source={require('../img/vinh27.png')}
+                                    />
+                                    <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Master Card</Text>
+                                </View>
                                 <Image
                                     style={AppStyle.StylePhuongthucthanhtoan.img2}
                                     source={require('../img/vinh5.png')}
@@ -54,11 +56,13 @@ const PaymentMethods = ({ navigation }) => {
                     }
                     <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
                         <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable} onPress={() => onLienket()}>
-                            <Image
-                                style={AppStyle.StylePhuongthucthanhtoan.img1}
-                                source={require('../img/vinh22.png')}
-                            />
-                            <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Thêm liên kết</Text>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Image
+                                    style={AppStyle.StylePhuongthucthanhtoan.img1}
+                                    source={require('../img/vinh22.png')}
+                                />
+                                <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Thêm liên kết</Text>
+                            </View>
                             <Image
                                 style={AppStyle.StylePhuongthucthanhtoan.img2}
                                 source={require('../img/vinh5.png')}
@@ -74,7 +78,7 @@ const PaymentMethods = ({ navigation }) => {
                     {lienket ? null
                         :
                         <View style={{ position: 'absolute', top: 145, left: 83 }}>
-                            <Text style={{ color: 'red' }}>Điểm của bạn không đủ thực hiện giao dịch</Text>
+                            <Text style={{ color: 'red'}}>Điểm của bạn không đủ giao dịch</Text>
                             <Text style={{ color: 'red' }}>Số dư hiện tại: 15 điểm</Text>
                         </View>
                     }

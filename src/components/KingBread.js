@@ -60,8 +60,20 @@ const KingBread = ({ navigation }) => {
     const checkKingBread = useSelector(state => state.checkKingBread)
     const kingbread = useSelector(state=> state.kingbread)
     const GOback=()=>{
-        navigation.goBack()
+        navigation.navigate('Main')
         dispatch({type:'KINGBREADFALSE'})
+    }
+    const filterbanhmi =()=>{
+        dispatch({ type: 'FILTERBANHMI' })
+        dispatch({ type: 'CHECKBANHMI' })
+    }
+    const filternuoc =()=>{
+        dispatch({ type: 'FILTERNUOC' })
+        dispatch({ type: 'CHECKNUOC' })
+    }
+    const filtercombo =()=>{
+        dispatch({ type: 'FILTERCOMBO' })
+        dispatch({ type: 'CHECKCOMBO' })
     }
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
@@ -74,10 +86,9 @@ const KingBread = ({ navigation }) => {
                 </TouchableOpacity>
                 {temp1 && temp1.map((item) => {
                     return (
-                        <Text key={item.id.toString()} style={[AppStyle.StyleVoucherCGV.text, { marginLeft: 120 }]}>{item.name}</Text>
+                        <Text key={item.id.toString()} style={AppStyle.StyleVoucherCGV.text}>{item.name}</Text>
                     )
                 })}
-
             </View>
             <View style={{ flex: 11 }}>
                 <ScrollView>
@@ -138,24 +149,29 @@ const KingBread = ({ navigation }) => {
                             <View style={{ flexDirection: 'row' }}>
 
                                 <TouchableOpacity
-                                    onPress={() => dispatch({ type: 'FILTERCOMBO' })}
+                                    onPress={() =>filtercombo() }
                                     style={getstyle('COMBO')}
                                 >
                                     <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Combo</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity
-                                    onPress={() => dispatch({ type: 'FILTERBANHMI' })}
+                                    onPress={() =>filterbanhmi() }
                                     style={getstyle('BANHMI')}
                                 >
                                     <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Bánh Mì</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    onPress={() => dispatch({ type: 'FILTERNUOC' })}
+                                    onPress={() =>filternuoc() }
                                     style={getstyle('NUOC')}>
                                     <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Đồ Uống</Text>
                                 </TouchableOpacity>
                             </View>
+                            {/* <TouchableOpacity style={{width:20,height:30,backgroundColor:'white'}}
+                                onPress={()=>truonganhvinh()}
+                            >
+
+                            </TouchableOpacity> */}
                             {DataProduct && DataProduct.map((item) => <ListProduct key={item.id.toString()} myListProduct={item} />)}
                         </View>
                     </View>

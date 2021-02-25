@@ -70,12 +70,15 @@ const initState = {
     choosevoucher: true,
     province: false,
     ShowpaymentCGV: false,
-    filterStatus: 'COMBO',
+    filterStatus: '',
     checkKingBread: true,
-    kingbread: false
+    kingbread: false,
+    confirm : false,
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'COMFIRM':
+            return{...state,confirm: true}
         case 'SUMGIOHANG':
             const sumarr = [...state.arrPromotion]
             sumarr.map((e) => {
@@ -235,6 +238,8 @@ const reducer = (state = initState, action) => {
             }
         case 'MODALPROVINCE':
             return { ...state, province: !state.province }
+        case 'CONFIRMVOUCHER' :
+            return{...state, conmfirmvoucher: true }
         case 'CHOOSEVOUCHER':
             return { ...state, choosevoucher: false }
         case 'CHOOSEVOUCHERTRUE':
