@@ -66,23 +66,25 @@ const initState = {
     priceCGV: 0,
     price: 88,
     value: 0,
-    diem : 1000,
+    diem: 1000,
     choosevoucher: true,
     province: false,
     ShowpaymentCGV: false,
     filterStatus: '',
     checkKingBread: true,
     kingbread: false,
-    confirm : false,
+    confirm: false,
+    bills: [],
+    billsCGV: []
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
         case 'COMFIRM':
-            return{...state,confirm: true}
+            return { ...state, confirm: true }
         case 'SUMGIOHANG':
             const sumarr = [...state.arrPromotion]
             sumarr.map((e) => {
-                if (e.id == 1)  e.dieukien = true    
+                if (e.id == 1) e.dieukien = true
                 else e.dieukien = false
             })
             return {
@@ -195,6 +197,16 @@ const reducer = (state = initState, action) => {
                 }
             })
             return { ...state, productnuoc: newState1 }
+        case 'ADDBILL':
+            let newBills = [...state.bills]
+            newBills.push({ id: action.id, sum: action.sum })
+            return { ...state, bills: newBills }
+        case 'ADDBILLCGV':
+            let newBillsCGV = [...state.billsCGV]
+            newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV })
+            return { ...state, billsCGV: newBillsCGV }
+        case 'FILTERSTATUS':
+            return { ...state, filterStatus: "" }
         case 'FILTERCOMBO':
             return { ...state, filterStatus: "COMBO" }
         case 'FILTERNUOC':
@@ -238,8 +250,8 @@ const reducer = (state = initState, action) => {
             }
         case 'MODALPROVINCE':
             return { ...state, province: !state.province }
-        case 'CONFIRMVOUCHER' :
-            return{...state, conmfirmvoucher: true }
+        case 'CONFIRMVOUCHER':
+            return { ...state, conmfirmvoucher: true }
         case 'CHOOSEVOUCHER':
             return { ...state, choosevoucher: false }
         case 'CHOOSEVOUCHERTRUE':
@@ -304,7 +316,7 @@ const reducer = (state = initState, action) => {
         case 'IDLOAI':
             return { ...state, id: action.id }
         case 'UPDIEM':
-            return { ...state, diem: action.diem}
+            return { ...state, diem: action.diem }
         default:
             return state
     }

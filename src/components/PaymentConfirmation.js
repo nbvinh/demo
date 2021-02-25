@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import { useState } from 'react/cjs/react.development';
 import AppStyle from "../theme";
 import { useSelector, useDispatch } from "react-redux";
 import ListBank from "../components/Phuongthucthanhtoan/ListBank";
-
+import { AsyncStorage } from 'AsyncStorage';
 const PaymentConfirmation = ({ navigation }) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.data)
@@ -21,10 +20,36 @@ const PaymentConfirmation = ({ navigation }) => {
     const DataProduct = useSelector(state => state.DataProduct)
     const sum = useSelector(state => state.sum)
     const kingbread = useSelector(state => state.kingbread)
-    const ConfirmHistory=()=>{
-        dispatch({type:'COMFIRM'})
+    const ConfirmHistory = () => {
+        dispatch({ type: 'COMFIRM' })
         navigation.navigate('Tabviewmain')
+        dispatch({ type: 'FILTERSTATUS' })
+        kingbread ? submithanler() : submithanlerCGV()
     }
+    const bills = useSelector(state => state.bills)
+    const [todo, setTodo] = useState([])
+    const submithanler = () => {
+        setTodo((prevtodo) => {
+            let newTodo = [...prevtodo]
+            dispatch({ type: 'ADDBILL', id: Math.random().toString(), sum: sum })
+            return newTodo
+        })
+    }
+    useEffect(() => {
+        console.log(bills)
+    }, [bills])
+    const billsCGV = useSelector(state => state.billsCGV)
+    const [todoCGV, setTodoCGV] = useState([])
+    const submithanlerCGV = () => {
+        setTodoCGV((prevtodoCGV) => {
+            let newTodoCGV = [...prevtodoCGV]
+            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV })
+            return newTodoCGV
+        })
+    }
+    useEffect(() => {
+        console.log(billsCGV)
+    }, [billsCGV])
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -159,13 +184,14 @@ const PaymentConfirmation = ({ navigation }) => {
 
                 <TouchableOpacity
                     style={{ margin: 10, marginTop: 30 }}
-                    onPress={()=>ConfirmHistory()}
+                    onPress={() => ConfirmHistory()}
                 >
                     <Image
                         style={{ width: '100%', height: 48 }}
                         source={require('../img/vinh28.png')}
                     />
                 </TouchableOpacity>
+                {/* {console.log('aaa',todo)} */}
             </View>
         </View>
     )

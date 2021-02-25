@@ -34,13 +34,12 @@ const KingBread = ({ navigation }) => {
     const temp1 = useSelector(state => state.temp1)
     const categoriesbanhmi = useSelector(state => state.categoriesbanhmi)
     const getstyle = (statusname) => {
-        const filterStatus = useSelector(state => state.filterStatus)
         if (statusname == filterStatus) return [AppStyle.StyleKingBread.touchable1, { backgroundColor: '#B738FF' }]
         return [AppStyle.StyleKingBread.touchable1, { backgroundColor: 'rgba(39,39,56,0.75)' }]
     }
     const productcombo = useSelector(state => state.productcombo)
+    const filterStatus = useSelector(state => state.filterStatus)
     const getListProduct = () => {
-        const filterStatus = useSelector(state => state.filterStatus)
         const productcombo = useSelector(state => state.productcombo)
         const productbanhmi = useSelector(state => state.productbanhmi)
         const productnuoc = useSelector(state => state.productnuoc)
@@ -58,27 +57,31 @@ const KingBread = ({ navigation }) => {
         return (accc + currr.amount)
     }, 0)
     const checkKingBread = useSelector(state => state.checkKingBread)
-    const kingbread = useSelector(state=> state.kingbread)
-    const GOback=()=>{
-        navigation.navigate('Main')
-        dispatch({type:'KINGBREADFALSE'})
+    const kingbread = useSelector(state => state.kingbread)
+    const GOback = () => {
+        navigation.goBack()
+        dispatch({ type: 'KINGBREADFALSE' })
+        dispatch({ type: 'FILTERSTATUS'})
     }
-    const filterbanhmi =()=>{
+    const filterbanhmi = () => {
         dispatch({ type: 'FILTERBANHMI' })
         dispatch({ type: 'CHECKBANHMI' })
     }
-    const filternuoc =()=>{
+    const filternuoc = () => {
         dispatch({ type: 'FILTERNUOC' })
         dispatch({ type: 'CHECKNUOC' })
     }
-    const filtercombo =()=>{
+    const filtercombo = () => {
         dispatch({ type: 'FILTERCOMBO' })
         dispatch({ type: 'CHECKCOMBO' })
+    }
+    const buynow =()=>{
+        navigation.navigate('GioHang')
     }
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() =>GOback() } >
+                <TouchableOpacity onPress={() => GOback()} >
                     <Image
                         width={10} height={18}
                         source={require('../img/back.png')}
@@ -149,20 +152,20 @@ const KingBread = ({ navigation }) => {
                             <View style={{ flexDirection: 'row' }}>
 
                                 <TouchableOpacity
-                                    onPress={() =>filtercombo() }
+                                    onPress={() => filtercombo()}
                                     style={getstyle('COMBO')}
                                 >
                                     <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Combo</Text>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity
-                                    onPress={() =>filterbanhmi() }
+                                    onPress={() => filterbanhmi()}
                                     style={getstyle('BANHMI')}
                                 >
                                     <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Bánh Mì</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
-                                    onPress={() =>filternuoc() }
+                                    onPress={() => filternuoc()}
                                     style={getstyle('NUOC')}>
                                     <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Đồ Uống</Text>
                                 </TouchableOpacity>
@@ -197,7 +200,7 @@ const KingBread = ({ navigation }) => {
                         <Text style={AppStyle.StyleVoucherCGV.text10}>{sumamount}</Text>
                     }
                 </View>
-                <TouchableOpacity onPress={() => navigation.navigate('GioHang',{sum:sum})}>
+                <TouchableOpacity onPress={() =>buynow() }>
                     <Image
                         style={AppStyle.StyleVoucherCGV.img4}
                         source={require('../img/vinh0.png')}
