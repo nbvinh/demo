@@ -4,7 +4,6 @@ import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import { useSelector, useDispatch } from "react-redux";
 import ListBank from "../components/Phuongthucthanhtoan/ListBank";
-import { AsyncStorage } from 'AsyncStorage';
 const PaymentConfirmation = ({ navigation }) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.data)
@@ -87,7 +86,7 @@ const PaymentConfirmation = ({ navigation }) => {
                                                     :
                                                     arrPromotion.map((item, index) => (
                                                         item.isChoose ? item.dieukien ?
-                                                        //nếu chọn voucher
+                                                            //nếu chọn voucher
                                                             <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text4}>- {item.Promotion}.000 đ</Text>
                                                             : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text4}>- 0 đ</Text> : null
                                                     ))}
