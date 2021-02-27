@@ -4,7 +4,10 @@ import { ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import AppStyle from "../../theme";
 import Modal from 'react-native-modal';
-const DoiAvatar = ({navigation}) =>{
+import { useDispatch,useSelector } from "react-redux";
+// import { CameraScreen } from 'react-native-camera-kit';
+import ImagePicker from 'react-native-image-crop-picker';
+const DoiAvatar = ({ navigation }) => {
     const [isModalVisible, setModalVisible] = React.useState(false);
 
     const toggleModal = () => {
