@@ -58,6 +58,7 @@ const Main = ({ navigation }) => {
         dispatch({ type: 'CHECKKINGBREAD' })
         navigation.navigate('KingBread')
     }
+    const image = useSelector(state => state.image)
     return (
 
         <ScrollView style={AppStyle.StyleMain.container}>
@@ -69,7 +70,7 @@ const Main = ({ navigation }) => {
                         <Image
                             style={{ width: 40, height: 40, borderRadius: 50 }}
                             source={{
-                                uri: 'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg',
+                                uri: image,
                             }}
                         />
                     </TouchableOpacity>
