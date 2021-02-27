@@ -25,6 +25,8 @@ import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
 import { NavigationContainer } from '@react-navigation/native';
 import PaymentConfirmation from "../../components/PaymentConfirmation";
 import KingBread from "../../components/KingBread";
+import Giao_Dich_Chua_Thanh_Toan from "../../components/Giao_Dich_Chua_Thanh_Toan";
+import Giao_Dich_Thanh_Cong from "../../components/Giao_Dich_Thanh_Cong";
 const Root= createStackNavigator();
 const RootStack =()=>{
     return(
@@ -53,6 +55,8 @@ const RootStack =()=>{
             <Root.Screen name="PhuongThucThanhToan" component={PhuongThucThanhToan} />
             <Root.Screen name="PaymentConfirmation" component={PaymentConfirmation} />
             <Root.Screen name="KingBread" component={KingBread} />
+            <Root.Screen name="Giao_Dich_Chua_Thanh_Toan" component={Giao_Dich_Chua_Thanh_Toan} />
+            <Root.Screen name="Giao_Dich_Thanh_Cong" component={Giao_Dich_Thanh_Cong} />
         </Root.Navigator>
         </NavigationContainer>
     )

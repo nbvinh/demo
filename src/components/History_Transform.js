@@ -1,17 +1,23 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View, Text, Image, Alert, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import AppStyle from "../theme";
 import { Calendar } from 'react-native-calendars'; // 1.5.3
 import { useDispatch, useSelector } from "react-redux";
+import CalendarPicker from 'react-native-calendar-picker';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 const History_Transform = ({ navigation }) => {
 
     const [isShowCalendar, setIsShowCalendar] = useState(false);
-
+    const [selectedDate, setSelectedDate] = useState();
     const _onPress = () => {
         setIsShowCalendar(true)
         console.log('da kick');
     }
+    const onDatechange = (date) => {
+        setSelectedDate(date)
+    }
+    const startDate = selectedDate ? selectedDate.toString() : '';
     const confirm = useSelector(state => state.confirm)
     const choosevoucher = useSelector(state => state.choosevoucher)
     const arrPromotion = useSelector(state => state.arrPromotion)
@@ -20,6 +26,27 @@ const History_Transform = ({ navigation }) => {
     const sum = useSelector(state => state.sum)
     const bills = useSelector(state => state.bills)
     const billsCGV = useSelector(state => state.billsCGV)
+    // const storeData = async () => {
+    //     try {
+    //         await AsyncStorage.setItem('@storage_Key', JSON.stringify(bills))
+    //         console.log("Save ok")
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
+    // const [test,setTest]= useState()
+    // const getData = async () => {
+    //     try {
+    //         const jsonValue = await AsyncStorage.getItem('@storage_Key')
+    //         setTest(jsonValue)
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
+    // useEffect(()=>{
+    //     getData()
+    // })
+    // console.log(test)
     return (
         <View style={{ flex: 1 }}>
             <Modal
@@ -30,15 +57,16 @@ const History_Transform = ({ navigation }) => {
                     Alert.alert('Modal has been closed.');
                 }}>
                 <View style={{
-                    flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', alignItem: 'center',
+                    flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', alignItem: 'center',
                     justifyContent: 'center', marginHorizontal: 10,
                     marginTop: 22
                 }}>
-                    <View>
-                        <Calendar
-                            theme={{
-                                textSectionTitleDisabledColor: '#d9e1e8'
-                            }}
+                    <View style={{ backgroundColor: '#FFFFFF' }}>
+                        <CalendarPicker
+                            onDateChange={onDatechange}
+                            format="YYYY-MM-DD"
+                            todayBackgroundColor="red" selectedDayColor="#7300e6"
+                            selectedDayTextColor="#FFFFFF"
                         />
 
 
@@ -81,7 +109,7 @@ const History_Transform = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
                 <View style={AppStyle.Style_History_Tranform.calendar}>
-                    <Text style={AppStyle.Style_History_Tranform.text}>Tháng 11/2020</Text>
+                    <Text style={AppStyle.Style_History_Tranform.text}>SELECTED DATE:{startDate}</Text>
                 </View>
                 <ScrollView style={AppStyle.Style_History_Tranform.content}>
                     {confirm ?
@@ -146,8 +174,10 @@ const History_Transform = ({ navigation }) => {
                         :
                         null
                     }
-                </ScrollView>
 
+                </ScrollView>
+                {/* <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'red' }} onPress={() => storeData()}></TouchableOpacity>
+                <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'yellow' }} onPress={() => getData ()}></TouchableOpacity> */}
 
             </View>
         </View>

@@ -75,10 +75,13 @@ const initState = {
     kingbread: false,
     confirm: false,
     bills: [],
-    billsCGV: []
+    billsCGV: [],
+    image :'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg'
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'IMAGES' :
+            return{...state,image: action.image}
         case 'COMFIRM':
             return { ...state, confirm: true }
         case 'SUMGIOHANG':
