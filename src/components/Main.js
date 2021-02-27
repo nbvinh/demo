@@ -69,7 +69,7 @@ const Main = ({ navigation }) => {
                         <Image
                             style={{ width: 40, height: 40, borderRadius: 50 }}
                             source={{
-                                uri: 'https://scontent.fhan2-5.fna.fbcdn.net/v/t1.0-9/149827309_2185987718215959_615074836695332874_o.jpg?_nc_cat=107&ccb=3&_nc_sid=09cbfe&_nc_ohc=m6k_81KFp-YAX9E8TVa&_nc_ht=scontent.fhan2-5.fna&oh=4c576ca5b9049d60b03b68737415e725&oe=6051E0A1',
+                                uri: 'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg',
                             }}
                         />
                     </TouchableOpacity>
