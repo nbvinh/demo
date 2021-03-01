@@ -23,7 +23,9 @@ const StyleGiaoDich = StyleSheet.create({
         marginTop: 16
     },
     Box_Left:{
-        flex: 2.5
+        flex: 2.5,
+        justifyContent:'center',
+        alignItems:'center'
     },
     Box_Right:{
         flex: 7.5,

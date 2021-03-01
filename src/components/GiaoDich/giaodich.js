@@ -17,7 +17,10 @@ const GiaoDich = ({navigation}) =>{
             </View>
             <TouchableOpacity style={AppStyle.StyleGiaoDich.Box} onPress={() => navigation.navigate('DoiDiem')}>
                 <View style={AppStyle.StyleGiaoDich.Box_Left}>
-
+                    <Image
+                            style={{width: '70%', height: '100%'}}
+                            source={require('../../img/333.png')}
+                        />
                 </View>
                 <View style={AppStyle.StyleGiaoDich.Box_Right}>
                     <Text style={AppStyle.StyleGiaoDich.Box_Right_TieuDe}>Đổi điểm</Text>
@@ -26,7 +29,10 @@ const GiaoDich = ({navigation}) =>{
             </TouchableOpacity>
             <TouchableOpacity style={AppStyle.StyleGiaoDich.Box}  onPress={() => navigation.navigate('MuaDiem')}>
                 <View style={AppStyle.StyleGiaoDich.Box_Left}>
-                    
+                    <Image
+                                style={{width: '70%', height: '100%'}}
+                                source={require('../../img/444.png')}
+                            />
                 </View>
                 <View style={AppStyle.StyleGiaoDich.Box_Right}>
                     <Text style={AppStyle.StyleGiaoDich.Box_Right_TieuDe}>Mua điểm</Text>
@@ -36,7 +42,10 @@ hoặc cửa hàng tiện lợi.</Text>
             </TouchableOpacity>
             <TouchableOpacity style={AppStyle.StyleGiaoDich.Box} onPress={() => navigation.navigate('NapDiem')}>
                 <View style={AppStyle.StyleGiaoDich.Box_Left}>
-                    
+                    <Image
+                                style={{width: '70%', height: '100%'}}
+                                source={require('../../img/555.png')}
+                            />
                 </View>
                 <View style={AppStyle.StyleGiaoDich.Box_Right}>
                     <Text style={AppStyle.StyleGiaoDich.Box_Right_TieuDe}>Nạp điểm</Text>
