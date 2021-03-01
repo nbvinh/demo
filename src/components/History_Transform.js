@@ -1,5 +1,5 @@
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, Alert, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import AppStyle from "../theme";
 import { Calendar } from 'react-native-calendars'; // 1.5.3
@@ -26,6 +26,7 @@ const History_Transform = ({ navigation }) => {
     const sum = useSelector(state => state.sum)
     const bills = useSelector(state => state.bills)
     const billsCGV = useSelector(state => state.billsCGV)
+    console.log('bill', bills)
     // const storeData = async () => {
     //     try {
     //         await AsyncStorage.setItem('@storage_Key', JSON.stringify(bills))
@@ -116,7 +117,9 @@ const History_Transform = ({ navigation }) => {
                         <View>
                             {bills.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
+                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Thanh_Cong',
+                                        { id: item.id }
+                                    )} >
                                         <View style={AppStyle.Style_History_Tranform.item}>
                                             <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                                             <View style={AppStyle.Style_History_Tranform.cost}>
@@ -144,26 +147,24 @@ const History_Transform = ({ navigation }) => {
                             })}
                             {billsCGV.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
+                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Thanh_Cong',
+                                        { id: item.id }
+                                    )} >
                                         <View style={AppStyle.Style_History_Tranform.item}>
                                             <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                                             <View style={AppStyle.Style_History_Tranform.cost}>
                                                 <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.priceCGV}.000 đ</Text>
                                                 <Text></Text>
-
                                                 <Image
                                                     style={AppStyle.Style_History_Tranform.Image_right}
                                                     source={require('../img/chevron_right.png')}
                                                 />
-
                                             </View>
                                             <View style={AppStyle.Style_History_Tranform.bottom}>
-
                                                 <Image
                                                     style={AppStyle.Style_History_Tranform.ImageStatus}
                                                     source={require('../img/thanhcong.png')}
                                                 />
-
                                                 <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
                                             </View>
                                         </View>

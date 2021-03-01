@@ -55,7 +55,7 @@ const Style_Giao_Dich_TCong = StyleSheet.create({
         flex: 5,
         justifyContent: 'flex-end',
         color: '#FFFFFF',
-        fontSize: 15, textAlign: 'right'
+        fontSize: 11, textAlign: 'right'
     },
     detail: {
         backgroundColor: '#272738',

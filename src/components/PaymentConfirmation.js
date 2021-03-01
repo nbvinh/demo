@@ -18,6 +18,7 @@ const PaymentConfirmation = ({ navigation }) => {
     const choosevoucher = useSelector(state => state.choosevoucher)
     const DataProduct = useSelector(state => state.DataProduct)
     const sum = useSelector(state => state.sum)
+    const sumamount = useSelector(state => state.sumamount)
     const kingbread = useSelector(state => state.kingbread)
     const ConfirmHistory = () => {
         dispatch({ type: 'COMFIRM' })
@@ -30,7 +31,7 @@ const PaymentConfirmation = ({ navigation }) => {
     const submithanler = () => {
         setTodo((prevtodo) => {
             let newTodo = [...prevtodo]
-            dispatch({ type: 'ADDBILL', id: Math.random().toString(), sum: sum })
+            dispatch({ type: 'ADDBILL', id: Math.random().toString(), sum: sum,sumamount:sumamount })
             return newTodo
         })
     }
@@ -42,7 +43,7 @@ const PaymentConfirmation = ({ navigation }) => {
     const submithanlerCGV = () => {
         setTodoCGV((prevtodoCGV) => {
             let newTodoCGV = [...prevtodoCGV]
-            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV })
+            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV,value:value })
             return newTodoCGV
         })
     }
