@@ -4,14 +4,14 @@ import { ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import AppStyle from "../../theme";
 import Modal from 'react-native-modal';
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { CameraScreen } from 'react-native-camera-kit';
 import ImagePicker from 'react-native-image-crop-picker';
 const DoiAvatar = ({ navigation }) => {
     const [isModalVisible, setModalVisible] = React.useState(false);
 
     const toggleModal = () => {
-        setModalVisible(!isModalVisible);
+        setModalVisible(true);
     };
     const image = useSelector(state => state.image)
     const dispatch = useDispatch()
@@ -22,8 +22,17 @@ const DoiAvatar = ({ navigation }) => {
             cropping: true
         }).then(image => {
             console.log(image);
-            dispatch({type:'IMAGES',image:image.path})
+            dispatch({ type: 'IMAGES', image: image.path })
         });
+    }
+    const gotoPickImagesCamera = () => {
+        ImagePicker.openCamera({
+            width: 300,
+            height: 400,
+            cropping: true,
+          }).then(image => {
+            console.log(image);
+          });
     }
     return (
         <View style={AppStyle.StyleGiaoDich.container}>
@@ -43,23 +52,27 @@ const DoiAvatar = ({ navigation }) => {
                         uri: image,
                     }}
                 />
-                <TouchableOpacity style={{ position: 'absolute' }} onPress={() => gotoPickImages()}>
+                <TouchableOpacity style={{ position: 'absolute' }} onPress={() => toggleModal()}>
                     <Image
                         width={18} height={16}
                         source={require('../../img/img_icon_24px/Iconly-Light-Camera.png')}
                     />
                 </TouchableOpacity>
             </View>
-            {/* <Modal isVisible={isModalVisible} style={{justifyContent:'center', alignItems:'center'}}>
-                <View style={{height: 100, width: '60%',borderRadius: 8, justifyContent: 'space-around', backgroundColor: 'rgba(255, 255, 255, 0.3)', paddingHorizontal: 10}}>
-                   <TouchableOpacity>
-                       <Text  style={{color: '#ffffff', fontSize: 16}}>Chụp ảnh</Text>
-                   </TouchableOpacity>
-                   <TouchableOpacity>
-                       <Text  style={{color: '#ffffff', fontSize: 16}}>Chọn từ ảnh của bạn</Text>
-                   </TouchableOpacity>
+            <Modal isVisible={isModalVisible}>
+                <View style={{ flex: 1 }}>
+                    <TouchableOpacity style={{ height: '40%' }} onPress={() => setModalVisible(!isModalVisible)} />
+                    <View style={{ height: "20%", borderRadius: 8, justifyContent: 'space-around', backgroundColor: 'black', paddingHorizontal: 10 }}>
+                        <TouchableOpacity onPress={() => gotoPickImagesCamera()}>
+                            <Text style={{ color: '#ffffff', fontSize: 16 }}>Chụp ảnh</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => gotoPickImages()}>
+                            <Text style={{ color: '#ffffff', fontSize: 16 }}>Chọn từ ảnh của bạn</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <TouchableOpacity style={{ height: '40%' }} onPress={() => setModalVisible(!isModalVisible)}></TouchableOpacity>
                 </View>
-            </Modal> */}
+            </Modal>
             <View style={styles.body}>
                 <View style={styles.block}>
                     <Text style={styles.title}>Họ và Tên <Text style={{ color: 'red' }}>*</Text></Text>
