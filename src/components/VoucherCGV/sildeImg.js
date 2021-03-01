@@ -10,11 +10,11 @@ import AppStyle from "../../theme";
 //     '../../img/vinh13.png'
 // ]
 const images = [
-    'https://khoahocphattrien.vn/Images/Uploaded/Share/2019/03/13/dGhpZW5uaGllbg.jpg',
-    'https://baoquocte.vn/stores/news_dataimages/khanhchi/062017/06/07/074726_World-Environment-Day-1.jpg',
-    'https://bizweb.dktcdn.net/thumb/grande/100/119/128/files/tranhphongcanh-35.jpg?v=1484234572430',
-    'https://thegioitranhsondau.com/upload/sanpham/large/tranh-ve-ngoi-nha-voi-khung-canh-thien-nhien-mua-xuan.jpg',
-    // 'https://i.pinimg.com/originals/a8/45/76/a84576a04c1874304735604d9f47d5a4.jpg'
+    'https://www.brandsvietnam.com/upload/news/480px/2018/15391_CGV.jpg',
+    'https://i.vietgiaitri.com/2020/5/10/cgv-mo-lai-cac-cum-rap-e22-4920532.jpg',
+    'https://cdn.vietnambiz.vn/2020/2/14/ticketview-15816704441281296608294.jpg',
+    'https://bmtcogi.com/wp-content/uploads/2019/10/cgv-bmttong-hop-rap-chieu-phim-hang-dau-tai-buon-ma-thuot-ma-ban-nen-xem-bmtcogi.com-1.jpg',
+    'https://media.ex-cdn.com/EXP/media.taichinhdoanhnghiep.net.vn/files/thanhtan/2020/03/20/a-2116.jpg'
 ]
 
 const SlideImg = () => {
@@ -23,10 +23,10 @@ const SlideImg = () => {
         <View style={AppStyle.StyleVoucherCGV.silde}>
             <View style={AppStyle.StyleVoucherCGV.silde1}>
                 <ScrollView
-                    pagingEnabled
+                    pagingEnabled ={true}
                     horizontal
                     showsHorizontalScrollIndicator={false}
-                    style={{width:128, height:70}}
+                    // style={{width:'100%', height:70}}
                 >
                     {images.map((item, index) => (
                         <Image

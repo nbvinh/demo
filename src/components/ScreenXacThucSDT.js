@@ -7,6 +7,7 @@ import ReactCodeInput from 'react-verification-code-input';
 import { TextInput } from 'react-native-gesture-handler';
 import { set, Value } from 'react-native-reanimated';
 import { confirm_otp } from "./api";
+import { useDispatch } from "react-redux";
 const ScreenXacThucSDT = ({ navigation, route }) => {
     const [MaPin1, setMaPin1] = React.useState('');
     const [MaPin2, setMaPin2] = React.useState('');
@@ -14,6 +15,7 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const [MaPin4, setMaPin4] = React.useState('');
     const [MaPin5, setMaPin5] = React.useState('');
     const [MaPin6, setMaPin6] = React.useState('');
+    const dispatch = useDispatch()
     const SDT = route.params.data.phone;
     //const data = route.params.data2;
     const [TimeDown, setTimeDown] = React.useState(59);
@@ -39,8 +41,8 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
             // .then((response) =>console.log( response.data.data.access_token))
             //     .then((json) => { console.log(json) })
             let abc = result.data.data.access_token;
-            Alert.alert('Thông báo', 'Bạn đã nhập thành công');
-            navigation.navigate('Profile', { SDT: SDT, abc : abc});
+            dispatch({type:'TOCKEN',abc:abc})
+            navigation.navigate('Profile', { SDT: SDT});
             
         } catch (error) {
             Alert.alert('Thông báo', error + '');

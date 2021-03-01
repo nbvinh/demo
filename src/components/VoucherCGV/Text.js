@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import AppStyle from "../../theme";
-
 const TextFooter = () => {
     return (
         <View style={AppStyle.StyleVoucherCGV.address}>
@@ -14,7 +13,6 @@ const TextFooter = () => {
                 <Text style={AppStyle.StyleVoucherCGV.text8}>- Voucher đổi vé xem phim không áp dụng đồng thời với các chương trình khuyến mại khác tại rạp.</Text>
                 <Text style={AppStyle.StyleVoucherCGV.text8}>- Thời hạn sử dụng: đến hết ngày 25/12/2020.</Text>
                 <Text style={AppStyle.StyleVoucherCGV.text8}>- Nổi bật: áp dụng các ngày Lễ, Tết.</Text>
-
             </View>
         </View>
     )

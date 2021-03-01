@@ -17,12 +17,12 @@ const StyleMain = StyleSheet.create({
         flexDirection:'row'
     },
     header_left:{
-        flex: 1,
+        flex: 8,
         alignItems:'center',
         flexDirection:'row'
     },
     header_right:{
-        flex: 1,
+        flex: 2,
         alignItems:'flex-end',
         justifyContent:'center'
     },
@@ -34,12 +34,12 @@ const StyleMain = StyleSheet.create({
     },
     search:{
         flex: 1,
-        marginTop: 8,
+        marginTop: 4,
         height: 50,
         flexDirection: 'row'
     },
     search_left:{
-        flex: 7.5,
+        flex: 7.2,
         backgroundColor:'#272738',
         borderRadius: 8,
         justifyContent:'space-around',
@@ -47,15 +47,15 @@ const StyleMain = StyleSheet.create({
         flexDirection:'row'
     },
     search_right:{
-        flex: 2.5,
+        flex: 2.8,
         alignItems:'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     poin_your:{
         flex: 1.7,
         marginTop: 8,
         backgroundColor: 'blue',
-        height: 85,
+        height: 75,
         backgroundColor:'#272738',
         borderRadius: 8,
         flexDirection:'row',
@@ -76,22 +76,20 @@ const StyleMain = StyleSheet.create({
         flex: 2,
         marginTop: 8,
         backgroundColor: "#272738",
-        height: 168,
+        height: 150,
         borderTopStartRadius: 8,
         borderTopEndRadius: 8,
         padding: 12,
-        justifyContent:'space-around'
-    },
-    option_top:{
-        flexDirection: 'row'
-    },
-    option_bottom:{
-        flexDirection: 'row'
+        justifyContent:'flex-start',
+        flexDirection:'row',
+        flexWrap:'wrap'
+
     },
     option_item:{
         width: '25%',
         justifyContent:'center',
         alignItems:'center',
+        marginBottom: 18
     },
     option_itemtext:{
         color:'white',
@@ -134,10 +132,11 @@ const StyleMain = StyleSheet.create({
     DichVu_Bottom_Top:{
         flex: 1,
         // borderStyle : 'dashed',
-        borderStyle : 'dashed',
+        
         flexDirection:'row',
         borderBottomColor: 'rgba(0, 0, 0, 0.5)',
-        borderBottomWidth: 0.5,
+        borderBottomWidth: 0.3,
+        borderStyle : 'dashed',
         marginTop: 10
     },
     DichVu_Bottom_Top_TextTieuDe:{

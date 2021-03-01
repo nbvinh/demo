@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { useState } from 'react/cjs/react.development';
@@ -9,9 +9,19 @@ import ListBank from "../components/Phuongthucthanhtoan/ListBank";
 const PaymentMethods = ({ navigation }) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.data)
-    const isChecked = useSelector(state => state.isChecked)
     const isShow = useSelector(state => state.isShow)
-    const checkpoint = useSelector(state => state.checkpoint)
+    const tongdiem = useSelector(state => state.tongdiem)
+    const lienket = useSelector(state => state.lienket)
+    const arrPromotion = useSelector(state => state.arrPromotion)
+    const priceCGV = useSelector(state => state.priceCGV)
+    const choosevoucher = useSelector(state => state.choosevoucher)
+    const result = useSelector(state => state.abc)
+    const onLienket = () => {
+        dispatch({ type: 'LIENKET' })
+    }
+    const DataProduct = useSelector(state => state.DataProduct)
+    const sum = useSelector(state => state.sum)
+    const kingbread = useSelector(state => state.kingbread)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -26,13 +36,33 @@ const PaymentMethods = ({ navigation }) => {
             <View style={{ flex: 9 }}>
                 <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
                     <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tài khoản đã liên kết</Text>
-                    <View style={AppStyle.StylePhuongthucthanhtoan.content2}>
-                        <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable}>
-                            <Image
-                                style={AppStyle.StylePhuongthucthanhtoan.img1}
-                                source={require('../img/vinh22.png')}
-                            />
-                            <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Thêm liên kết</Text>
+                    {lienket ?
+                        <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
+                            <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable}>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Image
+                                        style={AppStyle.StylePhuongthucthanhtoan.img1}
+                                        source={require('../img/vinh27.png')}
+                                    />
+                                    <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Master Card</Text>
+                                </View>
+                                <Image
+                                    style={AppStyle.StylePhuongthucthanhtoan.img2}
+                                    source={require('../img/vinh5.png')}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        : null
+                    }
+                    <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
+                        <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable} onPress={() => onLienket()}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Image
+                                    style={AppStyle.StylePhuongthucthanhtoan.img1}
+                                    source={require('../img/vinh22.png')}
+                                />
+                                <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Thêm liên kết</Text>
+                            </View>
                             <Image
                                 style={AppStyle.StylePhuongthucthanhtoan.img2}
                                 source={require('../img/vinh5.png')}
@@ -45,22 +75,49 @@ const PaymentMethods = ({ navigation }) => {
                         renderItem={({ item }) => <ListBank myData={item} />}
                         keyExtractor={item => item?.id?.toString()}
                     />
-                    {checkpoint ? null
+                    {lienket ? null
                         :
-                        <View style={{position:'absolute', top:145, left:83}}>
-                            <Text style={{ color: 'red' }}>Điểm của bạn không đủ thực hiện giao dịch</Text>
+                        <View style={{ position: 'absolute', top: 145, left: 83 }}>
+                            <Text style={{ color: 'red'}}>Điểm của bạn không đủ giao dịch</Text>
                             <Text style={{ color: 'red' }}>Số dư hiện tại: 15 điểm</Text>
                         </View>
                     }
                 </View>
             </View>
             <View style={{ flex: 3, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
-                <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
-                    <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
-                    <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>400.000 đ</Text>
-                </View>
+                {kingbread ?
+                    <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
+                        {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{sum}.000 đ</Text>
+                            :
+                            arrPromotion.map((item, index) => (
+                                item.isChoose ? item.dieukien ?
+                                    <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{sum - item.Promotion}.000 đ</Text>
+                                    : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{sum}.000 đ</Text> : null
+                            ))}
+                    </View>
+                    :
+                    <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
+                        {choosevoucher ? <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV}.000 đ</Text>
+                            :
+                            arrPromotion.map((item, index) => (
+                                item.isChoose ? item.dieukien ?
+                                    <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV - item.Promotion}.000 đ</Text>
+                                    : <Text key={index.toString()} style={AppStyle.StylePhuongthucthanhtoan.text1}>{priceCGV}.000 đ</Text> : null
+                            ))}
+                    </View>
+                }
+                {data[0].tongdiem ?
+                    <View style={{ marginHorizontal: 10, marginTop: 10, justifyContent: 'space-between', flexDirection: 'row' }}>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Điểm thanh toán</Text>
+                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>- điểm</Text>
+                    </View>
+                    :
+                    null
+                }
                 {isShow ?
-                    <TouchableOpacity style={{ margin: 10, marginTop: 30 }}>
+                    <TouchableOpacity style={{ margin: 10, marginTop: 30 }} onPress={() => navigation.navigate('PaymentConfirmation')} >
                         <Image
                             style={{ width: '100%', height: 48 }}
                             source={require('../img/vinh26.png')}

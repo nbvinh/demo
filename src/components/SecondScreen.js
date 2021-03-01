@@ -28,8 +28,6 @@ const SecondScreen = ({ navigation}) => {
             const result = await send_otp({
                 "phone_number": data.phone ,  
             })
-            // console.log("token là :"+ result.data.data.token);
-              Alert.alert('Thông báo', 'Bạn đã nhập SDT thành công');
               navigation.navigate('ScreenXacThucSDT', {data: data, token : result.data.data.token});
           } catch (error) {
               Alert.alert('Thông báo', error + '');

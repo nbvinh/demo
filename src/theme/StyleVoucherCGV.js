@@ -77,6 +77,22 @@ const StyleVoucherCGV = StyleSheet.create({
         marginHorizontal: 10,
         marginTop:10
     },
+    address2:{
+        backgroundColor: "#272738",
+        borderRadius: 8,
+        marginHorizontal: 10,
+        marginTop:20,
+        marginLeft:10,
+        borderWidth:0.5,
+        borderColor:'white'
+    },
+    address3:{
+        backgroundColor: "#272738",
+        borderRadius: 8,
+        marginHorizontal: 10,
+        marginTop:20,
+        marginLeft:10,
+    },
     text5: {
         fontSize: 15,
         lineHeight: 27,
@@ -91,14 +107,15 @@ const StyleVoucherCGV = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 20
+        marginLeft: 20,
+        marginRight:20
     },
     text: {
         color: '#FFFFFF',
-        marginHorizontal: 100,
         fontSize: 17,
-        lineHeight: 22
-
+        lineHeight: 22,
+        textAlign:'center',
+        flex:1
     },
     img1: {
         width: '100%',

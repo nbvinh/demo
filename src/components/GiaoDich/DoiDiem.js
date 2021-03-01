@@ -21,7 +21,7 @@ const DoiDiem = ({navigation}) =>{
                             source={require('../../img/img_icon_24px/partners-claping-hands1.png')}
                         />
                         <Text style={{color:'rgba(255, 255, 255, 0.6)', paddingLeft: 8,flex: 5}}>Chưa có đối tác nào</Text>
-                        <TouchableOpacity style={{flex: 1, flexDirection:'row', alignItems:'center'}}>
+                        <TouchableOpacity style={{flex: 1.5, flexDirection:'row', alignItems:'center'}}>
                             <Text style={{color:'#ffffff', paddingRight: 8}}>Thêm</Text>
                             <Image
                                 width={18} height={18}

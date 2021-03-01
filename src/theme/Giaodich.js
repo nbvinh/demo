@@ -6,8 +6,7 @@ const StyleGiaoDich = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "black",
-        padding: 16,
-        // paddingTop: 30,
+        padding: 8,
     },
     header:{
          marginVertical: 30, height: 30, flexDirection: 'row'
@@ -68,12 +67,13 @@ const StyleGiaoDich = StyleSheet.create({
     },
     PhuongThucThanhToan:{
         height: 100,
-
+        marginBottom: 40
     },
+    Item_ThanhToan:{flexDirection:'row',  alignItems:'center', marginVertical: 10},
     Text_ChonThanhToan:{
-        marginVertical: 10,
         color:'white',
-        fontSize: 15
+        paddingLeft: 10,
+        fontSize: 15,
     }
     
 });

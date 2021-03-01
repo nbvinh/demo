@@ -1,16 +1,52 @@
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View, Text, Image, Alert, TouchableOpacity, ScrollView, Modal } from 'react-native';
 import AppStyle from "../theme";
 import { Calendar } from 'react-native-calendars'; // 1.5.3
-const History_Transform = () => {
+import { useDispatch, useSelector } from "react-redux";
+import CalendarPicker from 'react-native-calendar-picker';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+const History_Transform = ({ navigation }) => {
 
     const [isShowCalendar, setIsShowCalendar] = useState(false);
-
+    const [selectedDate, setSelectedDate] = useState();
     const _onPress = () => {
         setIsShowCalendar(true)
         console.log('da kick');
     }
+    const onDatechange = (date) => {
+        setSelectedDate(date)
+    }
+    const startDate = selectedDate ? selectedDate.toString() : '';
+    const confirm = useSelector(state => state.confirm)
+    const choosevoucher = useSelector(state => state.choosevoucher)
+    const arrPromotion = useSelector(state => state.arrPromotion)
+    const priceCGV = useSelector(state => state.priceCGV)
+    const kingbread = useSelector(state => state.kingbread)
+    const sum = useSelector(state => state.sum)
+    const bills = useSelector(state => state.bills)
+    const billsCGV = useSelector(state => state.billsCGV)
+    // const storeData = async () => {
+    //     try {
+    //         await AsyncStorage.setItem('@storage_Key', JSON.stringify(bills))
+    //         console.log("Save ok")
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
+    // const [test,setTest]= useState()
+    // const getData = async () => {
+    //     try {
+    //         const jsonValue = await AsyncStorage.getItem('@storage_Key')
+    //         setTest(jsonValue)
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
+    // useEffect(()=>{
+    //     getData()
+    // })
+    // console.log(test)
     return (
         <View style={{ flex: 1 }}>
             <Modal
@@ -21,15 +57,16 @@ const History_Transform = () => {
                     Alert.alert('Modal has been closed.');
                 }}>
                 <View style={{
-                    flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', alignItem: 'center',
+                    flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', alignItem: 'center',
                     justifyContent: 'center', marginHorizontal: 10,
                     marginTop: 22
                 }}>
-                    <View>
-                        <Calendar
-                            theme={{
-                                textSectionTitleDisabledColor: '#d9e1e8'
-                            }}
+                    <View style={{ backgroundColor: '#FFFFFF' }}>
+                        <CalendarPicker
+                            onDateChange={onDatechange}
+                            format="YYYY-MM-DD"
+                            todayBackgroundColor="red" selectedDayColor="#7300e6"
+                            selectedDayTextColor="#FFFFFF"
                         />
 
 
@@ -57,10 +94,12 @@ const History_Transform = () => {
         /> */}
             <View style={AppStyle.Style_History_Tranform.container}>
                 <View style={AppStyle.Style_History_Tranform.header}>
-                    <Image
-                        style={AppStyle.Style_History_Tranform.Image}
-                        source={require('../img/back.png')}
-                    />
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <Image
+                            style={AppStyle.Style_History_Tranform.Image}
+                            source={require('../img/back.png')}
+                        />
+                    </TouchableOpacity>
                     <Text style={AppStyle.Style_History_Tranform.header_title}>Lịch sử giao dịch </Text>
                     <TouchableOpacity onPress={_onPress} style={{ zIndex: 1 }}>
                         <Image
@@ -70,123 +109,75 @@ const History_Transform = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={AppStyle.Style_History_Tranform.calendar}>
-                    <Text style={AppStyle.Style_History_Tranform.text}>Tháng 11/2020</Text>
+                    <Text style={AppStyle.Style_History_Tranform.text}>SELECTED DATE:{startDate}</Text>
                 </View>
                 <ScrollView style={AppStyle.Style_History_Tranform.content}>
-                    <View style={AppStyle.Style_History_Tranform.item}>
-                        <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                        <View style={AppStyle.Style_History_Tranform.cost}>
-                            <Text style={AppStyle.Style_History_Tranform.content_cost}>1.500.000 đ</Text>
-                            <Text></Text>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image_right}
-                                source={require('../img/chevron_right.png')}
-                            />
-                        </View>
-                        <View style={AppStyle.Style_History_Tranform.bottom}>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.ImageStatus}
-                                source={require('../img/thanhcong.png')}
-                            />
-                            <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
-                        </View>
-                    </View>
+                    {confirm ?
+                        <View>
+                            {bills.map((item) => {
+                                return (
+                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
+                                        <View style={AppStyle.Style_History_Tranform.item}>
+                                            <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
+                                            <View style={AppStyle.Style_History_Tranform.cost}>
+                                                <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.sum}.000 đ</Text>
+                                                <Text></Text>
 
-                    <View style={AppStyle.Style_History_Tranform.item}>
-                        <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                        <View style={AppStyle.Style_History_Tranform.cost}>
-                            <Text style={AppStyle.Style_History_Tranform.content_cost}>505.200 đ</Text>
-                            <Text></Text>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image_right}
-                                source={require('../img/chevron_right.png')}
-                            />
-                        </View>
-                        <View style={AppStyle.Style_History_Tranform.bottom}>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.ImageStatus}
-                                source={require('../img/thatbai.png')}
-                            />
-                            <Text style={AppStyle.Style_History_Tranform.status}>Thất bại</Text>
-                        </View>
-                    </View>
+                                                <Image
+                                                    style={AppStyle.Style_History_Tranform.Image_right}
+                                                    source={require('../img/chevron_right.png')}
+                                                />
 
-                    <View style={AppStyle.Style_History_Tranform.item}>
-                        <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                        <View style={AppStyle.Style_History_Tranform.cost}>
-                            <Text style={AppStyle.Style_History_Tranform.content_cost}>440.000 đ</Text>
-                            <Text></Text>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image_right}
-                                source={require('../img/chevron_right.png')}
-                            />
-                        </View>
-                        <View style={AppStyle.Style_History_Tranform.bottom}>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.ImageStatus}
-                                source={require('../img/chuahoanthanh.png')}
-                            />
-                            <Text style={AppStyle.Style_History_Tranform.status}>Chưa hoàn thành</Text>
-                        </View>
-                    </View>
+                                            </View>
+                                            <View style={AppStyle.Style_History_Tranform.bottom}>
 
-                    <View style={AppStyle.Style_History_Tranform.item}>
-                        <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                        <View style={AppStyle.Style_History_Tranform.cost}>
-                            <Text style={AppStyle.Style_History_Tranform.content_cost}>225.000 đ</Text>
-                            <Text></Text>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image_right}
-                                source={require('../img/chevron_right.png')}
-                            />
-                        </View>
-                        <View style={AppStyle.Style_History_Tranform.bottom}>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.ImageStatus}
-                                source={require('../img/dahuy.png')}
-                            />
-                            <Text style={AppStyle.Style_History_Tranform.status}>Đã hủy</Text>
-                        </View>
-                    </View>
+                                                <Image
+                                                    style={AppStyle.Style_History_Tranform.ImageStatus}
+                                                    source={require('../img/thanhcong.png')}
+                                                />
 
-                    <View style={AppStyle.Style_History_Tranform.item}>
-                        <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                        <View style={AppStyle.Style_History_Tranform.cost}>
-                            <Text style={AppStyle.Style_History_Tranform.content_cost}>225.000 đ</Text>
-                            <Text></Text>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image_right}
-                                source={require('../img/chevron_right.png')}
-                            />
+                                                <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                )
+                            })}
+                            {billsCGV.map((item) => {
+                                return (
+                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Chua_Thanh_Toan')} >
+                                        <View style={AppStyle.Style_History_Tranform.item}>
+                                            <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
+                                            <View style={AppStyle.Style_History_Tranform.cost}>
+                                                <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.priceCGV}.000 đ</Text>
+                                                <Text></Text>
+
+                                                <Image
+                                                    style={AppStyle.Style_History_Tranform.Image_right}
+                                                    source={require('../img/chevron_right.png')}
+                                                />
+
+                                            </View>
+                                            <View style={AppStyle.Style_History_Tranform.bottom}>
+
+                                                <Image
+                                                    style={AppStyle.Style_History_Tranform.ImageStatus}
+                                                    source={require('../img/thanhcong.png')}
+                                                />
+
+                                                <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
+                                            </View>
+                                        </View>
+                                    </TouchableOpacity>
+                                )
+                            })}
                         </View>
-                        <View style={AppStyle.Style_History_Tranform.bottom}>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.ImageStatus}
-                                source={require('../img/dahuy.png')}
-                            />
-                            <Text style={AppStyle.Style_History_Tranform.status}>Đã hủy</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.Style_History_Tranform.item}>
-                        <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                        <View style={AppStyle.Style_History_Tranform.cost}>
-                            <Text style={AppStyle.Style_History_Tranform.content_cost}>225.000 đ</Text>
-                            <Text></Text>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image_right}
-                                source={require('../img/chevron_right.png')}
-                            />
-                        </View>
-                        <View style={AppStyle.Style_History_Tranform.bottom}>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.ImageStatus}
-                                source={require('../img/dahuy.png')}
-                            />
-                            <Text style={AppStyle.Style_History_Tranform.status}>Đã hủy</Text>
-                        </View>
-                    </View>
+                        :
+                        null
+                    }
+
                 </ScrollView>
-
+                {/* <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'red' }} onPress={() => storeData()}></TouchableOpacity>
+                <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'yellow' }} onPress={() => getData ()}></TouchableOpacity> */}
 
             </View>
         </View>

@@ -11,7 +11,8 @@ const Style_History_Tranform = StyleSheet.create({
        justifyContent:'space-between',
        height:90,
        paddingVertical:26,
-       paddingHorizontal:10
+       paddingHorizontal:10,
+      
        
    },
    Image1:{
