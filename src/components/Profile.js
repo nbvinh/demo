@@ -13,8 +13,8 @@ const Profile = ({ route, navigation }) => {
     const result = useSelector(state=>state.abc)
     const [Email, setEmail] = useState("");
     const [follow_email, setFollow_email] = useState(false);
-    console.log('tocken',result)
-
+    console.log('token',result)
+    
     const onupdate_info = async () => {
         try {
             fetch(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
@@ -29,6 +29,8 @@ const Profile = ({ route, navigation }) => {
                 .then((response)=>response.json())
                 .then((json)=>{console.log(json)})
                 dispatch({type:'HOTEN', hoten: hoten.hoten})
+                dispatch({type:'SDT', SDT: SDT})
+                dispatch({type:'Email', Email: Email})
             navigation.navigate('Tabviewmain');
 
         } catch (error) {

@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useSelector, useDispatch } from "react-redux";
 import { changedata1 } from "../reducers/action";
 import axios from "axios";
-
+import { AsyncStorage } from 'react-native';
 import Province from "../components/Main/Province"
 const Main = ({ navigation }) => {
     function numberWithCommas(x) {
@@ -16,16 +16,20 @@ const Main = ({ navigation }) => {
             x = x.replace(pattern, "$1.$2");
         return x;
     }
+    const token = useSelector(state=>state.abc)
     const dispatch = useDispatch();
     const [Name, setName] = React.useState(hoten);
     const hoten = useSelector(state => state.hoten)
     const data1 = useSelector(state => state.data1)
     const diem = useSelector(state => state.diem)
+    const [diemlocal, setdiemlocal] = useState(diem);
     const province = useSelector(state => state.province)
     const [DuLieuApi, setDuLieuApi] = React.useState([]);
     const [DuLieuVoucher, setDuLieuVoucher] = React.useState([]);
     const [test, setTest] = useState(true)
     useEffect(() => {
+        _storeData();
+        _getData();
         axios.get('http://175.41.184.177:6061/category').then(function (res) {
             const dulieu = res.data.data;
             Object.entries(dulieu);
@@ -48,7 +52,7 @@ const Main = ({ navigation }) => {
             .then((response) => response.json())
             .then((jsonn) => { dispatch(changedata1(jsonn.data)) })
             .catch((error) => console.error(error))
-    }, [])
+    }, [diem])
     const modal = () => {
         setTest(false)
         dispatch({ type: 'MODALPROVINCE' })
@@ -58,6 +62,27 @@ const Main = ({ navigation }) => {
         dispatch({ type: 'CHECKKINGBREAD' })
         navigation.navigate('KingBread')
     }
+    const _storeData = async () => {
+        try {
+          await AsyncStorage.setItem(
+            'Diem',
+            diem + ''
+          );
+        } catch (error) {
+          // Error saving data
+        }
+      };
+      const _getData = async () => {
+        try {
+          await AsyncStorage.getItem("Diem").then(diem => {
+            setdiemlocal(diem);
+        });
+        
+        } catch (error) {
+          
+        }
+
+      };
     const image = useSelector(state => state.image)
     return (
 
@@ -119,7 +144,8 @@ const Main = ({ navigation }) => {
             <View style={AppStyle.StyleMain.poin_your}>
                 <View style={AppStyle.StyleMain.poin_your_left}>
                     <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Điểm của bạn </Text>
-                    <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {numberWithCommas(diem)}</Text>
+                    
+                    <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {numberWithCommas(diemlocal)}</Text>
                 </View>
                 <View style={AppStyle.StyleMain.poin_your_right}>
                     <LinearGradient

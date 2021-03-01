@@ -7,13 +7,20 @@ import Modal from 'react-native-modal';
 import { useDispatch,useSelector } from "react-redux";
 // import { CameraScreen } from 'react-native-camera-kit';
 import ImagePicker from 'react-native-image-crop-picker';
+import { useState } from 'react/cjs/react.development';
 const DoiAvatar = ({ navigation }) => {
     const [isModalVisible, setModalVisible] = React.useState(false);
-
+    const _HoTen = useSelector(state => state.hoten)
+    const _SDT = useSelector(state => state.SDT)
+    const _Email = useSelector(state => state.Email)
+    const [HoTen, setHoTen] = useState(_HoTen);
+    const [SDT, setSDT] = useState(_SDT );
+    const [Email, setEmail] = useState(_Email);
     const toggleModal = () => {
         setModalVisible(!isModalVisible);
     };
     const image = useSelector(state => state.image)
+    const result = useSelector(state=>state.abc)
     const dispatch = useDispatch()
     const gotoPickImages = () => {
         ImagePicker.openPicker({
@@ -25,6 +32,30 @@ const DoiAvatar = ({ navigation }) => {
             dispatch({type:'IMAGES',image:image.path})
         });
     }
+    const onupdate_info = async () => {
+        try {
+            fetch(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
+                email: Email,
+                full_name: HoTen,
+                phone_number: SDT,
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer + ${result}`
+                }
+            })
+                .then((response)=>response.json())
+                .then((json)=>{console.log(json)})
+                dispatch({type:'HOTEN', hoten: HoTen})
+                dispatch({type:'SDT', SDT: SDT})
+                dispatch({type:'Email', Email: Email})
+                Alert.alert('Thông báo', 'Cập nhật thông tin cá nhân thành công!');
+            navigation.navigate('Tabviewmain');
+
+        } catch (error) {
+            Alert.alert('Thông báo', error + '');
+        }
+    }
+  
     return (
         <View style={AppStyle.StyleGiaoDich.container}>
             <View style={AppStyle.StyleGiaoDich.header}>
@@ -67,7 +98,8 @@ const DoiAvatar = ({ navigation }) => {
                         <TextInput placeholder='Mời nhập họ và tên của bạn'
                             style={styles.textinput}
                             placeholderTextColor='rgba(255, 255, 255, 0.3)'
-
+                            onChangeText={(value) => setHoTen(value)}
+                            value={HoTen}
                         />
                     </View>
                 </View>
@@ -78,7 +110,8 @@ const DoiAvatar = ({ navigation }) => {
                             style={styles.textinput}
                             placeholderTextColor='rgba(255, 255, 255, 0.3)'
                             keyboardType='numeric'
-
+                            onChangeText={(value) => setSDT(value)}
+                            value={SDT}
                         />
                     </View>
                 </View>
@@ -90,6 +123,8 @@ const DoiAvatar = ({ navigation }) => {
                             //    /*  */
                             //    /*  */
                             placeholderTextColor='rgba(255, 255, 255, 0.3)'
+                            onChangeText={(value) => setEmail(value)}
+                            value={Email}
                         />
                     </View>
                 </View>
@@ -103,7 +138,7 @@ const DoiAvatar = ({ navigation }) => {
             </View>
 
             <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']}>
-                <TouchableOpacity onPress={() => Alert.alert('Thông Báo', 'Cập Nhật Thông Tin Thành Công')}>
+                <TouchableOpacity onPress={onupdate_info}>
                     <Text style={AppStyle.StyleFirst.text}>Lưu</Text>
                 </TouchableOpacity>
             </LinearGradient>
