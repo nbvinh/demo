@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, FlatList } from "react-native";
+import { BackHandler, View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, FlatList } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import SlideImg from "../components/KingBread/SlideImg";
@@ -9,7 +9,17 @@ const KingBread = ({ navigation }) => {
     const dispatch = useDispatch();
     useEffect(() => {
         loadData();
+        BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+        return () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+        };
     }, [])
+    function handleBackButtonClick() {
+        navigation.goBack()
+        dispatch({ type: 'KINGBREADFALSE' })
+        dispatch({ type: 'FILTERSTATUS' })
+        return true;
+    }
     const loadData = async () => {
         fetch('http://175.41.184.177:6061/shop/1', {
             method: 'GET'
@@ -62,7 +72,7 @@ const KingBread = ({ navigation }) => {
     const GOback = () => {
         navigation.goBack()
         dispatch({ type: 'KINGBREADFALSE' })
-        dispatch({ type: 'FILTERSTATUS'})
+        dispatch({ type: 'FILTERSTATUS' })
     }
     const filterbanhmi = () => {
         dispatch({ type: 'FILTERBANHMI' })
@@ -76,7 +86,7 @@ const KingBread = ({ navigation }) => {
         dispatch({ type: 'FILTERCOMBO' })
         dispatch({ type: 'CHECKCOMBO' })
     }
-    const buynow =()=>{
+    const buynow = () => {
         navigation.navigate('GioHang')
     }
     return (
@@ -201,7 +211,7 @@ const KingBread = ({ navigation }) => {
                         <Text style={AppStyle.StyleVoucherCGV.text10}>{sumamount}</Text>
                     }
                 </View>
-                <TouchableOpacity onPress={() =>buynow() }>
+                <TouchableOpacity onPress={() => buynow()}>
                     <Image
                         style={AppStyle.StyleVoucherCGV.img4}
                         source={require('../img/vinh0.png')}
