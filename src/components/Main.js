@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useSelector, useDispatch } from "react-redux";
 import { changedata1 } from "../reducers/action";
 import axios from "axios";
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Province from "../components/Main/Province"
 const Main = ({ navigation }) => {
     function numberWithCommas(x) {

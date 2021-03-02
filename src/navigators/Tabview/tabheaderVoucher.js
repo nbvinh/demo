@@ -20,6 +20,7 @@ const TabVoucher = ({navigation}) => {
           </View>
             <Tab.Navigator  tabBarOptions={{
                       activeTintColor: '#822FFB',
+                      activeBackgroundColor:'#8B3BFF',
                       labelStyle: { fontSize: 15, fontWeight: '400' },
                       style: { backgroundColor: 'black',marginHorizontal: 12 , marginTop: 18,  activeBackgroundColor:'rgba(139, 59, 255, 0.15)',},
                      

@@ -157,12 +157,17 @@ const ThongTin = ({navigation}) =>{
                 </View>
             </View>
             <View style={AppStyle.StyleLichSu.item}>
-                <View style={AppStyle.StyleLichSu.item_left}>
+                <TouchableOpacity style={AppStyle.StyleLichSu.item_left} onPress={()=>navigation.navigate('ScreenFirst')}>
                     <Image
                         style={{width: 24, height: 24}}
                         source={require('../../img/img_icon_24px/logout_24px.png')}/> 
+<<<<<<< HEAD
                         <TouchableOpacity onPress={() => navigation.popToTop()}><Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>Đăng Xuất</Text></TouchableOpacity>
                 </View>
+=======
+                        <Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>Đăng Xuất</Text>
+                </TouchableOpacity>
+>>>>>>> master
                 
             </View>
             </ScrollView>

@@ -56,6 +56,7 @@ const KingBread = ({ navigation }) => {
     const sumamount = DataProduct && DataProduct.reduce((accc, currr) => {
         return (accc + currr.amount)
     }, 0)
+    dispatch({ type: 'SUMAMOUNT', sumamount: sumamount })
     const checkKingBread = useSelector(state => state.checkKingBread)
     const kingbread = useSelector(state => state.kingbread)
     const GOback = () => {
