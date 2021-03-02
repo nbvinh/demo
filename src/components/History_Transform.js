@@ -38,7 +38,8 @@ const History_Transform = ({ navigation }) => {
     // const [test,setTest]= useState()
     // const getData = async () => {
     //     try {
-    //         const jsonValue = await AsyncStorage.getItem('@storage_Key')
+    //         const jsonValue = await AsyncStorage.getItem('key1')
+    //         console.log('fff',jsonValue)
     //         setTest(jsonValue)
     //     } catch (e) {
     //         console.log(e)
