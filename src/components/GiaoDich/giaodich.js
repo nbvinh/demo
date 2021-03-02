@@ -18,7 +18,7 @@ const GiaoDich = ({navigation}) =>{
             <TouchableOpacity style={AppStyle.StyleGiaoDich.Box} onPress={() => navigation.navigate('DoiDiem')}>
                 <View style={AppStyle.StyleGiaoDich.Box_Left}>
                     <Image
-                            style={{width: '70%', height: '100%'}}
+                            style={{width: '100%', height: '100%'}} resizeMode='contain'
                             source={require('../../img/333.png')}
                         />
                 </View>
@@ -30,7 +30,7 @@ const GiaoDich = ({navigation}) =>{
             <TouchableOpacity style={AppStyle.StyleGiaoDich.Box}  onPress={() => navigation.navigate('MuaDiem')}>
                 <View style={AppStyle.StyleGiaoDich.Box_Left}>
                     <Image
-                                style={{width: '70%', height: '100%'}}
+                                style={{width: '100%', height: '100%'}} resizeMode='contain'
                                 source={require('../../img/444.png')}
                             />
                 </View>
@@ -43,7 +43,7 @@ hoặc cửa hàng tiện lợi.</Text>
             <TouchableOpacity style={AppStyle.StyleGiaoDich.Box} onPress={() => navigation.navigate('NapDiem')}>
                 <View style={AppStyle.StyleGiaoDich.Box_Left}>
                     <Image
-                                style={{width: '70%', height: '100%'}}
+                                style={{width: '100%', height: '100%'}} resizeMode='contain'
                                 source={require('../../img/555.png')}
                             />
                 </View>

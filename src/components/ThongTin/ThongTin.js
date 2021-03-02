@@ -74,6 +74,7 @@ const ThongTin = ({navigation}) =>{
                 renderItem={({item}) =><Item item = {item}/>}
                 keyExtractor={(item) => item.id}
             /> */}
+            <ScrollView>
             <View style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
@@ -160,12 +161,13 @@ const ThongTin = ({navigation}) =>{
                     <Image
                         style={{width: 24, height: 24}}
                         source={require('../../img/img_icon_24px/logout_24px.png')}/> 
-                        <Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>Đăng Xuất</Text>
+                        <TouchableOpacity onPress={() => navigation.popToTop()}><Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>Đăng Xuất</Text></TouchableOpacity>
                 </View>
                 
             </View>
-           
+            </ScrollView>
         </View>
+    
     );
 }
 export default ThongTin;

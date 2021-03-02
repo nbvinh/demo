@@ -7,7 +7,7 @@ const StyleLichSu = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "black",
-        padding: 12
+        padding: 8
     },
     item:{
         height: 24,
