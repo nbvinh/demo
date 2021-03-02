@@ -5,6 +5,7 @@ import AppStyle from "../theme";
 import SlideImg from "../components/KingBread/SlideImg";
 import ListProduct from "../components/KingBread/ListProduct";
 import { useSelector, useDispatch } from "react-redux";
+import call from 'react-native-phone-call'
 const KingBread = ({ navigation }) => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -110,6 +111,14 @@ const KingBread = ({ navigation }) => {
                     <SlideImg />
                     <View style={{ margin: 15 }}>
                         {temp1 && temp1.map((item) => {
+                            const Call = () =>{
+                                const args = {
+                                    number: '0352343938', // Use commas to add time between digits.
+                                    prompt: true
+                                  }
+                                  
+                                  call(args).catch(console.error)
+                            }
                             return (
                                 <View key={item.id.toString()}>
                                     <Text style={AppStyle.StyleKingBread.text1}>{item.name} - Vua bánh mì kẹp</Text>
@@ -132,7 +141,7 @@ const KingBread = ({ navigation }) => {
                                             </View>
                                         </View>
                                         <View style={{ flexDirection: 'row' }}>
-                                            <TouchableOpacity onPress={() => Alert.alert("PHONE NUMBER BÁNH MÌ PEW PEW", item.phone)}>
+                                            <TouchableOpacity onPress={call}>
                                                 <Image
                                                     style={{ width: 50, height: 36, marginRight: 20 }}
                                                     source={require('../img/vinh31.png')}
