@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Alert, Image } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -34,20 +34,26 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const onfirm_otp = async () => {
         try {
             const result = await confirm_otp({
-                "otp": MaPin1 + "" +MaPin2 + MaPin3 + MaPin4 + MaPin5 + MaPin6 + "",
+                "otp": MaPin1 + "" + MaPin2 + MaPin3 + MaPin4 + MaPin5 + MaPin6 + "",
                 "phone_number": SDT,
                 "token": route.params.token,
             })
             // .then((response) =>console.log( response.data.data.access_token))
             //     .then((json) => { console.log(json) })
             let abc = result.data.data.access_token;
-            dispatch({type:'TOCKEN',abc:abc})
-            navigation.navigate('Profile', { SDT: SDT});
-            
+            dispatch({ type: 'TOCKEN', abc: abc })
+            navigation.navigate('Profile', { SDT: SDT });
+
         } catch (error) {
             Alert.alert('Thông báo', error + '');
         }
     }
+    const inputRef = useRef();
+    const inputRef1 = useRef();
+    const inputRef2 = useRef();
+    const inputRef3 = useRef();
+    const inputRef4 = useRef();
+    const inputRef5 = useRef();
     return (
         <View style={AppStyle.StyleScreenXacNhanSDT.container}>
             <StatusBar backgroundColor='black' barStyle="light-content" />
@@ -62,14 +68,43 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
             <View style={AppStyle.StyleScreenXacNhanSDT.content}>
                 <Text style={AppStyle.StyleScreenXacNhanSDT.tieude}> Xác thực số điện thoại</Text>
                 <Text style={AppStyle.StyleScreenXacNhanSDT.chube}>Vui lòng nhập mã OTP vừa được gửi vào số điện thoại {SDT} </Text>
-              
+
                 <View style={AppStyle.StyleScreenXacNhanSDT.inputOTP}>
-                    <TextInput maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin1(val)} value={MaPin1} />
-                    <TextInput maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin2(val)} value={MaPin2} />
-                    <TextInput maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin3(val)} value={MaPin3} />
-                    <TextInput maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin4(val)} value={MaPin4} />
-                    <TextInput maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin5(val)} value={MaPin5} />
-                    <TextInput maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin6(val)} value={MaPin6} />
+                    <TextInput ref={inputRef} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric'
+                        onChangeText={(val) => {
+                            setMaPin1(val)
+                            if (val != '') {
+                                inputRef1.current.focus()
+                            }
+                        }}
+                        value={MaPin1} 
+                        autoFocus={true}
+                        />
+                    <TextInput ref={inputRef1} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                        setMaPin2(val)
+                        if (val != '') {
+                            inputRef2.current.focus()
+                        }
+                    }} value={MaPin2} />
+                    <TextInput ref={inputRef2} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                        setMaPin3(val)
+                        if (val != '') {
+                            inputRef3.current.focus()
+                        }
+                    }} value={MaPin3} />
+                    <TextInput ref={inputRef3} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                        setMaPin4(val)
+                        if (val != '') {
+                            inputRef4.current.focus()
+                        }
+                    }} value={MaPin4} />
+                    <TextInput ref={inputRef4} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                        setMaPin5(val)
+                        if (val != '') {
+                            inputRef5.current.focus()
+                        }
+                    }} value={MaPin5} />
+                    <TextInput ref={inputRef5} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin6(val)} value={MaPin6} />
                 </View>
                 <Text style={AppStyle.StyleScreenXacNhanSDT.textguilaisau}> Gửi laị sau 00:{TimeDown}</Text>
                 {

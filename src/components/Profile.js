@@ -1,20 +1,19 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
 import LinearGradient from "react-native-linear-gradient";
 import { update_info } from "./api";
 import { useDispatch, useSelector } from 'react-redux'
-
 const Profile = ({ route, navigation }) => {
     const dispatch = useDispatch();
     const [hoten, setHoten] = useState("");
     const [follow_hoten, setFollow_hoten] = useState(false);
     const SDT = route.params.SDT;
-    const result = useSelector(state=>state.abc)
+    const result = useSelector(state => state.abc)
     const [Email, setEmail] = useState("");
     const [follow_email, setFollow_email] = useState(false);
-    console.log('token',result)
-    
+    console.log('tocken', result)
+
     const onupdate_info = async () => {
         try {
             fetch(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
@@ -32,12 +31,11 @@ const Profile = ({ route, navigation }) => {
                 dispatch({type:'SDT', SDT: SDT})
                 dispatch({type:'Email', Email: Email})
             navigation.navigate('Tabviewmain');
-
         } catch (error) {
             Alert.alert('Thông báo', error + '');
         }
     }
-    //ho ten  
+    /*Ho Ten*/
     function onchangText(text) {
         if (text.length == 0) {
             setFollow_hoten(false);
