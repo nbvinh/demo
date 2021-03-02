@@ -321,7 +321,11 @@ const reducer = (state = initState, action) => {
         case 'IDLOAI':
             return { ...state, id: action.id }
         case 'UPDIEM':
-            return { ...state, diem: action.diem }
+            return { ...state, diem: parseInt(state.diem) + parseInt(action.diem)}
+        case 'SDT' :
+            return { ...state, SDT : action.SDT}
+        case 'Email' :
+            return { ...state, Email : action.Email}
         default:
             return state
     }

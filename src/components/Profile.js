@@ -25,9 +25,11 @@ const Profile = ({ route, navigation }) => {
                     'Authorization': `Bearer + ${result}`
                 }
             })
-                .then((response) => response.json())
-                .then((json) => { console.log(json) })
-            dispatch({ type: 'HOTEN', hoten: hoten.hoten })
+                .then((response)=>response.json())
+                .then((json)=>{console.log(json)})
+                dispatch({type:'HOTEN', hoten: hoten.hoten})
+                dispatch({type:'SDT', SDT: SDT})
+                dispatch({type:'Email', Email: Email})
             navigation.navigate('Tabviewmain');
         } catch (error) {
             Alert.alert('Thông báo', error + '');

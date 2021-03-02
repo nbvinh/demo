@@ -19,6 +19,13 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>test photo</string>
+	<key>NSCameraUsageDescription</key>
+	<string>test Camera</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>test Microphone</string>
+	
 	<string>1</string>
 </dict>
 </plist>

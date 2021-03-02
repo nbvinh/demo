@@ -22,7 +22,8 @@ const StyleLichSuDiem = StyleSheet.create({
         backgroundColor: '#272738',
         flexDirection:'row',
         padding: 16,
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        overflow: 'hidden'
     },
     Box_Center:{
         marginLeft: 12,

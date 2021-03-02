@@ -32,7 +32,7 @@ const RootStack =()=>{
     return(
         <NavigationContainer>
 
-        <Root.Navigator headerMode="none" initialRouteName={ScreenFirst}>
+        <Root.Navigator headerMode="none" initialRouteName={Main}>
             <Root.Screen name ="ScreenFirst" component={ScreenFirst} />
             <Root.Screen name ="SecondScreen" component={SecondScreen} />
             <Root.Screen name ="ScreenXacThucSDT" component={ScreenXacThucSDT} />
