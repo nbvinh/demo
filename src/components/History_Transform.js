@@ -5,6 +5,7 @@ import AppStyle from "../theme";
 import { Calendar } from 'react-native-calendars'; // 1.5.3
 import { useDispatch, useSelector } from "react-redux";
 import CalendarPicker from 'react-native-calendar-picker';
+import moment from 'moment';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 const History_Transform = ({ navigation }) => {
 
@@ -27,6 +28,17 @@ const History_Transform = ({ navigation }) => {
     const bills = useSelector(state => state.bills)
     const billsCGV = useSelector(state => state.billsCGV)
     console.log('bill', bills)
+    const minDate = new Date();
+    const min2 = moment(minDate).format('DD-MM-YYYY')
+    const cacelCalendar = ()=>{
+        setIsShowCalendar(false);
+        setSelectedDate();
+    }
+    const doneCalendar = ()=>{
+        setIsShowCalendar(false);
+    }
+    const maxDate = startDate? moment(startDate).format('DD-MM-YYYY') :min2.toString();
+
     // const storeData = async () => {
     //     try {
     //         await AsyncStorage.setItem('@storage_Key', JSON.stringify(bills))
@@ -66,7 +78,8 @@ const History_Transform = ({ navigation }) => {
                     <View style={{ backgroundColor: '#FFFFFF' }}>
                         <CalendarPicker
                             onDateChange={onDatechange}
-                            format="YYYY-MM-DD"
+                            // format="YYYY-MM-DD"
+                            dateFormat
                             todayBackgroundColor="red" selectedDayColor="#7300e6"
                             selectedDayTextColor="#FFFFFF"
                         />
@@ -74,12 +87,10 @@ const History_Transform = ({ navigation }) => {
 
                         <View>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15, borderTopWidth: 1, borderStyle: 'dotted', paddingVertical: 10 }}>
-                                <TouchableOpacity onPress={() => {
-                                    setIsShowCalendar(false)
-                                }}>
+                                <TouchableOpacity onPress={cacelCalendar}>
                                     <Text style={{ color: '#9B9EA3', fontSize: 14, fontWeight: '500' }}>Xóa</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={doneCalendar}>
                                     <Text style={{ color: '#8B3BFF', fontSize: 14, fontWeight: '500' }}>Áp dụng</Text>
                                 </TouchableOpacity>
                             </View>
@@ -109,9 +120,14 @@ const History_Transform = ({ navigation }) => {
                             source={require('../img/Calendar.png')}
                         />
                     </TouchableOpacity>
-                </View>
+                </View> 
+                {/* {selectedDate?<Text>01</Text>: '${startDate}'} */}
                 <View style={AppStyle.Style_History_Tranform.calendar}>
-                    <Text style={AppStyle.Style_History_Tranform.text}>SELECTED DATE:{startDate}</Text>
+                    <Text style={AppStyle.Style_History_Tranform.text}> 
+                   
+                    { maxDate }
+                    
+                    </Text>
                 </View>
                 <ScrollView style={AppStyle.Style_History_Tranform.content}>
                     {confirm ?
