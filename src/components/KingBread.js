@@ -5,6 +5,7 @@ import AppStyle from "../theme";
 import SlideImg from "../components/KingBread/SlideImg";
 import ListProduct from "../components/KingBread/ListProduct";
 import { useSelector, useDispatch } from "react-redux";
+import Communications from 'react-native-communications';
 import call from 'react-native-phone-call'
 const KingBread = ({ navigation }) => {
     const dispatch = useDispatch();
@@ -112,12 +113,13 @@ const KingBread = ({ navigation }) => {
                     <View style={{ margin: 15 }}>
                         {temp1 && temp1.map((item) => {
                             const Call = () =>{
-                                const args = {
-                                    number: '0352343938', // Use commas to add time between digits.
-                                    prompt: true
-                                  }
+                                // const args = {
+                                //     number: '0352343938', // Use commas to add time between digits.
+                                //     prompt: true
+                                //   }
                                   
-                                  call(args).catch(console.error)
+                                //   call(args);
+                                Communications.phonecall(item.phone, true);
                             }
                             return (
                                 <View key={item.id.toString()}>
