@@ -3,8 +3,9 @@ import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView } from 'r
 import AppStyle from "../theme";
 import StepIndicator from 'react-native-step-indicator';
 import LinearGradient from "react-native-linear-gradient";
+import { useSelector } from 'react-redux';
 
-const Chitiet_giaodich = ({navigation}) => {
+const Chitiet_giaodich = ({ navigation, route }) => {
     const labels = ["Đặt hàng thành công", "Đang chuẩn bị hàng", "Sẵn sàng lấy hàng", "Lấy hàng hoàn thành"];
     const customStyles = {
         stepIndicatorSize: 5,
@@ -30,14 +31,20 @@ const Chitiet_giaodich = ({navigation}) => {
         currentStepLabelColor: '#fe7013',
         labelAlign: 'center'
 
+        
     }
+    const bills = useSelector(state => state.bills);
+    const confirm = useSelector(state => state.confirm)
+    const id = route.params.id;
+    const data = useSelector(state=>state.data)
+    const DataProduct = useSelector(state=>state.DataProduct);
     return (
 
         <View style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
             <View style={AppStyle.Style_Chitiet_giaodich.content_top}>
                 <TouchableOpacity onPress={() => navigation.goBack()} >
                     <Image
-                        width={10} height={18} style={{left:14}}
+                        width={10} height={18} style={{ left: 14 }}
                         source={require('../img/back.png')}
                     />
                 </TouchableOpacity>
@@ -45,54 +52,22 @@ const Chitiet_giaodich = ({navigation}) => {
                 <Text></Text>
             </View>
             <ScrollView style={{ flex: 1, marginBottom: 100, paddingHorizontal: 20, backgroundColor: 'black', }} >
-                <View style={{ ...AppStyle.Style_Chitiet_giaodich.content }}>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
+               
+                {bills.map((item) => {
+                    if (id === item.id) return (
+                        <View key={item.id.toString()} style={{ ...AppStyle.Style_Chitiet_giaodich.content }}>
+                            <View style={AppStyle.Style_Chitiet_giaodich.item}>
+                                <View style={AppStyle.Style_Chitiet_giaodich.box}>
+                                    <View>
+                                        <Text style={AppStyle.Style_Chitiet_giaodich.text}>{item.tilte}</Text>
+                                        <Text style={AppStyle.Style_Chitiet_giaodich.text}>x{item.sumamount}</Text>
+                                    </View>
+                                    <Text style={AppStyle.Style_Chitiet_giaodich.text}>{item.sum}.000 </Text>
+                                </View>
                             </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
                         </View>
-                    </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
-
-                </View>
+                    )
+                })}
 
                 <Text style={{ color: "white", fontSize: 15, fontWeight: 'bold', marginTop: 17 }}>Trạng thái đơn hàng </Text>
                 <View style={{ marginTop: 17, backgroundColor: '#272738', height: '25%', paddingHorizontal: 9, borderRadius: 8, padding: 10 }}>
@@ -115,7 +90,15 @@ const Chitiet_giaodich = ({navigation}) => {
                     </View>
                     <View style={AppStyle.Style_Chitiet_giaodich.transform}>
                         <Text style={AppStyle.Style_Chitiet_giaodich.code}>Phương thức thanh toán</Text>
-                        <Text style={AppStyle.Style_Chitiet_giaodich.code_2}>VNPay</Text>
+                        {/* <Text style={AppStyle.Style_Chitiet_giaodich.code_2}>VNPay</Text> */}
+                        {data.map((item) => {
+                            return (
+                                item.isChecked && (
+                                    <Text key={item.id.toString()} style={AppStyle.Style_Chitiet_giaodich.code_2}>{item.text}</Text>
+
+                                )
+                            )
+                        })}
                     </View>
                     <View style={AppStyle.Style_Chitiet_giaodich.transform}>
                         <Text style={AppStyle.Style_Chitiet_giaodich.code}>Phương thức giao hàng</Text>
@@ -124,10 +107,22 @@ const Chitiet_giaodich = ({navigation}) => {
                 </View>
             </ScrollView>
 
-            <View style={{ backgroundColor: '#272738', position: 'absolute', bottom: 0, width: '100%', height: 200 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 12,paddingHorizontal:13, }}>
+            <View style={{ backgroundColor: '#272738', position: 'absolute', bottom: 0, width: '100%', height: 180 , justifyContent: 'space-evenly'}}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 12, paddingHorizontal: 13, }}>
                     <Text style={AppStyle.Style_Chitiet_giaodich.text} >Tổng Thanh toán</Text>
-                    <Text style={AppStyle.Style_Chitiet_giaodich.text}>250.000 đ</Text>
+                    {/* <Text style={AppStyle.Style_Chitiet_giaodich.text}>250.000 đ</Text> */}
+                    {bills.map((item) => {
+                    if (id === item.id) return (
+                        <View key={item.id.toString()} style={{ ...AppStyle.Style_Chitiet_giaodich.content }}>
+                            <View style={AppStyle.Style_Chitiet_giaodich.item}>
+                                 
+                                        <Text style={AppStyle.Style_Chitiet_giaodich.text}>{item.sum}.000 </Text>
+                                       
+                               
+                            </View>
+                        </View>
+                    )
+                })}
                 </View>
                 {/* <LinearGradient  
                colors={['#8B3BFF','#B738FF']} style={{opacity:1, height: 48, justifyContent:'center', alignItems: 'center',   borderRadius:8}}>
@@ -139,8 +134,8 @@ const Chitiet_giaodich = ({navigation}) => {
                 {/* <TouchableOpacity>
                     <Text>Hủy</Text>
                 </TouchableOpacity> */}
-                 <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
-                    colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8, marginHorizontal: 13,marginVertical:6 }}>
+                <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
+                    colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8, marginHorizontal: 13, marginVertical: 6 }}>
                     <TouchableOpacity>
                         <Text style={AppStyle.Style_Chitiet_giaodich.pay} > Thanh Toán </Text>
                     </TouchableOpacity>

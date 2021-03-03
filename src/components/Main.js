@@ -193,6 +193,7 @@ const Main = ({ navigation }) => {
                     const ListDuLieuVoucher =()=>{
                         if(item.id ===11){
                             navigation.navigate('VoucherCGV')
+                            dispatch({type:'KINGBREADFALSE'})
                         }
                     }
                     return (
