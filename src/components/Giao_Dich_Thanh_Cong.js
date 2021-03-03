@@ -94,14 +94,14 @@ const Giao_Dich_Thanh_Cong = ({ navigation, route }) => {
                 </View>
             </View>
 
-            <View style={AppStyle.Style_Giao_Dich_TCong.button}>
+            {/* <View style={AppStyle.Style_Giao_Dich_TCong.button}>
                 <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
                     colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8, marginHorizontal: 13 }}>
                     <TouchableOpacity onPress={() => navigation.navigate('Tabviewmain')}>
                         <Text style={AppStyle.Style_Giao_Dich_TCong.pay} > Thanh Toán </Text>
                     </TouchableOpacity>
                 </LinearGradient >
-            </View>
+            </View> */}
         </View>
     )
 }
