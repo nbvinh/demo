@@ -222,7 +222,7 @@ const Main = ({ navigation }) => {
                             <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', left: -12, bottom: 30, zIndex: 99 }} />
                             <View style={{ width: 25, height: 25, borderRadius: 50, backgroundColor: 'black', position: 'absolute', right: -12, bottom: 30, zIndex: 99 }} />
                             <View style={AppStyle.StyleMain.DichVu_Bottom}>
-                                <View style={AppStyle.StyleMain.DichVu_Bottom_Top}>
+                                <View style={[AppStyle.StyleMain.DichVu_Bottom_Top]}>
                                     <Image
                                         style={{ width: 36, height: 36, borderRadius: 50 }}
                                         source={{ uri: 'http://175.41.184.177:6063/image/' + item.shop.avatar }}
@@ -232,6 +232,7 @@ const Main = ({ navigation }) => {
                                         <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> {item.shop.address}</Text>
                                     </View>
                                 </View>
+                                <View style={{height: 1, borderColor: 'gba(0, 0, 0, 0.3)',borderWidth: 1,borderStyle:'dashed'}}></View>
                                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                                     <View style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                                         <Text style={{ marginLeft: 5, color: 'white', fontSize: 17, fontWeight: '700' }}>{item.price}.000 đ</Text>

@@ -90,6 +90,7 @@ const MuaDiem = ({navigation}) =>{
                         else{
                             Alert.alert('Thông báo', 'Bạn đã thanh toán thành công!');
                             dispatch({type: 'UPDIEM', diem : diem});
+                            
                             navigation.navigate('Tabviewmain');
                         }
                         
