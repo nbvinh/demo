@@ -18,10 +18,12 @@ const NapDiem = ({navigation}) =>{
             </View>
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập Mã Gift Card</Text>
             <TextInput onChangeText={(value) => setma(value)} placeholder='Nhập Mã Gift Card'  placeholderTextColor = 'rgba(255, 255, 255, 0.6)' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color: 'white'}]}/>
-            <Image
-                 width={10} height={18} style={{position:'absolute', top: 140, right: 30, zIndex: 999999}}
-                source={require('../../img/img_icon_24px/scan_24px.png')}
-                />
+            <TouchableOpacity style={{position:'absolute', top: 140, right: 30, zIndex: 999999}} onPress={() => navigation.navigate('ScanScreen')}>
+                <Image
+                    width={10} height={18}
+                    source={require('../../img/img_icon_24px/scan_24px.png')}
+                    />
+            </TouchableOpacity>
                 <View style={{height: 50}}></View>
             {
                 ma === '' ?
