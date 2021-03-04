@@ -61,6 +61,7 @@ const initState = {
             img: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUtXYUFKLzfAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC',
         },
     ],
+    abc :'',
     isShow: false,
     lienket: false,
     priceCGV: 0,
@@ -326,6 +327,9 @@ const reducer = (state = initState, action) => {
             return { ...state, SDT : action.SDT}
         case 'Email' :
             return { ...state, Email : action.Email}
+        case 'Reset_Diem':{
+            return { ...state, diem : 0}
+        }
         default:
             return state
     }

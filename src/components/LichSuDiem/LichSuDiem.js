@@ -13,10 +13,10 @@ const LichSuDiem = ({navigation}) =>{
                     />
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleLichSuDiem.header_text}>Lịch Sử Điểm</Text>
-                <Image
-                        width={10} height={18}
-                        source={require('../../img/img_icon_24px/filter_list_24px_rounded.png')}
-                    />
+                    <Image
+                            width={10} height={18}
+                            source={require('../../img/img_icon_24px/filter_list_24px_rounded.png')}
+                        />
             </View>
             <ScrollView>
                 {/* bắt đầu 1 boxx */}
