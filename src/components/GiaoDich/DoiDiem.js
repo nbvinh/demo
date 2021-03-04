@@ -17,6 +17,7 @@ const DoiDiem = ({navigation}) =>{
     const submit = () =>{
         diem > 0 ? Alert.alert('Thông Báo ', 'Bạn đã đổi ' + numberWithCommas(diem)  + ' điểm và nhận được ' + numberWithCommas(diem * 100) + 'VNĐ') :Alert.alert('Thông Báo ', 'Điểm của bạn bằng 0 nên không thao tác đổi được')
         dispatch({type:  'Reset_Diem'});
+        dispatch({type: 'HISTORY_POINT',  point : -diem,phuongthuc : 'Đổi điểm qua đối tác'});
         navigation.navigate('Tabviewmain');
     }
     return(

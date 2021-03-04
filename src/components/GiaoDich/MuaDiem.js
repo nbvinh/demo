@@ -16,6 +16,28 @@ const MuaDiem = ({navigation}) =>{
             x = x.replace(pattern, "$1.$2");
         return x;
     }
+    const onSubmitThanhToan = () =>{
+        {
+            if(check=== false && check2 === false){
+                    Alert.alert('Thông báo', 'Bạn chưa chọn phương thức thanh toán!');
+                }
+                else if(diem < 0){
+                    Alert.alert('Thông báo', 'Bạn nhập sai định dạng rồi. Điểm phải lớn hơn 0!');
+                }
+                else if(diem == 0){
+                    Alert.alert('Thông báo', 'Bạn chưa nhập số điểm cần mua !');
+                }
+                else{
+                    
+                    dispatch({type: 'UPDIEM', diem : diem});
+                    let d = new Date();
+                    dispatch({type: 'HISTORY_POINT',  point : '+'+diem,phuongthuc : check, tỉme : d.getDay()+'/'+d.getMonth()+'/'+d.getFullYear()+ ' ' + d.getHours() + ':' + d.getMinutes()});
+                    Alert.alert('Thông báo', 'Bạn đã thanh toán thành công!');
+                    navigation.navigate('Tabviewmain');
+                }
+                
+            }
+    }
     return(
         <View style={AppStyle.StyleGiaoDich.container}>
                 <View style={AppStyle.StyleGiaoDich.header}>
@@ -31,7 +53,7 @@ const MuaDiem = ({navigation}) =>{
             <TextInput  placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color: 'rgba(255, 255, 255, 0.3)'}]} onChangeText={(value) => setDiem(value)}/>
             <View style={AppStyle.StyleGiaoDich.TongTien}>
                 <Text style={AppStyle.StyleGiaoDich.Text_White}>Tổng Tiền</Text>
-                <Text style={AppStyle.StyleGiaoDich.Text_White}>{numberWithCommas(diem*100)} VNĐ</Text>
+                <Text style={AppStyle.StyleGiaoDich.Text_White}>{diem > 0 ? numberWithCommas(diem*100) : 0} VNĐ</Text>
             </View>
             <View style={AppStyle.StyleGiaoDich.PhuongThucThanhToan}>
                 <Text style={AppStyle.StyleGiaoDich.Text_White}>Chọn Phương thức thanh toán</Text>
@@ -80,21 +102,7 @@ const MuaDiem = ({navigation}) =>{
                 </LinearGradient>
                 :
                 <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
-                    <TouchableOpacity  onPress={() => {
-                    if(check=== false && check2 === false){
-                            Alert.alert('Thông báo', 'Bạn chưa chọn phương thức thanh toán!');
-                        }
-                        if(diem == 0){
-                            Alert.alert('Thông báo', 'Bạn chưa nhập số điểm cần mua !');
-                        }
-                        else{
-                            Alert.alert('Thông báo', 'Bạn đã thanh toán thành công!');
-                            dispatch({type: 'UPDIEM', diem : diem});
-                            
-                            navigation.navigate('Tabviewmain');
-                        }
-                        
-                    }}>
+                    <TouchableOpacity  onPress={onSubmitThanhToan}>
                         <Text style={AppStyle.StyleFirst.text}>Tiến hành thanh toán</Text>
                     </TouchableOpacity>
             </LinearGradient>
