@@ -75,6 +75,7 @@ const initState = {
     checkKingBread: true,
     kingbread: false,
     confirm: false,
+    history_point : [],
     bills: [],
     billsCGV: [],
     image :'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg'
@@ -329,6 +330,11 @@ const reducer = (state = initState, action) => {
             return { ...state, Email : action.Email}
         case 'Reset_Diem':{
             return { ...state, diem : 0}
+        }
+        case 'HISTORY_POINT':{
+            let arr_point = [...state.history_point]
+            arr_point.push({point : action.point + '', phuongthuc: action.phuongthuc, time : action.tỉme })
+            return { ...state, history_point : arr_point}
         }
         default:
             return state
