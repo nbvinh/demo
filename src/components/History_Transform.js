@@ -19,10 +19,11 @@ const History_Transform = ({ navigation }) => {
     const onDatechange = (date) => {
         setSelectedDate(date)
     }
-    const date = new Date().toString();
-    const startDate = selectedDate ? selectedDate.toString() : '';
+    const date = new Date()
+    const startDate = selectedDate ? selectedDate.toString() :'';
     const mindate = moment(startDate).format('DD-MM-YYYY');
-    const min = mindate ? mindate:date;
+    const display = moment(date).format('DD-MM-YYYY');
+    const min =startDate?mindate :display.toString();
     const confirm = useSelector(state => state.confirm)
     const choosevoucher = useSelector(state => state.choosevoucher)
     const arrPromotion = useSelector(state => state.arrPromotion)
