@@ -31,7 +31,7 @@ const Style_Giao_Dich_TCong = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: 'bold',
         fontSize: 17, paddingHorizontal: 13,
-        paddingTop: 16
+       paddingTop:10
     },
     content: {
         paddingHorizontal: 13,
@@ -48,14 +48,14 @@ const Style_Giao_Dich_TCong = StyleSheet.create({
     },
     left: {
         flex: 8, color: '#BDBDBD',
-        fontSize: 15,
+        fontSize: 17,
         fontWeight: 'normal'
     },
     right: {
         flex: 5,
         justifyContent: 'flex-end',
         color: '#FFFFFF',
-        fontSize: 11, textAlign: 'right'
+        fontSize: 13, textAlign: 'right'
     },
     detail: {
         backgroundColor: '#272738',

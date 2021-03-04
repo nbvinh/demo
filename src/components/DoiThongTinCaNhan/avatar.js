@@ -34,22 +34,28 @@ const DoiAvatar = ({ navigation }) => {
     }
     const onupdate_info = async () => {
         try {
-            fetch(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
-                email: Email,
-                full_name: HoTen,
-                phone_number: SDT,
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer + ${result}`
-                }
-            })
-                .then((response)=>response.json())
-                .then((json)=>{console.log(json)})
-                dispatch({type:'HOTEN', hoten: HoTen})
-                dispatch({type:'SDT', SDT: SDT})
-                dispatch({type:'Email', Email: Email})
-                Alert.alert('Thông báo', 'Cập nhật thông tin cá nhân thành công!');
-            navigation.navigate('Tabviewmain');
+            if(result != ''){
+                fetch(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
+                    email: Email,
+                    full_name: HoTen,
+                    phone_number: SDT,
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer + ${result}`
+                    }
+                })
+                    .then((response)=>response.json())
+                    .then((json)=>{console.log(json)})
+                    dispatch({type:'HOTEN', hoten: HoTen})
+                    dispatch({type:'SDT', SDT: SDT})
+                    dispatch({type:'Email', Email: Email})
+                    Alert.alert('Thông báo', 'Cập nhật thông tin cá nhân thành công!');
+                navigation.navigate('Tabviewmain');
+            }
+            else{
+                Alert.alert('Thông báo', 'Cập nhật thất bại do bạn chưa đăng nhập!');
+            }
+            
 
         } catch (error) {
             Alert.alert('Thông báo', error + '');

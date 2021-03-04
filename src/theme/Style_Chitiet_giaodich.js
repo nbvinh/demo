@@ -69,7 +69,7 @@ const Style_Chitiet_giaodich = StyleSheet.create({
    code_2:{
        color:'#FFFFFF',
        fontSize:15,
-       fontWeight:'normal'
+       fontWeight:'normal',width:160,textAlign:'right'
    },
   
    pay:{

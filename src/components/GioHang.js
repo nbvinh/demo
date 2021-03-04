@@ -33,6 +33,7 @@ const GioHang = ({ navigation }) => {
     const GOback = () => {
         navigation.goBack()
     }
+    console.log('show',kingbread)
     return (
         <View style={[AppStyle.StyleVoucherCGV.container]}>
             <View style={AppStyle.StyleVoucherCGV.header}>

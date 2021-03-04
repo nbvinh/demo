@@ -25,8 +25,8 @@ const TabVoucher = ({ navigation }) => {
         tabBarOptions={{
           activeTintColor: '#822FFB',
           labelStyle: { fontSize: 15, fontWeight: '400' },
-          indicatorStyle: { backgroundColor: 'red' },
-          style: { backgroundColor: 'rgba(139, 59, 255, 0.15)', marginHorizontal: 12, marginTop: 18, activeBackgroundColor: 'rgba(139, 59, 255, 0.15)', },
+          indicatorStyle: { backgroundColor: '#822FFB' },
+          style: { backgroundColor: 'black', marginHorizontal: 12, marginTop: 18, activeBackgroundColor: 'rgba(139, 59, 255, 0.15)', },
 
         }}>
         <Tab.Screen name="ChuaSuDung" component={ChuaSuDung} options={{ tabBarLabel: 'Chưa sử dụng' }} />
