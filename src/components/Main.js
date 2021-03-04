@@ -22,7 +22,7 @@ const Main = ({ navigation }) => {
     const hoten = useSelector(state => state.hoten)
     const data1 = useSelector(state => state.data1)
     const diem = useSelector(state => state.diem)
-    const [diemlocal, setdiemlocal] = useState(diem);
+    const [diemlocal, setdiemlocal] = useState();
     const province = useSelector(state => state.province)
     const [DuLieuApi, setDuLieuApi] = React.useState([]);
     const [DuLieuVoucher, setDuLieuVoucher] = React.useState([]);
@@ -66,7 +66,7 @@ const Main = ({ navigation }) => {
         try {
           await AsyncStorage.setItem(
             'Diem',
-            diem + ''
+            JSON.stringify(diem)
           );
         } catch (error) {
           // Error saving data
@@ -74,8 +74,10 @@ const Main = ({ navigation }) => {
       };
       const _getData = async () => {
         try {
-          await AsyncStorage.getItem("Diem").then(diem => {
-            setdiemlocal(diem);
+          await AsyncStorage.getItem("Diem").then(val => {
+            console.log(val);
+            setdiemlocal(val);
+
         });
         
         } catch (error) {
@@ -85,11 +87,11 @@ const Main = ({ navigation }) => {
       };
     const image = useSelector(state => state.image)
     return (
-
         <ScrollView style={AppStyle.StyleMain.container}>
 
             <StatusBar barStyle='light-content'></StatusBar>
             <View style={AppStyle.StyleMain.header}>
+            {_storeData}
                 <View style={AppStyle.StyleMain.header_left}>
                     <TouchableOpacity onPress={() => { navigation.navigate('DoiAvatar') }}>
                         <Image
@@ -145,7 +147,7 @@ const Main = ({ navigation }) => {
                 <View style={AppStyle.StyleMain.poin_your_left}>
                     <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Điểm của bạn </Text>
                     
-                    <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {numberWithCommas(diemlocal)}</Text>
+                    <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {diemlocal}</Text>
                 </View>
                 <View style={AppStyle.StyleMain.poin_your_right}>
                     <LinearGradient
