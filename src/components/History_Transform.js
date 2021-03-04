@@ -4,6 +4,8 @@ import { View, Text, Image, Alert, TouchableOpacity, ScrollView, Modal } from 'r
 import AppStyle from "../theme";
 import { Calendar } from 'react-native-calendars'; // 1.5.3
 import { useDispatch, useSelector } from "react-redux";
+import moment from 'moment';
+
 import CalendarPicker from 'react-native-calendar-picker';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 const History_Transform = ({ navigation }) => {
@@ -17,7 +19,11 @@ const History_Transform = ({ navigation }) => {
     const onDatechange = (date) => {
         setSelectedDate(date)
     }
-    const startDate = selectedDate ? selectedDate.toString() : '';
+    const date = new Date()
+    const startDate = selectedDate ? selectedDate.toString() :'';
+    const mindate = moment(startDate).format('DD-MM-YYYY');
+    const display = moment(date).format('DD-MM-YYYY');
+    const min =startDate?mindate :display.toString();
     const confirm = useSelector(state => state.confirm)
     const choosevoucher = useSelector(state => state.choosevoucher)
     const arrPromotion = useSelector(state => state.arrPromotion)
@@ -27,6 +33,14 @@ const History_Transform = ({ navigation }) => {
     const bills = useSelector(state => state.bills)
     const billsCGV = useSelector(state => state.billsCGV)
     console.log('bill', bills)
+    const Cancel =()=>{
+        setIsShowCalendar(false);
+        setSelectedDate();
+    }
+    const Done =()=>{
+        setIsShowCalendar(false);
+        setSelectedDate(startDate)
+    }
     // const storeData = async () => {
     //     try {
     //         await AsyncStorage.setItem('@storage_Key', JSON.stringify(bills))
@@ -74,12 +88,10 @@ const History_Transform = ({ navigation }) => {
 
                         <View>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15, borderTopWidth: 1, borderStyle: 'dotted', paddingVertical: 10 }}>
-                                <TouchableOpacity onPress={() => {
-                                    setIsShowCalendar(false)
-                                }}>
+                                <TouchableOpacity onPress={Cancel}>
                                     <Text style={{ color: '#9B9EA3', fontSize: 14, fontWeight: '500' }}>Xóa</Text>
                                 </TouchableOpacity>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={Done}>
                                     <Text style={{ color: '#8B3BFF', fontSize: 14, fontWeight: '500' }}>Áp dụng</Text>
                                 </TouchableOpacity>
                             </View>
@@ -111,14 +123,14 @@ const History_Transform = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
                 <View style={AppStyle.Style_History_Tranform.calendar}>
-                    <Text style={AppStyle.Style_History_Tranform.text}>SELECTED DATE:{startDate}</Text>
+                    <Text style={AppStyle.Style_History_Tranform.text}>{min}</Text>
                 </View>
                 <ScrollView style={AppStyle.Style_History_Tranform.content}>
                     {confirm ?
                         <View>
                             {bills.map((item) => {
                                 return (
-                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Thanh_Cong',
+                                    <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Chitiet_giaodich',
                                         { id: item.id }
                                     )} >
                                         <View style={AppStyle.Style_History_Tranform.item}>
