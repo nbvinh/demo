@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet,FlatList, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
 const GiaoDich = ({navigation}) =>{
     return(
-        <View style={AppStyle.StyleGiaoDich.container}>
-                <View style={AppStyle.StyleGiaoDich.header}>
+        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
+            <View style={AppStyle.StyleGiaoDich.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
                         <Image
                             width={10} height={18}
@@ -15,6 +15,7 @@ const GiaoDich = ({navigation}) =>{
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleGiaoDich.header_text}>Lịch Sử Điểm</Text>
             </View>
+            <View style={{marginHorizontal: 12}}>
             <TouchableOpacity style={AppStyle.StyleGiaoDich.Box} onPress={() => navigation.navigate('DoiDiem')}>
                 <View style={AppStyle.StyleGiaoDich.Box_Left}>
                     <Image
@@ -53,7 +54,8 @@ hoặc cửa hàng tiện lợi.</Text>
 Gift Card.</Text>
                 </View>
             </TouchableOpacity>
-        </View>
+            </View>
+        </SafeAreaView>
     );
 }
 export default GiaoDich;

@@ -6,10 +6,10 @@ const StyleGiaoDich = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "black",
-        padding: 16,
+        
     },
     header:{
-         marginVertical: 30, height: 30, flexDirection: 'row'
+         height: 30, flexDirection: 'row'
     },
     header_text:{
         textAlign:'center', width: '85%', color:'white', fontSize: 17, fontWeight: '500'

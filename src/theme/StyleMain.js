@@ -5,7 +5,6 @@ import {
 const StyleMain = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 12,
         backgroundColor: "black",
         
        
@@ -13,7 +12,6 @@ const StyleMain = StyleSheet.create({
     header:{
         flex: 1.5,
         height: 55,
-        marginTop: 15,
         flexDirection:'row'
     },
     header_left:{

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar,SafeAreaView, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
@@ -22,7 +22,7 @@ const DoiDiem = ({navigation}) =>{
     }
     return(
         
-        <View style={AppStyle.StyleGiaoDich.container}>
+        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
                 <View style={AppStyle.StyleGiaoDich.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
                         <Image
@@ -32,6 +32,7 @@ const DoiDiem = ({navigation}) =>{
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleGiaoDich.header_text}>Đổi Điểm</Text>
             </View>
+            <View style={{marginHorizontal: 12}}>
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Chọn đối tác</Text>
             {/* <View style={AppStyle.StyleGiaoDich.Box_DoiDiem}>
                         <Image
@@ -92,7 +93,8 @@ const DoiDiem = ({navigation}) =>{
                         <Text style={AppStyle.StyleFirst.text}>Xác Nhận</Text>
                         </TouchableOpacity>
                     </LinearGradient>
-        </View>
+         </View>
+        </SafeAreaView>
     );
 }
 export default DoiDiem;

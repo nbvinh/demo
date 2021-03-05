@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, FlatList } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image, FlatList } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import LinearGradient from 'react-native-linear-gradient';
@@ -8,6 +8,7 @@ import { changedata1 } from "../reducers/action";
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Province from "../components/Main/Province"
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 const Main = ({ navigation }) => {
     function numberWithCommas(x) {
         x = x.toString();
@@ -87,7 +88,8 @@ const Main = ({ navigation }) => {
       };
     const image = useSelector(state => state.image)
     return (
-        <ScrollView style={AppStyle.StyleMain.container}>
+        <SafeAreaView style={AppStyle.StyleMain.container}>
+        <ScrollView style={{paddingHorizontal: 12}}>
 
             <StatusBar barStyle='light-content'></StatusBar>
             <View style={AppStyle.StyleMain.header}>
@@ -254,6 +256,8 @@ const Main = ({ navigation }) => {
                 })
             }
         </ScrollView>
+        {/* </SafeAreaProvider> */}
+        </SafeAreaView>
     )
 }
 
