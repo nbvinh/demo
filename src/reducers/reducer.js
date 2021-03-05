@@ -78,12 +78,12 @@ const initState = {
     history_point : [],
     bills: [],
     billsCGV: [],
-    image :'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg'
+    image: 'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg'
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case 'IMAGES' :
-            return{...state,image: action.image}
+        case 'IMAGES':
+            return { ...state, image: action.image }
         case 'COMFIRM':
             return { ...state, confirm: true }
         case 'SUMGIOHANG':
@@ -204,11 +204,11 @@ const reducer = (state = initState, action) => {
             return { ...state, productnuoc: newState1 }
         case 'ADDBILL':
             let newBills = [...state.bills]
-            newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew',sumamount:action.sumamount })
+            newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount })
             return { ...state, bills: newBills }
         case 'ADDBILLCGV':
             let newBillsCGV = [...state.billsCGV]
-            newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV,value:action.value,tilte:'Voucher CGV Cinema' })
+            newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV, value: action.value, tilte: 'Voucher CGV Cinema' })
             return { ...state, billsCGV: newBillsCGV }
         case 'FILTERSTATUS':
             return { ...state, filterStatus: "" }
@@ -226,7 +226,7 @@ const reducer = (state = initState, action) => {
             return { ...state, productcombo: action.productcombo }
         case 'SUM':
             return { ...state, sum: action.sum }
-            case 'SUMAMOUNT':
+        case 'SUMAMOUNT':
             return { ...state, sumamount: action.sumamount }
         case 'CATEGORIESPRODUCT':
             return { ...state, DataProduct: action.DataProduct }
