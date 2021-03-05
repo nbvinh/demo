@@ -61,7 +61,7 @@ const RootStack =()=>{
             <Root.Screen name="Giao_Dich_Thanh_Cong" component={Giao_Dich_Thanh_Cong} />
             <Root.Screen name="Chitiet_giaodich" component={Chitiet_giaodich} />
 
-            {/* <Root.Screen name="ScanScreen" component={ScanScreen} /> */}
+            {/* <Root.Screen name="ScanScreen" compsadsdsdonent={ScanScreen} /> */}
         </Root.Navigator>
         </NavigationContainer>
     )
