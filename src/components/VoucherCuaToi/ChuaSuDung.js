@@ -5,7 +5,8 @@ import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
 const ChuaSuDung = () =>{
     return(
-        <ScrollView style={{flex: 1, backgroundColor:'black'}}>
+        
+        <ScrollView style={{flex: 1, backgroundColor:'black', paddingHorizontal: 12}}>
             {/* Khối vẫn còn hạn sử dụng */}
                 <TouchableOpacity style={[AppStyle.StyleMain.DichVu, {height: 258}]}>
                 <View style={AppStyle.StyleMain.DichVu_Top}>

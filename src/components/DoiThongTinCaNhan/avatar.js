@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 import AppStyle from "../../theme";
@@ -72,7 +72,7 @@ const DoiAvatar = ({ navigation }) => {
           });
     }
     return (
-        <View style={AppStyle.StyleGiaoDich.container}>
+        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
             <View style={AppStyle.StyleGiaoDich.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 10 }}>
                     <Image
@@ -82,7 +82,8 @@ const DoiAvatar = ({ navigation }) => {
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleGiaoDich.header_text}>Thông tin cá nhân</Text>
             </View>
-            <View style={{ height: 80, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{marginHorizontal: 12}}>
+            <View style={{ marginTop: 20, height: 80, justifyContent: 'center', alignItems: 'center' }}>
                 <Image
                     style={{ width: 84, height: 84, borderRadius: 50, opacity: 0.4, }}
                     source={{
@@ -161,8 +162,8 @@ const DoiAvatar = ({ navigation }) => {
                     <Text style={AppStyle.StyleFirst.text}>Lưu</Text>
                 </TouchableOpacity>
             </LinearGradient>
-
-        </View>
+            </View>
+        </SafeAreaView>
     );
 }
 const styles = StyleSheet.create({

@@ -10,7 +10,7 @@ const StyleLichSuDiem = StyleSheet.create({
         padding: 8
     },
     header:{
-         marginTop: 50, height: 30, flexDirection: 'row'
+          height: 30, flexDirection: 'row'
     },
     header_text:{
         textAlign:'center', width: '85%', color:'white', fontSize: 17, fontWeight: '500'

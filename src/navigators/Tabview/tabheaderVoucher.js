@@ -21,6 +21,7 @@ const TabVoucher = ({ navigation }) => {
         </TouchableOpacity>
         <Text style={{ textAlign: 'center', width: '85%', color: 'white', fontSize: 17, fontWeight: '500' }}>Voucher của tôi</Text>
       </View>
+      
       <Tab.Navigator
         tabBarOptions={{
           activeTintColor: '#822FFB',
@@ -32,6 +33,7 @@ const TabVoucher = ({ navigation }) => {
         <Tab.Screen name="ChuaSuDung" component={ChuaSuDung} options={{ tabBarLabel: 'Chưa sử dụng' }} />
         <Tab.Screen name="DaSuDung" component={DaSuDung} options={{ tabBarLabel: 'Đã sử dụng' }} />
       </Tab.Navigator>
+      
     </SafeAreaView>
   );
 }
