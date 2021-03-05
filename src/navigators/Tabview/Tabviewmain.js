@@ -59,7 +59,6 @@ import Main from '../../components/Main';
 import ThongTin from '../../components/ThongTin/ThongTin';
 import TabVoucher from "./tabheaderVoucher";
 import History_Transform from "../../components/History_Transform";
-import * as Animatable from 'react-native-animatable';
 function MyTabBar({ state, descriptors, navigation }) {
     return (
         <View style={{ flexDirection: 'row', height: 50, backgroundColor: '#151515' }}>
