@@ -62,7 +62,7 @@ import History_Transform from "../../components/History_Transform";
 import * as Animatable from 'react-native-animatable';
 function MyTabBar({ state, descriptors, navigation }) {
     return (
-        <View style={{ flexDirection: 'row', height: 50, backgroundColor: 'black' }}>
+        <View style={{ flexDirection: 'row', height: 50, backgroundColor: '#151515' }}>
             {state.routes.map((route, index) => {
                 const { options } = descriptors[route.key];
                 const label =
@@ -93,7 +93,7 @@ function MyTabBar({ state, descriptors, navigation }) {
 
                 return (
                     <View key={index} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <View style={isFocused ?{width:60,height:30,marginBottom:20,justifyContent:'center',alignItems:'center',backgroundColor:'#272738',borderBottomLeftRadius:80,borderBottomRightRadius:80}:null}>
+                        <View style={isFocused ? { width: 60, height: 40, marginBottom: 10, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderBottomLeftRadius: 80, borderBottomRightRadius: 80 } : null}>
                             <TouchableOpacity
                                 accessibilityRole="button"
                                 accessibilityState={isFocused ? { selected: true } : {}}
@@ -101,7 +101,7 @@ function MyTabBar({ state, descriptors, navigation }) {
                                 testID={options.tabBarTestID}
                                 onPress={onPress}
                                 onLongPress={onLongPress}
-                                style={isFocused ? { borderRadius: 30, height: 50, width: 50, backgroundColor: '#8B3BFF', justifyContent: 'center', alignItems: 'center', marginBottom: 40 } : null}
+                                style={isFocused ? { borderRadius: 30, height: 50, width: 50, backgroundColor: '#8B3BFF', justifyContent: 'center', alignItems: 'center', marginBottom: 30 } : null}
                             >
                                 <Image style={{ height: 20, width: 18 }} source={{ uri: label }} />
                             </TouchableOpacity>

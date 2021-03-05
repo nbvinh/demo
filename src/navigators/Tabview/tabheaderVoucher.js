@@ -11,7 +11,7 @@ const TabVoucher = ({ navigation }) => {
   const [color, setColor] = useState('test')
   console.log(color)
   return (
-    <View style={{ flex: 1, backgroundColor: 'black', padding: 8 }}>
+    <View style={{ flex: 1, backgroundColor: 'black', paddingHorizontal:8,paddingTop:8 }}>
       <View style={{ marginTop: 50, height: 30, flexDirection: 'row' }}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 10 }}>
           <Image
