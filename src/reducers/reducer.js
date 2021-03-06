@@ -61,7 +61,7 @@ const initState = {
             img: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEUtXYUFKLzfAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC',
         },
     ],
-    abc :'',
+    abc: '',
     isShow: false,
     lienket: false,
     priceCGV: 0,
@@ -75,13 +75,21 @@ const initState = {
     checkKingBread: true,
     kingbread: false,
     confirm: false,
-    history_point : [],
+    history_point: [],
     bills: [],
     billsCGV: [],
-    image: 'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg'
+    image: 'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg',
+    product : [],
+    productafter: []
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
+        case 'PRODUCTAFTER' :
+            return{ ...state, productafter: action.productafter}
+        case 'ADDPRODUCT':
+            let newproduct =[...state.product]
+            newproduct.push({id: action.id , name: action.name , price : action.price, amount: action.amount})
+            return {...state,product: newproduct}
         case 'IMAGES':
             return { ...state, image: action.image }
         case 'COMFIRM':
@@ -204,7 +212,7 @@ const reducer = (state = initState, action) => {
             return { ...state, productnuoc: newState1 }
         case 'ADDBILL':
             let newBills = [...state.bills]
-            newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount })
+            newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount, product: action.product })
             return { ...state, bills: newBills }
         case 'ADDBILLCGV':
             let newBillsCGV = [...state.billsCGV]
@@ -323,18 +331,18 @@ const reducer = (state = initState, action) => {
         case 'IDLOAI':
             return { ...state, id: action.id }
         case 'UPDIEM':
-            return { ...state, diem: parseInt(state.diem) + parseInt(action.diem)}
-        case 'SDT' :
-            return { ...state, SDT : action.SDT}
-        case 'Email' :
-            return { ...state, Email : action.Email}
-        case 'Reset_Diem':{
-            return { ...state, diem : 0}
+            return { ...state, diem: parseInt(state.diem) + parseInt(action.diem) }
+        case 'SDT':
+            return { ...state, SDT: action.SDT }
+        case 'Email':
+            return { ...state, Email: action.Email }
+        case 'Reset_Diem': {
+            return { ...state, diem: 0 }
         }
-        case 'HISTORY_POINT':{
+        case 'HISTORY_POINT': {
             let arr_point = [...state.history_point]
-            arr_point.push({point : action.point + '', phuongthuc: action.phuongthuc, time : action.tỉme })
-            return { ...state, history_point : arr_point}
+            arr_point.push({ point: action.point + '', phuongthuc: action.phuongthuc, time: action.tỉme })
+            return { ...state, history_point: arr_point }
         }
         default:
             return state

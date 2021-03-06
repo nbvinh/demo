@@ -33,7 +33,7 @@ const GioHang = ({ navigation }) => {
     const GOback = () => {
         navigation.goBack()
     }
-    console.log('show',kingbread)
+    console.log('show', kingbread)
     return (
         <View style={[AppStyle.StyleVoucherCGV.container]}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -50,6 +50,9 @@ const GioHang = ({ navigation }) => {
                 <ScrollView>
                     {kingbread ?
                         DataProduct && DataProduct.map((item) => {
+                            item.OpenUP && (
+                                dispatch({ type: 'ADDPRODUCT', id: item.id, name: item.name, price: item.price, amount: item.amount })
+                            )
                             return (
                                 item.OpenUP && (
                                     <View key={item.id.toString()} style={AppStyle.StyleVoucherCGV.address}>

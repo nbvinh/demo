@@ -14,7 +14,6 @@ const History_Transform = ({ navigation }) => {
     const [selectedDate, setSelectedDate] = useState();
     const _onPress = () => {
         setIsShowCalendar(true)
-        console.log('da kick');
     }
     const onDatechange = (date) => {
         setSelectedDate(date)
@@ -32,7 +31,6 @@ const History_Transform = ({ navigation }) => {
     const sum = useSelector(state => state.sum)
     const bills = useSelector(state => state.bills)
     const billsCGV = useSelector(state => state.billsCGV)
-    console.log('bill', bills)
     const Cancel =()=>{
         setIsShowCalendar(false);
         setSelectedDate();
@@ -52,7 +50,7 @@ const History_Transform = ({ navigation }) => {
     // const [test,setTest]= useState()
     // const getData = async () => {
     //     try {
-    //         const jsonValue = await AsyncStorage.getItem('key1')
+    //         const jsonValue = await AsyncStorage.getItem('key21')
     //         console.log('fff',jsonValue)
     //         setTest(jsonValue)
     //     } catch (e) {
@@ -62,7 +60,6 @@ const History_Transform = ({ navigation }) => {
     // useEffect(()=>{
     //     getData()
     // })
-    // console.log(test)
     return (
         <View style={{ flex: 1 }}>
             <Modal

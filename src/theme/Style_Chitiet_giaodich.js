@@ -33,9 +33,9 @@ const Style_Chitiet_giaodich = StyleSheet.create({
        marginVertical:12
    },
    box:{
-       flexDirection:'row',
+    //    flexDirection:'row',
       
-       justifyContent:'space-between'
+    //    justifyContent:'space-between'
    },
    text:{
        color:'white',

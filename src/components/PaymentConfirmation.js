@@ -31,7 +31,7 @@ const PaymentConfirmation = ({ navigation }) => {
     const submithanler = () => {
         setTodo((prevtodo) => {
             let newTodo = [...prevtodo]
-            dispatch({ type: 'ADDBILL', id: Math.random().toString(), sum: sum,sumamount:sumamount })
+            dispatch({ type: 'ADDBILL', id: Math.random().toString(), sum: sum, sumamount: sumamount, product: product })
             return newTodo
         })
     }
@@ -43,13 +43,14 @@ const PaymentConfirmation = ({ navigation }) => {
     const submithanlerCGV = () => {
         setTodoCGV((prevtodoCGV) => {
             let newTodoCGV = [...prevtodoCGV]
-            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV,value:value })
+            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV, value: value })
             return newTodoCGV
         })
     }
     useEffect(() => {
         console.log(billsCGV)
     }, [billsCGV])
+    const product = useSelector(state => state.product)
     return (
         <View style={AppStyle.StyleVoucherCGV.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>

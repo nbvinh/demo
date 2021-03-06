@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert,KeyboardAvoidingView ,Platform} from 'react-native';
 import LinearGradient from "react-native-linear-gradient";
 import { update_info } from "./api";
 import { useDispatch, useSelector } from 'react-redux'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 const Profile = ({ route, navigation }) => {
     const dispatch = useDispatch();
     const [hoten, setHoten] = useState("");
@@ -89,8 +91,12 @@ const Profile = ({ route, navigation }) => {
           Alert.alert('Mời bạn nhập lại Email')
       }
     return (
+        <KeyboardAwareScrollView
+        style={styles.containerTop}
+        
+      >
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 50, marginLeft: 15 }}>
+            <TouchableOpacity onPress={() => navigation.goBack()} style={{  marginLeft: 15 }}>
                 <Image
                     width={10} height={18}
                     source={require('../img/back.png')}
@@ -156,16 +162,21 @@ const Profile = ({ route, navigation }) => {
                 }
             </View>
         </View>
+        </KeyboardAwareScrollView>
     );
 };
 
 const styles = StyleSheet.create({
+    containerTop:{
+        backgroundColor: 'black',
+        flex: 1,
+    },
     container: {
         flex: 1,
         backgroundColor: 'black'
     },
     header: {
-        marginTop: 110,
+        marginTop: 50,
         color: 'white',
         fontSize: 22,
         fontWeight: 'bold',
@@ -176,11 +187,11 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 14,
         fontWeight: '500',
-        marginTop: 30
+        marginTop: 10
     },
     body: {
         marginHorizontal: 15,
-        marginTop: 2
+        marginTop:35
 
     },
     parent_input: {
@@ -197,14 +208,14 @@ const styles = StyleSheet.create({
         paddingLeft: 20
     },
     block: {
-        marginVertical: 22
+       
     },
     button1: {
         color: 'white',
         fontSize: 17
     },
     footer: {
-        marginVertical: 75, marginHorizontal: 11
+        marginTop: 75, marginHorizontal: 11
     },
     touchable: {
         borderRadius: 58,
