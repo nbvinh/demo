@@ -48,7 +48,7 @@ const Chitiet_giaodich = ({ navigation, route }) => {
     // }, [])
     return (
 
-        <View style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
+        <SafeAreaView style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
             <View style={AppStyle.Style_Chitiet_giaodich.content_top}>
                 <TouchableOpacity onPress={() => navigation.goBack()}
                 >
@@ -152,7 +152,7 @@ const Chitiet_giaodich = ({ navigation, route }) => {
                 </View>
             </ScrollView>
 
-        </View >
+        </SafeAreaView >
 
     )
 }
