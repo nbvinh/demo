@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet,FlatList, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import { useSelector, useDispatch } from "react-redux";
@@ -39,7 +39,9 @@ const MuaDiem = ({navigation}) =>{
             }
     }
     return(
-        <View style={AppStyle.StyleGiaoDich.container}>
+        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
+            <View style={{marginHorizontal: 16}}>
+
                 <View style={AppStyle.StyleGiaoDich.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
                         <Image
@@ -108,8 +110,8 @@ const MuaDiem = ({navigation}) =>{
             </LinearGradient>
             }
                         
-               
-        </View>
+               </View>
+        </SafeAreaView>
     );
 }
 export default MuaDiem;

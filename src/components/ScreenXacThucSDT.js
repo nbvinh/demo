@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Alert, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar,SafeAreaView, Alert, Image } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AppStyle from "../theme";
@@ -55,10 +55,10 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const inputRef4 = useRef();
     const inputRef5 = useRef();
     return (
-        <View style={AppStyle.StyleScreenXacNhanSDT.container}>
+        <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
             <StatusBar backgroundColor='black' barStyle="light-content" />
             <View style={AppStyle.StyleScreenXacNhanSDT.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 50, marginLeft: 10 }}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 10 }}>
                     <Image
                         width={10} height={18}
                         source={require('../img/back.png')}
@@ -135,7 +135,7 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
             </View>
 
             {/* <ReactCodeInput /> */}
-        </View>
+        </SafeAreaView>
     )
 }
 export default ScreenXacThucSDT;

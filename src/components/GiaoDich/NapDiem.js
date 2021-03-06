@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet,FlatList, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
 const NapDiem = ({navigation}) =>{
     const [ma, setma] = React.useState('');
     return(
-        <View style={AppStyle.StyleGiaoDich.container}>
+        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
                 <View style={AppStyle.StyleGiaoDich.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
                         <Image
@@ -16,9 +16,10 @@ const NapDiem = ({navigation}) =>{
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleGiaoDich.header_text}>Nạp Điểm</Text>
             </View>
+            <View style={{marginHorizontal: 16}}>
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập Mã Gift Card</Text>
             <TextInput onChangeText={(value) => setma(value)} placeholder='Nhập Mã Gift Card'  placeholderTextColor = 'rgba(255, 255, 255, 0.6)' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color: 'white'}]}/>
-            <TouchableOpacity style={{position:'absolute', top: 175, right: 30, zIndex: 999999}}>
+            <TouchableOpacity style={{position:'absolute', top: 70, right: 10, zIndex: 999999}}>
                 <Image
                     width={10} height={10}
                     source={require('../../img/img_icon_24px/scan_24px.png')}
@@ -38,6 +39,7 @@ const NapDiem = ({navigation}) =>{
                     </LinearGradient>
             }
         </View>
+        </SafeAreaView>
     );
 }
 export default NapDiem;

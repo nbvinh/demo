@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput,SafeAreaView, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
@@ -59,8 +59,8 @@ import LinearGradient from 'react-native-linear-gradient';
 // }
 const ThongTin = ({navigation}) =>{
     return(
-        <View style={AppStyle.StyleLichSu.container}>
-            <View style={{ marginTop: 50, height: 30, flexDirection: 'row', marginBottom: 10,}}>
+        <SafeAreaView style={AppStyle.StyleLichSu.container}>
+            <View style={{ height: 30, flexDirection: 'row', marginBottom: 10,}}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
                     <Image
                         width={10} height={18}
@@ -74,6 +74,7 @@ const ThongTin = ({navigation}) =>{
                 renderItem={({item}) =><Item item = {item}/>}
                 keyExtractor={(item) => item.id}
             /> */}
+            <View style={{marginHorizontal: 12}}>
             <ScrollView>
             <View style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
@@ -167,7 +168,8 @@ const ThongTin = ({navigation}) =>{
                 
             </View>
             </ScrollView>
-        </View>
+            </View>
+        </SafeAreaView>
     
     );
 }
