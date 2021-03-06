@@ -20,7 +20,7 @@ const StyleGiaoDich = StyleSheet.create({
         borderRadius: 8,
         flexDirection:'row',
         padding: 8,
-        marginTop: 8
+        margin: 8
     },
     Box_Left:{
         flex: 2.5,
