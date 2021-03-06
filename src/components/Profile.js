@@ -27,11 +27,11 @@ const Profile = ({ route, navigation }) => {
                     'Authorization': `Bearer + ${result}`
                 }
             })
-                .then((response)=>response.json())
-                .then((json)=>{console.log(json)})
-                dispatch({type:'HOTEN', hoten: hoten.hoten})
-                dispatch({type:'SDT', SDT: SDT})
-                dispatch({type:'Email', Email: Email})
+                .then((response) => response.json())
+                .then((json) => { console.log(json) })
+            dispatch({ type: 'HOTEN', hoten: hoten.hoten })
+            dispatch({ type: 'SDT', SDT: SDT })
+            dispatch({ type: 'Email', Email: Email })
             navigation.navigate('Tabviewmain');
         } catch (error) {
             Alert.alert('Thông báo', error + '');
@@ -69,27 +69,27 @@ const Profile = ({ route, navigation }) => {
         }
         setEmail({ Email: email })
     }
-    const [check,setCheck]=useState(false)
+    const [check, setCheck] = useState(false)
     const validate = (text) => {
         console.log(text);
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (reg.test(text) === false) {
-          console.log("Email is Not Correct");
-        //   this.setState({ email: text })
+            console.log("Email is Not Correct");
+            //   this.setState({ email: text })
             setEmail(text)
             setCheck(false);
-          return false;
+            return false;
         }
         else {
-        //   this.setState({ email: text })
+            //   this.setState({ email: text })
             setEmail(text)
             setCheck(true)
-          console.log("Email is Correct");
+            console.log("Email is Correct");
         }
-      }
-      const _onPress=()=>{
-          Alert.alert('Mời bạn nhập lại Email')
-      }
+    }
+    const _onPress = () => {
+        Alert.alert('Mời bạn nhập lại Email')
+    }
     return (
         <KeyboardAwareScrollView
         style={styles.containerTop}
@@ -113,53 +113,53 @@ const Profile = ({ route, navigation }) => {
                             onChangeText={(text) => onchangText(text)}
                         />
                     </View>
-                </View>
-                <View style={styles.block}>
-                    <Text style={styles.title}>Số Điện Thoại <Text style={{ color: 'red' }}>*</Text></Text>
-                    <View style={styles.parent_input}>
-                        <TextInput placeholder='Mời nhập số điện thoại của bạn'
-                            style={styles.textinput}
-                            placeholderTextColor='rgba(255, 255, 255, 0.3)'
-                            keyboardType='numeric'
-                            value={SDT}
-                        />
+                    <View style={styles.block}>
+                        <Text style={styles.title}>Số Điện Thoại <Text style={{ color: 'red' }}>*</Text></Text>
+                        <View style={styles.parent_input}>
+                            <TextInput placeholder='Mời nhập số điện thoại của bạn'
+                                style={styles.textinput}
+                                placeholderTextColor='rgba(255, 255, 255, 0.3)'
+                                keyboardType='numeric'
+                                value={SDT}
+                            />
+                        </View>
                     </View>
-                </View>
-                <View style={styles.block}>
-                    <Text style={styles.title}>Email</Text>
-                    <View style={styles.parent_input}>
-                        <TextInput placeholder='Mời nhập Email của bạn'
-                            style={styles.textinput}
-                            placeholderTextColor='rgba(255, 255, 255, 0.3)'
-                            // onChangeText={(email) => onchangEmail(email)}
-                            onChangeText={(text) => validate(text)}
-                            value={Email}
-                        />
+                    <View style={styles.block}>
+                        <Text style={styles.title}>Email</Text>
+                        <View style={styles.parent_input}>
+                            <TextInput placeholder='Mời nhập Email của bạn'
+                                style={styles.textinput}
+                                placeholderTextColor='rgba(255, 255, 255, 0.3)'
+                                // onChangeText={(email) => onchangEmail(email)}
+                                onChangeText={(text) => validate(text)}
+                                value={Email}
+                            />
+                        </View>
                     </View>
-                </View>
 
-            </View>
-            <View style={styles.footer}>
-                {follow_hoten  && check ?
-                <TouchableOpacity>
-                    <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
-                        colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
-                        <TouchableOpacity follow_hoten={follow_hoten}
-                            style={[styles.touchable]} onPress={onupdate_info}>
-                            <Text style={styles.button1}>Hoàn thành</Text>
+                </View>
+                <View style={styles.footer}>
+                    {follow_hoten && check ?
+                        <TouchableOpacity>
+                            <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
+                                colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
+                                <TouchableOpacity follow_hoten={follow_hoten}
+                                    style={[styles.touchable]} onPress={onupdate_info}>
+                                    <Text style={styles.button1}>Hoàn thành</Text>
+                                </TouchableOpacity>
+                            </LinearGradient>
                         </TouchableOpacity>
-                    </LinearGradient>
-                </TouchableOpacity>
-                    :
-                <TouchableOpacity onPress={_onPress}>
-                    <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
-                        colors={['#B738FF', '#8B3BFF']} style={{ opacity: 0.2, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
+                        :
+                        <TouchableOpacity onPress={_onPress}>
+                            <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
+                                colors={['#B738FF', '#8B3BFF']} style={{ opacity: 0.2, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
 
-                        <Text style={styles.button1}>Hoàn thành</Text>
+                                <Text style={styles.button1}>Hoàn thành</Text>
 
-                    </LinearGradient>
-                </TouchableOpacity>
-                }
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    }
+                </View>
             </View>
         </View>
         </KeyboardAwareScrollView>

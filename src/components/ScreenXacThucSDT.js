@@ -58,7 +58,7 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
             <StatusBar backgroundColor='black' barStyle="light-content" />
             <View style={AppStyle.StyleScreenXacNhanSDT.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 10 }}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop:5}}>
                     <Image
                         width={10} height={18}
                         source={require('../img/back.png')}
