@@ -10,7 +10,7 @@ const Style_History_Tranform = StyleSheet.create({
        flexDirection:'row',
        justifyContent:'space-between',
        height:90,
-       paddingVertical:15,
+       paddingTop:15,
        paddingHorizontal:10,
       
        
