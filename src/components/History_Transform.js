@@ -61,7 +61,7 @@ const History_Transform = ({ navigation }) => {
     // useEffect(()=>{
     //     getData()
     // })
-    console.log(test)
+    // console.log(test)
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
             <View style={{ flex: 1 }}>
