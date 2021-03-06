@@ -55,7 +55,7 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const inputRef4 = useRef();
     const inputRef5 = useRef();
     return (
-        <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
+        <SafeAreaView style={[AppStyle.StyleScreenXacNhanSDT.container,{paddingHorizontal:8}]}>
             <StatusBar backgroundColor='black' barStyle="light-content" />
             <View style={AppStyle.StyleScreenXacNhanSDT.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop:5}}>
