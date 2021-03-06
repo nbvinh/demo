@@ -67,7 +67,7 @@ const MuaDiem = ({navigation}) =>{
                     <Text style={AppStyle.StyleGiaoDich.header_text}>Mua Điểm</Text>
             </View>
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập số cần mua</Text>
-            <TextInput  placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color: 'rgba(255, 255, 255, 0.3)'}]} onChangeText={(value) => setDiem(value)}/>
+            <TextInput  placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)'  keyboardType='numeric' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color:'white'}]} onChangeText={(value) => setDiem(value)}/>
             <View style={AppStyle.StyleGiaoDich.TongTien}>
                 <Text style={AppStyle.StyleGiaoDich.Text_White}>Tổng Tiền</Text>
                 <Text style={AppStyle.StyleGiaoDich.Text_White}>{diem > 0 ? numberWithCommas(diem*100) : 0} VNĐ</Text>
