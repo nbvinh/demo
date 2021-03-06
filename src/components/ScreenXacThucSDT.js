@@ -55,7 +55,7 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const inputRef4 = useRef();
     const inputRef5 = useRef();
     return (
-        <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
+        <SafeAreaView style={[AppStyle.StyleScreenXacNhanSDT.container,{ paddingHorizontal: 8}]}>
             <StatusBar backgroundColor='black' barStyle="light-content" />
             <View style={AppStyle.StyleScreenXacNhanSDT.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop:5}}>
@@ -76,6 +76,7 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                             if (val != '') {
                                 inputRef1.current.focus()
                             }
+                           
                         }}
                         value={MaPin1} 
                         autoFocus={true}
@@ -85,11 +86,17 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                         if (val != '') {
                             inputRef2.current.focus()
                         }
+                        if (val == '') {
+                            inputRef.current.focus();
+                        }
                     }} value={MaPin2} />
                     <TextInput ref={inputRef2} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                         setMaPin3(val)
                         if (val != '') {
                             inputRef3.current.focus()
+                        }
+                        if (val == '') {
+                            inputRef1.current.focus();
                         }
                     }} value={MaPin3} />
                     <TextInput ref={inputRef3} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
@@ -97,14 +104,28 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                         if (val != '') {
                             inputRef4.current.focus()
                         }
+                        if (val == '') {
+                            inputRef2.current.focus();
+                        }
                     }} value={MaPin4} />
                     <TextInput ref={inputRef4} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                         setMaPin5(val)
                         if (val != '') {
                             inputRef5.current.focus()
                         }
+                        else if (val == '') {
+                            inputRef3.current.focus();
+                        }
+                        
                     }} value={MaPin5} />
-                    <TextInput ref={inputRef5} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin6(val)} value={MaPin6} />
+                    <TextInput ref={inputRef5} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                            setMaPin6(val);
+                            if (val == '') {
+                                inputRef4.current.focus();
+                            }
+                        }
+                    }
+                         value={MaPin6} />
                 </View>
                 <Text style={AppStyle.StyleScreenXacNhanSDT.textguilaisau}> Gửi laị sau 00:{TimeDown}</Text>
                 {
