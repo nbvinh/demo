@@ -3,6 +3,7 @@ import { View, Text, StyleSheet,FlatList, TouchableOpacity,SafeAreaView, StatusB
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
+import Dialog, { DialogContent } from 'react-native-popup-dialog';
 const NapDiem = ({navigation}) =>{
     const [ma, setma] = React.useState('');
     return(

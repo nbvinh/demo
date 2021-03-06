@@ -29,11 +29,26 @@ const MuaDiem = ({navigation}) =>{
                 }
                 else{
                     
-                    dispatch({type: 'UPDIEM', diem : diem});
-                    let d = new Date();
-                    dispatch({type: 'HISTORY_POINT',  point : '+'+diem,phuongthuc : check, tỉme : d.getDay()+'/'+d.getMonth()+'/'+d.getFullYear()+ ' ' + d.getHours() + ':' + d.getMinutes()});
-                    Alert.alert('Thông báo', 'Bạn đã thanh toán thành công!');
-                    navigation.navigate('Tabviewmain');
+                    
+                    Alert.alert('Thông Báo', 'Bạn Có Chắc Là Thanh Toán '+numberWithCommas(diem*100) + ' VNĐ Không!', [
+                        
+                        {
+                            text: "Có",
+                            onPress: () => {
+                                Alert.alert('Chúc Mừng', 'Bạn Đã Mua Điểm Thành Công!');
+                                navigation.navigate('Tabviewmain');
+                                dispatch({type: 'UPDIEM', diem : diem});
+                                let d = new Date();
+                                dispatch({type: 'HISTORY_POINT',  point : '+'+diem,phuongthuc : check, tỉme : d.getDay()+'/'+d.getMonth()+'/'+d.getFullYear()+ ' ' + d.getHours() + ':' + d.getMinutes()});
+                            }
+                        },
+                        {
+                            text: "Không",
+                            onPress: () => console.log("Cancel Pressed"),
+                          },
+                      ],
+                      { cancelable: false });
+                    
                 }
                 
             }
