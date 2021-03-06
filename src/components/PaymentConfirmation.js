@@ -4,6 +4,7 @@ import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import { useSelector, useDispatch } from "react-redux";
 import ListBank from "../components/Phuongthucthanhtoan/ListBank";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const PaymentConfirmation = ({ navigation }) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.data)
@@ -35,7 +36,17 @@ const PaymentConfirmation = ({ navigation }) => {
             return newTodo
         })
     }
+    const storeData = async () => {
+        try {
+            await AsyncStorage.setItem('@storage_Key', JSON.stringify(bills))
+            console.log("Save ok")
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    const [test,setTest]= useState()
     useEffect(() => {
+        storeData()
         console.log(bills)
     }, [bills])
     const billsCGV = useSelector(state => state.billsCGV)

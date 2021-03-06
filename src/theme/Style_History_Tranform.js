@@ -4,13 +4,13 @@ import {
 
 const Style_History_Tranform = StyleSheet.create({
    container:{
-       backgroundColor:'black',flex:1, paddingTop: 25
+       backgroundColor:'black',flex:1
    },
    header:{
        flexDirection:'row',
        justifyContent:'space-between',
        height:90,
-       paddingVertical:26,
+       paddingVertical:15,
        paddingHorizontal:10,
       
        

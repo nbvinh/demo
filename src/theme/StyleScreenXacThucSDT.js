@@ -6,7 +6,6 @@ const StyleScreenXacNhanSDT = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "black",
-        paddingHorizontal: 10
     },
     header:{
         flex: 2,

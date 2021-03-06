@@ -100,7 +100,7 @@ function MyTabBar({ state, descriptors, navigation }) {
                                 testID={options.tabBarTestID}
                                 onPress={onPress}
                                 onLongPress={onLongPress}
-                                style={isFocused ? { borderRadius: 30, height: 50, width: 50, backgroundColor: '#8B3BFF', justifyContent: 'center', alignItems: 'center', marginBottom: 30 } : null}
+                                style={isFocused ? { borderRadius: 30, height: 50, width: 50, backgroundColor: '#8B3BFF', justifyContent: 'center', alignItems: 'center', marginBottom: 20 } : null}
                             >
                                 <Image style={{ height: 20, width: 18 }} source={{ uri: label }} />
                             </TouchableOpacity>
