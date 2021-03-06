@@ -93,7 +93,6 @@ const Main = ({ navigation }) => {
 
             <StatusBar barStyle='light-content'></StatusBar>
             <View style={AppStyle.StyleMain.header}>
-            {_storeData}
                 <View style={AppStyle.StyleMain.header_left}>
                     <TouchableOpacity onPress={() => { navigation.navigate('DoiAvatar') }}>
                         <Image
