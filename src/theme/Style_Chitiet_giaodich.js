@@ -30,12 +30,16 @@ const Style_Chitiet_giaodich = StyleSheet.create({
    },
    item:{
        
-       marginVertical:12
+       marginVertical:12,
+       justifyContent:'space-between'
    },
-   box:{
+   textone:{
     //    flexDirection:'row',
       
     //    justifyContent:'space-between'
+    color:'#FFFFFF',
+    fontSize:17,
+    fontWeight:'bold',paddingBottom:9
    },
    text:{
        color:'white',
@@ -55,6 +59,11 @@ const Style_Chitiet_giaodich = StyleSheet.create({
    indicator1:{
        backgroundColor:'orange',
        height:'30%'
+   },
+   amount:{
+    fontSize:12,
+    color:'#A9A9AF',
+    fontWeight:'normal'
    },
    transform:{
        flexDirection:'row',

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import AppStyle from "../theme";
 import StepIndicator from 'react-native-step-indicator';
@@ -40,26 +40,18 @@ const Chitiet_giaodich = ({ navigation, route }) => {
     const data = useSelector(state => state.data)
     const DataProduct = useSelector(state => state.DataProduct);
     const productafter = useSelector(state => state.productafter)
-    const [nam, setNam] = useState([]);
-    useEffect(()=>{
-        setNam(() => {
-            bills.map((item) => {
-                if (id === item.id) {
-                    dispatch({ type: 'PRODUCTAFTER', productafter: item.product })
-                    return (
-                        < Text key={item.id.toString()} style={AppStyle.Style_Chitiet_giaodich.text} > { item.tilte}</Text>
-    
-                    )
-                }
-            })
-        })
-    },[])
+    // const [nam, setNam] = useState([]);
+    // useEffect(() => {
+    //     setNam(() => {
+
+    //     })
+    // }, [])
     return (
 
         <View style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
             <View style={AppStyle.Style_Chitiet_giaodich.content_top}>
-                <TouchableOpacity onPress={() =>navigation.goBack()} 
-                    >
+                <TouchableOpacity onPress={() => navigation.goBack()}
+                >
                     <Image
                         width={10} height={18} style={{ left: 14 }}
                         source={require('../img/back.png')}
@@ -92,18 +84,26 @@ const Chitiet_giaodich = ({ navigation, route }) => {
                 } */}
                 <View style={{ ...AppStyle.Style_Chitiet_giaodich.content }}>
                     <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        {nam && nam}
+                        {bills.map((item) => {
+                            if (id === item.id) {
+                                dispatch({ type: 'PRODUCTAFTER', productafter: item.product })
+                                return (
+                                    < Text key={item.id.toString()} style={AppStyle.Style_Chitiet_giaodich.textone} >{ item.tilte}</Text>
+
+                                )
+                            }
+                        })}
                         <View >
                             {productafter && productafter.map((item) => {
                                 return (
 
                                     <View key={item.id.toString()} style={AppStyle.Style_Chitiet_giaodich.box}>
-                                        <View style={{flexDirection:'row',flex:1,justifyContent:'space-between'}}>
+                                        <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-between' }}>
                                             <Text style={AppStyle.Style_Chitiet_giaodich.text}>{item.name}</Text>
                                             <Text style={AppStyle.Style_Chitiet_giaodich.text}>{item.price}.000</Text>
                                         </View>
 
-                                        <Text style={{color:'#A9A9AF'}}>x {item.amount}</Text>
+                                        <Text style={AppStyle.Style_Chitiet_giaodich.amount}>x{item.amount}</Text>
 
                                     </View>
                                 )
