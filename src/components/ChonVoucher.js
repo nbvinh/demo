@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, TouchableOpacity, Image,SafeAreaView } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, Text, TouchableOpacity, Image, SafeAreaView,BackHandler } from "react-native";
 import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import AppStyle from "../theme";
 import Khuyenmai from "../components/ChonVoucher/Khuyenmai";
@@ -14,18 +14,21 @@ const ChonVoucher = ({ navigation }) => {
         setIscheck(value);
     }
     const Goback = () => {
-        // navigation.goBack()
-        navigation.reset({
-            index: 0,
-            routes: [
-                {
-                    name: 'GioHang',
-                },
-            ],
-        })
+        navigation.goBack()
         dispatch({ type: 'CHOOSEVOUCHERTRUE' })
     }
     const conmfirmvoucher = useSelector(state => state.conmfirmvoucher)
+    useEffect(() => {
+        BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+        return () => {
+            BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+        };
+    }, [])
+    function handleBackButtonClick() {
+        navigation.goBack()
+        dispatch({ type: 'CHOOSEVOUCHERTRUE' })
+        return true;
+    }
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
 
