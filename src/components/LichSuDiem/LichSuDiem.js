@@ -22,8 +22,6 @@ const LichSuDiem = ({navigation}) =>{
             </View>
             <View style={{marginHorizontal: 12}}>
                 <ScrollView>
-                    
-                    
                     {
                             arr_point.map((val)=>{
                                 return(
