@@ -279,8 +279,8 @@ const Main = ({ navigation }) => {
                                 data={DuLieuVoucher}
                                 renderItem={({item}) => <Voucher item = {item}/>}
                                 keyExtractor={item => item.id}
-                                onEndReached={handlerLoadmore}
-                                onEndReachedThreshold={5000}
+                                // onEndReached={handlerLoadmore}
+                                // onEndReachedThreshold={5000}
                                 ListFooterComponent = {() =>  <ActivityIndicator animating size='large'/>}
                             />
                     </ScrollView>
