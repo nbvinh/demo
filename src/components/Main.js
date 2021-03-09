@@ -11,7 +11,7 @@ import Province from "../components/Main/Province"
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 const Voucher = ({item}) => {
     const ListDuLieuVoucher =()=>{
-        if(item.id ===11){
+        if(item.id === 11){
             navigation.navigate('VoucherCGV')
             dispatch({type:'KINGBREADFALSE'})
         }
@@ -85,7 +85,7 @@ const Main = ({ navigation }) => {
     const data1 = useSelector(state => state.data1)
     const diem = useSelector(state => state.diem)
     const [diemlocal, setdiemlocal] = useState();
-    const [loading, setloading] = React.useState(true);
+    const [loading, setloading] = React.useState(false);
     const province = useSelector(state => state.province)
     const [DuLieuApi, setDuLieuApi] = React.useState([]);
     const [DuLieuVoucher, setDuLieuVoucher] = React.useState([]);
@@ -100,7 +100,7 @@ const Main = ({ navigation }) => {
             const dulieuvoucher = res.data.data;
             console.log('number : ' + number);
             Object.entries(dulieuvoucher);
-            setDuLieuVoucher(dulieuvoucher);
+            setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
             dispatch({ type: 'DATA_VOUCHER', voucher: voucher.DuLieuVoucher })
             setloading(false);
         }).catch(function (error) {
@@ -122,10 +122,8 @@ const Main = ({ navigation }) => {
         callapiVoucher();
         fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
             method: 'GET'
-        })
-            .then((response) => response.json())
-            .then((jsonn) => { dispatch(changedata1(jsonn.data)) })
-            .catch((error) => console.error(error))
+        }).then((response) => response.json()).then((jsonn) => { dispatch(changedata1(jsonn.data)) }).catch((error) => console.error(error));
+        
     }, [diem])
     const modal = () => {
         setTest(false)
@@ -160,14 +158,14 @@ const Main = ({ navigation }) => {
 
       };
     const image = useSelector(state => state.image)
-    if(loading) {
-        return(
-            <SafeAreaView style={[AppStyle.StyleMain.container, {justifyContent:'center', alignItems:'center'}]}>
-                <ActivityIndicator animating size='large'/>
-            </SafeAreaView>
-        );
-    }
-    else{
+    // if(loading === true) {
+    //     return(
+    //         <SafeAreaView style={[AppStyle.StyleMain.container, {justifyContent:'center', alignItems:'center'}]}>
+    //             <ActivityIndicator animating size='large'/>
+    //         </SafeAreaView>
+    //     );
+    // }
+    
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
         <ScrollView style={{paddingHorizontal: 12}}>
@@ -279,14 +277,14 @@ const Main = ({ navigation }) => {
                 renderItem={({item}) => <Voucher item = {item}/>}
                 keyExtractor={item => item.id}
                 onEndReached={handlerLoadmore}
-                onEndReachedThreshold={500}
+                onEndReachedThreshold={5000}
                 ListFooterComponent = {() =>  loading ? <ActivityIndicator animating size='large'/> : {}}
             />
         </ScrollView>
         {/* </SafeAreaProvider> */}
         </SafeAreaView>
     )
-            }
+        
 }
 
 export default Main;

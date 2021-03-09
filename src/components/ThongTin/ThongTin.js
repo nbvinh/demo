@@ -76,7 +76,7 @@ const ThongTin = ({navigation}) =>{
             /> */}
             <View style={{marginHorizontal: 12}}>
             <ScrollView>
-            <View style={AppStyle.StyleLichSu.item}>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -88,23 +88,23 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
+            </TouchableOpacity>
             
 
-            <View style={AppStyle.StyleLichSu.item}>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item} onPress={() => navigation.navigate('LichSuDiem')}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
                         source={require('../../img/img_icon_24px/lichsu_24px.png')}/> 
                         <Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>Lịch Sử điểm</Text>
                 </View>
-                <TouchableOpacity style={AppStyle.StyleLichSu.item_right} onPress={() => navigation.navigate('LichSuDiem')}>
+                <View style={AppStyle.StyleLichSu.item_right}>
                     <Image
                             style={{width: 10, height: 10}}
                             source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
-                </TouchableOpacity>
-            </View>
-            <View style={AppStyle.StyleLichSu.item}>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -116,8 +116,8 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
-            <View style={AppStyle.StyleLichSu.item}>
+            </TouchableOpacity>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -129,9 +129,9 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
+            </TouchableOpacity>
 
-            <View style={AppStyle.StyleLichSu.item}>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -143,8 +143,8 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
-            <View style={AppStyle.StyleLichSu.item}>
+            </TouchableOpacity>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -156,8 +156,8 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
-            <View style={AppStyle.StyleLichSu.item}>
+            </TouchableOpacity>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <TouchableOpacity style={AppStyle.StyleLichSu.item_left} onPress={()=>navigation.navigate('ScreenFirst')}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -166,7 +166,7 @@ const ThongTin = ({navigation}) =>{
                         </TouchableOpacity>
                 
                 
-            </View>
+            </TouchableOpacity>
             </ScrollView>
             </View>
         </SafeAreaView>
