@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, StatusBar, TextInput, Alert, Image, FlatList,ActivityIndicator } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, StatusBar, TextInput, Alert, Image, FlatList, ActivityIndicator } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import LinearGradient from 'react-native-linear-gradient';
@@ -31,28 +31,35 @@ const Main = ({ navigation }) => {
     useEffect(() => {
         _storeData();
         _getData();
-        axios.get('http://175.41.184.177:6061/category').then(function (res) {
-            const dulieu = res.data.data;
-            Object.entries(dulieu);
-            setDuLieuApi(dulieu);
-            dispatch({ type: 'CATEGORY', phanloai: phanloai.DuLieuApi })
-        }).catch(function (error) {
-            console.log(error);
-        });
-        axios.get('http://175.41.184.177:6061/voucher').then(function (res) {
-            const dulieuvoucher = res.data.data;
-            Object.entries(dulieuvoucher);
-            setDuLieuVoucher(dulieuvoucher);
-            dispatch({ type: 'DATA_VOUCHER', voucher: voucher.DuLieuVoucher })
-        }).catch(function (error) {
-            console.log(error);
-        });
-        fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
-            method: 'GET'
-        })
-            .then((response) => response.json())
-            .then((jsonn) => { dispatch(changedata1(jsonn.data)) })
-            .catch((error) => console.error(error))
+        const loadnhe = async () => {
+            const result = await axios.get('http://175.41.184.177:6061/category').then(function (res) {
+                const dulieu = res.data.data;
+                Object.entries(dulieu);
+                setDuLieuApi(dulieu);
+                dispatch({ type: 'CATEGORY', phanloai: phanloai.DuLieuApi })
+            }).catch(function (error) {
+                console.log(error);
+            });
+            const result1 =await axios.get('http://175.41.184.177:6061/voucher').then(function (res) {
+                const dulieuvoucher = res.data.data;
+                Object.entries(dulieuvoucher);
+                setDuLieuVoucher(dulieuvoucher);
+                dispatch({ type: 'DATA_VOUCHER', voucher: voucher.DuLieuVoucher })
+            }).catch(function (error) {
+                console.log(error);
+            });
+            const result2 =await fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
+                method: 'GET'
+            })
+                .then((response) => response.json())
+                .then((jsonn) => { dispatch(changedata1(jsonn.data)) })
+                .catch((error) => console.error(error))
+            setTimeout(() => {
+                setTime(false)
+            }, 2000)
+
+        }
+        loadnhe();
     }, [diem])
     const modal = () => {
         setTest(false)
@@ -88,11 +95,11 @@ const Main = ({ navigation }) => {
     };
     const image = useSelector(state => state.image)
     const [time, setTime] = useState(true)
-    useEffect(() => {
-        setTimeout(async () => {
-            setTime(false)
-        }, 500)
-    }, [])
+    // useEffect(() => {
+    //     setTimeout(async () => {
+    //         setTime(false)
+    //     }, 500)
+    // }, [])
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
             {
