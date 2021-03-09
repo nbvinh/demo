@@ -67,7 +67,7 @@ const ListProduct = (props) => {
                                 </TouchableOpacity>
                             </View>
                             :
-                            <View style={{ flexDirection: 'row', marginLeft: 70 }}>
+                            <View style={{ flexDirection: 'row', justifyContent:'flex-end', marginRight:10 }}>
                                 <TouchableOpacity onPress={() => UpAfter(props.myListProduct)}>
                                     <Image
                                         style={{ width: 32, height: 32 }}

@@ -57,7 +57,7 @@ const StyleVoucherCGV = StyleSheet.create({
         color: '#FFFFFF'
     },
     text6: {
-        marginHorizontal: 10,
+        marginHorizontal: 2,
         fontSize: 20,
         color: '#FFFFFF'
     },
@@ -75,7 +75,8 @@ const StyleVoucherCGV = StyleSheet.create({
         backgroundColor: "#272738",
         borderRadius: 8,
         marginHorizontal: 10,
-        marginTop:10
+        marginTop:10,
+        flex:1,
     },
     address2:{
         backgroundColor: "#272738",

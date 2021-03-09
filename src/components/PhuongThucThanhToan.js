@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image,SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, SafeAreaView } from "react-native";
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import { useState } from 'react/cjs/react.development';
 import AppStyle from "../theme";
@@ -24,7 +24,6 @@ const PaymentMethods = ({ navigation }) => {
     const kingbread = useSelector(state => state.kingbread)
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
-
             <View style={AppStyle.StyleVoucherCGV.container}>
                 <View style={AppStyle.StyleVoucherCGV.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()} >
@@ -37,16 +36,35 @@ const PaymentMethods = ({ navigation }) => {
                 </View>
                 <View style={{ flex: 9 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
-                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tài khoản đã liên kết</Text>
-                        {lienket ?
+                        <ScrollView>
+
+                            <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tài khoản đã liên kết</Text>
+                            {lienket ?
+                                <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
+                                    <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable}>
+                                        <View style={{ flexDirection: 'row' }}>
+                                            <Image
+                                                style={AppStyle.StylePhuongthucthanhtoan.img1}
+                                                source={require('../img/vinh27.png')}
+                                            />
+                                            <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Master Card</Text>
+                                        </View>
+                                        <Image
+                                            style={AppStyle.StylePhuongthucthanhtoan.img2}
+                                            source={require('../img/vinh5.png')}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
+                                : null
+                            }
                             <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
-                                <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable}>
+                                <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable} onPress={() => onLienket()}>
                                     <View style={{ flexDirection: 'row' }}>
                                         <Image
                                             style={AppStyle.StylePhuongthucthanhtoan.img1}
-                                            source={require('../img/vinh27.png')}
+                                            source={require('../img/vinh22.png')}
                                         />
-                                        <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Master Card</Text>
+                                        <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Thêm liên kết</Text>
                                     </View>
                                     <Image
                                         style={AppStyle.StylePhuongthucthanhtoan.img2}
@@ -54,39 +72,20 @@ const PaymentMethods = ({ navigation }) => {
                                     />
                                 </TouchableOpacity>
                             </View>
-                            : null
-                        }
-                        <View style={[AppStyle.StylePhuongthucthanhtoan.content2, { height: 48 }]}>
-                            <TouchableOpacity style={AppStyle.StylePhuongthucthanhtoan.touchable} onPress={() => onLienket()}>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Image
-                                        style={AppStyle.StylePhuongthucthanhtoan.img1}
-                                        source={require('../img/vinh22.png')}
-                                    />
-                                    <Text style={AppStyle.StylePhuongthucthanhtoan.text2}>Thêm liên kết</Text>
+                            <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Chọn phương thức thanh toán</Text>
+                            {data && data.map((item) => <ListBank key={item.id.toString()} myData={item} />)}
+                            {lienket ? null
+                                :
+                                <View style={{ position: 'absolute', top: 145, left: 83 }}>
+                                    <Text style={{ color: 'red' }}>Điểm của bạn không đủ giao dịch</Text>
+                                    <Text style={{ color: 'red' }}>Số dư hiện tại: 15 điểm</Text>
                                 </View>
-                                <Image
-                                    style={AppStyle.StylePhuongthucthanhtoan.img2}
-                                    source={require('../img/vinh5.png')}
-                                />
-                            </TouchableOpacity>
-                        </View>
-                        <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Chọn phương thức thanh toán</Text>
-                        <FlatList
-                            data={data}
-                            renderItem={({ item }) => <ListBank myData={item} />}
-                            keyExtractor={item => item?.id?.toString()}
-                        />
-                        {lienket ? null
-                            :
-                            <View style={{ position: 'absolute', top: 145, left: 83 }}>
-                                <Text style={{ color: 'red' }}>Điểm của bạn không đủ giao dịch</Text>
-                                <Text style={{ color: 'red' }}>Số dư hiện tại: 15 điểm</Text>
-                            </View>
-                        }
+                            }
+                            <View style={{height:300}}/>
+                        </ScrollView>
                     </View>
                 </View>
-                <View style={{ flex: 3, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
+                <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
                     {kingbread ?
                         <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>

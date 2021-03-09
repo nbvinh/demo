@@ -159,11 +159,12 @@ const PaymentConfirmation = ({ navigation }) => {
                                     )
                                 )
                             })}
+                            <View style={{height:300}}/>
                         </ScrollView>
                     </View>
                 </View>
 
-                <View style={{ flex: 3, backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
+                <View style={{ position:'absolute',bottom:0,width:'100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
                     {kingbread ?
                         <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>
@@ -205,7 +206,6 @@ const PaymentConfirmation = ({ navigation }) => {
                             source={require('../img/vinh28.png')}
                         />
                     </TouchableOpacity>
-                    {/* {console.log('aaa',todo)} */}
                 </View>
             </View>
         </SafeAreaView>
