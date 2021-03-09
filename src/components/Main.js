@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image,ActivityIndicator, FlatList } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, StatusBar, TextInput, Alert, Image, FlatList, ActivityIndicator } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import LinearGradient from 'react-native-linear-gradient';
@@ -9,6 +9,7 @@ import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Province from "../components/Main/Province"
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 const Voucher = ({item}) => {
     const ListDuLieuVoucher =()=>{
         if(item.id === 11){
@@ -78,52 +79,57 @@ const Main = ({ navigation }) => {
             x = x.replace(pattern, "$1.$2");
         return x;
     }
-    const token = useSelector(state=>state.abc)
+    const token = useSelector(state => state.abc)
     const dispatch = useDispatch();
     const [Name, setName] = React.useState(hoten);
     const hoten = useSelector(state => state.hoten)
     const data1 = useSelector(state => state.data1)
     const diem = useSelector(state => state.diem)
     const [diemlocal, setdiemlocal] = useState();
-    const [loading, setloading] = React.useState(false);
     const province = useSelector(state => state.province)
     const [DuLieuApi, setDuLieuApi] = React.useState([]);
     const [DuLieuVoucher, setDuLieuVoucher] = React.useState([]);
     const [test, setTest] = useState(true)
     const [number, setnumber] = React.useState(1);
-    const handlerLoadmore = () =>{
-        setnumber(number + 1);
-        callapiVoucher();
-    }
-    const callapiVoucher = () =>{
-        axios.get('http://175.41.184.177:6061/voucher?pageNumber='+number).then(function (res) {
-            const dulieuvoucher = res.data.data;
-            console.log('number : ' + number);
-            Object.entries(dulieuvoucher);
-            setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
-            dispatch({ type: 'DATA_VOUCHER', voucher: voucher.DuLieuVoucher })
-            setloading(false);
-        }).catch(function (error) {
-            console.log(error);
-        });
-    }
+    const image = useSelector(state => state.image)
+    const [time, setTime] = useState(true)
+        const handlerLoadmore = () =>{
+            setnumber(number + 1);
+            callapiVoucher();
+        }
+        const callapiVoucher = () =>{
+            axios.get('http://175.41.184.177:6061/voucher?pageNumber='+number).then(function (res) {
+                const dulieuvoucher = res.data.data;
+                console.log('number : ' + number);
+                Object.entries(dulieuvoucher);
+                setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
+                dispatch({ type: 'DATA_VOUCHER', voucher: voucher.DuLieuVoucher })
+            }).catch(function (error) {
+                console.log(error);
+            });
+        }
     useEffect(() => {
-        
         _storeData();
         _getData();
-        axios.get('http://175.41.184.177:6061/category').then(function (res) {
-            const dulieu = res.data.data;
-            Object.entries(dulieu);
-            setDuLieuApi(dulieu);
-            dispatch({ type: 'CATEGORY', phanloai: phanloai.DuLieuApi })
-        }).catch(function (error) {
-            console.log(error);
-        });
-        callapiVoucher();
-        fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
-            method: 'GET'
-        }).then((response) => response.json()).then((jsonn) => { dispatch(changedata1(jsonn.data)) }).catch((error) => console.error(error));
-        
+        const loadnhe = async () => {
+            const result = await axios.get('http://175.41.184.177:6061/category').then(function (res) {
+                const dulieu = res.data.data;
+                Object.entries(dulieu);
+                setDuLieuApi(dulieu);
+                dispatch({ type: 'CATEGORY', phanloai: phanloai.DuLieuApi })
+            }).catch(function (error) {
+                console.log(error);
+            });
+            const result1 = await callapiVoucher();
+            const result2 = await fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
+                method: 'GET'
+            })
+                .then((response) => response.json())
+                .then((jsonn) => { dispatch(changedata1(jsonn.data)) })
+                .catch((error) => console.error(error))
+            setTime(false)
+        }
+        loadnhe();
     }, [diem])
     const modal = () => {
         setTest(false)
@@ -136,155 +142,152 @@ const Main = ({ navigation }) => {
     }
     const _storeData = async () => {
         try {
-          await AsyncStorage.setItem(
-            'Diem',
-            JSON.stringify(diem)
-          );
+            await AsyncStorage.setItem(
+                'Diem',
+                JSON.stringify(diem)
+            );
         } catch (error) {
-          // Error saving data
+            // Error saving data
         }
-      };
-      const _getData = async () => {
+    };
+    const _getData = async () => {
         try {
-          await AsyncStorage.getItem("Diem").then(val => {
-            console.log(val);
-            setdiemlocal(val);
+            await AsyncStorage.getItem("Diem").then(val => {
+                console.log(val);
+                setdiemlocal(val);
 
-        });
-        
+            });
+
         } catch (error) {
-          
+
         }
 
-      };
-    const image = useSelector(state => state.image)
-    // if(loading === true) {
-    //     return(
-    //         <SafeAreaView style={[AppStyle.StyleMain.container, {justifyContent:'center', alignItems:'center'}]}>
-    //             <ActivityIndicator animating size='large'/>
-    //         </SafeAreaView>
-    //     );
-    // }
+    };
     
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
-        <ScrollView style={{paddingHorizontal: 12}}>
+            {
+                time ?
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <ActivityIndicator size="large" color="#8B3BFF" />
+                    </View>
+                    :
 
-            <StatusBar barStyle='light-content'></StatusBar>
-            <View style={AppStyle.StyleMain.header}>
-            {_storeData}
-                <View style={AppStyle.StyleMain.header_left}>
-                    <TouchableOpacity onPress={() => { navigation.navigate('DoiAvatar') }}>
-                        <Image
-                            style={{ width: 40, height: 40, borderRadius: 50 }}
-                            source={{
-                                uri: image,
-                            }}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleMain.css_text}> Hi, {hoten} !</Text>
-                </View>
-                <View style={AppStyle.StyleMain.header_right}>
-                    <Image
-                        style={{ width: 32, height: 32, marginLeft: 15 }}
-                        source={require('../img/Iconly-Light-Notification.png')}
-                    />
-                </View>
-            </View>
-            <View style={AppStyle.StyleMain.search}>
-                <View style={AppStyle.StyleMain.search_left}>
-                    <Image
-                        style={{ width: 20, height: 20, marginLeft: 15 }}
-                        source={require('../img/search_24px.png')}
-                    />
-                    <TextInput style={{ width: '82%', color: '#fff' }} placeholder='Nhập từ khoá tìm kiếm...' placeholderTextColor='gray' />
-                </View>
-                <View style={AppStyle.StyleMain.search_right}>
-                    <TouchableOpacity onPress={() => modal()}>
-                        {test ?
-                            <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Tỉnh <Image
-                                style={{ width: 14, height: 8 }}
-                                source={require('../img/expand_more_24px.png')}
-                            /></Text>
-                            :
-                            data1.map((item) => {
-                                return (
-                                    item.isChooseProvince && (
-                                        <Text key={item.provinceId.toString()} style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> {item.name} <Image
+                    <ScrollView style={{ paddingHorizontal: 12 }}>
+
+                        <StatusBar barStyle='light-content'></StatusBar>
+                        <View style={AppStyle.StyleMain.header}>
+                            <View style={AppStyle.StyleMain.header_left}>
+                                <TouchableOpacity onPress={() => { navigation.navigate('DoiAvatar') }}>
+                                    <Image
+                                        style={{ width: 40, height: 40, borderRadius: 50 }}
+                                        source={{
+                                            uri: image,
+                                        }}
+                                    />
+                                </TouchableOpacity>
+                                <Text style={AppStyle.StyleMain.css_text}> Hi, {hoten} !</Text>
+                            </View>
+                            <View style={AppStyle.StyleMain.header_right}>
+                                <Image
+                                    style={{ width: 32, height: 32, marginLeft: 15 }}
+                                    source={require('../img/Iconly-Light-Notification.png')}
+                                />
+                            </View>
+                        </View>
+                        <View style={AppStyle.StyleMain.search}>
+                            <View style={AppStyle.StyleMain.search_left}>
+                                <Image
+                                    style={{ width: 20, height: 20, marginLeft: 15 }}
+                                    source={require('../img/search_24px.png')}
+                                />
+                                <TextInput style={{ width: '82%', color: '#fff' }} placeholder='Nhập từ khoá tìm kiếm...' placeholderTextColor='gray' />
+                            </View>
+                            <View style={AppStyle.StyleMain.search_right}>
+                                <TouchableOpacity onPress={() => modal()}>
+                                    {test ?
+                                        <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Tỉnh <Image
                                             style={{ width: 14, height: 8 }}
                                             source={require('../img/expand_more_24px.png')}
                                         /></Text>
-                                    )
-                                )
-                            })
-                        }
+                                        :
+                                        data1.map((item) => {
+                                            return (
+                                                item.isChooseProvince && (
+                                                    <Text key={item.provinceId.toString()} style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> {item.name} <Image
+                                                        style={{ width: 14, height: 8 }}
+                                                        source={require('../img/expand_more_24px.png')}
+                                                    /></Text>
+                                                )
+                                            )
+                                        })
+                                    }
 
 
-                    </TouchableOpacity>
-                    <Province />
-                </View>
-            </View>
-            <View style={AppStyle.StyleMain.poin_your}>
-                <View style={AppStyle.StyleMain.poin_your_left}>
-                    <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Điểm của bạn </Text>
-                    
-                    <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {diemlocal}</Text>
-                </View>
-                <View style={AppStyle.StyleMain.poin_your_right}>
-                    <LinearGradient
-                        style={{ width: 27, height: 27, borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginRight: 15 }}
-                        colors={['#8B3BFF', '#B738FF']}
-                    >
-                        <TouchableOpacity onPress={() => navigation.navigate('GiaoDich')}>
-                            <Text style={{ color: 'white', fontSize: 22 }}>+</Text>
-                        </TouchableOpacity>
-                    </LinearGradient>
-                    <Text style={{ color: 'white', fontSize: 12 }}> Nạp điểm </Text>
-                </View>
-            </View>
-            <View style={AppStyle.StyleMain.option}>
-                {
-                    DuLieuApi.map(item => {
-                        const ChiTietVoucherTheoLoai = () => {
-                            dispatch({ type: 'IDLOAI', id: item.id })
-                            if (item.id === 1) {
-                                navigation.navigate('VoucherNam');
+                                </TouchableOpacity>
+                                <Province />
+                            </View>
+                        </View>
+                        <View style={AppStyle.StyleMain.poin_your}>
+                            <View style={AppStyle.StyleMain.poin_your_left}>
+                                <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Điểm của bạn </Text>
+
+                                <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {diemlocal}</Text>
+                            </View>
+                            <View style={AppStyle.StyleMain.poin_your_right}>
+                                <LinearGradient
+                                    style={{ width: 27, height: 27, borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginRight: 15 }}
+                                    colors={['#8B3BFF', '#B738FF']}
+                                >
+                                    <TouchableOpacity onPress={() => navigation.navigate('GiaoDich')}>
+                                        <Text style={{ color: 'white', fontSize: 22 }}>+</Text>
+                                    </TouchableOpacity>
+                                </LinearGradient>
+                                <Text style={{ color: 'white', fontSize: 12 }}> Nạp điểm </Text>
+                            </View>
+                        </View>
+                        <View style={AppStyle.StyleMain.option}>
+                            {
+                                DuLieuApi.map(item => {
+                                    const ChiTietVoucherTheoLoai = () => {
+                                        dispatch({ type: 'IDLOAI', id: item.id })
+                                        if (item.id === 1) {
+                                            navigation.navigate('VoucherNam');
+                                        }
+                                        if (item.id === 3) {
+                                            Kingbread()
+                                        }
+                                    }
+                                    return (
+                                        <TouchableOpacity key={item.id.toString()} style={AppStyle.StyleMain.option_item} onPress={ChiTietVoucherTheoLoai}>
+                                            <Image
+                                                style={{ width: 24, height: 24 }}
+                                                source={{ uri: 'http://175.41.184.177:6063/image/' + item.avatar }}
+                                            />
+                                            <Text style={AppStyle.StyleMain.option_itemtext}>{item.name}</Text>
+                                        </TouchableOpacity>
+                                    );
+
+                                })
                             }
-                            if(item.id === 3){
-                                Kingbread()
-                            }
-                        }
-                        return (
-                            <TouchableOpacity key={item.id.toString()} style={AppStyle.StyleMain.option_item} onPress={ChiTietVoucherTheoLoai}>
-                                <Image
-                                    style={{ width: 24, height: 24 }}
-                                    source={{ uri: 'http://175.41.184.177:6063/image/' + item.avatar }}
-                                />
-                                <Text style={AppStyle.StyleMain.option_itemtext}>{item.name}</Text>
-                            </TouchableOpacity>
-                        );
-
-                    })
-                }
-            </View>
-            <Image
-                style={{ height: 80, width: "100%", borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
-                source={require('../img/Rectangle5.png')}
-            />
-            
-            <FlatList 
-                data={DuLieuVoucher}
-                renderItem={({item}) => <Voucher item = {item}/>}
-                keyExtractor={item => item.id}
-                onEndReached={handlerLoadmore}
-                onEndReachedThreshold={5000}
-                ListFooterComponent = {() =>  loading ? <ActivityIndicator animating size='large'/> : {}}
-            />
-        </ScrollView>
-        {/* </SafeAreaProvider> */}
+                        </View>
+                        <Image
+                            style={{ height: 80, width: "100%", borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
+                            source={require('../img/Rectangle5.png')}
+                        />
+                        <FlatList 
+                                data={DuLieuVoucher}
+                                renderItem={({item}) => <Voucher item = {item}/>}
+                                keyExtractor={item => item.id}
+                                onEndReached={handlerLoadmore}
+                                onEndReachedThreshold={5000}
+                                ListFooterComponent = {() =>  <ActivityIndicator animating size='large'/>}
+                            />
+                    </ScrollView>
+            }
+            {/* </SafeAreaProvider> */}
         </SafeAreaView>
     )
-        
 }
 
 export default Main;
