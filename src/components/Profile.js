@@ -87,8 +87,32 @@ const Profile = ({ route, navigation }) => {
             console.log("Email is Correct");
         }
     }
+    const [checkHoten,setCheckhoten] = useState(false);
+    const validateHoten =(text1)=>{
+        let reg =/^[a-zA-Z ]*$/;
+        if(reg.test(text1)=== false){
+            setHoten(text1)
+            setCheckhoten(false)
+            return false;
+            console.log("ho ten not is Correct");
+
+        }else{
+            setHoten(text1);
+            setCheckhoten(true)
+            console.log("ho ten is Correct");
+
+        }
+    }
     const _onPress = () => {
-        Alert.alert('Mời bạn nhập lại Email')
+       
+       
+         if(check===false && checkHoten===false){
+            Alert.alert("Mời bạn nhập lạp Gmail và Họ Tên")
+        } else if(checkHoten ===false){
+            Alert.alert('Mời bạn nhập lại họ tên')
+        }else  if(check===false ){
+              Alert.alert('Mời bạn nhập lại Email')
+        }
     }
     return (
         <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
@@ -111,7 +135,8 @@ const Profile = ({ route, navigation }) => {
                         <TextInput placeholder='Mời nhập họ và tên của bạn'
                             style={styles.textinput}
                             placeholderTextColor='rgba(255, 255, 255, 0.3)'
-                            onChangeText={(text) => onchangText(text)}
+                            onChangeText={(text1) => validateHoten(text1)}
+                            value={hoten}
                         />
                     </View>
                     <View style={styles.block}>
@@ -140,7 +165,7 @@ const Profile = ({ route, navigation }) => {
 
                 </View>
                 <View style={styles.footer}>
-                    {follow_hoten && check ?
+                    { check &&checkHoten ?
                         <TouchableOpacity>
                             <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
                                 colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
@@ -151,7 +176,7 @@ const Profile = ({ route, navigation }) => {
                             </LinearGradient>
                         </TouchableOpacity>
                         :
-                        <TouchableOpacity onPress={_onPress}>
+                        <TouchableOpacity onPress={_onPress} >
                             <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
                                 colors={['#B738FF', '#8B3BFF']} style={{ opacity: 0.2, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
 

@@ -15,7 +15,6 @@ const StyleFirst = StyleSheet.create({
 
     },
     linear: {
-        backgroundColor: "yellow",
         borderRadius: 8,
         height: 48,
         justifyContent: 'center',

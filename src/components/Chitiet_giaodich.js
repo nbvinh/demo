@@ -40,6 +40,8 @@ const Chitiet_giaodich = ({ navigation, route }) => {
     const data = useSelector(state => state.data)
     const DataProduct = useSelector(state => state.DataProduct);
     const productafter = useSelector(state => state.productafter)
+    console.log('id la',id)
+    console.log('producàter',productafter)
     // const [nam, setNam] = useState([]);
     // useEffect(() => {
     //     setNam(() => {
@@ -112,7 +114,6 @@ const Chitiet_giaodich = ({ navigation, route }) => {
                         </View>
                     </View>
                 </View>
-
 
                 <Text style={{ color: "white", fontSize: 15, fontWeight: 'bold', marginTop: 17 }}>Trạng thái đơn hàng </Text>
                 <View style={{ marginTop: 17, backgroundColor: '#272738', height: '25%', paddingHorizontal: 9, borderRadius: 8, padding: 10 }}>
