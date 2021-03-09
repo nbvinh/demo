@@ -40,7 +40,7 @@ const Main = ({ navigation }) => {
             }).catch(function (error) {
                 console.log(error);
             });
-            const result1 =await axios.get('http://175.41.184.177:6061/voucher').then(function (res) {
+            const result1 = await axios.get('http://175.41.184.177:6061/voucher').then(function (res) {
                 const dulieuvoucher = res.data.data;
                 Object.entries(dulieuvoucher);
                 setDuLieuVoucher(dulieuvoucher);
@@ -48,16 +48,13 @@ const Main = ({ navigation }) => {
             }).catch(function (error) {
                 console.log(error);
             });
-            const result2 =await fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
+            const result2 = await fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
                 method: 'GET'
             })
                 .then((response) => response.json())
                 .then((jsonn) => { dispatch(changedata1(jsonn.data)) })
                 .catch((error) => console.error(error))
-            setTimeout(() => {
-                setTime(false)
-            }, 2000)
-
+            setTime(false)
         }
         loadnhe();
     }, [diem])
@@ -95,11 +92,6 @@ const Main = ({ navigation }) => {
     };
     const image = useSelector(state => state.image)
     const [time, setTime] = useState(true)
-    // useEffect(() => {
-    //     setTimeout(async () => {
-    //         setTime(false)
-    //     }, 500)
-    // }, [])
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
             {
