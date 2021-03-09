@@ -87,7 +87,7 @@ const reducer = (state = initState, action) => {
         case 'PRODUCTAFTER' :
             return{ ...state, productafter: action.productafter}
         case 'ADDPRODUCT':
-            let newproduct =[...state.product]
+            let newproduct =[]
             newproduct.push({id: action.id , name: action.name , price : action.price, amount: action.amount})
             return {...state,product: newproduct}
         case 'IMAGES':

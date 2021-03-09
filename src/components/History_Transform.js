@@ -20,8 +20,8 @@ const History_Transform = ({ navigation }) => {
     }
     const date = new Date()
     const startDate = selectedDate ? selectedDate.toString() : '';
-    const mindate = moment(startDate).format('DD-MM-YYYY');
-    const display = moment(date).format('DD-MM-YYYY');
+    const mindate = moment(startDate).format( 'M/YYYY');
+    const display = moment(date).format('M/YYYY');
     const min = startDate ? mindate : display.toString();
     const confirm = useSelector(state => state.confirm)
     const choosevoucher = useSelector(state => state.choosevoucher)
@@ -34,7 +34,7 @@ const History_Transform = ({ navigation }) => {
   
     const Cancel = () => {
         setIsShowCalendar(false);
-        setSelectedDate();
+        setSelectedDate('');
     }
     const Done = () => {
         setIsShowCalendar(false);
@@ -80,14 +80,20 @@ const History_Transform = ({ navigation }) => {
                         <View style={{ backgroundColor: '#FFFFFF' }}>
                             <CalendarPicker
                                 onDateChange={onDatechange}
-                                format="YYYY-MM-DD"
-                                todayBackgroundColor="red" selectedDayColor="#7300e6"
+                               
+                                todayBackgroundColor="#EEDFF2" selectedDayColor="#7300e6"
                                 selectedDayTextColor="#FFFFFF"
+                                previousTitle='<'
+                                nextTitle='>'
+                                customDatesStyles='YYYY-MM'
+                                todayTextStyle	={{
+                                    color: '#BE52F2',
+                                  }}
                             />
 
 
                             <View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15, borderTopWidth: 1, borderStyle: 'dotted', paddingVertical: 10 }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15, borderTopWidth: 1, borderStyle: 'dashed', paddingVertical: 10 }}>
                                     <TouchableOpacity onPress={Cancel}>
                                         <Text style={{ color: '#9B9EA3', fontSize: 14, fontWeight: '500' }}>Xóa</Text>
                                     </TouchableOpacity>
@@ -123,16 +129,21 @@ const History_Transform = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                     <View style={AppStyle.Style_History_Tranform.calendar}>
-                        <Text style={AppStyle.Style_History_Tranform.text}>{min}</Text>
+                        <Text style={AppStyle.Style_History_Tranform.text}>Tháng {min}</Text>
                     </View>
                     <ScrollView style={AppStyle.Style_History_Tranform.content}>
                         {confirm ?
                             <View>
                                 {bills.map((item) => {
                                     return (
-                                        <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Chitiet_giaodich',
-                                            { id: item.id }
-                                        )} >
+                                        <TouchableOpacity key={item.id.toString()} onPress={() => {
+                                            navigation.navigate(
+                                                'Chitiet_giaodich',
+                                                { id: item.id }
+                                            )
+                                            console.log('item',item.id)
+                                        }
+                                        } >
                                             <View style={AppStyle.Style_History_Tranform.item}>
                                                 <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                                                 <View style={AppStyle.Style_History_Tranform.cost}>
