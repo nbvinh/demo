@@ -13,13 +13,13 @@ const Form = (props) => {
     const priceCGV = useSelector(state => state.priceCGV)
     const UP = () => {
         dispatch({ type: 'UPVALUE' })
-        dispatch ({type:'PRICECGV'})
+        dispatch({ type: 'PRICECGV' })
     }
     const DOWN = () => {
         if (value > 0) {
 
             dispatch({ type: 'DOWNVALUE' })
-            dispatch ({type:'PRICECGV'})
+            dispatch({ type: 'PRICECGV' })
         }
     }
     return (
@@ -31,33 +31,34 @@ const Form = (props) => {
             <View style={AppStyle.StyleGioHang.modal1}>
                 <TouchableOpacity onPress={() => setShow(!show)} style={{ height: '72%' }}></TouchableOpacity>
                 <View style={AppStyle.StyleGioHang.content5}>
-                    <View style={{ margin: 10 }}>
+                    <View style={{ margin: 10, flex: 1 }}>
                         <View style={AppStyle.StyleGioHang.content6}>
                             <Image
+                                style={{ flex: 0.5 }}
                                 source={require('../../img/vinh18.png')}
                             />
-                            <View>
+                            <View style={{flex:2.2,justifyContent:'center',alignItems:'center'}}>
                                 <Text style={AppStyle.StyleGioHang.text4}>Voucher CGV Cinema</Text>
                                 <View style={{ flexDirection: 'row' }}>
                                     <Text style={AppStyle.StyleGioHang.text5}>88.000 đ </Text>
                                     <Text style={[AppStyle.StyleVoucherCGV.text3, { marginTop: 2 }]}>100.000 đ</Text>
-                                    <TouchableOpacity
-                                        style={AppStyle.StyleGioHang.touchable1}
-                                        onPress={()=> DOWN()}
-                                    >
-                                        <Image
-                                            style={AppStyle.StyleGioHang.img5}
-                                            source={require('../../img/vinh19.png')}
-                                        />
-                                    </TouchableOpacity>
-                                    <Text style={AppStyle.StyleGioHang.text6}>{value}</Text>
-                                    <TouchableOpacity onPress={()=> UP()}>
-                                        <Image
-                                            style={AppStyle.StyleGioHang.img6}
-                                            source={require('../../img/vinh3.png')}
-                                        />
-                                    </TouchableOpacity>
                                 </View>
+                            </View>
+                            <View style={{flex:1.2, flexDirection:'row',alignItems:'center',marginLeft:10}}>
+                                <TouchableOpacity  onPress={() => DOWN()} >
+                                    <Image
+                                        style={AppStyle.StyleGioHang.img5}
+                                        source={require('../../img/vinh19.png')}
+                                    />
+                                </TouchableOpacity>
+                                <Text style={AppStyle.StyleGioHang.text6}>{value}</Text>
+                                <TouchableOpacity onPress={() => UP()}>
+                                    <Image
+                                        style={AppStyle.StyleGioHang.img6}
+                                        source={require('../../img/vinh3.png')}
+                                    />
+                                </TouchableOpacity>
+
                             </View>
                         </View>
 

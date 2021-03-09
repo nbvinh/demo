@@ -54,7 +54,7 @@ const GioHang = ({ navigation }) => {
                                                     style={AppStyle.StyleGioHang.img1}
                                                     source={{ uri: 'http://175.41.184.177:6063/image/' + item.avatar }}
                                                 />
-                                                <View>
+                                                <View style={{ flex: 2 }}>
                                                     <Text style={AppStyle.StyleVoucherCGV.text7}>{item.name}</Text>
                                                     <View style={{ flexDirection: 'row' }}>
                                                         <Text style={AppStyle.StyleVoucherCGV.text2}>{item.price}.000 đ </Text>
@@ -76,10 +76,10 @@ const GioHang = ({ navigation }) => {
                                 <View style={AppStyle.StyleVoucherCGV.address}>
                                     <View style={AppStyle.StyleGioHang.address1}>
                                         <Image
-                                            style={AppStyle.StyleGioHang.img1}
-                                            source={require('../img/vinh7.png')}
+                                            style={[AppStyle.StyleGioHang.img1,{width:52,height:52}]}
+                                            source={{uri:'https://gigamall.com.vn/data/2019/05/06/11365490_logo-cgv-500x500.jpg'}}
                                         />
-                                        <View>
+                                        <View style={{ flex: 2 }}>
                                             <Text style={AppStyle.StyleVoucherCGV.text7}>Voucher CGV Cinema</Text>
                                             <View style={{ flexDirection: 'row' }}>
                                                 <Text style={AppStyle.StyleVoucherCGV.text2}>88.000 đ </Text>
@@ -97,10 +97,6 @@ const GioHang = ({ navigation }) => {
                                 :
                                 null
                         }
-                        {/* {
-                    }
-                    { } */}
-
                         <View style={AppStyle.StyleVoucherCGV.address}>
                             <View style={AppStyle.StyleGioHang.address2}>
                                 <Image
@@ -109,23 +105,23 @@ const GioHang = ({ navigation }) => {
                                 />
                                 <View>
                                     {choosevoucher ?
-                                        <View style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 30 }]}>
+                                        <View style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 15 }]}>
                                             <Text style={AppStyle.StyleGioHang.text3}>Bạn vui lòng Chọn Voucher nhé</Text>
                                         </View>
                                         :
                                         arrPromotion.map((item, index) => (
 
                                             item.isChoose ? item.dieukien ?
-                                                <View key={index.toString()} style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 30 }]}>
+                                                <View key={index.toString()} style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 15 }]}>
                                                     <Text style={AppStyle.StyleGioHang.text3}>{item.text1}</Text>
                                                 </View>
-                                                : <View key={index.toString()} style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 30 }]}>
+                                                : <View key={index.toString()} style={[AppStyle.StyleGioHang.content1, { marginHorizontal: 15 }]}>
                                                     <Text style={AppStyle.StyleGioHang.text3}>Bạn vui lòng Chọn Voucher nhé</Text>
                                                 </View> : null
                                         ))
                                     }
                                 </View>
-                                <TouchableOpacity style={{ alignItems: 'flex-end', flex: 1 }} onPress={() => Choose()}>
+                                <TouchableOpacity onPress={() => Choose()}>
                                     <Image
                                         style={AppStyle.StyleGioHang.img3}
                                         source={require('../img/vinh5.png')}
@@ -134,6 +130,7 @@ const GioHang = ({ navigation }) => {
                                 </TouchableOpacity>
                             </View>
                         </View>
+                        <View style={{height:300}}/>
                     </ScrollView>
                 </View>
                 <Form show={show} setShow={setShow} />

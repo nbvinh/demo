@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert,KeyboardAvoidingView ,Platform} from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView , Image, Alert,KeyboardAvoidingView ,Platform} from 'react-native';
 import LinearGradient from "react-native-linear-gradient";
 import { update_info } from "./api";
 import { useDispatch, useSelector } from 'react-redux'
@@ -115,6 +115,7 @@ const Profile = ({ route, navigation }) => {
         }
     }
     return (
+        <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
         <KeyboardAwareScrollView
         style={styles.containerTop}
         
@@ -188,6 +189,8 @@ const Profile = ({ route, navigation }) => {
             </View>
         </View>
         </KeyboardAwareScrollView>
+        </SafeAreaView>
+        
     );
 };
 

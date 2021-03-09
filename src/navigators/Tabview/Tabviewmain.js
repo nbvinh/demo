@@ -1,55 +1,3 @@
-// import * as React from 'react';
-// import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import Main from '../../components/Main';
-// import ThongTin from '../../components/ThongTin/ThongTin';
-// import TabVoucher from "./tabheaderVoucher";
-// import History_Transform from "../../components/History_Transform";
-// const Tab = createBottomTabNavigator();
-// const TabViewMain = () => {
-//     return (
-//         <Tab.Navigator tabBarOptions={{
-//             style: {
-//                 backgroundColor: 'black',
-//                 borderTopColor: 'black',
-//                 borderWidth: 1, 
-//             },
-//             activeBackgroundColor:'#8B3BFF',
-//             tabStyle:{
-//                 height:60,
-//             },
-
-//         }}>
-//             <Tab.Screen name="Home" component={Main} options={{
-//                 tabBarLabel: '',
-//                 tabBarIcon: () => <Image width={20} height={18} source={require('../../img/img_icon_24px/home_24px.png')} />}} />
-//             <Tab.Screen name="LichSu" component={History_Transform} options={{ tabBarLabel: '', tabBarIcon: () => <Image width={20} height={18} source={require('../../img/img_icon_24px/lsu_24px.png')} /> }} />
-//             <Tab.Screen name="KhamPha" component={TabVoucher} options={{ tabBarLabel: '', tabBarIcon: () => <Image width={20} height={18} source={require('../../img/img_icon_24px/voucher_24pxcopy.png')} /> }} />
-//             <Tab.Screen name="Voucher" component={TabVoucher} options={{ tabBarLabel: '', tabBarIcon: () => <Image width={20} height={18} source={require('../../img/img_icon_24px/kampha_24px.png')} /> }} />
-//             <Tab.Screen name="ThongTin" component={ThongTin} options={{ tabBarLabel: '', tabBarIcon: () => <Image width={20} height={18} source={require('../../img/img_icon_24px/list_24px.png')} /> }} />
-//         </Tab.Navigator>
-//     );
-// }
-// export default TabViewMain;
-
-// import React from "react";
-// import { StyleSheet, View } from "react-native";
-// import Tabbar from "./Tabbar";
-// const TabViewMain = () => {
-//     return (
-//         <View style={styles.container}>
-//             <Tabbar />
-//         </View>
-//     )
-// }
-// export default TabViewMain;
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         backgroundColor: "#eb3345",
-//         justifyContent: "flex-end",
-//     },
-// });
 
 import * as React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
@@ -91,8 +39,8 @@ function MyTabBar({ state, descriptors, navigation }) {
                 };
 
                 return (
-                    <View key={index} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                        <View style={isFocused ? { width: 60, height: 40, marginBottom: 10, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderBottomLeftRadius: 80, borderBottomRightRadius: 80 } : null}>
+                    <View key={index} style={{ flex: 1 }}>
+                        <View style={isFocused ? { width: 60, height: 40, marginBottom: 10, justifyContent: 'center', alignItems: 'center', backgroundColor: 'black', borderBottomLeftRadius: 80, borderBottomRightRadius: 80 } : { flex: 1 }}>
                             <TouchableOpacity
                                 accessibilityRole="button"
                                 accessibilityState={isFocused ? { selected: true } : {}}
@@ -100,7 +48,7 @@ function MyTabBar({ state, descriptors, navigation }) {
                                 testID={options.tabBarTestID}
                                 onPress={onPress}
                                 onLongPress={onLongPress}
-                                style={isFocused ? { borderRadius: 30, height: 50, width: 50, backgroundColor: '#8B3BFF', justifyContent: 'center', alignItems: 'center', marginBottom: 20 } : null}
+                                style={isFocused ? { borderRadius: 30, height: 50, width: 50, backgroundColor: '#8B3BFF', justifyContent: 'center', alignItems: 'center', marginBottom: 20 } : { flex: 1, justifyContent: 'center', alignItems: 'center' }}
                             >
                                 <Image style={{ height: 20, width: 18 }} source={{ uri: label }} />
                             </TouchableOpacity>
