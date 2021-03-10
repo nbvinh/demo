@@ -68,7 +68,7 @@ const Style_Chitiet_giaodich = StyleSheet.create({
    transform:{
        flexDirection:'row',
        justifyContent:'space-between',
-       paddingVertical:9
+       paddingVertical:9,paddingHorizontal:10
    },
    code:{
        color:'#A9A9AF',
@@ -78,7 +78,8 @@ const Style_Chitiet_giaodich = StyleSheet.create({
    code_2:{
        color:'#FFFFFF',
        fontSize:15,
-       fontWeight:'normal',width:160,textAlign:'right'
+       fontWeight:'normal',width:180,textAlign:'right',
+        flex:1,paddingLeft:7
    },
   
    pay:{

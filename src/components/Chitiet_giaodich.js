@@ -7,13 +7,13 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Chitiet_giaodich = ({ navigation, route }) => {
     const dispatch = useDispatch()
-    const labels = ["Đặt hàng thành công", "Đang chuẩn bị hàng", "Sẵn sàng lấy hàng", "Lấy hàng hoàn thành"];
+    const labels = ["Đặt hàng thành công","Đang chuẩn bị hàng","Sẵn sàng lấy hàng","Lấy hàng hoàn thành"];
     const customStyles = {
         stepIndicatorSize: 5,
         currentStepIndicatorSize: 10,
         separatorStrokeWidth: 1,
         currentStepStrokeWidth: 6,
-        stepStrokeCurrentColor: '#fe7013',
+        stepStrokeCurrentColor: '#8B3BFF',
         stepStrokeWidth: 4,
         stepStrokeFinishedColor: '#fe7013',
         stepStrokeUnFinishedColor: '#aaaaaa',
@@ -21,16 +21,17 @@ const Chitiet_giaodich = ({ navigation, route }) => {
         separatorUnFinishedColor: '#aaaaaa',
         stepIndicatorFinishedColor: '#fe7013',
         stepIndicatorUnFinishedColor: '#ffffff',
-        stepIndicatorCurrentColor: '#ffffff',
+        stepIndicatorCurrentColor: '#8B3BFF',
         stepIndicatorLabelFontSize: 118,
         currentStepIndicatorLabelFontSize: 356,
         stepIndicatorLabelCurrentColor: '#fe7013',
         stepIndicatorLabelFinishedColor: '#ffffff',
         stepIndicatorLabelUnFinishedColor: '#aaaaaa',
-        labelColor: '#999999',
-        labelSize: 17,
-        currentStepLabelColor: '#fe7013',
-        labelAlign: 'center'
+        labelColor: '#C0C0C0',
+        labelSize: 16,
+        currentStepLabelColor: '#FFFFFF',
+        labelAlign: 'center',
+        
 
 
     }
@@ -42,12 +43,7 @@ const Chitiet_giaodich = ({ navigation, route }) => {
     const productafter = useSelector(state => state.productafter)
     console.log('id la',id)
     console.log('producàter',productafter)
-    // const [nam, setNam] = useState([]);
-    // useEffect(() => {
-    //     setNam(() => {
 
-    //     })
-    // }, [])
     return (
 
         <SafeAreaView style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
@@ -64,26 +60,6 @@ const Chitiet_giaodich = ({ navigation, route }) => {
             </View>
             <ScrollView style={{ flex: 1, paddingHorizontal: 20, backgroundColor: 'black', }} >
 
-                {/* {
-                    bills.map((item) => {
-                        if (id === item.id) return (
-                            <View key={item.id.toString()} style={{ ...AppStyle.Style_Chitiet_giaodich.content }}>
-                                <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                                    <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                                        <View>
-                                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>{item.title}</Text>
-                                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>x{item.sumamount}</Text>
-                                        </View>
-                                        <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                                    </View>
-                                </View>
-
-
-                            </View>
-
-                        )
-                    })
-                } */}
                 <View style={{ ...AppStyle.Style_Chitiet_giaodich.content }}>
                     <View style={AppStyle.Style_Chitiet_giaodich.item}>
                         {bills.map((item) => {

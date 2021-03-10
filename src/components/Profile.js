@@ -29,7 +29,7 @@ const Profile = ({ route, navigation }) => {
             })
                 .then((response) => response.json())
                 .then((json) => { console.log(json) })
-            dispatch({ type: 'HOTEN', hoten: hoten})
+            dispatch({ type: 'HOTEN', hoten: hoten })
             dispatch({ type: 'SDT', SDT: SDT })
             dispatch({ type: 'Email', Email: Email })
             navigation.navigate('Tabviewmain');
@@ -89,7 +89,7 @@ const Profile = ({ route, navigation }) => {
     }
     const [checkHoten,setCheckhoten] = useState(false);
     const validateHoten =(text1)=>{
-        let reg =/^(?:[\u00c0-\u01ffa-zA-Z'-]){2,}(?:\s[\u00c0-\u01ffa-zA-Z'-]{2,})+$/i;
+        let reg =/^[a-zA-Z ]*$/;
         if(reg.test(text1)=== false){
             setHoten(text1)
             setCheckhoten(false)
