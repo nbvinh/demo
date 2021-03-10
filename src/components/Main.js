@@ -278,11 +278,7 @@ const Main = ({ navigation }) => {
                         <FlatList 
                                 data={DuLieuVoucher}
                                 renderItem={({item}) => <Voucher item = {item}/>}
-<<<<<<< HEAD
                                 keyExtractor={item => item.id}
-=======
-                                keyExtractor={item => item.id.toString()}
->>>>>>> pvquy
                                 // onEndReached={handlerLoadmore}
                                 // onEndReachedThreshold={5000}
                                 ListFooterComponent = {() =>  <ActivityIndicator animating size='large'/>}
