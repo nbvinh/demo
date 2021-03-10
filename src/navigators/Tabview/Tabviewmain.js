@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
