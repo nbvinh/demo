@@ -27,7 +27,7 @@ const Style_Voucher = StyleSheet.create({
         paddingTop: 10
     },
     Image: {
-        left: 16,
+        left: 8,flex:2.2
       
     },
     title: {
@@ -40,18 +40,18 @@ const Style_Voucher = StyleSheet.create({
         flex:1,
         marginHorizontal:8,
         marginBottom:20,
-        height:255,
-        borderRadius:8
+      
+        borderRadius:8,justifyContent:'space-between'
     },
     right:{
-        marginLeft:10,
+        flex:1.2,marginLeft:6
         
     },
     anh:{
-        flexDirection:'row',  paddingTop:8
+        flexDirection:'row',  paddingTop:8,flex:1
     },
     Image_right:{
-        marginBottom:8, left: 16,width:145
+        marginBottom:8,marginLeft:8,width:'87%'
     },
     content:{
         marginHorizontal:10,
@@ -66,8 +66,8 @@ const Style_Voucher = StyleSheet.create({
     cost:{
         flexDirection:'row',
         justifyContent:'space-between',
-        marginHorizontal:20,marginTop:23,
-        
+        marginHorizontal:20,marginTop:8,
+        paddingBottom:10
         
     },
     cost_left:{
@@ -107,12 +107,12 @@ const Style_Voucher = StyleSheet.create({
         height:20,marginRight:4
     },
     pos_left:{
-        backgroundColor: 'black', position: 'absolute', width: 27, height: 20, top: 178, borderRadius: 13,
-        left: -16
+        backgroundColor: 'black', position: 'absolute', width: 67, height: 20, top: 41, borderRadius: 13,
+        left: -56
     },
     pos_right:{
-        backgroundColor: 'black', position: 'absolute', width: 27, height: 20, top: 178, borderRadius: 13,
-        right: -16
+        backgroundColor: 'black', position: 'absolute', width: 67, height: 20, top: 41, borderRadius: 13,
+        right: -56
     },
     far_away:{
         color:'#FFFFFF',

@@ -108,7 +108,7 @@ const History_Transform = ({ navigation }) => {
                     }}>
                     <View style={{
                         flex: 1,
-                     paddingHorizontal: 20,marginTop:70,backgroundColor:'rgba(0,0,0,0.2)'
+                     paddingHorizontal: 13,marginTop:70,backgroundColor:'rgba(0,0,0,0.2)'
                        
                     }}>
                         <View style={{ backgroundColor: '#FFFFFF' ,borderRadius:9}}>
@@ -144,7 +144,7 @@ const History_Transform = ({ navigation }) => {
                                       'Sun'
                                     ]}
                                     nextTitleStyle	={{backgroundColor:'#FFFFFF',marginRight:16,borderRadius:2,elevation:5,paddingLeft:10,paddingRight:10}}
-                                    previousTitleStyle={{backgroundColor:'#FFFFFF',marginLeft:16,borderRadius:2,elevation:5,paddingLeft:10,paddingRight:10}}
+                                    previousTitleStyle={{backgroundColor:'#FFFFFF',marginLeft:16,borderRadius:2,elevation:5,paddingLeft:7,paddingRight:10}}
                             />
 
 
