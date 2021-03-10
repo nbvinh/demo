@@ -14,6 +14,7 @@ const History_Transform = ({ navigation }) => {
     const [selectedDate, setSelectedDate] = useState();
     const _onPress = () => {
         setIsShowCalendar(true)
+
     }
     const onDatechange = (date) => {
         setSelectedDate(date)
@@ -31,7 +32,7 @@ const History_Transform = ({ navigation }) => {
     const sum = useSelector(state => state.sum)
     const bills = useSelector(state => state.bills)
     const billsCGV = useSelector(state => state.billsCGV)
-  
+    const [opac,setOpac]= useState(0.2)
     const Cancel = () => {
         setIsShowCalendar(false);
         setSelectedDate('');
@@ -62,6 +63,39 @@ const History_Transform = ({ navigation }) => {
     //     getData()
     // })
     // console.log(test)
+    const customDayHeaderStylesCallback = ({dayOfWeek, month, year}) => {
+        switch(dayOfWeek) { // can also evaluate month, year
+          case 1:
+          case 2:
+          case 3:
+          case 4:
+          case 5:
+          case 7:
+              return{
+                  textStyle:{
+                      color:'#D0C9D6'
+                  }
+              }
+          case 6: // Thursday
+            return {
+              textStyle: {
+                color: '#FFA26B',
+              }
+            };
+        }
+      }
+      
+    const customDatesStylesCallback = date => {
+        switch(date.isoWeekday()) {
+          
+          case 6: // Sunday
+            return {
+              textStyle: {
+                color: '#FFA26B',
+              }
+            };
+        }
+      }
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
             <View style={{ flex: 1 }}>
@@ -73,14 +107,14 @@ const History_Transform = ({ navigation }) => {
                         Alert.alert('Modal has been closed.');
                     }}>
                     <View style={{
-                        flex: 1, backgroundColor: 'rgba(0,0,0,0.4)', alignItem: 'center',
-                        justifyContent: 'center', marginHorizontal: 10,
-                        marginTop: 22
+                        flex: 1,
+                     paddingHorizontal: 13,marginTop:70,backgroundColor:'rgba(0,0,0,0.2)'
+                       
                     }}>
-                        <View style={{ backgroundColor: '#FFFFFF' }}>
+                        <View style={{ backgroundColor: '#FFFFFF' ,borderRadius:9}}>
                             <CalendarPicker
                                 onDateChange={onDatechange}
-                               
+                                visible={isShowCalendar}
                                 todayBackgroundColor="#EEDFF2" selectedDayColor="#7300e6"
                                 selectedDayTextColor="#FFFFFF"
                                 previousTitle='<'
@@ -88,12 +122,34 @@ const History_Transform = ({ navigation }) => {
                                 customDatesStyles='YYYY-MM'
                                 todayTextStyle	={{
                                     color: '#BE52F2',
+                                    
                                   }}
+                                dayLabelsWrapper={{
+                                    borderTopWidth: 0,
+                                    borderBottomWidth: 1,
+                                    borderStyle:'dashed',
+                                    borderRadius:1,
+                                    color:'green'
+                                  }}
+                                  customDatesStyles={customDatesStylesCallback}
+                                  customDayHeaderStyles={customDayHeaderStylesCallback}
+                                  weekdays={
+                                    [
+                                      'Mon', 
+                                      'Tue', 
+                                      'Wed', 
+                                      'Thur', 
+                                      'Fri', 
+                                      'Sat', 
+                                      'Sun'
+                                    ]}
+                                    nextTitleStyle	={{backgroundColor:'#FFFFFF',marginRight:16,borderRadius:2,elevation:5,paddingLeft:10,paddingRight:10}}
+                                    previousTitleStyle={{backgroundColor:'#FFFFFF',marginLeft:16,borderRadius:2,elevation:5,paddingLeft:7,paddingRight:10}}
                             />
 
 
                             <View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15, borderTopWidth: 1, borderStyle: 'dashed', paddingVertical: 10 }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15, borderTopWidth: 1, borderStyle: 'dashed', paddingVertical: 10 ,borderBottomLeftRadius:16,borderBottomRightRadius:16}}>
                                     <TouchableOpacity onPress={Cancel}>
                                         <Text style={{ color: '#9B9EA3', fontSize: 14, fontWeight: '500' }}>Xóa</Text>
                                     </TouchableOpacity>
@@ -106,13 +162,8 @@ const History_Transform = ({ navigation }) => {
                         </View>
                     </View>
                 </Modal>
-                {/*<Calendar
-            theme={{
-            textSectionTitleDisabledColor: '#d9e1e8'
-            }}
-        
-        /> */}
-                <View style={AppStyle.Style_History_Tranform.container}>
+               
+                <View style={[AppStyle.Style_History_Tranform.container]}>
                     <View style={AppStyle.Style_History_Tranform.header}>
                         <TouchableOpacity onPress={() => navigation.goBack()} >
                             <Image
@@ -121,7 +172,7 @@ const History_Transform = ({ navigation }) => {
                             />
                         </TouchableOpacity>
                         <Text style={AppStyle.Style_History_Tranform.header_title}>Lịch sử giao dịch </Text>
-                        <TouchableOpacity onPress={_onPress} style={{ zIndex: 1 }}>
+                        <TouchableOpacity onPress={_onPress} style={{ zIndex: 1}}>
                             <Image
                                 style={AppStyle.Style_History_Tranform.Image1}
                                 source={require('../img/Calendar.png')}

@@ -87,7 +87,7 @@ const reducer = (state = initState, action) => {
         case 'PRODUCTAFTER' :
             return{ ...state, productafter: action.productafter}
         case 'ADDPRODUCT':
-            let newproduct =[]
+            let newproduct =[...state.product]
             newproduct.push({id: action.id , name: action.name , price : action.price, amount: action.amount})
             return {...state,product: newproduct}
         case 'IMAGES':
@@ -213,7 +213,7 @@ const reducer = (state = initState, action) => {
         case 'ADDBILL':
             let newBills = [...state.bills]
             newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount, product: action.product })
-            return { ...state, bills: newBills }
+            return { ...state, bills: newBills,product:[] }
         case 'ADDBILLCGV':
             let newBillsCGV = [...state.billsCGV]
             newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV, value: action.value, tilte: 'Voucher CGV Cinema' })
