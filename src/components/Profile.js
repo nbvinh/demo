@@ -29,7 +29,7 @@ const Profile = ({ route, navigation }) => {
             })
                 .then((response) => response.json())
                 .then((json) => { console.log(json) })
-            dispatch({ type: 'HOTEN', hoten: hoten.hoten })
+            dispatch({ type: 'HOTEN', hoten: hoten})
             dispatch({ type: 'SDT', SDT: SDT })
             dispatch({ type: 'Email', Email: Email })
             navigation.navigate('Tabviewmain');

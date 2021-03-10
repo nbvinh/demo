@@ -78,7 +78,7 @@ const initState = {
     history_point: [],
     bills: [],
     billsCGV: [],
-    image: 'https://pbs.twimg.com/profile_images/823569976342773760/c2RLAG7h_400x400.jpg',
+    image: 'https://s120-ava-talk.zadn.vn/1/c/1/5/36/120/7782ef664d5ed9e76e23b4d91ec9baad.jpg',
     product : [],
     productafter: []
 };
