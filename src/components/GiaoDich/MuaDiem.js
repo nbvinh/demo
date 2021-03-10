@@ -118,11 +118,12 @@ const MuaDiem = ({navigation}) =>{
                     <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiến hành thanh toán</Text>
                 </LinearGradient>
                 :
-                <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
                     <TouchableOpacity  onPress={onSubmitThanhToan}>
-                        <Text style={AppStyle.StyleFirst.text}>Tiến hành thanh toán</Text>
+                        <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
+                            <Text style={AppStyle.StyleFirst.text}>Tiến hành thanh toán</Text>
+                        </LinearGradient>
                     </TouchableOpacity>
-            </LinearGradient>
+            
             }
                         
                </View>

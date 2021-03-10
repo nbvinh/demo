@@ -103,7 +103,7 @@ const Main = ({ navigation }) => {
                 console.log('number : ' + number);
                 Object.entries(dulieuvoucher);
                 setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
-                dispatch({ type: 'DATA_VOUCHER', voucher: voucher.DuLieuVoucher })
+                dispatch({ type: 'DATA_VOUCHER', voucher: res.data.data })
             }).catch(function (error) {
                 console.log(error);
             });

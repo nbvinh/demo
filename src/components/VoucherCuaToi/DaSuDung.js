@@ -3,7 +3,11 @@ import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, 
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
+import { useSelector, useDispatch } from "react-redux";
 const DaSuDung = () =>{
+    const voucher = useSelector(state => state.voucher)
+    const dispatch = useDispatch();
+    
     return(
         <ScrollView style={{flex: 1, backgroundColor: 'black',  paddingHorizontal: 12}}>
             <TouchableOpacity style={AppStyle.StyleMain.DichVu}>

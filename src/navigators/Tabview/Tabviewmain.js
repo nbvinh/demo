@@ -8,6 +8,7 @@ import TabVoucher from "./tabheaderVoucher";
 import Svg, { Path } from 'react-native-svg';
 import History_Transform from "../../components/History_Transform";
 import LinearGradient from 'react-native-linear-gradient';
+import GiaoDich from '../../components/GiaoDich/giaodich';
 
 const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
     var isSelected = accessibilityState.selected
@@ -118,7 +119,7 @@ export default function TabViewMain() {
             />
             <Tab.Screen
                 name="KhamPha"
-                component={TabVoucher}
+                component={GiaoDich}
                 options={{
                    
                     tabBarButton: (props) => (
