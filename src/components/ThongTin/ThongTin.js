@@ -74,8 +74,8 @@ const ThongTin = ({navigation}) =>{
                 renderItem={({item}) =><Item item = {item}/>}
                 keyExtractor={(item) => item.id}
             /> */}
-            <View style={{marginHorizontal: 12}}>
-            <ScrollView>
+            <View style={{marginHorizontal: 12, flex: 1}}>
+            <ScrollView >
             <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
