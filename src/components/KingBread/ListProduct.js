@@ -28,13 +28,18 @@ const ListProduct = (props) => {
     const UpAfter = (choosediem) => {
         if (filterStatus === 'COMBO') {
             dispatch({ type: 'OPENUPCOMBO', id: choosediem.id })
+            dispatch({ type: 'UPITEMPRODUCTCOMBO', id: choosediem.id })
+
         }
         if (filterStatus === 'NUOC') {
             dispatch({ type: 'OPENUPNUOC', id: choosediem.id })
+            dispatch({ type: 'UPITEMPRODUCTNUOC', id: choosediem.id })
         }
         if (filterStatus === 'BANHMI') {
             dispatch({ type: 'OPENUPBANHMI', id: choosediem.id })
+            dispatch({ type: 'UPITEMPRODUCTBANHMI', id: choosediem.id })
         }
+        dispatch({ type: 'PRICEITEMPRODUCTBANHMI', id: choosediem.id })
     }
     const { name, avatar, price, quantity, id, tongleprice, amount, OpenUP } = props.myListProduct
     return (
@@ -67,7 +72,7 @@ const ListProduct = (props) => {
                                 </TouchableOpacity>
                             </View>
                             :
-                            <View style={{ flexDirection: 'row', justifyContent:'flex-end', marginRight:10 }}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginRight: 10 }}>
                                 <TouchableOpacity onPress={() => UpAfter(props.myListProduct)}>
                                     <Image
                                         style={{ width: 32, height: 32 }}

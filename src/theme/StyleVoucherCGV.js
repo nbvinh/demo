@@ -129,10 +129,6 @@ const StyleVoucherCGV = StyleSheet.create({
         height: 70,
         marginLeft: 3
     },
-    img: {
-        margin: 10,
-        alignItems: 'center'
-    },
     silde: {
         marginHorizontal: 10,
         justifyContent: 'space-between',
@@ -141,9 +137,10 @@ const StyleVoucherCGV = StyleSheet.create({
         flexDirection: 'row',
     },
     silde2: {
-        justifyContent: 'center',
-        paddingVertical: 10,
-        flexDirection: 'row'
+        margin: 10,
+        flex:1,
+        justifyContent:'center',
+        alignItems:'center'
     },
     textcontent: {
         marginHorizontal: 20,
@@ -183,6 +180,9 @@ const StyleVoucherCGV = StyleSheet.create({
         height: 8,
         width: 8,
         borderRadius: 10
+    },
+    img5:{
+        marginHorizontal:10
     }
 })
 export default StyleVoucherCGV;

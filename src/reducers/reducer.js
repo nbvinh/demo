@@ -79,17 +79,25 @@ const initState = {
     bills: [],
     billsCGV: [],
     image: 'https://s120-ava-talk.zadn.vn/1/c/1/5/36/120/7782ef664d5ed9e76e23b4d91ec9baad.jpg',
-    product : [],
+    product: [],
     productafter: []
 };
 const reducer = (state = initState, action) => {
     switch (action.type) {
-        case 'PRODUCTAFTER' :
-            return{ ...state, productafter: action.productafter}
+        case 'SILDEPEWPEW':
+            let SlidePewPew =[...state.imagesbanhmi]
+            SlidePewPew.map((item,index)=>{
+                if (index>0){
+                    item.text =''
+                }
+            })
+            return {...state,imagesbanhmi:SlidePewPew}
+        case 'PRODUCTAFTER':
+            return { ...state, productafter: action.productafter }
         case 'ADDPRODUCT':
-            let newproduct =[...state.product]
-            newproduct.push({id: action.id , name: action.name , price : action.price, amount: action.amount})
-            return {...state,product: newproduct}
+            let newproduct = [...state.product]
+            newproduct.push({ id: action.id, name: action.name, price: action.price, amount: action.amount })
+            return { ...state, product: newproduct }
         case 'IMAGES':
             return { ...state, image: action.image }
         case 'COMFIRM':
@@ -213,7 +221,7 @@ const reducer = (state = initState, action) => {
         case 'ADDBILL':
             let newBills = [...state.bills]
             newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount, product: action.product })
-            return { ...state, bills: newBills,product:[] }
+            return { ...state, bills: newBills, product: [] }
         case 'ADDBILLCGV':
             let newBillsCGV = [...state.billsCGV]
             newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV, value: action.value, tilte: 'Voucher CGV Cinema' })

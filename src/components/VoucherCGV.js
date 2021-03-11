@@ -38,12 +38,6 @@ const VoucherCGV = ({ navigation }) => {
             </View>
             <View style={{ flex: 11 }}>
                 <ScrollView>
-                    <View style={AppStyle.StyleVoucherCGV.img}>
-                        <Image
-                            style={AppStyle.StyleVoucherCGV.img1}
-                            source={require('../img/vinh10.png')}
-                        />
-                    </View>
                     <SlideImg />
                     <View style={AppStyle.StyleVoucherCGV.textcontent}>
                         <Text style={AppStyle.StyleVoucherCGV.text2}>Voucher CGV Cinema</Text>

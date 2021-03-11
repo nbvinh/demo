@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BackHandler, View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, FlatList,SafeAreaView } from "react-native";
+import { BackHandler, View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, FlatList, SafeAreaView } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import SlideImg from "../components/KingBread/SlideImg";
@@ -23,7 +23,7 @@ const KingBread = ({ navigation }) => {
         return true;
     }
     const loadData = async () => {
-        fetch('http://175.41.184.177:6061/shop/1', {
+        const load = await fetch('http://175.41.184.177:6061/shop/1', {
             method: 'GET'
         })
 
@@ -41,10 +41,9 @@ const KingBread = ({ navigation }) => {
                 dispatch({ type: 'BanhMiPEWPEW', temp1: temp1 })
             })
             .catch((error) => console.error(error))
+        dispatch({ type: 'SILDEPEWPEW' })
     }
-
     const temp1 = useSelector(state => state.temp1)
-    const categoriesbanhmi = useSelector(state => state.categoriesbanhmi)
     const getstyle = (statusname) => {
         if (statusname == filterStatus) return [AppStyle.StyleKingBread.touchable1, { backgroundColor: '#B738FF' }]
         return [AppStyle.StyleKingBread.touchable1, { backgroundColor: 'rgba(39,39,56,0.75)' }]
@@ -109,17 +108,6 @@ const KingBread = ({ navigation }) => {
                 </View>
                 <View style={{ flex: 11 }}>
                     <ScrollView>
-                        <View style={AppStyle.StyleVoucherCGV.img}>
-                            {temp1 && temp1.map((item) => {
-                                return (
-                                    <Image
-                                        key={item.id.toString()}
-                                        style={AppStyle.StyleVoucherCGV.img1}
-                                        source={{ uri: 'http://175.41.184.177:6063/image/' + item.avatar }}
-                                    />
-                                )
-                            })}
-                        </View>
                         <SlideImg />
                         <View style={{ margin: 15 }}>
                             {temp1 && temp1.map((item) => {
