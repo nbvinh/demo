@@ -35,7 +35,7 @@ const MuaDiem = ({navigation}) =>{
                         {
                             text: "Có",
                             onPress: () => {
-                                Alert.alert('Chúc Mừng', 'Bạn Đã Mua Điểm Thành Công!');
+                               
                                 navigation.navigate('Tabviewmain');
                                 dispatch({type: 'UPDIEM', diem : diem});
                                 let d = new Date();
