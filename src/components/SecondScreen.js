@@ -53,7 +53,7 @@ const SecondScreen = ({ navigation }) => {
                     <TextInput
                         style={AppStyle.StyleSecond.textinput}
                         placeholder="Nhập số điện thoại"
-                        placeholderTextColor="#FFFFFF"
+                        placeholderTextColor="rgba(255, 255, 255, 0.3)"
                         keyboardType="number-pad"
 
 
@@ -71,10 +71,10 @@ const SecondScreen = ({ navigation }) => {
                         :
 
                         <LinearGradient
-                            style={AppStyle.StyleFirst.linear}
+                            style={[AppStyle.StyleFirst.linear, {opacity: 0.5}]}
                             colors={['#B738FF', '#8B3BFF']}
                         >
-                            <Text style={AppStyle.StyleSecond.text2}>Tiếp Tục</Text>
+                            <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
                         </LinearGradient>
                     }
                 </View>

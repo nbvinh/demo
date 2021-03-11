@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
+import { color } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AppStyle from "../theme";
 
@@ -22,14 +23,11 @@ const ScreenFirst = ({ navigation }) => {
                             <Text style={AppStyle.StyleFirst.text}>Đăng Nhập</Text>
                         </LinearGradient>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Tabviewmain')}>
-                        <LinearGradient
-                            style={AppStyle.StyleFirst.linear}
-                            colors={['#8B3BFF', '#B738FF']}
-                        >
+                    <TouchableOpacity    style={[AppStyle.StyleFirst.linear, {borderWidth: 2, borderColor:'#8B3BFF'}]} onPress={() => navigation.navigate('Tabviewmain')}>
+                        
 
-                            <Text style={AppStyle.StyleFirst.text}>Dùng Thử</Text>
-                        </LinearGradient>
+                            <Text style={[AppStyle.StyleFirst.text, {color:'#8B3BFF'}]}>Dùng Thử</Text>
+                       
                     </TouchableOpacity>
                 </View>
             </View>
