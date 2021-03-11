@@ -131,7 +131,7 @@ const StyleMain = StyleSheet.create({
         flex: 1,
         flexDirection:'row',
       
-        marginTop: 10
+        marginTop: 5,paddingBottom:10
     },
     DichVu_Bottom_Top_TextTieuDe:{
         fontSize: 17,
