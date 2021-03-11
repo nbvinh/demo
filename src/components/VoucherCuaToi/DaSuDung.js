@@ -46,6 +46,7 @@ const DaSuDung = () =>{
                                 <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> K-Pub - Tầng 4 Lê Văn Lương</Text>
                      </View>
                 </View>
+                <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                         <View  style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                                 <Text style={{marginLeft: 5,color:'white', fontSize: 17, fontWeight:'700'}}>280.000 đ</Text>
@@ -95,6 +96,7 @@ const DaSuDung = () =>{
                                         <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> Ăn Sushi thả ga - Chẳng lo về giá</Text>
                      </View>
                 </View>
+                <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                         <View  style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                                 <Text style={{marginLeft: 5,color:'white', fontSize: 17, fontWeight:'700'}}>265.000 đ</Text>
@@ -145,6 +147,7 @@ const DaSuDung = () =>{
                           <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> Khám phá ngay ẩm thực Nam Bộ tại Truly Việt</Text>
                      </View>
                 </View>
+                <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                         <View  style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                                 <Text style={{marginLeft: 5,color:'white', fontSize: 17, fontWeight:'700'}}>169.000 đ</Text>
@@ -167,6 +170,7 @@ const DaSuDung = () =>{
                         source={require('../../img/09.png')}
                     />
                 </View>
+                
                 <View style={AppStyle.StyleMain.DichVu_Right}>
                     <View style={AppStyle.StyleMain.DichVu_RightItem}>
                         <Image
@@ -195,6 +199,7 @@ const DaSuDung = () =>{
                                 <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> 28 Hồ Tùng Mậu, p. Mai Dịch, q. Cầu Giấy, Hà Nội</Text>
                      </View>
                 </View>
+                <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                         <View  style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                           
