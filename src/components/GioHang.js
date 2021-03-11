@@ -27,8 +27,8 @@ const GioHang = ({ navigation }) => {
     }
     console.log('show', kingbread)
     return (
-        <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
-            <View style={[AppStyle.StyleVoucherCGV.container]}>
+       
+            <SafeAreaView style={[AppStyle.StyleVoucherCGV.container]}>
                 <View style={AppStyle.StyleVoucherCGV.header}>
                     <TouchableOpacity onPress={() => GOback()} >
                         <Image
@@ -211,9 +211,9 @@ const GioHang = ({ navigation }) => {
                         </View>
                     </View>
                 }
-            </View>
+           </SafeAreaView>
 
-        </SafeAreaView>
+        
 
     )
 }
