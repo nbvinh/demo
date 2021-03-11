@@ -37,7 +37,7 @@ const GiaoDich = ({navigation}) =>{
                 </View>
                 <View style={AppStyle.StyleGiaoDich.Box_Right}>
                     <Text style={AppStyle.StyleGiaoDich.Box_Right_TieuDe}>Mua điểm</Text>
-                    <Text style={AppStyle.StyleGiaoDich.Box_Right_Content}>Mua điểm bằng ATM/ VISA/ MASTER
+                    <Text style={AppStyle.StyleGiaoDich.Box_Right_Content} numberOfLines={2}>Mua điểm bằng ATM/ VISA/ MASTER
 hoặc cửa hàng tiện lợi.</Text>
                 </View>
             </TouchableOpacity>
