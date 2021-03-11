@@ -8,8 +8,7 @@ import { useState } from "react/cjs/react.development";
 const Tab = createMaterialTopTabNavigator();
 
 const TabVoucher = ({ navigation }) => {
-  const [color, setColor] = useState('test')
-  console.log(color)
+  
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'black', padding: 8 }}>
       <View style={{ height: 30, flexDirection: 'row' }}>
