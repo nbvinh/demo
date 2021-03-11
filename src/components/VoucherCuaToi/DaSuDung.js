@@ -93,7 +93,7 @@ const DaSuDung = () =>{
                      />
                      <View style={{width: '80%' , marginLeft: 10}}>
                      <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}> Voucher Sushi Kei giảm 12% </Text>
-                                        <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> Ăn Sushi thả ga - Chẳng lo về giá</Text>
+                                        <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi} numberOfLines={1}> Ăn Sushi thả ga - Chẳng lo về giá</Text>
                      </View>
                 </View>
                 <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
@@ -144,7 +144,7 @@ const DaSuDung = () =>{
                      />
                      <View style={{width: '80%' , marginLeft: 10}}>
                             <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}>Voucher Truly Việt giảm 16%</Text>
-                          <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> Khám phá ngay ẩm thực Nam Bộ tại Truly Việt</Text>
+                          <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi} numberOfLines={1}> Khám phá ngay ẩm thực Nam Bộ tại Truly Việt</Text>
                      </View>
                 </View>
                 <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
