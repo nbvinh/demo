@@ -55,10 +55,10 @@ const MuaDiem = ({navigation}) =>{
     }
     return(
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-            <View style={{marginHorizontal: 16}}>
+            <View style={{marginHorizontal: 8}}>
 
                 <View style={AppStyle.StyleGiaoDich.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
                         <Image
                             width={10} height={18}
                             source={require('../../img/back.png')}
