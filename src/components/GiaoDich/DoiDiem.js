@@ -119,11 +119,13 @@ const DoiDiem = ({navigation}) =>{
                     </View>
                 </View>
             </View>
-            <LinearGradient style={[AppStyle.StyleFirst.linear, {marginTop: 46}]} colors={['#8B3BFF', '#B738FF']} >
+            
                         <TouchableOpacity onPress={submit}>
-                        <Text style={AppStyle.StyleFirst.text}>Xác Nhận</Text>
+                            <LinearGradient style={[AppStyle.StyleFirst.linear, {marginTop: 46}]} colors={['#8B3BFF', '#B738FF']} >
+                            <Text style={AppStyle.StyleFirst.text}>Xác Nhận</Text>
+                            </LinearGradient>
                         </TouchableOpacity>
-                    </LinearGradient>
+                    
          </View>
         </SafeAreaView>
     );
