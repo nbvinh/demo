@@ -76,7 +76,8 @@ const StyleGiaoDich = StyleSheet.create({
     Item_ThanhToan:{flexDirection:'row',  alignItems:'center', marginVertical: 10},
     Text_ChonThanhToan:{
         color:'white',
-        paddingLeft: 10,
+        paddingHorizontal: 10,
+        marginRight: 5,
         fontSize: 15,
     },
     Tieude_QuyDoi:{
