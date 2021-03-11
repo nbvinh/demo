@@ -33,11 +33,12 @@ const NapDiem = ({navigation}) =>{
                     <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiếp Tục</Text>
                 </LinearGradient>
                 :
-                <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
                         <TouchableOpacity >
-                        <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
+                            <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
+                                <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
+                            </LinearGradient>
                         </TouchableOpacity>
-                    </LinearGradient>
+                    
             }
         </View>
         </SafeAreaView>

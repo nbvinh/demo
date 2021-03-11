@@ -133,15 +133,16 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                 <Text style={AppStyle.StyleScreenXacNhanSDT.textguilaisau}> Gửi laị sau 00:{TimeDown}</Text>
                 {
                     MaPin1 != '' && MaPin2 != '' && MaPin3 != '' && MaPin4 != '' && MaPin5 != '' && MaPin6 != ''
-                        ? <LinearGradient
+                        ? <TouchableOpacity onPress={onfirm_otp}>
+                            <LinearGradient
                             style={AppStyle.StyleScreenXacNhanSDT.linear}
 
                             colors={['#8B3BFF', '#B738FF']}
                         >
-                            <TouchableOpacity onPress={onfirm_otp}>
+                            
                                 <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiếp tục</Text>
-                            </TouchableOpacity>
                         </LinearGradient>
+                        </TouchableOpacity>
                         :
                         <LinearGradient
                             style={AppStyle.StyleScreenXacNhanSDT.linearnotactive}

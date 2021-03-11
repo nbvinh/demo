@@ -8,8 +8,7 @@ import { useState } from "react/cjs/react.development";
 const Tab = createMaterialTopTabNavigator();
 
 const TabVoucher = ({ navigation }) => {
-  const [color, setColor] = useState('test')
-  console.log(color)
+  
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'black', padding: 8 }}>
       <View style={{ height: 30, flexDirection: 'row' }}>
@@ -27,7 +26,7 @@ const TabVoucher = ({ navigation }) => {
           activeTintColor: '#822FFB',
           labelStyle: { fontSize: 15, fontWeight: '400' },
           indicatorStyle: { backgroundColor: '#822FFB' },
-          style: { backgroundColor: 'black', marginHorizontal: 12, marginTop: 18, activeBackgroundColor: 'rgba(139, 59, 255, 0.15)', },
+          style: { backgroundColor: 'black', marginHorizontal: 12,  activeBackgroundColor: 'rgba(139, 59, 255, 0.15)', },
 
         }}>
         <Tab.Screen name="ChuaSuDung" component={ChuaSuDung} options={{ tabBarLabel: 'Chưa sử dụng' }} />
