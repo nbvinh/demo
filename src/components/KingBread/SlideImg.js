@@ -79,7 +79,7 @@ const SlideImg = () => {
         })
         if (index * (IMAGE_SIZE + SPACING) - IMAGE_SIZE / 2 > width / 3) {
             thumbref?.current?.scrollToOffset({
-                offset: index * (IMAGE_SIZE + SPACING) - width / 2 + IMAGE_SIZE / 2,
+                offset: index * (IMAGE_SIZE + SPACING) - width / 2 + IMAGE_SIZE / 2 + IMAGE_SIZE + 35,
                 animated: true
             })
         }
