@@ -167,7 +167,7 @@ const Main = ({ navigation }) => {
 
 
                                 </TouchableOpacity>
-                                <Province />
+                                <Province setTest={setTest} />
                             </View>
                         </View>
                         <View style={AppStyle.StyleMain.poin_your}>

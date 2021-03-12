@@ -10,6 +10,7 @@ const Province = (props) => {
     const dispatch = useDispatch();
     const data1 = useSelector(state => state.data1)
     const province = useSelector( state=> state.province)
+    const setTest = props.setTest
     return (
         <Modal
             animationType='fade'
@@ -17,7 +18,11 @@ const Province = (props) => {
             visible={province}
         >
             <View style={AppStyle.StyleGioHang.modal1}>
-                <TouchableOpacity onPress={() => dispatch({type:'MODALPROVINCE'})} style={{ height: '16.5%' }}></TouchableOpacity>
+                <TouchableOpacity onPress={() => {
+                    setTest(true)
+                    dispatch({type:'MODALPROVINCE'})
+                }} 
+                    style={{ height: '16.5%' }}></TouchableOpacity>
                 <View style={{ height: '93.5%' }}>
                     <View style={{ position: 'absolute', top: 20, right: 10, width: 100, backgroundColor: '#272738',borderRadius:8 }}>
                         <FlatList
