@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BackHandler, View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, StatusBar, TextInput, Alert, Image, FlatList, SafeAreaView } from "react-native";
+import { BackHandler, View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, StatusBar, TextInput, Alert, Image, FlatList, SafeAreaView, Share } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import SlideImg from "../components/KingBread/SlideImg";
@@ -92,6 +92,25 @@ const KingBread = ({ navigation }) => {
     const buynow = () => {
         navigation.navigate('GioHang')
     }
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                message:
+                    'Bánh Mì Pew Pew - Vua Bánh Mì Kẹp || Ngon từ thịt ngọt từ người bán',
+            });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    };
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
             {
@@ -119,15 +138,6 @@ const KingBread = ({ navigation }) => {
                                 <SlideImg />
                                 <View style={{ margin: 15 }}>
                                     {temp1 && temp1.map((item) => {
-                                        const Call = () => {
-                                            // const args = {
-                                            //     number: '0352343938', // Use commas to add time between digits.
-                                            //     prompt: true
-                                            //   }
-
-                                            //   call(args);
-                                            Communications.phonecall(item.phone, true);
-                                        }
                                         return (
                                             <View key={item.id.toString()}>
                                                 <Text style={AppStyle.StyleKingBread.text1}>{item.name} - Vua bánh mì kẹp</Text>
@@ -150,13 +160,13 @@ const KingBread = ({ navigation }) => {
                                                         </View>
                                                     </View>
                                                     <View style={{ flexDirection: 'row' }}>
-                                                        <TouchableOpacity onPress={call}>
+                                                        <TouchableOpacity onPress={() => Communications.phonecall(item.phone, true)}>
                                                             <Image
                                                                 style={{ width: 50, height: 36, marginRight: 20 }}
                                                                 source={require('../img/vinh31.png')}
                                                             />
                                                         </TouchableOpacity>
-                                                        <TouchableOpacity>
+                                                        <TouchableOpacity onPress={()=>onShare()}>
                                                             <Image
                                                                 style={{ width: 50, height: 36, marginBottom: 10 }}
                                                                 source={require('../img/vinh32.png')}
