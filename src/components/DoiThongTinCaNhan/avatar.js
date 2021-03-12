@@ -35,22 +35,30 @@ const DoiAvatar = ({ navigation }) => {
     const onupdate_info = async () => {
         try {
             if(result != ''){
-                fetch(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
-                    email: Email,
-                    full_name: HoTen,
-                    phone_number: SDT,
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer + ${result}`
-                    }
-                })
-                    .then((response)=>response.json())
-                    .then((json)=>{console.log(json)})
-                    dispatch({type:'HOTEN', hoten: HoTen})
-                    dispatch({type:'SDT', SDT: SDT})
-                    dispatch({type:'Email', Email: Email})
-                    Alert.alert('Thông báo', 'Cập nhật thông tin cá nhân thành công!');
-                navigation.navigate('Tabviewmain');
+                if(HoTen == ''){
+                    Alert.alert('Thông Báo', 'Họ Tên Không được để rỗng');
+                }
+                else if(Email == ''){
+                    Alert.alert('Thông Báo', 'Email Không được để rỗng');
+                }
+                else{
+                    fetch(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
+                        email: Email,
+                        full_name: HoTen,
+                        phone_number: SDT,
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer + ${result}`
+                        }
+                    })
+                        .then((response)=>response.json())
+                        .then((json)=>{console.log(json)})
+                        dispatch({type:'HOTEN', hoten: HoTen})
+                        dispatch({type:'SDT', SDT: SDT})
+                        dispatch({type:'Email', Email: Email})
+                      
+                    navigation.navigate('Tabviewmain');
+                }
             }
             else{
                 Alert.alert('Thông báo', 'Cập nhật thất bại do bạn chưa đăng nhập!');
@@ -71,6 +79,7 @@ const DoiAvatar = ({ navigation }) => {
             console.log(image);
           });
     }
+  
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
             <View style={AppStyle.StyleGiaoDich.header}>
@@ -149,19 +158,19 @@ const DoiAvatar = ({ navigation }) => {
                     </View>
                 </View>
             </View>
-            <View style={{ height: 48, backgroundColor: '#272738', borderRadius: 8, padding: 16, flexDirection: 'row', alignItems: 'center', marginBottom: 30, justifyContent: 'space-between' }} >
+            <TouchableOpacity style={{ height: 48, backgroundColor: '#272738', borderRadius: 8, padding: 16, flexDirection: 'row', alignItems: 'center', marginBottom: 30, justifyContent: 'space-between' }} >
                 <Text style={{ color: '#ffffff', fontSize: 16, fontWeight: '400' }}>Quản lý thẻ/ tài khoản</Text>
                 <Image
                     width={18} height={18}
                     source={require('../../img/img_icon_24px/chevron_right_24px.png')}
                 />
-            </View>
-
-            <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']}>
+            </TouchableOpacity>
                 <TouchableOpacity onPress={onupdate_info}>
+                    <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']}>
                     <Text style={AppStyle.StyleFirst.text}>Lưu</Text>
+                    </LinearGradient>
                 </TouchableOpacity>
-            </LinearGradient>
+
             </View>
         </SafeAreaView>
     );

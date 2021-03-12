@@ -59,5 +59,8 @@
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string></string>
+	<!-- <key>telprompt</key>
+	<string>LSApplicationQueriesSchemes</string> -->
+
 </dict>
 </plist>

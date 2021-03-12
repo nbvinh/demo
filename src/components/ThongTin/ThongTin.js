@@ -76,7 +76,7 @@ const ThongTin = ({navigation}) =>{
             /> */}
             <View style={{marginHorizontal: 12, flex: 1}}>
             <ScrollView >
-            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item} onPress={() => navigation.navigate('MoiBanBe')}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}

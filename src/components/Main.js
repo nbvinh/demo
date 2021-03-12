@@ -106,6 +106,24 @@ const Main = ({ navigation }) => {
             dispatch({ type: 'KINGBREADFALSE' })
         }
     }
+    const checkLogin = () =>{
+        token === '' ? Alert.alert('Thông Báo', 'Bạn chưa đăng nhập, nên không để thay đổi thông tin được', [
+                        
+            {
+                text: "Đăng Nhập",
+                onPress: () => {
+                    navigation.navigate('SecondScreen')
+                    
+                }
+            },
+            {
+                text: "Bỏ qua",
+                
+              },
+          ],
+          { cancelable: false }
+        ) :  navigation.navigate('DoiAvatar');
+    }
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
             {
@@ -120,7 +138,7 @@ const Main = ({ navigation }) => {
                         <StatusBar barStyle='light-content'></StatusBar>
                         <View style={AppStyle.StyleMain.header}>
                             <View style={AppStyle.StyleMain.header_left}>
-                                <TouchableOpacity onPress={() => { navigation.navigate('DoiAvatar') }}>
+                                <TouchableOpacity onPress={checkLogin}>
                                     <Image
                                         style={{ width: 40, height: 40, borderRadius: 50 }}
                                         source={{

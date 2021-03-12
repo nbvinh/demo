@@ -11,7 +11,7 @@ target 'VinhNamQuy' do
     inherit! :complete
     # Pods for testing
   end
-
+  pod 'react-native-contacts', :path => '../node_modules/react-native-contacts'
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
