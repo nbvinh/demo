@@ -89,7 +89,7 @@ const Profile = ({ route, navigation }) => {
     }
     const [checkHoten,setCheckhoten] = useState(false);
     const validateHoten =(text1)=>{
-        let reg =/^[a-zA-Z ]*$/;
+        let reg =/^[a-zA-Z]{2,40}( [a-zA-Z]{2,40})+$/;
         if(reg.test(text1)=== false){
             setHoten(text1)
             setCheckhoten(false)
