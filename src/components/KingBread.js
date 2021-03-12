@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BackHandler, View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, FlatList, SafeAreaView } from "react-native";
+import { BackHandler, View, Text, StyleSheet, TouchableOpacity, ActivityIndicator, StatusBar, TextInput, Alert, Image, FlatList, SafeAreaView, Share } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import SlideImg from "../components/KingBread/SlideImg";
@@ -9,6 +9,7 @@ import Communications from 'react-native-communications';
 import call from 'react-native-phone-call'
 const KingBread = ({ navigation }) => {
     const dispatch = useDispatch();
+    const [time, setTime] = useState(true)
     useEffect(() => {
         loadData();
         BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
@@ -42,6 +43,7 @@ const KingBread = ({ navigation }) => {
             })
             .catch((error) => console.error(error))
         dispatch({ type: 'SILDEPEWPEW' })
+        setTime(false)
     }
     const temp1 = useSelector(state => state.temp1)
     const getstyle = (statusname) => {
@@ -90,135 +92,152 @@ const KingBread = ({ navigation }) => {
     const buynow = () => {
         navigation.navigate('GioHang')
     }
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                message:
+                    'Bánh Mì Pew Pew - Vua Bánh Mì Kẹp || Ngon từ thịt ngọt từ người bán',
+            });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    };
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
-            <View style={AppStyle.StyleVoucherCGV.container}>
-                <View style={AppStyle.StyleVoucherCGV.header}>
-                    <TouchableOpacity onPress={() => GOback()} >
-                        <Image
-                            width={10} height={18}
-                            source={require('../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    {temp1 && temp1.map((item) => {
-                        return (
-                            <Text key={item.id.toString()} style={AppStyle.StyleVoucherCGV.text}>{item.name}</Text>
-                        )
-                    })}
-                </View>
-                <View style={{ flex: 11 }}>
-                    <ScrollView>
-                        <SlideImg />
-                        <View style={{ margin: 15 }}>
+            {
+                time ?
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <ActivityIndicator size="large" color="#8B3BFF" />
+                    </View>
+                    :
+                    <View style={AppStyle.StyleVoucherCGV.container}>
+                        <View style={AppStyle.StyleVoucherCGV.header}>
+                            <TouchableOpacity onPress={() => GOback()} >
+                                <Image
+                                    width={10} height={18}
+                                    source={require('../img/back.png')}
+                                />
+                            </TouchableOpacity>
                             {temp1 && temp1.map((item) => {
-                                const Call = () => {
-                                    // const args = {
-                                    //     number: '0352343938', // Use commas to add time between digits.
-                                    //     prompt: true
-                                    //   }
-
-                                    //   call(args);
-                                    Communications.phonecall(item.phone, true);
-                                }
                                 return (
-                                    <View key={item.id.toString()}>
-                                        <Text style={AppStyle.StyleKingBread.text1}>{item.name} - Vua bánh mì kẹp</Text>
-                                        <View style={AppStyle.StyleKingBread.content2}>
-                                            <Image
-                                                style={AppStyle.StyleKingBread.img1}
-                                                source={require('../img/vinh30.png')}
-                                            />
-                                            <Text style={[AppStyle.StyleKingBread.text, { color: '#C9C9C9' }]}>{item.address}</Text>
-                                        </View>
-                                        <View style={AppStyle.StyleKingBread.content1}>
-                                            <View >
-                                                <View style={{ flexDirection: 'row' }}>
-                                                    <Text style={[AppStyle.StyleKingBread.text, { color: '#C9C9C9' }]}>Mở cửa: </Text>
-                                                    <Text style={[AppStyle.StyleKingBread.text, { color: '#B738FF' }]}>{item.openTime}</Text>
-                                                </View>
-                                                <View style={{ flexDirection: 'row' }}>
-                                                    <Text style={[AppStyle.StyleKingBread.text, { color: '#C9C9C9' }]}>Đóng cửa: </Text>
-                                                    <Text style={[AppStyle.StyleKingBread.text, { color: '#B738FF' }]}>{item.closeTime}</Text>
-                                                </View>
-                                            </View>
-                                            <View style={{ flexDirection: 'row' }}>
-                                                <TouchableOpacity onPress={call}>
-                                                    <Image
-                                                        style={{ width: 50, height: 36, marginRight: 20 }}
-                                                        source={require('../img/vinh31.png')}
-                                                    />
-                                                </TouchableOpacity>
-                                                <TouchableOpacity>
-                                                    <Image
-                                                        style={{ width: 50, height: 36, marginBottom: 10 }}
-                                                        source={require('../img/vinh32.png')}
-                                                    />
-                                                </TouchableOpacity>
-                                            </View>
-                                        </View>
-                                    </View>
+                                    <Text key={item.id.toString()} style={AppStyle.StyleVoucherCGV.text}>{item.name}</Text>
                                 )
                             })}
-                            <View style={{ margin: 10 }}>
-                                <View style={{ flexDirection: 'row' }}>
+                        </View>
+                        <View style={{ flex: 11 }}>
+                            <ScrollView>
+                                <SlideImg />
+                                <View style={{ margin: 15 }}>
+                                    {temp1 && temp1.map((item) => {
+                                        return (
+                                            <View key={item.id.toString()}>
+                                                <Text style={AppStyle.StyleKingBread.text1}>{item.name} - Vua bánh mì kẹp</Text>
+                                                <View style={AppStyle.StyleKingBread.content2}>
+                                                    <Image
+                                                        style={AppStyle.StyleKingBread.img1}
+                                                        source={require('../img/vinh30.png')}
+                                                    />
+                                                    <Text style={[AppStyle.StyleKingBread.text, { color: '#C9C9C9' }]}>{item.address}</Text>
+                                                </View>
+                                                <View style={AppStyle.StyleKingBread.content1}>
+                                                    <View >
+                                                        <View style={{ flexDirection: 'row' }}>
+                                                            <Text style={[AppStyle.StyleKingBread.text, { color: '#C9C9C9' }]}>Mở cửa: </Text>
+                                                            <Text style={[AppStyle.StyleKingBread.text, { color: '#B738FF' }]}>{item.openTime}</Text>
+                                                        </View>
+                                                        <View style={{ flexDirection: 'row' }}>
+                                                            <Text style={[AppStyle.StyleKingBread.text, { color: '#C9C9C9' }]}>Đóng cửa: </Text>
+                                                            <Text style={[AppStyle.StyleKingBread.text, { color: '#B738FF' }]}>{item.closeTime}</Text>
+                                                        </View>
+                                                    </View>
+                                                    <View style={{ flexDirection: 'row' }}>
+                                                        <TouchableOpacity onPress={() => Communications.phonecall(item.phone, true)}>
+                                                            <Image
+                                                                style={{ width: 50, height: 36, marginRight: 20 }}
+                                                                source={require('../img/vinh31.png')}
+                                                            />
+                                                        </TouchableOpacity>
+                                                        <TouchableOpacity onPress={()=>onShare()}>
+                                                            <Image
+                                                                style={{ width: 50, height: 36, marginBottom: 10 }}
+                                                                source={require('../img/vinh32.png')}
+                                                            />
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                            </View>
+                                        )
+                                    })}
+                                    <View style={{ margin: 10 }}>
+                                        <View style={{ flexDirection: 'row' }}>
 
-                                    <TouchableOpacity
-                                        onPress={() => filtercombo()}
-                                        style={getstyle('COMBO')}
-                                    >
-                                        <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Combo</Text>
-                                    </TouchableOpacity>
+                                            <TouchableOpacity
+                                                onPress={() => filtercombo()}
+                                                style={getstyle('COMBO')}
+                                            >
+                                                <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Combo</Text>
+                                            </TouchableOpacity>
 
-                                    <TouchableOpacity
-                                        onPress={() => filterbanhmi()}
-                                        style={getstyle('BANHMI')}
-                                    >
-                                        <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Bánh Mì</Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity
-                                        onPress={() => filternuoc()}
-                                        style={getstyle('NUOC')}>
-                                        <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Đồ Uống</Text>
-                                    </TouchableOpacity>
-                                </View>
-                                {/* <TouchableOpacity style={{width:20,height:30,backgroundColor:'white'}}
+                                            <TouchableOpacity
+                                                onPress={() => filterbanhmi()}
+                                                style={getstyle('BANHMI')}
+                                            >
+                                                <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Bánh Mì</Text>
+                                            </TouchableOpacity>
+                                            <TouchableOpacity
+                                                onPress={() => filternuoc()}
+                                                style={getstyle('NUOC')}>
+                                                <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Đồ Uống</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                        {/* <TouchableOpacity style={{width:20,height:30,backgroundColor:'white'}}
                                 onPress={()=>truonganhvinh()}
                             >
 
                             </TouchableOpacity> */}
-                                {DataProduct && DataProduct.map((item) => <ListProduct key={item.id.toString()} myListProduct={item} />)}
-                            </View>
+                                        {DataProduct && DataProduct.map((item) => <ListProduct key={item.id.toString()} myListProduct={item} />)}
+                                    </View>
+                                </View>
+                            </ScrollView>
                         </View>
-                    </ScrollView>
-                </View>
-                <View style={AppStyle.StyleVoucherCGV.footer}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <Image
-                            style={AppStyle.StyleVoucherCGV.img3}
-                            source={require('../img/vinh8.png')}
-                        />
-                        {checkKingBread ?
-                            <Text style={AppStyle.StyleVoucherCGV.text9}>0 đ</Text>
-                            :
-                            <Text style={AppStyle.StyleVoucherCGV.text9}>{sum}.000 đ</Text>
-                        }
+                        <View style={AppStyle.StyleVoucherCGV.footer}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <Image
+                                    style={AppStyle.StyleVoucherCGV.img3}
+                                    source={require('../img/vinh8.png')}
+                                />
+                                {checkKingBread ?
+                                    <Text style={AppStyle.StyleVoucherCGV.text9}>0 đ</Text>
+                                    :
+                                    <Text style={AppStyle.StyleVoucherCGV.text9}>{sum}.000 đ</Text>
+                                }
 
+                            </View>
+                            <View style={AppStyle.StyleVoucherCGV.footer1}>
+                                {checkKingBread ?
+                                    <Text style={AppStyle.StyleVoucherCGV.text10}>0</Text>
+                                    :
+                                    <Text style={AppStyle.StyleVoucherCGV.text10}>{sumamount}</Text>
+                                }
+                            </View>
+                            <TouchableOpacity onPress={() => buynow()}>
+                                <Image
+                                    style={AppStyle.StyleVoucherCGV.img4}
+                                    source={require('../img/vinh0.png')}
+                                />
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    <View style={AppStyle.StyleVoucherCGV.footer1}>
-                        {checkKingBread ?
-                            <Text style={AppStyle.StyleVoucherCGV.text10}>0</Text>
-                            :
-                            <Text style={AppStyle.StyleVoucherCGV.text10}>{sumamount}</Text>
-                        }
-                    </View>
-                    <TouchableOpacity onPress={() => buynow()}>
-                        <Image
-                            style={AppStyle.StyleVoucherCGV.img4}
-                            source={require('../img/vinh0.png')}
-                        />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            }
         </SafeAreaView>
     )
 }

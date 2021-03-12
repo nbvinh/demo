@@ -167,6 +167,7 @@ const ThongTin = ({navigation}) =>{
                 
                 
             </TouchableOpacity>
+            <View style={{height:200}}/>
             </ScrollView>
             </View>
         </SafeAreaView>
