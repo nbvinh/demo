@@ -4,13 +4,13 @@ import AppStyle from "../theme";
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar,SafeAreaView, TextInput, Alert, Image, Platform } from "react-native";
 import Contacts from 'react-native-contacts';
 const MoiBanBe = ({navigation}) =>{
-    const [DanhBa, setDanhBa] = React.useState({});
+    const [DanhBa, setDanhBa] = React.useState([]);
     React.useEffect(() =>{
         if(Platform.OS == 'ios'){
 
             Contacts.getAll().then(contacts => {
                 setDanhBa(contacts);
-                console.log('IOS : ' + contacts);
+                console.log(contacts);
             })
         }
         else if(Platform.OS == 'android'){
@@ -51,14 +51,26 @@ const MoiBanBe = ({navigation}) =>{
                 </View>
                 <Text style={{color: 'rgba(246, 246, 246, 0.6)', }}> Danh Bạ </Text>
                 
-                {/* {
+                {//val.phoneNumbers[0].number
                     DanhBa.map((val)=>{
                         return(
-                            <Text>{val}</Text>
+                            <View style={{flexDirection:'row', height: 60, marginVertical: 5, borderBottomColor:'rgba(155, 158, 163, 0.5)', borderBottomWidth: 1}}> 
+                                <View style={{flex: 1, justifyContent:'center'}}>
+                                    <Text style={{color: 'white', fontSize: 16}}>{val.givenName + " " + val.familyName}</Text>
+                                    <Text style={{color:'#9B9EA3', fontSize: 12,}}>Từ Danh Bạ</Text>
+                                </View>
+                                <View style={{flex: 1, justifyContent:'center', alignItems:'flex-end'}}>
+                                
+                                    <TouchableOpacity style={{width: 54, height: 24, borderRadius: 12, borderColor:'#8B3BFF', borderWidth: 1, justifyContent:'center', alignItems:'center'}}>
+                                        <Text style={{color:'#8B3BFF'}}>Mời</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                            
                         );
 
                     })
-                } */}
+                }
             </View>
         </SafeAreaView>
     );
