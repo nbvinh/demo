@@ -70,6 +70,7 @@ export default function TabViewMain() {
     return (
         <Tab.Navigator
             tabBarOptions={{
+                
                 showLabel: false,
                 style: {
                     position: 'absolute',

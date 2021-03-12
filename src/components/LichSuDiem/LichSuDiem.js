@@ -37,7 +37,7 @@ const LichSuDiem = ({navigation}) =>{
                                             width={10} height={10}
                                             source={require('../../img/img_icon_24px/diem2.png')}/>}
                                         <View style={AppStyle.StyleLichSuDiem.Box_Center}>
-                                        { val.phuongthuc === false  ? <Text style={AppStyle.StyleLichSuDiem.Box_Center_Title } numberOfLines = { 1 }>Nạp điểm từ Momo </Text> : <Text numberOfLines = { 2 } style={AppStyle.StyleLichSuDiem.Box_Center_Title }> ATM/ VISA/ MASTER/ JCB hoặc Cửa hàng tiện lợi</Text>}
+                                        { val.phuongthuc === false  ? <Text style={AppStyle.StyleLichSuDiem.Box_Center_Title }>Nạp điểm từ Momo </Text> : <Text numberOfLines = { 2 } style={AppStyle.StyleLichSuDiem.Box_Center_Title }> ATM/ VISA/ MASTER/ JCB hoặc Cửa hàng tiện lợi</Text>}
                                             <Text style={AppStyle.StyleLichSuDiem.Box_Center_Time }> {val.time}</Text>
                                             <Text style={AppStyle.StyleLichSuDiem.Box_Center_Status}><View style={AppStyle.StyleLichSuDiem.Box_Status_True}></View> Thành Công</Text>
                                         </View>

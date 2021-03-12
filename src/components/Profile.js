@@ -74,7 +74,8 @@ const Profile = ({ route, navigation }) => {
         console.log(text);
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (reg.test(text) === false) {
-            console.log("Email is Not Correct");
+            
+           
             //   this.setState({ email: text })
             setEmail(text)
             setCheck(false);
@@ -89,7 +90,7 @@ const Profile = ({ route, navigation }) => {
     }
     const [checkHoten,setCheckhoten] = useState(false);
     const validateHoten =(text1)=>{
-        let reg =/^[a-zA-Z ]*$/;
+        let reg =/^[a-zA-Z]{2,40}( [a-zA-Z]{2,40})+$/;
         if(reg.test(text1)=== false){
             setHoten(text1)
             setCheckhoten(false)
