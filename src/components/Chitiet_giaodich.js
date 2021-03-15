@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import AppStyle from "../theme";
 import StepIndicator from 'react-native-step-indicator';
 import LinearGradient from "react-native-linear-gradient";
+import { useSelector, useDispatch } from 'react-redux';
 
-const Chitiet_giaodich = ({navigation}) => {
-    const labels = ["Đặt hàng thành công", "Đang chuẩn bị hàng", "Sẵn sàng lấy hàng", "Lấy hàng hoàn thành"];
+const Chitiet_giaodich = ({ navigation, route }) => {
+    const dispatch = useDispatch()
+    const labels = ["Đặt hàng thành công","Đang chuẩn bị hàng","Sẵn sàng lấy hàng","Lấy hàng hoàn thành"];
     const customStyles = {
         stepIndicatorSize: 5,
         currentStepIndicatorSize: 10,
         separatorStrokeWidth: 1,
         currentStepStrokeWidth: 6,
-        stepStrokeCurrentColor: '#fe7013',
+        stepStrokeCurrentColor: '#8B3BFF',
         stepStrokeWidth: 4,
         stepStrokeFinishedColor: '#fe7013',
         stepStrokeUnFinishedColor: '#aaaaaa',
@@ -19,79 +21,74 @@ const Chitiet_giaodich = ({navigation}) => {
         separatorUnFinishedColor: '#aaaaaa',
         stepIndicatorFinishedColor: '#fe7013',
         stepIndicatorUnFinishedColor: '#ffffff',
-        stepIndicatorCurrentColor: '#ffffff',
+        stepIndicatorCurrentColor: '#8B3BFF',
         stepIndicatorLabelFontSize: 118,
         currentStepIndicatorLabelFontSize: 356,
         stepIndicatorLabelCurrentColor: '#fe7013',
         stepIndicatorLabelFinishedColor: '#ffffff',
         stepIndicatorLabelUnFinishedColor: '#aaaaaa',
-        labelColor: '#999999',
-        labelSize: 17,
-        currentStepLabelColor: '#fe7013',
-        labelAlign: 'center'
+        labelColor: '#C0C0C0',
+        labelSize: 16,
+        currentStepLabelColor: '#FFFFFF',
+        labelAlign: 'center',
+        
+
 
     }
+    const bills = useSelector(state => state.bills);
+    const confirm = useSelector(state => state.confirm)
+    const id = route.params.id;
+    const data = useSelector(state => state.data)
+    const DataProduct = useSelector(state => state.DataProduct);
+    const productafter = useSelector(state => state.productafter)
+    console.log('id la',id)
+    console.log('producàter',productafter)
+
     return (
 
-        <View style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
+        <SafeAreaView style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
             <View style={AppStyle.Style_Chitiet_giaodich.content_top}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
+                <TouchableOpacity onPress={() => navigation.goBack()}
+                >
                     <Image
-                        width={10} height={18} style={{left:14}}
+                        width={10} height={18} style={{ left: 14 }}
                         source={require('../img/back.png')}
                     />
                 </TouchableOpacity>
                 <Text style={AppStyle.Style_Chitiet_giaodich.State}>Chi tiết giao dịch</Text>
                 <Text></Text>
             </View>
-            <ScrollView style={{ flex: 1, marginBottom: 100, paddingHorizontal: 20, backgroundColor: 'black', }} >
+            <ScrollView style={{ flex: 1, paddingHorizontal: 20, backgroundColor: 'black', }} >
+
                 <View style={{ ...AppStyle.Style_Chitiet_giaodich.content }}>
                     <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.item}>
-                        <View style={AppStyle.Style_Chitiet_giaodich.box}>
-                            <View>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>Bánh Tráng cuốn nem nướng</Text>
-                                <Text style={AppStyle.Style_Chitiet_giaodich.text}>x 1</Text>
-                            </View>
-                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>60.000 đ</Text>
-                        </View>
-                    </View>
+                        {bills.map((item) => {
+                            if (id === item.id) {
+                                dispatch({ type: 'PRODUCTAFTER', productafter: item.product })
+                                return (
+                                    < Text key={item.id.toString()} style={AppStyle.Style_Chitiet_giaodich.textone} >{ item.tilte}</Text>
 
+                                )
+                            }
+                        })}
+                        <View >
+                            {productafter && productafter.map((item) => {
+                                return (
+
+                                    <View key={item.id.toString()} style={AppStyle.Style_Chitiet_giaodich.box}>
+                                        <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-between' }}>
+                                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>{item.name}</Text>
+                                            <Text style={AppStyle.Style_Chitiet_giaodich.text}>{item.price}.000</Text>
+                                        </View>
+
+                                        <Text style={AppStyle.Style_Chitiet_giaodich.amount}>x{item.amount}</Text>
+
+                                    </View>
+                                )
+                            })}
+
+                        </View>
+                    </View>
                 </View>
 
                 <Text style={{ color: "white", fontSize: 15, fontWeight: 'bold', marginTop: 17 }}>Trạng thái đơn hàng </Text>
@@ -100,11 +97,11 @@ const Chitiet_giaodich = ({navigation}) => {
                         customStyles={customStyles}
                         direction='vertical'
                         labels={labels}
-                        style={{ paddingLeft: 150, height: '40%' }}
+                        style={{ paddingLeft: 150, height: '40%' }} stepCount={4}
                     />
                 </View>
                 <Text style={{ color: "white", fontSize: 15, fontWeight: 'bold', marginTop: 17 }}>Thông tin đơn hàng </Text>
-                <View style={{ backgroundColor: '#272738', marginTop: 20, paddingBottom: 30, paddingTop: 28, marginBottom: 210, borderRadius: 8, paddingHorizontal: 9 }}>
+                <View style={{ backgroundColor: '#272738', marginTop: 20, padding: 20, marginBottom: 210, borderRadius: 8, paddingHorizontal: 9 }}>
                     <View style={AppStyle.Style_Chitiet_giaodich.transform}>
                         <Text style={AppStyle.Style_Chitiet_giaodich.code}>Mã giao dịch</Text>
                         <Text style={AppStyle.Style_Chitiet_giaodich.code_2}>DH65741671616</Text>
@@ -113,9 +110,17 @@ const Chitiet_giaodich = ({navigation}) => {
                         <Text style={AppStyle.Style_Chitiet_giaodich.code}>Thời gian</Text>
                         <Text style={AppStyle.Style_Chitiet_giaodich.code_2}>12/11/2020 - 08:45</Text>
                     </View>
-                    <View style={AppStyle.Style_Chitiet_giaodich.transform}>
+                    <View style={{ ...AppStyle.Style_Chitiet_giaodich.transform }}>
                         <Text style={AppStyle.Style_Chitiet_giaodich.code}>Phương thức thanh toán</Text>
-                        <Text style={AppStyle.Style_Chitiet_giaodich.code_2}>VNPay</Text>
+                        {/* <Text style={AppStyle.Style_Chitiet_giaodich.code_2}>VNPay</Text> */}
+                        {data.map((item) => {
+                            return (
+                                item.isChecked && (
+                                    <Text key={item.id.toString()} style={AppStyle.Style_Chitiet_giaodich.code_2}>{item.text}</Text>
+
+                                )
+                            )
+                        })}
                     </View>
                     <View style={AppStyle.Style_Chitiet_giaodich.transform}>
                         <Text style={AppStyle.Style_Chitiet_giaodich.code}>Phương thức giao hàng</Text>
@@ -124,33 +129,7 @@ const Chitiet_giaodich = ({navigation}) => {
                 </View>
             </ScrollView>
 
-            <View style={{ backgroundColor: '#272738', position: 'absolute', bottom: 0, width: '100%', height: 200 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 12,paddingHorizontal:13, }}>
-                    <Text style={AppStyle.Style_Chitiet_giaodich.text} >Tổng Thanh toán</Text>
-                    <Text style={AppStyle.Style_Chitiet_giaodich.text}>250.000 đ</Text>
-                </View>
-                {/* <LinearGradient  
-               colors={['#8B3BFF','#B738FF']} style={{opacity:1, height: 48, justifyContent:'center', alignItems: 'center',   borderRadius:8}}>
-                   <TouchableOpacity>
-                    <Text>Thanh toán</Text>
-                </TouchableOpacity>
-               </LinearGradient> */}
-
-                {/* <TouchableOpacity>
-                    <Text>Hủy</Text>
-                </TouchableOpacity> */}
-                 <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
-                    colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8, marginHorizontal: 13,marginVertical:6 }}>
-                    <TouchableOpacity>
-                        <Text style={AppStyle.Style_Chitiet_giaodich.pay} > Thanh Toán </Text>
-                    </TouchableOpacity>
-                </LinearGradient >
-
-                <TouchableOpacity style={AppStyle.Style_Chitiet_giaodich.touchable}>
-                    <Text style={AppStyle.Style_Chitiet_giaodich.status_item} >Hủy đơn hàng </Text>
-                </TouchableOpacity>
-            </View>
-        </View>
+        </SafeAreaView >
 
     )
 }

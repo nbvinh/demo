@@ -3,9 +3,13 @@ import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, 
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
+import { useSelector, useDispatch } from "react-redux";
 const DaSuDung = () =>{
+    const voucher = useSelector(state => state.voucher)
+    const dispatch = useDispatch();
+    
     return(
-        <ScrollView style={{flex: 1, backgroundColor: 'black'}}>
+        <ScrollView style={{flex: 1, backgroundColor: 'black',  paddingHorizontal: 12}}>
             <TouchableOpacity style={AppStyle.StyleMain.DichVu}>
             <View style={AppStyle.StyleMain.DichVu_Top}>
                 <View style={AppStyle.StyleMain.DichVu_Left}>
@@ -38,10 +42,11 @@ const DaSuDung = () =>{
                                 source={require('../../img/Ellipse04.png')}
                      />
                      <View style={{width: '80%' , marginLeft: 10}}>
-                                <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}> Voucher Manwah giảm 10%</Text>
-                                <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> K-Pub - Tầng 4 Lê Văn Lương</Text>
+                                <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}  numberOfLines={1}> Voucher Manwah giảm 10%</Text>
+                                <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}  numberOfLines={1}> K-Pub - Tầng 4 Lê Văn Lương</Text>
                      </View>
                 </View>
+                <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                         <View  style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                                 <Text style={{marginLeft: 5,color:'white', fontSize: 17, fontWeight:'700'}}>280.000 đ</Text>
@@ -86,11 +91,12 @@ const DaSuDung = () =>{
                                 style={{width:36, height: 36}}
                                 source={require('../../img/8.png')}
                      />
-                     <View style={{width: '80%' , marginLeft: 10}}>
-                     <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}> Voucher Sushi Kei giảm 12% </Text>
-                                        <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> Ăn Sushi thả ga - Chẳng lo về giá</Text>
+                     <View style={{width: '80%' , marginLeft: 10}}> 
+                     <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}  numberOfLines={1}> Voucher Sushi Kei giảm 12% </Text>
+                                        <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi} numberOfLines={1}> Ăn Sushi thả ga - Chẳng lo về giá</Text>
                      </View>
                 </View>
+                <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                         <View  style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                                 <Text style={{marginLeft: 5,color:'white', fontSize: 17, fontWeight:'700'}}>265.000 đ</Text>
@@ -137,10 +143,11 @@ const DaSuDung = () =>{
                                 source={require('../../img/7.png')}
                      />
                      <View style={{width: '80%' , marginLeft: 10}}>
-                            <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}>Voucher Truly Việt giảm 16%</Text>
-                          <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> Khám phá ngay ẩm thực Nam Bộ tại Truly Việt</Text>
+                            <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextTieuDe}  numberOfLines={1}>Voucher Truly Việt giảm 16%</Text>
+                          <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi} numberOfLines={1}> Khám phá ngay ẩm thực Nam Bộ tại Truly Việt</Text>
                      </View>
                 </View>
+                <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                         <View  style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                                 <Text style={{marginLeft: 5,color:'white', fontSize: 17, fontWeight:'700'}}>169.000 đ</Text>
@@ -163,6 +170,7 @@ const DaSuDung = () =>{
                         source={require('../../img/09.png')}
                     />
                 </View>
+                
                 <View style={AppStyle.StyleMain.DichVu_Right}>
                     <View style={AppStyle.StyleMain.DichVu_RightItem}>
                         <Image
@@ -191,6 +199,7 @@ const DaSuDung = () =>{
                                 <Text style={AppStyle.StyleMain.DichVu_Bottom_Top_TextDuoi}> 28 Hồ Tùng Mậu, p. Mai Dịch, q. Cầu Giấy, Hà Nội</Text>
                      </View>
                 </View>
+                <View style={{ height: 1, borderColor: 'gba(0, 0, 0, 0.3)', borderWidth: 1, borderStyle: 'dashed' }}></View>
                 <View style={AppStyle.StyleMain.DichVu_Bottom_Bottom}>
                         <View  style={AppStyle.StyleMain.DichVu_Bottom_BottomLeft}>
                           

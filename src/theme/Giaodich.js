@@ -6,10 +6,10 @@ const StyleGiaoDich = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "black",
-        padding: 8,
+        
     },
     header:{
-         marginVertical: 30, height: 30, flexDirection: 'row'
+         height: 30, flexDirection: 'row'
     },
     header_text:{
         textAlign:'center', width: '85%', color:'white', fontSize: 17, fontWeight: '500'
@@ -20,12 +20,13 @@ const StyleGiaoDich = StyleSheet.create({
         borderRadius: 8,
         flexDirection:'row',
         padding: 8,
-        marginTop: 16
+        margin: 8
     },
     Box_Left:{
         flex: 2.5,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        marginRight: 6
     },
     Box_Right:{
         flex: 7.5,
@@ -42,14 +43,15 @@ const StyleGiaoDich = StyleSheet.create({
     Text_Tieude:{
         color:'#ffffff',
         fontSize: 16,
-        fontWeight: '500'
+        fontWeight: '500',
+        marginVertical: 12,
     },
     Box_DoiDiem:{
-        marginTop: 10,
+        marginVertical: 12,
         flexDirection:'row',
         alignItems:'center',
         height: 48,
-        padding: 16,
+        padding: 8,
         backgroundColor:'#272738',
         borderRadius: 8,
     },
@@ -74,9 +76,29 @@ const StyleGiaoDich = StyleSheet.create({
     Item_ThanhToan:{flexDirection:'row',  alignItems:'center', marginVertical: 10},
     Text_ChonThanhToan:{
         color:'white',
-        paddingLeft: 10,
+        paddingHorizontal: 10,
+        marginRight: 5,
         fontSize: 15,
-    }
+    },
+    Tieude_QuyDoi:{
+        color:'#ffffff', fontSize: 14, fontWeight:'400', lineHeight: 18
+    },
+    So_QuyDoi:{
+        color:'#ffffff', fontSize: 20, fontWeight:'500', lineHeight: 25
+    },
+    Table_QuyDoi:{
+        height: 166,borderRadius: 8,backgroundColor:'#272738', padding: 16
+    },
+    Hang_QuyDoi:{
+        flex: 1, flexDirection:'row', marginVertical: 8
+    },
+    Hang_QuyDoi_Left:{
+        flex: 0.4,justifyContent:'flex-start'
+    },
+    Hang_QuyDoi_Right:{
+        flex: 0.6, alignItems:'flex-end', flexDirection:'row', justifyContent:'space-between'
+    },
+    
     
 });
 export default StyleGiaoDich;

@@ -30,12 +30,16 @@ const Style_Chitiet_giaodich = StyleSheet.create({
    },
    item:{
        
-       marginVertical:12
-   },
-   box:{
-       flexDirection:'row',
-      
+       marginVertical:12,
        justifyContent:'space-between'
+   },
+   textone:{
+    //    flexDirection:'row',
+      
+    //    justifyContent:'space-between'
+    color:'#FFFFFF',
+    fontSize:17,
+    fontWeight:'bold',paddingBottom:9
    },
    text:{
        color:'white',
@@ -56,10 +60,15 @@ const Style_Chitiet_giaodich = StyleSheet.create({
        backgroundColor:'orange',
        height:'30%'
    },
+   amount:{
+    fontSize:12,
+    color:'#A9A9AF',
+    fontWeight:'normal'
+   },
    transform:{
        flexDirection:'row',
        justifyContent:'space-between',
-       paddingVertical:9
+       paddingVertical:9,paddingHorizontal:10
    },
    code:{
        color:'#A9A9AF',
@@ -69,7 +78,8 @@ const Style_Chitiet_giaodich = StyleSheet.create({
    code_2:{
        color:'#FFFFFF',
        fontSize:15,
-       fontWeight:'normal'
+       fontWeight:'normal',width:180,textAlign:'right',
+        flex:1,paddingLeft:7
    },
   
    pay:{

@@ -5,7 +5,6 @@ import {
 const StyleMain = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 12,
         backgroundColor: "black",
         
        
@@ -13,7 +12,6 @@ const StyleMain = StyleSheet.create({
     header:{
         flex: 1.5,
         height: 55,
-        marginTop: 15,
         flexDirection:'row'
     },
     header_left:{
@@ -131,13 +129,9 @@ const StyleMain = StyleSheet.create({
     },
     DichVu_Bottom_Top:{
         flex: 1,
-        // borderStyle : 'dashed',
-        
         flexDirection:'row',
-        borderBottomColor: 'rgba(0, 0, 0, 0.5)',
-        borderBottomWidth: 0.3,
-        borderStyle : 'dashed',
-        marginTop: 10
+      
+        marginTop: 5,paddingBottom:10
     },
     DichVu_Bottom_Top_TextTieuDe:{
         fontSize: 17,

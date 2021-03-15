@@ -20,7 +20,7 @@ const ListBank = (props) => {
             choosediem.tongdiem = false
         }
     }
-    const stylepoint = lienket ? {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100} : {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100, marginBottom: 40}
+    const styleListbank = id === 1 ? {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100, marginBottom: 40} : {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100}
     return (
         <View>
             <View style={AppStyle.StylePhuongthucthanhtoan.content3}>
@@ -46,7 +46,7 @@ const ListBank = (props) => {
                     source={{ uri: img }}
                 />
                 <View>
-                    <Text style={stylepoint}>{text}</Text>
+                    <Text style={lienket  ? {color: 'white', fontSize: 15, fontWeight: '400', marginRight: 100} : styleListbank}>{text}</Text>
 
                 </View>
             </View>

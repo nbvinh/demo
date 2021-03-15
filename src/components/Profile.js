@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, SafeAreaView , Image, Alert,KeyboardAvoidingView ,Platform} from 'react-native';
 import LinearGradient from "react-native-linear-gradient";
 import { update_info } from "./api";
 import { useDispatch, useSelector } from 'react-redux'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 const Profile = ({ route, navigation }) => {
     const dispatch = useDispatch();
     const [hoten, setHoten] = useState("");
@@ -25,11 +27,11 @@ const Profile = ({ route, navigation }) => {
                     'Authorization': `Bearer + ${result}`
                 }
             })
-                .then((response)=>response.json())
-                .then((json)=>{console.log(json)})
-                dispatch({type:'HOTEN', hoten: hoten.hoten})
-                dispatch({type:'SDT', SDT: SDT})
-                dispatch({type:'Email', Email: Email})
+                .then((response) => response.json())
+                .then((json) => { console.log(json) })
+            dispatch({ type: 'HOTEN', hoten: hoten })
+            dispatch({ type: 'SDT', SDT: SDT })
+            dispatch({ type: 'Email', Email: Email })
             navigation.navigate('Tabviewmain');
         } catch (error) {
             Alert.alert('Thông báo', error + '');
@@ -67,9 +69,59 @@ const Profile = ({ route, navigation }) => {
         }
         setEmail({ Email: email })
     }
+    const [check, setCheck] = useState(false)
+    const validate = (text) => {
+        console.log(text);
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (reg.test(text) === false) {
+            console.log("Email is Not Correct");
+            //   this.setState({ email: text })
+            setEmail(text)
+            setCheck(false);
+            return false;
+        }
+        else {
+            //   this.setState({ email: text })
+            setEmail(text)
+            setCheck(true)
+            console.log("Email is Correct");
+        }
+    }
+    const [checkHoten,setCheckhoten] = useState(false);
+    const validateHoten =(text1)=>{
+        let reg =/^[a-zA-Z]{2,40}( [a-zA-Z]{2,40})+$/;
+        if(reg.test(text1)=== false){
+            setHoten(text1)
+            setCheckhoten(false)
+            return false;
+            console.log("ho ten not is Correct");
+
+        }else{
+            setHoten(text1);
+            setCheckhoten(true)
+            console.log("ho ten is Correct");
+
+        }
+    }
+    const _onPress = () => {
+       
+       
+         if(check===false && checkHoten===false){
+            Alert.alert("Mời bạn nhập lạp Gmail và Họ Tên")
+        } else if(checkHoten ===false){
+            Alert.alert('Mời bạn nhập lại họ tên')
+        }else  if(check===false ){
+              Alert.alert('Mời bạn nhập lại Email')
+        }
+    }
     return (
+        <SafeAreaView style={{flex: 1, backgroundColor: 'black'}}>
+        <KeyboardAwareScrollView
+        style={styles.containerTop}
+        
+      >
         <View style={styles.container}>
-            <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 50, marginLeft: 15 }}>
+            <TouchableOpacity onPress={() => navigation.goBack()} style={{  marginLeft: 15 }}>
                 <Image
                     width={10} height={18}
                     source={require('../img/back.png')}
@@ -83,64 +135,76 @@ const Profile = ({ route, navigation }) => {
                         <TextInput placeholder='Mời nhập họ và tên của bạn'
                             style={styles.textinput}
                             placeholderTextColor='rgba(255, 255, 255, 0.3)'
-                            onChangeText={(text) => onchangText(text)}
+                            onChangeText={(text1) => validateHoten(text1)}
+                            value={hoten}
                         />
                     </View>
-                </View>
-                <View style={styles.block}>
-                    <Text style={styles.title}>Số Điện Thoại <Text style={{ color: 'red' }}>*</Text></Text>
-                    <View style={styles.parent_input}>
-                        <TextInput placeholder='Mời nhập số điện thoại của bạn'
-                            style={styles.textinput}
-                            placeholderTextColor='rgba(255, 255, 255, 0.3)'
-                            keyboardType='numeric'
-                            value={SDT}
-                        />
+                    <View style={styles.block}>
+                        <Text style={styles.title}>Số Điện Thoại <Text style={{ color: 'red' }}>*</Text></Text>
+                        <View style={styles.parent_input}>
+                            <TextInput placeholder='Mời nhập số điện thoại của bạn'
+                                style={styles.textinput}
+                                placeholderTextColor='rgba(255, 255, 255, 0.3)'
+                                keyboardType='numeric'
+                                value={SDT}
+                            />
+                        </View>
                     </View>
-                </View>
-                <View style={styles.block}>
-                    <Text style={styles.title}>Email</Text>
-                    <View style={styles.parent_input}>
-                        <TextInput placeholder='Mời nhập Email của bạn'
-                            style={styles.textinput}
-                            placeholderTextColor='rgba(255, 255, 255, 0.3)'
-                            onChangeText={(email) => onchangEmail(email)}
+                    <View style={styles.block}>
+                        <Text style={styles.title}>Email</Text>
+                        <View style={styles.parent_input}>
+                            <TextInput placeholder='Mời nhập Email của bạn'
+                                style={styles.textinput}
+                                placeholderTextColor='rgba(255, 255, 255, 0.3)'
+                                // onChangeText={(email) => onchangEmail(email)}
+                                onChangeText={(text) => validate(text)}
+                                value={Email}
+                            />
+                        </View>
+                    </View>
 
-                        />
-                    </View>
                 </View>
-
-            </View>
-            <View style={styles.footer}>
-                {follow_hoten ?
-                    <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
-                        colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
-                        <TouchableOpacity follow_hoten={follow_hoten}
-                            style={[styles.touchable]} onPress={onupdate_info}>
-                            <Text style={styles.button1}>Hoàn thành</Text>
+                <View style={styles.footer}>
+                    { check &&checkHoten ?
+                        <TouchableOpacity>
+                            <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
+                                colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
+                                <TouchableOpacity follow_hoten={follow_hoten}
+                                    style={[styles.touchable]} onPress={onupdate_info}>
+                                    <Text style={styles.button1}>Hoàn thành</Text>
+                                </TouchableOpacity>
+                            </LinearGradient>
                         </TouchableOpacity>
-                    </LinearGradient>
-                    :
-                    <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
-                        colors={['#B738FF', '#8B3BFF']} style={{ opacity: 0.2, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
+                        :
+                        <TouchableOpacity onPress={_onPress} >
+                            <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
+                                colors={['#B738FF', '#8B3BFF']} style={{ opacity: 0.2, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
 
-                        <Text style={styles.button1}>Hoàn thành</Text>
+                                <Text style={styles.button1}>Hoàn thành</Text>
 
-                    </LinearGradient>
-
-                }
+                            </LinearGradient>
+                        </TouchableOpacity>
+                    }
+                </View>
             </View>
         </View>
+        </KeyboardAwareScrollView>
+        </SafeAreaView>
+        
     );
 };
 
 const styles = StyleSheet.create({
+    containerTop:{
+        backgroundColor: 'black',
+        flex: 1,
+    },
     container: {
         flex: 1,
         backgroundColor: 'black'
     },
     header: {
-        marginTop: 110,
+        marginTop: 50,
         color: 'white',
         fontSize: 22,
         fontWeight: 'bold',
@@ -151,11 +215,11 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 14,
         fontWeight: '500',
-        marginTop: 30
+        marginTop: 10
     },
     body: {
         marginHorizontal: 15,
-        marginTop: 2
+        marginTop:35
 
     },
     parent_input: {
@@ -172,14 +236,14 @@ const styles = StyleSheet.create({
         paddingLeft: 20
     },
     block: {
-        marginVertical: 22
+       
     },
     button1: {
         color: 'white',
         fontSize: 17
     },
     footer: {
-        marginVertical: 75, marginHorizontal: 11
+        marginTop: 75, marginHorizontal: 11
     },
     touchable: {
         borderRadius: 58,

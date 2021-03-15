@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput,SafeAreaView, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
@@ -59,8 +59,8 @@ import LinearGradient from 'react-native-linear-gradient';
 // }
 const ThongTin = ({navigation}) =>{
     return(
-        <View style={AppStyle.StyleLichSu.container}>
-            <View style={{ marginTop: 50, height: 30, flexDirection: 'row', marginBottom: 10,}}>
+        <SafeAreaView style={AppStyle.StyleLichSu.container}>
+            <View style={{ height: 30, flexDirection: 'row', marginBottom: 10,}}>
                 <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
                     <Image
                         width={10} height={18}
@@ -74,7 +74,9 @@ const ThongTin = ({navigation}) =>{
                 renderItem={({item}) =><Item item = {item}/>}
                 keyExtractor={(item) => item.id}
             /> */}
-            <View style={AppStyle.StyleLichSu.item}>
+            <View style={{marginHorizontal: 12, flex: 1}}>
+            <ScrollView >
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -86,23 +88,23 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
+            </TouchableOpacity>
             
 
-            <View style={AppStyle.StyleLichSu.item}>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item} onPress={() => navigation.navigate('LichSuDiem')}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
                         source={require('../../img/img_icon_24px/lichsu_24px.png')}/> 
                         <Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>Lịch Sử điểm</Text>
                 </View>
-                <TouchableOpacity style={AppStyle.StyleLichSu.item_right} onPress={() => navigation.navigate('LichSuDiem')}>
+                <View style={AppStyle.StyleLichSu.item_right}>
                     <Image
                             style={{width: 10, height: 10}}
                             source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
-                </TouchableOpacity>
-            </View>
-            <View style={AppStyle.StyleLichSu.item}>
+                </View>
+            </TouchableOpacity>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -114,8 +116,8 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
-            <View style={AppStyle.StyleLichSu.item}>
+            </TouchableOpacity>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -127,9 +129,9 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
+            </TouchableOpacity>
 
-            <View style={AppStyle.StyleLichSu.item}>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -141,8 +143,8 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
-            <View style={AppStyle.StyleLichSu.item}>
+            </TouchableOpacity>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <View style={AppStyle.StyleLichSu.item_left}>
                     <Image
                         style={{width: 24, height: 24}}
@@ -154,18 +156,22 @@ const ThongTin = ({navigation}) =>{
                         style={{width: 10, height: 10}}
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
                 </View>
-            </View>
-            <View style={AppStyle.StyleLichSu.item}>
+            </TouchableOpacity>
+            <TouchableOpacity style={AppStyle.StyleLichSu.item}>
                 <TouchableOpacity style={AppStyle.StyleLichSu.item_left} onPress={()=>navigation.navigate('ScreenFirst')}>
                     <Image
                         style={{width: 24, height: 24}}
                         source={require('../../img/img_icon_24px/logout_24px.png')}/> 
-                        <Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>Đăng Xuất</Text>
-                </TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.popToTop()}><Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>Đăng Xuất</Text></TouchableOpacity>
+                        </TouchableOpacity>
                 
+                
+            </TouchableOpacity>
+            <View style={{height:200}}/>
+            </ScrollView>
             </View>
-           
-        </View>
+        </SafeAreaView>
+    
     );
 }
 export default ThongTin;

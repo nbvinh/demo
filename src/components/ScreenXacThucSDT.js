@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, Alert, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar,SafeAreaView, Alert, Image } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AppStyle from "../theme";
@@ -55,10 +55,13 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const inputRef4 = useRef();
     const inputRef5 = useRef();
     return (
-        <View style={AppStyle.StyleScreenXacNhanSDT.container}>
+        <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
+            <View style={{ paddingHorizontal: 8, flex: 1}}>
+                
+            
             <StatusBar backgroundColor='black' barStyle="light-content" />
             <View style={AppStyle.StyleScreenXacNhanSDT.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 50, marginLeft: 10 }}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop:5}}>
                     <Image
                         width={10} height={18}
                         source={require('../img/back.png')}
@@ -76,6 +79,7 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                             if (val != '') {
                                 inputRef1.current.focus()
                             }
+                           
                         }}
                         value={MaPin1} 
                         autoFocus={true}
@@ -85,11 +89,17 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                         if (val != '') {
                             inputRef2.current.focus()
                         }
+                        if (val == '') {
+                            inputRef.current.focus();
+                        }
                     }} value={MaPin2} />
                     <TextInput ref={inputRef2} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                         setMaPin3(val)
                         if (val != '') {
                             inputRef3.current.focus()
+                        }
+                        if (val == '') {
+                            inputRef1.current.focus();
                         }
                     }} value={MaPin3} />
                     <TextInput ref={inputRef3} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
@@ -97,27 +107,42 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                         if (val != '') {
                             inputRef4.current.focus()
                         }
+                        if (val == '') {
+                            inputRef2.current.focus();
+                        }
                     }} value={MaPin4} />
                     <TextInput ref={inputRef4} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                         setMaPin5(val)
                         if (val != '') {
                             inputRef5.current.focus()
                         }
+                        else if (val == '') {
+                            inputRef3.current.focus();
+                        }
+                        
                     }} value={MaPin5} />
-                    <TextInput ref={inputRef5} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => setMaPin6(val)} value={MaPin6} />
+                    <TextInput ref={inputRef5} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                            setMaPin6(val);
+                            if (val == '') {
+                                inputRef4.current.focus();
+                            }
+                        }
+                    }
+                         value={MaPin6} />
                 </View>
                 <Text style={AppStyle.StyleScreenXacNhanSDT.textguilaisau}> Gửi laị sau 00:{TimeDown}</Text>
                 {
                     MaPin1 != '' && MaPin2 != '' && MaPin3 != '' && MaPin4 != '' && MaPin5 != '' && MaPin6 != ''
-                        ? <LinearGradient
+                        ? <TouchableOpacity onPress={onfirm_otp}>
+                            <LinearGradient
                             style={AppStyle.StyleScreenXacNhanSDT.linear}
 
                             colors={['#8B3BFF', '#B738FF']}
                         >
-                            <TouchableOpacity onPress={onfirm_otp}>
+                            
                                 <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiếp tục</Text>
-                            </TouchableOpacity>
                         </LinearGradient>
+                        </TouchableOpacity>
                         :
                         <LinearGradient
                             style={AppStyle.StyleScreenXacNhanSDT.linearnotactive}
@@ -133,9 +158,9 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
             <View style={AppStyle.StyleScreenXacNhanSDT.footer}>
 
             </View>
-
+            </View>
             {/* <ReactCodeInput /> */}
-        </View>
+        </SafeAreaView>
     )
 }
 export default ScreenXacThucSDT;

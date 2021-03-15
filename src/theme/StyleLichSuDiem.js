@@ -10,7 +10,7 @@ const StyleLichSuDiem = StyleSheet.create({
         padding: 8
     },
     header:{
-         marginTop: 50, height: 30, flexDirection: 'row'
+          height: 30, flexDirection: 'row'
     },
     header_text:{
         textAlign:'center', width: '85%', color:'white', fontSize: 17, fontWeight: '500'
@@ -21,8 +21,8 @@ const StyleLichSuDiem = StyleSheet.create({
         borderRadius: 8,
         backgroundColor: '#272738',
         flexDirection:'row',
-        padding: 16,
-        justifyContent:'space-between',
+        padding: 10,
+        justifyContent:'space-around',
         overflow: 'hidden'
     },
     Box_Center:{
@@ -34,13 +34,18 @@ const StyleLichSuDiem = StyleSheet.create({
         color:'white',
         fontSize: 15,
         fontWeight: '500',
-        lineHeight: 22
+        lineHeight: 22,
+        flex: 2,
+        
+    
     },
     Box_Center_Time:{
         color:'#A9A9AF',
+        flex: 1
     },
     Box_Center_Status:{
         color:'#A9A9AF',
+        flex: 1
     },
     Box_Status_True :{
         width: 12,

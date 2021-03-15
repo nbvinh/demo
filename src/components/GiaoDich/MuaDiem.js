@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList, TouchableOpacity, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet,FlatList, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import { useSelector, useDispatch } from "react-redux";
@@ -16,10 +16,49 @@ const MuaDiem = ({navigation}) =>{
             x = x.replace(pattern, "$1.$2");
         return x;
     }
+    const onSubmitThanhToan = () =>{
+        {
+            if(check=== false && check2 === false){
+                    Alert.alert('Thông báo', 'Bạn chưa chọn phương thức thanh toán!');
+                }
+                else if(diem < 0){
+                    Alert.alert('Thông báo', 'Bạn nhập sai định dạng rồi. Điểm phải lớn hơn 0!');
+                }
+                else if(diem == 0){
+                    Alert.alert('Thông báo', 'Bạn chưa nhập số điểm cần mua !');
+                }
+                else{
+                    
+                    
+                    Alert.alert('Thông Báo', 'Bạn Có Chắc Là Thanh Toán '+numberWithCommas(diem*100) + ' VNĐ Không!', [
+                        
+                        {
+                            text: "Có",
+                            onPress: () => {
+                               
+                                navigation.navigate('Tabviewmain');
+                                dispatch({type: 'UPDIEM', diem : diem});
+                                let d = new Date();
+                                dispatch({type: 'HISTORY_POINT',  point : '+'+diem,phuongthuc : check, tỉme : d.getDay()+'/'+d.getMonth()+'/'+d.getFullYear()+ ' ' + d.getHours() + ':' + d.getMinutes()});
+                            }
+                        },
+                        {
+                            text: "Không",
+                            onPress: () => console.log("Cancel Pressed"),
+                          },
+                      ],
+                      { cancelable: false });
+                    
+                }
+                
+            }
+    }
     return(
-        <View style={AppStyle.StyleGiaoDich.container}>
+        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
+            <View style={{marginHorizontal: 8}}>
+
                 <View style={AppStyle.StyleGiaoDich.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
                         <Image
                             width={10} height={18}
                             source={require('../../img/back.png')}
@@ -28,10 +67,10 @@ const MuaDiem = ({navigation}) =>{
                     <Text style={AppStyle.StyleGiaoDich.header_text}>Mua Điểm</Text>
             </View>
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập số cần mua</Text>
-            <TextInput  placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color: 'rgba(255, 255, 255, 0.3)'}]} onChangeText={(value) => setDiem(value)}/>
+            <TextInput  placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)'  keyboardType='numeric' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color:'white'}]} onChangeText={(value) => setDiem(value)}/>
             <View style={AppStyle.StyleGiaoDich.TongTien}>
                 <Text style={AppStyle.StyleGiaoDich.Text_White}>Tổng Tiền</Text>
-                <Text style={AppStyle.StyleGiaoDich.Text_White}>{numberWithCommas(diem*100)} VNĐ</Text>
+                <Text style={AppStyle.StyleGiaoDich.Text_White}>{diem > 0 ? numberWithCommas(diem*100) : 0} VNĐ</Text>
             </View>
             <View style={AppStyle.StyleGiaoDich.PhuongThucThanhToan}>
                 <Text style={AppStyle.StyleGiaoDich.Text_White}>Chọn Phương thức thanh toán</Text>
@@ -79,28 +118,16 @@ const MuaDiem = ({navigation}) =>{
                     <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiến hành thanh toán</Text>
                 </LinearGradient>
                 :
-                <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
-                    <TouchableOpacity  onPress={() => {
-                    if(check=== false && check2 === false){
-                            Alert.alert('Thông báo', 'Bạn chưa chọn phương thức thanh toán!');
-                        }
-                        if(diem == 0){
-                            Alert.alert('Thông báo', 'Bạn chưa nhập số điểm cần mua !');
-                        }
-                        else{
-                            Alert.alert('Thông báo', 'Bạn đã thanh toán thành công!');
-                            dispatch({type: 'UPDIEM', diem : diem});
-                            navigation.navigate('Tabviewmain');
-                        }
-                        
-                    }}>
-                        <Text style={AppStyle.StyleFirst.text}>Tiến hành thanh toán</Text>
+                    <TouchableOpacity  onPress={onSubmitThanhToan}>
+                        <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
+                            <Text style={AppStyle.StyleFirst.text}>Tiến hành thanh toán</Text>
+                        </LinearGradient>
                     </TouchableOpacity>
-            </LinearGradient>
+            
             }
                         
-               
-        </View>
+               </View>
+        </SafeAreaView>
     );
 }
 export default MuaDiem;
