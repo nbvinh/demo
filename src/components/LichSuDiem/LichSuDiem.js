@@ -48,7 +48,7 @@ const LichSuDiem = ({navigation}) =>{
                     
                             </ScrollView>
                         
-                        }
+                    }
                     
                 
             </View>

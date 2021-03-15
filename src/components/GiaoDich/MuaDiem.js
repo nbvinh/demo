@@ -47,7 +47,7 @@ const MuaDiem = ({navigation}) =>{
                             onPress: () => console.log("Cancel Pressed"),
                           },
                       ],
-                      { cancelable: false });
+                      { cancelable: false });     
                     
                 }
                 

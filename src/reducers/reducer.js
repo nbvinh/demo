@@ -220,11 +220,11 @@ const reducer = (state = initState, action) => {
             return { ...state, productnuoc: newState1 }
         case 'ADDBILL':
             let newBills = [...state.bills]
-            newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount, product: action.product })
+            newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount, product: action.product,timmer:action.timmer })
             return { ...state, bills: newBills, product: [] }
         case 'ADDBILLCGV':
             let newBillsCGV = [...state.billsCGV]
-            newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV, value: action.value, tilte: 'Voucher CGV Cinema' })
+            newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV, value: action.value, tilte: 'Voucher CGV Cinema',timmer:action.timmer  })
             return { ...state, billsCGV: newBillsCGV }
         case 'FILTERSTATUS':
             return { ...state, filterStatus: "" }
