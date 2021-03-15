@@ -348,6 +348,7 @@ const reducer = (state = initState, action) => {
             arr_point.push({ point: action.point + '', phuongthuc: action.phuongthuc, time: action.tỉme })
             return { ...state, history_point: arr_point }
         }
+       
         default:
             return state
     }
