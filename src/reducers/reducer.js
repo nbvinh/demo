@@ -348,6 +348,9 @@ const reducer = (state = initState, action) => {
             arr_point.push({ point: action.point + '', phuongthuc: action.phuongthuc, time: action.tỉme })
             return { ...state, history_point: arr_point }
         }
+        case 'TheLoai': {
+            return { ...state, TheLoai: action.TheLoai}
+        }
        
         default:
             return state
