@@ -56,7 +56,7 @@ const PaymentConfirmation = ({ navigation }) => {
         setTodoCGV((prevtodoCGV) => {
             let newTodoCGV = [...prevtodoCGV]
             let d = new Date();
-            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV, value: value,timmer :d.getMonth()+"/" +d.getFullYear()  })
+            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV, value: value,timmer :parseInt(d.getMonth() +1)+"/" +d.getFullYear()  })
             return newTodoCGV
         })
     }

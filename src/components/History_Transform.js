@@ -227,21 +227,21 @@ const History_Transform = ({ navigation }) => {
                                             </View>
                                         )
                                     }
-                                    else {
-                                        return (
-                                          <View style={{justifyContent:'center',alignItems:'center'}}>
-                                                <Text style={{ color: 'white',fontSize:18 }}>chưa có đơn hàng nào </Text>
+                                    // else {
+                                    //     return (
+                                    //       <View style={{justifyContent:'center',alignItems:'center'}}>
+                                    //             <Text style={{ color: 'white',fontSize:18 }}>kINGBREAD chưa có đơn hàng nào </Text>
 
-                                          </View>
-                                        )
+                                    //       </View>
+                                    //     )
 
-                                    }
+                                    // }
 
 
 
                                 })}
                                 {billsCGV.map((item) => {
-
+                                 if (item.timmer == min) {
                                     return (
                                         <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Thanh_Cong',
                                             { id: item.id }
@@ -277,6 +277,15 @@ const History_Transform = ({ navigation }) => {
                                         </TouchableOpacity>
                                     )
 
+                                }
+                                // else{
+                                //     return(
+                                //         <View style={{justifyContent:'center',alignItems:'center'}}>
+                                //         <Text style={{ color: 'white',fontSize:18 }}> Voucher chưa có đơn hàng nào </Text>
+
+                                //   </View>
+                                //     )
+                                // }
                                 })}
                             </View>
                             :
