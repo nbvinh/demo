@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import AppStyle from "../theme";
 import LinearGradient from "react-native-linear-gradient";
 import { useDispatch, useSelector } from "react-redux";
-const Giao_Dich_Thanh_Cong = ({ navigation, route }) => {
+const GiaoDichThanhCong = ({ navigation, route }) => {
     const id = route.params.id;
     const bills = useSelector(state => state.bills)
     const data = useSelector(state => state.data)
@@ -96,7 +96,7 @@ const Giao_Dich_Thanh_Cong = ({ navigation, route }) => {
             {/* <View style={AppStyle.Style_Giao_Dich_TCong.button}>
                 <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
                     colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8, marginHorizontal: 13 }}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Tabviewmain')}>
+                    <TouchableOpacity onPåress={() => navigation.navigate('Tabviewmain')}>
                         <Text style={AppStyle.Style_Giao_Dich_TCong.pay} > Thanh Toán </Text>
                     </TouchableOpacity>
                 </LinearGradient >
@@ -104,4 +104,4 @@ const Giao_Dich_Thanh_Cong = ({ navigation, route }) => {
         </View>
     )
 }
-export default Giao_Dich_Thanh_Cong;
+export default GiaoDichThanhCong;

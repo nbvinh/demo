@@ -74,7 +74,8 @@ const Profile = ({ route, navigation }) => {
         console.log(text);
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (reg.test(text) === false) {
-            console.log("Email is Not Correct");
+            
+           
             //   this.setState({ email: text })
             setEmail(text)
             setCheck(false);

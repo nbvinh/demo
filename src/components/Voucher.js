@@ -24,7 +24,7 @@ const Voucher = ({navigation}) => {
             <SafeAreaView style={AppStyle.Style_Voucher.container}>
 
                 <View style={AppStyle.Style_Voucher.content_top}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 20, marginLeft: 10 }}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 10 }}>
                         <Image
                             width={10} height={18}
                             source={require('../img/back.png')}
