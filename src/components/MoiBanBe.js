@@ -40,7 +40,7 @@ const MoiBanBe = ({navigation}) =>{
                   'buttonPositive': 'Please accept bare mortal'
                 }
               )
-              .then(Contacts.getAll)
+              .then(Contacts.getAll())
               .then(contacts => {
                 var DanhBaSort = contacts.sort(function(a, b) {
                     var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
