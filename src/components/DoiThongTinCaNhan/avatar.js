@@ -142,6 +142,10 @@ const DoiAvatar = ({ navigation }) => {
                             keyboardType='numeric'
                             onChangeText={(value) => setSDT(value)}
                             value={SDT}
+                           contextMenuHidden={true}
+                           editable={false}
+                           selectTextOnFocus={false}
+
                         />
                     </View>
                 </View>
