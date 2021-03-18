@@ -38,9 +38,9 @@ const Khuyenmai = (props) => {
     }
     const { id, img, text1, hsd, dieukien, isChoose } = props.myarrPromotion;
     return (
-        <View style={[AppStyle.StyleVoucherCGV.address, { marginTop: 20, marginLeft: 10, }]}>
+        <View style={[AppStyle.StyleVoucherCGV.address, { marginTop: 20 }]}>
             <TouchableOpacity onPress={() => onchoose(props.myarrPromotion)}>
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row',flex:1,justifyContent:'space-around' }}>
                     <Image
                         style={AppStyle.StyleChonVoucher.img2}
                         source={{ uri: img }}

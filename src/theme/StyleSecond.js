@@ -19,7 +19,7 @@ const StyleSecond = StyleSheet.create({
         backgroundColor: '#272738', 
         marginBottom: 50, 
         borderRadius: 8,
-        padding: 18,
+        padding: 15,
         color:'white'
     },
     text2:{

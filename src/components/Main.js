@@ -9,6 +9,7 @@ import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Province from "../components/Main/Province"
 import DataVoucher from "../components/Main/DuLieuVoucher";
+import rootSaga from '../Saga/mySaga';
 const Main = ({ navigation }) => {
     function numberWithCommas(x) {
         x = x.toString();
@@ -50,6 +51,7 @@ const Main = ({ navigation }) => {
         _storeData();
         _getData();
         const loadnhe = async () => {
+           
             const result = await axios.get('http://175.41.184.177:6061/category').then(function (res) {
                 const dulieu = res.data.data;
                 Object.entries(dulieu);
@@ -57,7 +59,7 @@ const Main = ({ navigation }) => {
             }).catch(function (error) {
                 console.log(error);
             });
-           
+           console.log(theLoai);
             const result1 = await callapiVoucher();
             const result2 = await fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
                 method: 'GET'
