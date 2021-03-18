@@ -77,6 +77,7 @@ const DoiAvatar = ({ navigation }) => {
             cropping: true,
           }).then(image => {
             console.log(image);
+            dispatch({ type: 'IMAGES', image: image.path })
           });
     }
   
