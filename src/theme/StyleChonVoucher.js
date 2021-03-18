@@ -7,7 +7,7 @@ const StyleChonVoucher = StyleSheet.create({
     text1:{ color: '#FFFFFF', fontSize: 15, fontWeight: '500' },
     text2:{ color: '#FFFFFF', fontSize: 15, fontWeight: '500', marginTop: 4 },
     text3:{ marginTop: 10, fontSize: 12, fontWeight: '400', color: '#777777' },
-    content2:{ marginLeft: 50, marginTop: 30 },
+    content2:{  marginTop: 30 },
     img3:{ width: 20, height: 20, marginLeft: 35 },
     text4:{ marginTop: 10, color: '#00A3FF', fontSize:12, fontWeight:'400' },
     text5:{ width: 20, height: 20, marginLeft: 35 },
