@@ -23,6 +23,7 @@ const DoiAvatar = ({ navigation }) => {
     const result = useSelector(state=>state.abc)
     const dispatch = useDispatch()
     const gotoPickImages = () => {
+        setModalVisible(!isModalVisible)
         ImagePicker.openPicker({
             width: 300,
             height: 400,
@@ -71,6 +72,7 @@ const DoiAvatar = ({ navigation }) => {
     }
   
     const gotoPickImagesCamera = () => {
+        setModalVisible(!isModalVisible)
         ImagePicker.openCamera({
             width: 300,
             height: 400,

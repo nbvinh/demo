@@ -148,6 +148,7 @@ const Profile = ({ route, navigation }) => {
                                 placeholderTextColor='rgba(255, 255, 255, 0.3)'
                                 keyboardType='numeric'
                                 value={SDT}
+                                editable={false} selectTextOnFocus={false}
                             />
                         </View>
                     </View>
