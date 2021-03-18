@@ -23,7 +23,6 @@ const DoiAvatar = ({ navigation }) => {
     const result = useSelector(state=>state.abc)
     const dispatch = useDispatch()
     const gotoPickImages = () => {
-        setModalVisible(!isModalVisible)
         ImagePicker.openPicker({
             width: 300,
             height: 400,
@@ -31,6 +30,7 @@ const DoiAvatar = ({ navigation }) => {
         }).then(image => {
             console.log(image);
             dispatch({ type: 'IMAGES', image: image.path })
+            setModalVisible(!isModalVisible)
         });
     }
     const onupdate_info = async () => {
@@ -72,14 +72,14 @@ const DoiAvatar = ({ navigation }) => {
     }
   
     const gotoPickImagesCamera = () => {
-        setModalVisible(!isModalVisible)
         ImagePicker.openCamera({
             width: 300,
             height: 400,
             cropping: true,
-          }).then(image => {
+        }).then(image => {
             console.log(image);
             dispatch({ type: 'IMAGES', image: image.path })
+            setModalVisible(!isModalVisible)
           });
     }
   
