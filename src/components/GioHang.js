@@ -25,7 +25,16 @@ const GioHang = ({ navigation }) => {
     const GOback = () => {
         navigation.goBack()
     }
-    console.log('show', kingbread)
+    useEffect(()=>{
+        ADD()
+    },[])
+    const ADD =()=>{
+       DataProduct && DataProduct.map((item)=>{
+           if(item.OpenUP === true){
+            dispatch({ type: 'ADDPRODUCT', id: item.id, name: item.name, price: item.price, amount: item.amount })
+           }
+       })
+    }
     return (
        
             <SafeAreaView style={[AppStyle.StyleVoucherCGV.container]}>
@@ -43,9 +52,7 @@ const GioHang = ({ navigation }) => {
                     <ScrollView>
                         {kingbread ?
                             DataProduct && DataProduct.map((item) => {
-                                item.OpenUP && (
-                                    dispatch({ type: 'ADDPRODUCT', id: item.id, name: item.name, price: item.price, amount: item.amount })
-                                )
+                             
                                 return (
                                     item.OpenUP && (
                                         <View key={item.id.toString()} style={AppStyle.StyleVoucherCGV.address}>
