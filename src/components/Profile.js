@@ -138,6 +138,7 @@ const Profile = ({ route, navigation }) => {
                             placeholderTextColor='rgba(255, 255, 255, 0.3)'
                             onChangeText={(text1) => validateHoten(text1)}
                             value={hoten}
+                            
                         />
                     </View>
                     <View style={styles.block}>
@@ -148,6 +149,7 @@ const Profile = ({ route, navigation }) => {
                                 placeholderTextColor='rgba(255, 255, 255, 0.3)'
                                 keyboardType='numeric'
                                 value={SDT}
+                                editable={false} selectTextOnFocus={false}
                             />
                         </View>
                     </View>

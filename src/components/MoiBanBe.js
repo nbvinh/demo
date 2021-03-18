@@ -25,10 +25,6 @@ const MoiBanBe = ({navigation}) =>{
                   });
                 
                 setDanhBa(DanhBaSort);
-                
-                
-                
-                
             })
         }
         else if(Platform.OS == 'android'){
