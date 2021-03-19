@@ -1,0 +1,40 @@
+nhận vào 1 data
+
+initalstate có một mảng rỗng gán data kia vào,kèm một mount,price
+
+==>cái data cũng có amoutn,price 
+
+
+
+chia mảng data lấy từ API về
+
+...theo vị trí phần tử
+../nên data rời rạc
+
+...khi click vào một trong 3 nút button thì filtstatus thay đổi
+khi filterstatus thay đổi thì nó thỏa mãn giá trị nào thì return về product đó
+
+{dataproduct} gán bằng getlist gồm có các phần tử kiểm tra điều kiện getlist ở trên
+
+nếu nó đc click thì nó trả về UI từ khi map ra 
+==>mylistproduct nhận các item là từ dataproduct ==>item.iprice ,.... mọi thứ cần render dữ liệu ra
+
+==>vì chia 3 data khác nhau dựa vào filter status thì click vào để tăng ,giảm phần tử cũng dựa vào nó
+
+if(filterstatus == 'banh mi')
+return dispatch({type:'upitem},action:action.payload.id)\
+
+
+
+
+gán các dữ liệu data Api về mảng state 
+nó gồm các mảng phần tử 
+một mảng object gồm nhiều đối tượng
+mà mỗi đối tượng ta cần lấy data từ product của nó
+nên khi lấy ra lấy theo vị trí của mảng phần tử temp[0]
+
+khác với các bài khác là một mảng object liền mạch ==>không cần phải lấy theo vị trí 
+
+
+Vấn đề giải quyết : gộp 3 data được không ??
+thứ 2: cách lưu các item khi chọn mua ( ở đây dựa vào openup==>nếu item.id nào đc chọn thì nhận item đó và lưu...sau chỉ map ra thôi 
