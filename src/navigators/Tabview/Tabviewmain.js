@@ -48,7 +48,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
         )
     } else {
         return (
-            <TouchableOpacity style={{ flex: 1, height: 60,backgroundColor: '#151515', justifyContent:'center',alignItems:'center' }} activeOpacity={1} onPress={onPress} >   
+            <TouchableOpacity style={{ flex: 1,backgroundColor: '#151515', justifyContent:'center',alignItems:'center' }} activeOpacity={1} onPress={onPress} >   
                     {children}
             </TouchableOpacity>
         )

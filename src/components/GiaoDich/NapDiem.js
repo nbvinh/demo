@@ -1,21 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet,FlatList, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
-const NapDiem = ({navigation}) =>{
+const NapDiem = ({ navigation }) => {
     const [ma, setma] = React.useState('');
-    return(
+    return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-                <View style={AppStyle.StyleGiaoDich.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
-                        <Image
-                            width={10} height={18}
-                            source={require('../../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleGiaoDich.header_text}>Nạp Điểm</Text>
+            <View style={AppStyle.StyleVoucherCGV.header}>
+                <TouchableOpacity onPress={() => navigation.goBack()} >
+                    <Image
+                        width={10} height={18}
+                        source={require('../../img/back.png')}
+                    />
+                </TouchableOpacity>
+                <Text style={AppStyle.StyleVoucherCGV.text}>Nạp điểm</Text>
             </View>
             <View style={{marginHorizontal: 16}}>
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập Mã Gift Card</Text>
@@ -25,22 +25,22 @@ const NapDiem = ({navigation}) =>{
                     width={10} height={10}
                     source={require('../../img/img_icon_24px/scan_24px.png')}
                     />
-            </TouchableOpacity>
-                <View style={{height: 50}}></View>
-            {
-                ma === '' ?
-                <LinearGradient style={AppStyle.StyleScreenXacNhanSDT.linearnotactive} colors={['#B738FF', '#8B3BFF']} >
-                    <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiếp Tục</Text>
-                </LinearGradient>
-                :
+                </TouchableOpacity>
+                <View style={{ height: 50 }}></View>
+                {
+                    ma === '' ?
+                        <LinearGradient style={AppStyle.StyleScreenXacNhanSDT.linearnotactive} colors={['#B738FF', '#8B3BFF']} >
+                            <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiếp Tục</Text>
+                        </LinearGradient>
+                        :
                         <TouchableOpacity >
                             <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']} >
                                 <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
                             </LinearGradient>
                         </TouchableOpacity>
-                    
-            }
-        </View>
+
+                }
+            </View>
         </SafeAreaView>
     );
 }

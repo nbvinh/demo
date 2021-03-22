@@ -48,7 +48,7 @@ const GioHang = ({ navigation }) => {
                     <Text style={AppStyle.StyleVoucherCGV.text}>Giỏ Hàng</Text>
                 </View>
 
-                <View style={{ flex: 7 }}>
+                <View style={{ flex: 11 }}>
                     <ScrollView>
                         {kingbread ?
                             DataProduct && DataProduct.map((item) => {
