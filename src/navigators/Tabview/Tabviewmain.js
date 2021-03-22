@@ -48,7 +48,7 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
         )
     } else {
         return (
-            <TouchableOpacity style={{ flex: 1,backgroundColor: '#151515', justifyContent:'center',alignItems:'center' }} activeOpacity={1} onPress={onPress} >   
+            <TouchableOpacity style={{ flex: 1, height: 60,backgroundColor: '#151515', justifyContent:'center',alignItems:'center' }} activeOpacity={1} onPress={onPress} >   
                     {children}
             </TouchableOpacity>
         )
@@ -79,7 +79,7 @@ export default function TabViewMain() {
                     right: 0,
                     borderTopWidth: 0,
                     backgroundColor: "transparent",
-                    elevation: 0,
+                    elevation: 0
                 }
             }}
             tabBar={(props) => (
@@ -101,7 +101,7 @@ export default function TabViewMain() {
                             />}
                         />
                     )
-                }}
+                }}home_24px
             />
              <Tab.Screen
                 name="LichSu"
