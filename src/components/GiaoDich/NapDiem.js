@@ -20,7 +20,7 @@ const NapDiem = ({navigation}) =>{
             <View style={{marginHorizontal: 16}}>
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập Mã Gift Card</Text>
             <TextInput onChangeText={(value) => setma(value)} placeholder='Nhập Mã Gift Card'  placeholderTextColor = 'rgba(255, 255, 255, 0.6)' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color: 'white'}]}/>
-            <TouchableOpacity style={{position:'absolute', top: 70, right: 10, zIndex: 999999}}>
+            <TouchableOpacity style={{position:'absolute', top: 70, right: 10, zIndex: 999999}} onPress={() => navigation.navigate('ScanScreen')}>
                 <Image
                     width={10} height={10}
                     source={require('../../img/img_icon_24px/scan_24px.png')}

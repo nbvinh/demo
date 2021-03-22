@@ -79,7 +79,7 @@ export default function TabViewMain() {
                     right: 0,
                     borderTopWidth: 0,
                     backgroundColor: "transparent",
-                    elevation: 0
+                    elevation: 0,
                 }
             }}
             tabBar={(props) => (
@@ -101,7 +101,7 @@ export default function TabViewMain() {
                             />}
                         />
                     )
-                }}home_24px
+                }}
             />
              <Tab.Screen
                 name="LichSu"
