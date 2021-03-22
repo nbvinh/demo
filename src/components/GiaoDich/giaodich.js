@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet,FlatList, TouchableOpacity,SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
-import LinearGradient from 'react-native-linear-gradient';
+
 const GiaoDich = ({navigation}) =>{
     return(
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
