@@ -44,7 +44,7 @@ const  ScanScreen = ({navigation}) => {
                     
                 />
                   <TouchableOpacity onPress={() => navigation.navigate('Main')}>
-                        <LinearGradient style={[AppStyle.StyleFirst.linear, {marginBottom: 30}]} colors={['#8B3BFF', '#B738FF']} >
+                        <LinearGradient style={[AppStyle.StyleFirst.linear, {marginBottom: 30, marginHorizontal: 8}]} colors={['#8B3BFF', '#B738FF']} >
                             <Text style={AppStyle.StyleFirst.text}>Hoàn Thành</Text>
                         </LinearGradient>
                     </TouchableOpacity>

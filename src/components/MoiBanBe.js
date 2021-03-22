@@ -7,40 +7,21 @@ import { FlatList, ScrollView } from "react-native-gesture-handler";
 const MoiBanBe = ({ navigation }) => {
     const [DanhBa, setDanhBa] = React.useState([]);
     const [Tamp, setTamp] = React.useState([]);
-    React.useEffect(() => {
-        if (Platform.OS == 'ios') {
-
-            Contacts.getAll().then(contacts => {
-                var DanhBaSort = contacts.sort(function (a, b) {
-                    var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
-                    var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-
-                    return 0;
-                });
-
-                setDanhBa(DanhBaSort);
-
-
-
-
-            })
-        }
-        else if (Platform.OS == 'android') {
-            PermissionsAndroid.request(
+    const Android_DanhBa = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
                 PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
                 {
-                    'title': 'Contacts',
-                    'message': 'This app would like to view your contacts.',
-                    'buttonPositive': 'Please accept bare mortal'
+                    title: 'Contacts',
+                    message: 'This app would like to view your contacts.',
+                    buttonNeutral: "Ask Me Later",
+                    buttonNegative: "Cancel",
+                    buttonPositive: "OK"
                 }
-            )
-                .then(Contacts.getAll())
+            );
+            if(granted === PermissionsAndroid.RESULTS.GRANTED){
+                console.log('load dc danh bạ rồi nhé');
+                granted.then(Contacts.getAll())
                 .then(contacts => {
                     var DanhBaSort = contacts.sort(function (a, b) {
                         var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
@@ -58,6 +39,37 @@ const MoiBanBe = ({ navigation }) => {
                     setDanhBa(DanhBaSort);
 
                 })
+            }
+            else{
+                console.log("Ko Load dc Danh Ba");
+            }
+        } catch (error) {
+            console.warn(error);
+        }     
+    }
+    const IOS_DanhBa = () =>{
+        Contacts.getAll().then(contacts => {
+            var DanhBaSort = contacts.sort(function (a, b) {
+                var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
+                var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+
+                return 0;
+            });
+            setDanhBa(DanhBaSort);
+        })
+    }
+    React.useEffect(() => {
+        if (Platform.OS == 'ios') {
+            IOS_DanhBa();
+        }
+        else if (Platform.OS == 'android') {
+            Android_DanhBa();
         }
     })
     const filterItems = (query) => {
