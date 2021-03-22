@@ -190,8 +190,8 @@ const History_Transform = ({ navigation }) => {
                                 {bills.map((item) => {
                                     if (item.timmer == min) {
                                         return (
-                                            <View>
-                                                <TouchableOpacity key={item.id.toString()} onPress={() => {
+                                            <View key={item.id.toString()}>
+                                                <TouchableOpacity  onPress={() => {
                                                     navigation.navigate(
                                                         'Chitiet_giaodich',
                                                         { id: item.id }
