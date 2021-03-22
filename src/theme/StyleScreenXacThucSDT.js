@@ -11,7 +11,8 @@ const StyleScreenXacNhanSDT = StyleSheet.create({
         flex: 2,
     },
     content:{
-        flex: 3,
+        flex: 11,
+        justifyContent:'center'
        
     },
     footer:{

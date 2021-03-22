@@ -35,18 +35,18 @@ const SecondScreen = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
+            <StatusBar backgroundColor='black' barStyle="light-content" />
             <View style={AppStyle.StyleFirst.container}>
-                <StatusBar backgroundColor='black' barStyle="light-content" />
-                <View style={AppStyle.StyleSecond.content}>
-
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop: 5 }}>
+                <View style={AppStyle.StyleVoucherCGV.header}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
                         <Image
                             width={10} height={18}
                             source={require('../img/back.png')}
                         />
                     </TouchableOpacity>
-
-                    <View style={{ marginTop: 90 }}>
+                </View>
+                <View style={AppStyle.StyleSecond.content}>
+                    <View>
                         <Text style={AppStyle.StyleSecond.text0}>Đăng Nhập/ Đăng Ký</Text>
                         <Text style={AppStyle.StyleSecond.text1}>Vui lòng nhập số điện thoại để tiếp tục</Text>
                     </View>
@@ -71,7 +71,7 @@ const SecondScreen = ({ navigation }) => {
                         :
 
                         <LinearGradient
-                            style={[AppStyle.StyleFirst.linear, {opacity: 0.5}]}
+                            style={[AppStyle.StyleFirst.linear, { opacity: 0.5 }]}
                             colors={['#B738FF', '#8B3BFF']}
                         >
                             <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>

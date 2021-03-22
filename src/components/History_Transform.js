@@ -165,7 +165,7 @@ const History_Transform = ({ navigation }) => {
                 </Modal>
 
                 <View style={[AppStyle.Style_History_Tranform.container]}>
-                    <View style={AppStyle.Style_History_Tranform.header}>
+                    {/* <View style={AppStyle.Style_History_Tranform.header}>
                         <TouchableOpacity onPress={() => navigation.goBack()} >
                             <Image
                                 style={AppStyle.Style_History_Tranform.Image}
@@ -179,93 +179,108 @@ const History_Transform = ({ navigation }) => {
                                 source={require('../img/Calendar.png')}
                             />
                         </TouchableOpacity>
+                    </View> */}
+                    <View style={AppStyle.StyleVoucherCGV.header}>
+                        <TouchableOpacity onPress={() => navigation.goBack()} >
+                            <Image
+                                width={10} height={18}
+                                source={require('../img/back.png')}
+                            />
+                        </TouchableOpacity>
+                        <Text style={AppStyle.StyleVoucherCGV.text}>Lịch sử giao dịch</Text>
+                        <TouchableOpacity onPress={_onPress} style={{ zIndex: 1 }}>
+                            <Image
+                                style={AppStyle.Style_History_Tranform.Image1}
+                                source={require('../img/Calendar.png')}
+                            />
+                        </TouchableOpacity>
                     </View>
-                    <View style={AppStyle.Style_History_Tranform.calendar}>
-                        <Text style={AppStyle.Style_History_Tranform.text}>Tháng {min}</Text>
-                    </View>
-                    <ScrollView style={AppStyle.Style_History_Tranform.content}>
-                        {confirm ?
-                            <View>
+                    <View style={{ flex: 11 }}>
 
-                                {bills.map((item) => {
-                                    if (item.timmer == min) {
-                                        return (
-                                            <View key={item.id.toString()}>
-                                                <TouchableOpacity  onPress={() => {
-                                                    navigation.navigate(
-                                                        'Chitiet_giaodich',
-                                                        { id: item.id }
-                                                    )
-                                                    console.log('item', item.id)
-                                                }
-                                                } >
+                        <ScrollView style={AppStyle.Style_History_Tranform.content}>
+                            <Text style={AppStyle.Style_History_Tranform.text}>Tháng {min}</Text>
+                            {confirm ?
+                                <View>
+
+                                    {bills.map((item) => {
+                                        if (item.timmer == min) {
+                                            return (
+                                                <View key={item.id.toString()}>
+                                                    <TouchableOpacity onPress={() => {
+                                                        navigation.navigate(
+                                                            'Chitiet_giaodich',
+                                                            { id: item.id }
+                                                        )
+                                                        console.log('item', item.id)
+                                                    }
+                                                    } >
+                                                        <View style={AppStyle.Style_History_Tranform.item}>
+                                                            <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
+                                                            <View style={AppStyle.Style_History_Tranform.cost}>
+                                                                <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.sum}.000 đ</Text>
+                                                                <Text></Text>
+
+                                                                <Image
+                                                                    style={AppStyle.Style_History_Tranform.Image_right}
+                                                                    source={require('../img/chevron_right.png')}
+                                                                />
+
+                                                            </View>
+                                                            <View style={AppStyle.Style_History_Tranform.bottom}>
+
+                                                                <Image
+                                                                    style={AppStyle.Style_History_Tranform.ImageStatus}
+                                                                    source={require('../img/thanhcong.png')}
+                                                                />
+
+                                                                <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
+                                                                <Text style={AppStyle.Style_History_Tranform.status}>{item.timmer}</Text>
+
+                                                            </View>
+                                                        </View>
+                                                    </TouchableOpacity>
+                                                </View>
+                                            )
+                                        }
+                                        // else {
+                                        //     return (
+                                        //       <View style={{justifyContent:'center',alignItems:'center'}}>
+                                        //             <Text style={{ color: 'white',fontSize:18 }}>kINGBREAD chưa có đơn hàng nào </Text>
+
+                                        //       </View>
+                                        //     )
+
+                                        // }
+
+
+
+                                    })}
+                                    {billsCGV.map((item) => {
+                                        if (item.timmer == min) {
+                                            return (
+                                                <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Thanh_Cong',
+                                                    { id: item.id }
+                                                )} >
                                                     <View style={AppStyle.Style_History_Tranform.item}>
                                                         <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
                                                         <View style={AppStyle.Style_History_Tranform.cost}>
-                                                            <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.sum}.000 đ</Text>
+                                                            <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.priceCGV}.000 đ</Text>
                                                             <Text></Text>
-
                                                             <Image
                                                                 style={AppStyle.Style_History_Tranform.Image_right}
                                                                 source={require('../img/chevron_right.png')}
                                                             />
-
                                                         </View>
                                                         <View style={AppStyle.Style_History_Tranform.bottom}>
-
                                                             <Image
                                                                 style={AppStyle.Style_History_Tranform.ImageStatus}
                                                                 source={require('../img/thanhcong.png')}
                                                             />
-
                                                             <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
-                                                            <Text style={AppStyle.Style_History_Tranform.status}>{item.timmer}</Text>
-
                                                         </View>
                                                     </View>
-                                                </TouchableOpacity>
-                                            </View>
-                                        )
-                                    }
-                                    // else {
-                                    //     return (
-                                    //       <View style={{justifyContent:'center',alignItems:'center'}}>
-                                    //             <Text style={{ color: 'white',fontSize:18 }}>kINGBREAD chưa có đơn hàng nào </Text>
 
-                                    //       </View>
-                                    //     )
-
-                                    // }
-
-
-
-                                })}
-                                {billsCGV.map((item) => {
-                                 if (item.timmer == min) {
-                                    return (
-                                        <TouchableOpacity key={item.id.toString()} onPress={() => navigation.navigate('Giao_Dich_Thanh_Cong',
-                                            { id: item.id }
-                                        )} >
-                                            <View style={AppStyle.Style_History_Tranform.item}>
-                                                <Text style={AppStyle.Style_History_Tranform.content_text}>Mã giao dịch: DH65741671616 </Text>
-                                                <View style={AppStyle.Style_History_Tranform.cost}>
-                                                    <Text style={AppStyle.Style_History_Tranform.content_cost}>{item.priceCGV}.000 đ</Text>
-                                                    <Text></Text>
-                                                    <Image
-                                                        style={AppStyle.Style_History_Tranform.Image_right}
-                                                        source={require('../img/chevron_right.png')}
-                                                    />
-                                                </View>
-                                                <View style={AppStyle.Style_History_Tranform.bottom}>
-                                                    <Image
-                                                        style={AppStyle.Style_History_Tranform.ImageStatus}
-                                                        source={require('../img/thanhcong.png')}
-                                                    />
-                                                    <Text style={AppStyle.Style_History_Tranform.status}>Thành công</Text>
-                                                </View>
-                                            </View>
-
-                                            {/* //mỗi lần addbill vào giỏ hàng thì add thêm thời gian
+                                                    {/* //mỗi lần addbill vào giỏ hàng thì add thêm thời gian
                                             // reducer của mỗi cái nhận thêm thời gian
                                             /// selected mỉ
                                             //bắt sự kiện selected ngày giờ 
@@ -274,27 +289,28 @@ const History_Transform = ({ navigation }) => {
                                             } */}
 
 
-                                        </TouchableOpacity>
-                                    )
+                                                </TouchableOpacity>
+                                            )
 
-                                }
-                                // else{
-                                //     return(
-                                //         <View style={{justifyContent:'center',alignItems:'center'}}>
-                                //         <Text style={{ color: 'white',fontSize:18 }}> Voucher chưa có đơn hàng nào </Text>
+                                        }
+                                        // else{
+                                        //     return(
+                                        //         <View style={{justifyContent:'center',alignItems:'center'}}>
+                                        //         <Text style={{ color: 'white',fontSize:18 }}> Voucher chưa có đơn hàng nào </Text>
 
-                                //   </View>
-                                //     )
-                                // }
-                                })}
-                            </View>
-                            :
-                            <View>
-                                <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Bạn chưa có giao dịch nào </Text>
-                            </View>
-                        }
+                                        //   </View>
+                                        //     )
+                                        // }
+                                    })}
+                                </View>
+                                :
+                                <View>
+                                    <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Bạn chưa có giao dịch nào </Text>
+                                </View>
+                            }
 
-                    </ScrollView>
+                        </ScrollView>
+                    </View>
                     {/* <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'red' }} onPress={() => storeData()}></TouchableOpacity>
                 <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'yellow' }} onPress={() => getData ()}></TouchableOpacity> */}
 
