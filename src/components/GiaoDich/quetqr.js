@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-
+import AppStyle from "../../theme";
 import {
-  
+  View,
   StyleSheet,
   Text,
+  Image,
   TouchableOpacity,
-  Linking
+  Linking,
+  SafeAreaView
 } from 'react-native';
-
+import LinearGradient from 'react-native-linear-gradient';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 
@@ -20,22 +22,34 @@ const  ScanScreen = ({navigation}) => {
 
  
     return (
-      <QRCodeScanner
-        onRead={this.onSuccess}
-        flashMode={RNCamera.Constants.FlashMode.torch}
-        topContent={
-          <Text style={styles.centerText}>
-            Go to{' '}
-            <Text style={styles.textBold}>wikipedia.org/wiki/QR_code</Text> on
-            your computer and scan the QR code.
-          </Text>
-        }
-        bottomContent={
-          <TouchableOpacity style={styles.buttonTouchable} onPress={() => navigation.navigate('Main')}>
-            <Text style={styles.buttonText}>OK. Got it!</Text>
-          </TouchableOpacity>
-        }
-      />
+        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
+            <View style={AppStyle.StyleGiaoDich.header}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
+                        <Image
+                            width={10} height={18}
+                            source={require('../../img/back.png')}
+                        />
+                    </TouchableOpacity>
+                    <Text style={AppStyle.StyleGiaoDich.header_text}>Quét Mã QR</Text>
+            </View>
+                <QRCodeScanner
+                    onRead={this.onSuccess}
+                    flashMode={RNCamera.Constants.FlashMode.torch}
+                    topContent={
+                      <Text style={styles.centerText}>
+                       Mời bạn quét QR trên mã thẻ
+                      </Text>
+
+                    }
+                    
+                />
+                  <TouchableOpacity onPress={() => navigation.navigate('Main')}>
+                        <LinearGradient style={[AppStyle.StyleFirst.linear, {marginBottom: 30}]} colors={['#8B3BFF', '#B738FF']} >
+                            <Text style={AppStyle.StyleFirst.text}>Hoàn Thành</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+        </SafeAreaView>
+      
     );
   }
 
