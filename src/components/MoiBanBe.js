@@ -9,39 +9,11 @@ const MoiBanBe = ({ navigation }) => {
     const [Tamp, setTamp] = React.useState([]);
     React.useEffect(() => {
         if (Platform.OS == 'ios') {
-
-            Contacts.getAll().then(contacts => {
-                var DanhBaSort = contacts.sort(function (a, b) {
-                    var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
-                    var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-
-                    return 0;
-                });
-
-                setDanhBa(DanhBaSort);
-
-
-
-
-            })
-        }
-        else if (Platform.OS == 'android') {
-            PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-                {
-                    'title': 'Contacts',
-                    'message': 'This app would like to view your contacts.',
-                    'buttonPositive': 'Please accept bare mortal'
+            Contacts.getAll((err, contacts) => {
+                if (err) {
+                    throw err
                 }
-            )
-                .then(Contacts.getAll())
-                .then(contacts => {
+                else {
                     var DanhBaSort = contacts.sort(function (a, b) {
                         var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
                         var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
@@ -57,9 +29,35 @@ const MoiBanBe = ({ navigation }) => {
 
                     setDanhBa(DanhBaSort);
 
+                }
+
+
+
+
+            })
+        }
+        else if (Platform.OS == 'android') {
+            PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+                {
+                    title: 'Contacts',
+                    message: 'This app would like to view your contacts.',
+                }
+            )
+                .then(() => {
+                    Contacts.getAll((err, contacts) => {
+                        if (err === 'denied') {
+                            // error
+                            console.log('error', err)
+                        }
+                        else {
+                            setDanhBa(contacts)
+                            // console.log('daba',contacts)
+                        }
+                    })
                 })
         }
-    })
+    }, [])
     const filterItems = (query) => {
         return DanhBa.filter((el) =>
             el.givenName.toLowerCase().indexOf(query.toLowerCase()) > -1
@@ -98,11 +96,11 @@ const MoiBanBe = ({ navigation }) => {
                                 return (
                                     <View>
 
-                                        <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
+                                        {/* <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
                                         <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
                                             <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
                                                 <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
-                                                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
+                                                    {/* <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
                                                 </View>
                                             </View>
                                             <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
