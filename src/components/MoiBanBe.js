@@ -57,7 +57,7 @@ const MoiBanBe = ({ navigation }) => {
                     })
                 })
         }
-    }, [])
+    })
     const filterItems = (query) => {
         return DanhBa.filter((el) =>
             el.givenName.toLowerCase().indexOf(query.toLowerCase()) > -1
