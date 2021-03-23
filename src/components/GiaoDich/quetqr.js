@@ -23,15 +23,16 @@ const  ScanScreen = ({navigation}) => {
  
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-            <View style={AppStyle.StyleGiaoDich.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={{marginLeft: 10 }}>
-                        <Image
-                            width={10} height={18}
-                            source={require('../../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleGiaoDich.header_text}>Quét Mã QR</Text>
+            <View style={AppStyle.StyleVoucherCGV.header}>
+                <TouchableOpacity onPress={() => navigation.goBack()} >
+                    <Image
+                        width={10} height={18}
+                        source={require('../../img/back.png')}
+                    />
+                </TouchableOpacity>
+                <Text style={AppStyle.StyleVoucherCGV.text}>Nạp điểm</Text>
             </View>
+            <View style={{marginHorizontal: 16,flex:11}}>
                 <QRCodeScanner
                     onRead={this.onSuccess}
                     flashMode={RNCamera.Constants.FlashMode.torch}
@@ -48,6 +49,7 @@ const  ScanScreen = ({navigation}) => {
                             <Text style={AppStyle.StyleFirst.text}>Hoàn Thành</Text>
                         </LinearGradient>
                     </TouchableOpacity>
+                </View>
         </SafeAreaView>
       
     );
