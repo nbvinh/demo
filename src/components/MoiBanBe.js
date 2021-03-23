@@ -1,47 +1,21 @@
 import React from "react";
 import { PermissionsAndroid } from 'react-native';
 import AppStyle from "../theme";
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, TextInput, Alert, Image, Platform } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, TextInput, Alert, Image, Platform, Share } from "react-native";
 import Contacts from 'react-native-contacts';
 import { FlatList, ScrollView } from "react-native-gesture-handler";
+import Communications from 'react-native-communications';
 const MoiBanBe = ({ navigation }) => {
     const [DanhBa, setDanhBa] = React.useState([]);
     const [Tamp, setTamp] = React.useState([]);
     React.useEffect(() => {
         if (Platform.OS == 'ios') {
-
-            Contacts.getAll().then(contacts => {
-                var DanhBaSort = contacts.sort(function (a, b) {
-                    var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
-                    var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-
-                    return 0;
-                });
-
-                setDanhBa(DanhBaSort);
-
-
-
-
-            })
-        }
-        else if (Platform.OS == 'android') {
-            PermissionsAndroid.request(
-                PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
-                {
-                    'title': 'Contacts',
-                    'message': 'This app would like to view your contacts.',
-                    'buttonPositive': 'Please accept bare mortal'
+            Contacts.getAll((err, contacts) => {
+                if (err) {
+                    throw err
                 }
-            )
-                .then(Contacts.getAll())
-                .then(contacts => {
+                else {
+                    console.log('daba',contacts[0].phoneNumbers[0].number);
                     var DanhBaSort = contacts.sort(function (a, b) {
                         var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
                         var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
@@ -57,9 +31,67 @@ const MoiBanBe = ({ navigation }) => {
 
                     setDanhBa(DanhBaSort);
 
+                }
+
+
+
+
+            })
+        }
+        else if (Platform.OS == 'android') {
+            PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+                {
+                    title: 'Contacts',
+                    message: 'This app would like to view your contacts.',
+                }
+            )
+                .then(() => {
+                    Contacts.getAll((err, contacts) => {
+                        if (err === 'denied') {
+                            // error
+                            console.log('error', err)
+                        }
+                        else {
+                           
+                            var DanhBaSort = contacts.sort(function (a, b) {
+                                var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
+                                var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+        
+                                return 0;
+                            });
+        
+                            setDanhBa(DanhBaSort);
+                        }
+                    })
                 })
         }
-    })
+    },[])
+    const onShare = async () => {
+        try {
+            const result = await Share.share({
+                message:
+                    'Bánh Mì Pew Pew - Vua Bánh Mì Kẹp || Ngon từ thịt ngọt từ người bán',
+            });
+            if (result.action === Share.sharedAction) {
+                if (result.activityType) {
+                    // shared with activity type of result.activityType
+                } else {
+                    // shared
+                }
+            } else if (result.action === Share.dismissedAction) {
+                // dismissed
+            }
+        } catch (error) {
+            alert(error.message);
+        }
+    };
     const filterItems = (query) => {
         return DanhBa.filter((el) =>
             el.givenName.toLowerCase().indexOf(query.toLowerCase()) > -1
@@ -98,7 +130,7 @@ const MoiBanBe = ({ navigation }) => {
                                 return (
                                     <View>
 
-                                        <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
+                                        {/* <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
                                         <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
                                             <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
                                                 <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
@@ -112,7 +144,7 @@ const MoiBanBe = ({ navigation }) => {
                                                 </View>
                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
 
-                                                    <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                    <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }} onPress={onShare}>
                                                         <Text style={{ color: '#8B3BFF' }}>Mời</Text>
                                                     </TouchableOpacity>
                                                 </View>
@@ -148,7 +180,7 @@ const MoiBanBe = ({ navigation }) => {
                                                 </View>
                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
 
-                                                    <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                    <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }} onPress={() => Communications.text('0123456789')}>
                                                         <Text style={{ color: '#8B3BFF' }}>Mời</Text>
                                                     </TouchableOpacity>
                                                 </View>
