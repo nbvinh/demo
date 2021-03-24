@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, SafeAreaView, StatusBar, TextInput, Alert, Image } from "react-native";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, SafeAreaView, StatusBar, TextInput, Alert, Image, TouchableWithoutFeedback, keyboard } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import { useSelector, useDispatch } from "react-redux";
 import LinearGradient from 'react-native-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const MuaDiem = ({ navigation }) => {
     const dispatch = useDispatch();
     const [diem, setDiem] = React.useState(0);
+    const diemlayve = useSelector(state => state.diem)
     const [check, setcheck] = React.useState(false);
     const [check2, setcheck2] = React.useState(false);
     function numberWithCommas(x) {
@@ -36,8 +38,10 @@ const MuaDiem = ({ navigation }) => {
                         text: "Có",
                         onPress: () => {
 
+                          
+                            dispatch({ type: 'UPDIEM', diem: diem  });
+                            //_storeData();
                             navigation.navigate('Tabviewmain');
-                            dispatch({ type: 'UPDIEM', diem: diem });
                             let d = new Date();
                             dispatch({ type: 'HISTORY_POINT', point: '+' + diem, phuongthuc: check, tỉme: d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() });
                         }
@@ -53,6 +57,17 @@ const MuaDiem = ({ navigation }) => {
 
         }
     }
+    const _storeData = () => {
+        console.log('diem lay ve : ' + diemlayve)
+        try {
+             AsyncStorage.setItem(
+                'Diem',
+                diemlayve + ''
+            );
+        } catch (error) {
+            // Error saving data
+        }
+    };
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
 
@@ -66,6 +81,7 @@ const MuaDiem = ({ navigation }) => {
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleVoucherCGV.text}>Mua Điểm</Text>
             </View>
+            <TouchableWithoutFeedback >
             <View style={{ marginHorizontal: 8,flex:11 }}>
                 <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập số cần mua</Text>
                 <TextInput placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style={[AppStyle.StyleGiaoDich.Box_DoiDiem, { color: 'white' }]} onChangeText={(value) => setDiem(value)} />
@@ -128,6 +144,7 @@ const MuaDiem = ({ navigation }) => {
                 }
 
             </View>
+            </TouchableWithoutFeedback>
         </SafeAreaView>
     );
 }

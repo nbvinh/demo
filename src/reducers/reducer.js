@@ -335,6 +335,7 @@ const reducer = (state = initState, action) => {
         case 'IDLOAI':
             return { ...state, id: action.id }
         case 'UPDIEM':
+           
             return { ...state, diem: state.diem + parseInt(action.diem) }
         case 'SDT':
             return { ...state, SDT: action.SDT }
@@ -349,9 +350,14 @@ const reducer = (state = initState, action) => {
             return { ...state, history_point: arr_point }
         }
         case 'TheLoai': {
+            
             return { ...state, TheLoai: action.TheLoai}
         }
-       
+       case 'DIEM_UP':{
+           let val = parseInt(action.value);
+            console.log('dierm' + val);
+        return { ...state, diem: val }
+       }
         default:
             return state
     }
