@@ -6,7 +6,6 @@ import SlideImg from "../components/KingBread/SlideImg";
 import ListProduct from "../components/KingBread/ListProduct";
 import { useSelector, useDispatch } from "react-redux";
 import Communications from 'react-native-communications';
-import call from 'react-native-phone-call'
 const KingBread = ({ navigation }) => {
     const dispatch = useDispatch();
     const [time, setTime] = useState(true)

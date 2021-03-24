@@ -4,6 +4,7 @@ import AppStyle from "../theme";
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, TextInput, Alert, Image, Platform } from "react-native";
 import Contacts from 'react-native-contacts';
 import { FlatList, ScrollView } from "react-native-gesture-handler";
+import Communications from 'react-native-communications';
 const MoiBanBe = ({ navigation }) => {
     const [DanhBa, setDanhBa] = React.useState([]);
     const [Tamp, setTamp] = React.useState([]);
@@ -100,7 +101,7 @@ const MoiBanBe = ({ navigation }) => {
                                         <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
                                             <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
                                                 <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
-                                                    {/* <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
+                                                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
                                                 </View>
                                             </View>
                                             <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
@@ -110,7 +111,11 @@ const MoiBanBe = ({ navigation }) => {
                                                 </View>
                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
 
-                                                    <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                    <TouchableOpacity
+                                                        onPress={() => {
+                                                            Communications.text(item.phoneNumbers[0].number,'Mời bạn cài app của chúng mình nhé');
+                                                        }}
+                                                        style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <Text style={{ color: '#8B3BFF' }}>Mời</Text>
                                                     </TouchableOpacity>
                                                 </View>
@@ -146,7 +151,12 @@ const MoiBanBe = ({ navigation }) => {
                                                 </View>
                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
 
-                                                    <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                    <TouchableOpacity
+                                                        onPress={() => {
+                                                            console.log('asdas', item.phoneNumbers[0].number)
+                                                            Communications.text(item.phoneNumbers[0].number);
+                                                        }}
+                                                        style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
                                                         <Text style={{ color: '#8B3BFF' }}>Mời</Text>
                                                     </TouchableOpacity>
                                                 </View>
