@@ -7,6 +7,7 @@ import { FlatList, ScrollView } from "react-native-gesture-handler";
 import Communications from 'react-native-communications';
 const MoiBanBe = ({ navigation }) => {
     const [DanhBa, setDanhBa] = React.useState([]);
+    const [Tamp, setTamp] = React.useState([]);
     React.useEffect(() => {
         if (Platform.OS == 'ios') {
             Contacts.getAll((err, contacts) => {
@@ -102,39 +103,77 @@ const MoiBanBe = ({ navigation }) => {
                     <TextInput style={{ width: '89%', color: '#fff' }} onChangeText={(val) => setTamp(filterItems(val))} placeholder='Nhập từ khoá tìm kiếm...' placeholderTextColor='gray' />
                 </View>
                 <Text style={{ color: 'rgba(246, 246, 246, 0.6)', }}> Danh Bạ </Text>
-                        <FlatList
-                            data={DanhBa}
-                            keyExtractor={(item) => item.recordID}
-                            renderItem={({ item }) => {
-                                return (
-                                    <View>
+                {
+                    Tamp.length !== 0 ?
+                    <FlatList
+                    data={Tamp}
+                    keyExtractor={(item) => item.recordID}
+                    renderItem={({ item }) => {
+                        return (
+                            <View>
 
-                                        {/* <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
-                                        <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
-                                            <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
-                                                <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
-                                                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
-                                                </View>
-                                            </View>
-                                            <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
-                                                <View style={{ flex: 1, justifyContent: 'center' }}>
-                                                    <Text style={{ color: 'white', fontSize: 16 }}>{item.givenName + " " + item.familyName}</Text>
-                                                    <Text style={{ color: '#9B9EA3', fontSize: 12, }}>Từ Danh Bạ </Text>
-                                                </View>
-                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
-
-                                                    <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }} >
-                                                        <Text style={{ color: '#8B3BFF' }}>Mời</Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
+                                {/* <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
+                                <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
+                                    <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
+                                            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
                                         </View>
                                     </View>
+                                    <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
+                                        <View style={{ flex: 1, justifyContent: 'center' }}>
+                                            <Text style={{ color: 'white', fontSize: 16 }}>{item.givenName + " " + item.familyName}</Text>
+                                            <Text style={{ color: '#9B9EA3', fontSize: 12, }}>Từ Danh Bạ </Text>
+                                        </View>
+                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
+
+                                            <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }} >
+                                                <Text style={{ color: '#8B3BFF' }}>Mời</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
 
 
-                                );
-                            }}
-                        />
+                        );
+                    }}
+                />
+                :
+                <FlatList
+                data={DanhBa}
+                keyExtractor={(item) => item.recordID}
+                renderItem={({ item }) => {
+                    return (
+                        <View>
+
+                            {/* <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
+                            <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
+                                <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
+                                    <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
+                                        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
+                                    </View>
+                                </View>
+                                <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
+                                    <View style={{ flex: 1, justifyContent: 'center' }}>
+                                        <Text style={{ color: 'white', fontSize: 16 }}>{item.givenName + " " + item.familyName}</Text>
+                                        <Text style={{ color: '#9B9EA3', fontSize: 12, }}>Từ Danh Bạ </Text>
+                                    </View>
+                                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
+
+                                        <TouchableOpacity style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }} >
+                                            <Text style={{ color: '#8B3BFF' }}>Mời</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+
+
+                    );
+                }}
+            />
+        }
+                        
             </View>
         </SafeAreaView>
     );

@@ -196,10 +196,11 @@ const History_Transform = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 11 }}>
-
-                        <ScrollView style={AppStyle.Style_History_Tranform.content}>
-                            <Text style={AppStyle.Style_History_Tranform.text}>Tháng {min}</Text>
+                        <Text style={AppStyle.Style_History_Tranform.text}>Tháng {min}</Text>
+                       
+                          
                             {confirm ?
+                            <ScrollView style={AppStyle.Style_History_Tranform.content}>
                                 <View>
 
                                     {bills.map((item) => {
@@ -303,13 +304,14 @@ const History_Transform = ({ navigation }) => {
                                         // }
                                     })}
                                 </View>
+                                </ScrollView>
                                 :
-                                <View>
-                                    <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Bạn chưa có giao dịch nào </Text>
+                                <View style={{justifyContent:'center', alignItems:'center', flex: 1}}>
+                                    <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Bạn chưa có giao dịch nào ?</Text>
                                 </View>
                             }
 
-                        </ScrollView>
+                        
                     </View>
                     {/* <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'red' }} onPress={() => storeData()}></TouchableOpacity>
                 <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'yellow' }} onPress={() => getData ()}></TouchableOpacity> */}
