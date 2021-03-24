@@ -12,8 +12,21 @@ const History_Transform = ({ navigation }) => {
     const [isShowCalendar, setIsShowCalendar] = useState(false);
     const [selectedDate, setSelectedDate] = useState();
     const _onPress = () => {
-        setIsShowCalendar(true)
+        setIsShowCalendar(!isShowCalendar)
 
+    }
+    const click =()=>{
+        if(isShowCalendar==true){
+            return{
+                opacity:0.3,
+                flex:1
+            }
+        }
+        else{
+            return {
+                flex:1
+            }
+        }
     }
     const onDatechange = (date) => {
         setSelectedDate(date)
@@ -76,7 +89,7 @@ const History_Transform = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
-            <View style={{flex:1 }}>
+            <View style={click()}>
                 <Modal
                     animationType="fade"
                     transparent={true}
