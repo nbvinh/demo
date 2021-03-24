@@ -1,7 +1,7 @@
 import React from "react";
 import { PermissionsAndroid } from 'react-native';
 import AppStyle from "../theme";
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, TextInput, Alert, Image, Platform } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, TextInput, Alert, Image, Platform, Share } from "react-native";
 import Contacts from 'react-native-contacts';
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import Communications from 'react-native-communications';
@@ -15,6 +15,7 @@ const MoiBanBe = ({ navigation }) => {
                     throw err
                 }
                 else {
+                    console.log('daba', contacts[0].phoneNumbers[0].number);
                     var DanhBaSort = contacts.sort(function (a, b) {
                         var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
                         var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
@@ -52,13 +53,27 @@ const MoiBanBe = ({ navigation }) => {
                             console.log('error', err)
                         }
                         else {
-                            setDanhBa(contacts)
-                            // console.log('daba',contacts)
+
+                            var DanhBaSort = contacts.sort(function (a, b) {
+                                var nameA = a.givenName.toUpperCase(); // bỏ qua hoa thường
+                                var nameB = b.givenName.toUpperCase(); // bỏ qua hoa thường
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+
+                                return 0;
+                            });
+
+                            setDanhBa(DanhBaSort);
                         }
                     })
                 })
         }
-    })
+    }, [])
+
     const filterItems = (query) => {
         return DanhBa.filter((el) =>
             el.givenName.toLowerCase().indexOf(query.toLowerCase()) > -1
@@ -85,92 +100,91 @@ const MoiBanBe = ({ navigation }) => {
                             source={require('../img/search_24px.png')}
                         />
                     </TouchableOpacity>
-                    <TextInput style={{ width: '89%', color: '#fff' }} onChangeText={(val) => setTamp(filterItems(val))} placeholder='Nhập từ khoá tìm kiếm...' placeholderTextColor='gray' />
+                    <TextInput style={{ width: '89%', color: '#fff' }}  placeholder='Nhập từ khoá tìm kiếm...' placeholderTextColor='gray' />
                 </View>
                 <Text style={{ color: 'rgba(246, 246, 246, 0.6)', }}> Danh Bạ </Text>
                 {
                     Tamp.length == 0 ?
-                        <FlatList
-                            data={DanhBa}
-                            keyExtractor={(item) => item.recordID}
-                            renderItem={({ item }) => {
-                                return (
-                                    <View>
+                
+                <FlatList
+                    data={DanhBa}
+                    keyExtractor={(item) => item.recordID}
+                    renderItem={({ item }) => {
+                        return (
+                            <View>
 
-                                        {/* <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
-                                        <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
-                                            <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
-                                                <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
-                                                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
-                                                </View>
-                                            </View>
-                                            <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
-                                                <View style={{ flex: 1, justifyContent: 'center' }}>
-                                                    <Text style={{ color: 'white', fontSize: 16 }}>{item.givenName + " " + item.familyName}</Text>
-                                                    <Text style={{ color: '#9B9EA3', fontSize: 12, }}>Từ Danh Bạ </Text>
-                                                </View>
-                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
-
-                                                    <TouchableOpacity
-                                                        onPress={() => {
-                                                            Communications.text(item.phoneNumbers[0].number,'Mời bạn cài app của chúng mình nhé');
-                                                        }}
-                                                        style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                        <Text style={{ color: '#8B3BFF' }}>Mời</Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
+                                {/* <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
+                                <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
+                                    <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
+                                            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
                                         </View>
                                     </View>
+                                    <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
+                                        <View style={{ flex: 1, justifyContent: 'center' }}>
+                                            <Text style={{ color: 'white', fontSize: 16 }}>{item.givenName + " " + item.familyName}</Text>
+                                            <Text style={{ color: '#9B9EA3', fontSize: 12, }}>Từ Danh Bạ </Text>
+                                        </View>
+                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
+
+                                            <TouchableOpacity
+                                                onPress={() => {
+                                                    Communications.text(item.phoneNumbers[0].number, 'Mời bạn cài app của chúng mình nhé');
+                                                }}
+                                                style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                <Text style={{ color: '#8B3BFF' }}>Mời</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
 
 
-                                );
-                            }}
-                        />
+                        );
+                    }}
+                />
 
 
                         :
                         <FlatList
-                            data={Tamp}
-                            keyExtractor={(item) => item.recordID}
-                            renderItem={({ item }) => {
-                                return (
-                                    <View>
+                    data={Tamp}
+                    keyExtractor={(item) => item.recordID}
+                    renderItem={({ item }) => {
+                        return (
+                            <View>
 
-                                        <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
-                                        <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
-                                            <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
-                                                <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
-                                                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
-                                                </View>
-                                            </View>
-                                            <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
-                                                <View style={{ flex: 1, justifyContent: 'center' }}>
-                                                    <Text style={{ color: 'white', fontSize: 16 }}>{item.givenName + " " + item.familyName}</Text>
-                                                    <Text style={{ color: '#9B9EA3', fontSize: 12, }}>Từ Danh Bạ </Text>
-                                                </View>
-                                                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
-
-                                                    <TouchableOpacity
-                                                        onPress={() => {
-                                                            console.log('asdas', item.phoneNumbers[0].number)
-                                                            Communications.text(item.phoneNumbers[0].number);
-                                                        }}
-                                                        style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                                        <Text style={{ color: '#8B3BFF' }}>Mời</Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
+                                <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
+                                <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
+                                    <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
+                                        <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
+                                            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
                                         </View>
                                     </View>
+                                    <View style={{ flex: 8.5, flexDirection: 'row', borderBottomColor: 'rgba(155, 158, 163, 0.5)', borderBottomWidth: 0.5 }}>
+                                        <View style={{ flex: 1, justifyContent: 'center' }}>
+                                            <Text style={{ color: 'white', fontSize: 16 }}>{item.givenName + " " + item.familyName}</Text>
+                                            <Text style={{ color: '#9B9EA3', fontSize: 12, }}>Từ Danh Bạ </Text>
+                                        </View>
+                                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
+
+                                            <TouchableOpacity
+                                                onPress={() => {
+                                                    console.log('asdas', item.phoneNumbers[0].number)
+                                                    Communications.text(item.phoneNumbers[0].number);
+                                                }}
+                                                style={{ width: 54, height: 24, borderRadius: 12, borderColor: '#8B3BFF', borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                <Text style={{ color: '#8B3BFF' }}>Mời</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
 
 
-                                );
-                            }}
-                        />
+                        );
+                    }}
+                />
                 }
-
-
             </View>
         </SafeAreaView>
     );
