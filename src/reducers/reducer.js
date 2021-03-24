@@ -67,7 +67,7 @@ const initState = {
     priceCGV: 0,
     price: 88,
     value: 0,
-    diem: 1000,
+    diem: 0,
     choosevoucher: true,
     province: false,
     ShowpaymentCGV: false,
@@ -335,7 +335,7 @@ const reducer = (state = initState, action) => {
         case 'IDLOAI':
             return { ...state, id: action.id }
         case 'UPDIEM':
-            return { ...state, diem: parseInt(state.diem) + parseInt(action.diem) }
+            return { ...state, diem: state.diem + parseInt(action.diem) }
         case 'SDT':
             return { ...state, SDT: action.SDT }
         case 'Email':
