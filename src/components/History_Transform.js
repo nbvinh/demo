@@ -41,29 +41,6 @@ const History_Transform = ({ navigation }) => {
         setSelectedDate(startDate)
     }
 
-    // if min == item.timmer 
-    // const storeData = async () => {
-    //     try {
-    //         await AsyncStorage.setItem('@storage_Key', JSON.stringify(bills))
-    //         console.log("Save ok")
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
-    // const [test,setTest]= useState()
-    // const getData = async () => {
-    //     try {
-    //         const jsonValue = await AsyncStorage.getItem('key21')
-    //         console.log('fff',jsonValue)
-    //         setTest(jsonValue)
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
-    // useEffect(()=>{
-    //     getData()
-    // })
-    // console.log(test)
     const customDayHeaderStylesCallback = ({ dayOfWeek, month, year }) => {
         switch (dayOfWeek) { // can also evaluate month, year
             case 1:
@@ -99,7 +76,7 @@ const History_Transform = ({ navigation }) => {
     }
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
-            <View style={{ flex: 1 }}>
+            <View style={{flex:1 }}>
                 <Modal
                     animationType="fade"
                     transparent={true}
@@ -165,21 +142,7 @@ const History_Transform = ({ navigation }) => {
                 </Modal>
 
                 <View style={[AppStyle.Style_History_Tranform.container]}>
-                    {/* <View style={AppStyle.Style_History_Tranform.header}>
-                        <TouchableOpacity onPress={() => navigation.goBack()} >
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image}
-                                source={require('../img/back.png')}
-                            />
-                        </TouchableOpacity>
-                        <Text style={AppStyle.Style_History_Tranform.header_title}>Lịch sử giao dịch </Text>
-                        <TouchableOpacity onPress={_onPress} style={{ zIndex: 1 }}>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image1}
-                                source={require('../img/Calendar.png')}
-                            />
-                        </TouchableOpacity>
-                    </View> */}
+                  
                     <View style={AppStyle.StyleVoucherCGV.header}>
                         <TouchableOpacity onPress={() => navigation.goBack()} >
                             <Image
@@ -242,18 +205,7 @@ const History_Transform = ({ navigation }) => {
                                                 </View>
                                             )
                                         }
-                                        // else {
-                                        //     return (
-                                        //       <View style={{justifyContent:'center',alignItems:'center'}}>
-                                        //             <Text style={{ color: 'white',fontSize:18 }}>kINGBREAD chưa có đơn hàng nào </Text>
-
-                                        //       </View>
-                                        //     )
-
-                                        // }
-
-
-
+                                      
                                     })}
                                     {billsCGV.map((item) => {
                                         if (item.timmer == min) {
@@ -293,14 +245,7 @@ const History_Transform = ({ navigation }) => {
                                             )
 
                                         }
-                                        // else{
-                                        //     return(
-                                        //         <View style={{justifyContent:'center',alignItems:'center'}}>
-                                        //         <Text style={{ color: 'white',fontSize:18 }}> Voucher chưa có đơn hàng nào </Text>
-
-                                        //   </View>
-                                        //     )
-                                        // }
+                                    
                                     })}
                                 </View>
                                 :

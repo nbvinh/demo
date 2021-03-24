@@ -1,4 +1,5 @@
 package com.vinhnamquy;
+import com.bluroverly.SajjadBlurOverlayPackage;
 import org.reactnative.camera.RNCameraPackage;
 import android.app.Application;
 import android.content.Context;
