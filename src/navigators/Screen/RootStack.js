@@ -27,7 +27,7 @@ import PaymentConfirmation from "../../components/PaymentConfirmation";
 import KingBread from "../../components/KingBread";
 
 import GiaoDichThanhCong from "../../components/GiaoDichThanhCong";
-// import ScanScreen from "../../components/GiaoDich/quetqr";
+import ScanScreen from "../../components/GiaoDich/quetqr";
 import Chitiet_giaodich from "../../components/Chitiet_giaodich";
 import MoiBanBe from "../../components/MoiBanBe";
 const Root= createStackNavigator();
@@ -61,7 +61,7 @@ const RootStack =()=>{
             <Root.Screen name="Giao_Dich_Thanh_Cong" component={GiaoDichThanhCong} />
             <Root.Screen name="MoiBanBe" component={MoiBanBe} />
             <Root.Screen name="Chitiet_giaodich" component={Chitiet_giaodich} />
-            {/* <Root.Screen name="ScanScreen" component={ScanScreen} /> */}
+            <Root.Screen name="ScanScreen" component={ScanScreen} />
         </Root.Navigator>
         </NavigationContainer>
     )

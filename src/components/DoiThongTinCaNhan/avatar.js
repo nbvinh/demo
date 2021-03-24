@@ -30,6 +30,7 @@ const DoiAvatar = ({ navigation }) => {
         }).then(image => {
             console.log(image);
             dispatch({ type: 'IMAGES', image: image.path })
+            setModalVisible(!isModalVisible)
         });
     }
     const onupdate_info = async () => {
@@ -75,8 +76,10 @@ const DoiAvatar = ({ navigation }) => {
             width: 300,
             height: 400,
             cropping: true,
-          }).then(image => {
+        }).then(image => {
             console.log(image);
+            dispatch({ type: 'IMAGES', image: image.path })
+            setModalVisible(!isModalVisible)
           });
     }
   
@@ -141,6 +144,10 @@ const DoiAvatar = ({ navigation }) => {
                             keyboardType='numeric'
                             onChangeText={(value) => setSDT(value)}
                             value={SDT}
+                           contextMenuHidden={true}
+                           editable={false}
+                           selectTextOnFocus={false}
+
                         />
                     </View>
                 </View>

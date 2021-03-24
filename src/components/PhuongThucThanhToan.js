@@ -34,7 +34,7 @@ const PaymentMethods = ({ navigation }) => {
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleVoucherCGV.text}>Phương thức thanh toán </Text>
                 </View>
-                <View style={{ flex: 9 }}>
+                <View style={{ flex: 11 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
                         <ScrollView>
 
@@ -85,7 +85,7 @@ const PaymentMethods = ({ navigation }) => {
                         </ScrollView>
                     </View>
                 </View>
-                <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
+                <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10,flex:4 }}>
                     {kingbread ?
                         <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>

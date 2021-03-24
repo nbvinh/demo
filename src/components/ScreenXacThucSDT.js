@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar,SafeAreaView, Alert, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, Alert, Image } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AppStyle from "../theme";
@@ -56,108 +56,108 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const inputRef5 = useRef();
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
-            <View style={{ paddingHorizontal: 8, flex: 1}}>
-                
-            
-            <StatusBar backgroundColor='black' barStyle="light-content" />
-            <View style={AppStyle.StyleScreenXacNhanSDT.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginTop:5}}>
-                    <Image
-                        width={10} height={18}
-                        source={require('../img/back.png')}
-                    />
-                </TouchableOpacity>
-            </View>
-            <View style={AppStyle.StyleScreenXacNhanSDT.content}>
-                <Text style={AppStyle.StyleScreenXacNhanSDT.tieude}> Xác thực số điện thoại</Text>
-                <Text style={AppStyle.StyleScreenXacNhanSDT.chube}>Vui lòng nhập mã OTP vừa được gửi vào số điện thoại {SDT} </Text>
+            <View style={{ paddingHorizontal: 8, flex: 1 }}>
 
-                <View style={AppStyle.StyleScreenXacNhanSDT.inputOTP}>
-                    <TextInput ref={inputRef} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric'
-                        onChangeText={(val) => {
-                            setMaPin1(val)
-                            if (val != '') {
-                                inputRef1.current.focus()
-                            }
-                           
-                        }}
-                        value={MaPin1} 
-                        autoFocus={true}
+
+                <StatusBar backgroundColor='black' barStyle="light-content" />
+                <View style={AppStyle.StyleVoucherCGV.header}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} >
+                        <Image
+                            width={10} height={18}
+                            source={require('../img/back.png')}
                         />
-                    <TextInput ref={inputRef1} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
-                        setMaPin2(val)
-                        if (val != '') {
-                            inputRef2.current.focus()
-                        }
-                        if (val == '') {
-                            inputRef.current.focus();
-                        }
-                    }} value={MaPin2} />
-                    <TextInput ref={inputRef2} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
-                        setMaPin3(val)
-                        if (val != '') {
-                            inputRef3.current.focus()
-                        }
-                        if (val == '') {
-                            inputRef1.current.focus();
-                        }
-                    }} value={MaPin3} />
-                    <TextInput ref={inputRef3} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
-                        setMaPin4(val)
-                        if (val != '') {
-                            inputRef4.current.focus()
-                        }
-                        if (val == '') {
-                            inputRef2.current.focus();
-                        }
-                    }} value={MaPin4} />
-                    <TextInput ref={inputRef4} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
-                        setMaPin5(val)
-                        if (val != '') {
-                            inputRef5.current.focus()
-                        }
-                        else if (val == '') {
-                            inputRef3.current.focus();
-                        }
-                        
-                    }} value={MaPin5} />
-                    <TextInput ref={inputRef5} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                    </TouchableOpacity>
+                </View>
+                <View style={AppStyle.StyleScreenXacNhanSDT.content}>
+                    <Text style={AppStyle.StyleScreenXacNhanSDT.tieude}> Xác thực số điện thoại</Text>
+                    <Text style={AppStyle.StyleScreenXacNhanSDT.chube}>Vui lòng nhập mã OTP vừa được gửi vào số điện thoại {SDT} </Text>
+
+                    <View style={AppStyle.StyleScreenXacNhanSDT.inputOTP}>
+                        <TextInput ref={inputRef} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric'
+                            onChangeText={(val) => {
+                                setMaPin1(val)
+                                if (val != '') {
+                                    inputRef1.current.focus()
+                                }
+
+                            }}
+                            value={MaPin1}
+                            autoFocus={true}
+                        />
+                        <TextInput ref={inputRef1} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                            setMaPin2(val)
+                            if (val != '') {
+                                inputRef2.current.focus()
+                            }
+                            if (val == '') {
+                                inputRef.current.focus();
+                            }
+                        }} value={MaPin2} />
+                        <TextInput ref={inputRef2} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                            setMaPin3(val)
+                            if (val != '') {
+                                inputRef3.current.focus()
+                            }
+                            if (val == '') {
+                                inputRef1.current.focus();
+                            }
+                        }} value={MaPin3} />
+                        <TextInput ref={inputRef3} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                            setMaPin4(val)
+                            if (val != '') {
+                                inputRef4.current.focus()
+                            }
+                            if (val == '') {
+                                inputRef2.current.focus();
+                            }
+                        }} value={MaPin4} />
+                        <TextInput ref={inputRef4} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
+                            setMaPin5(val)
+                            if (val != '') {
+                                inputRef5.current.focus()
+                            }
+                            else if (val == '') {
+                                inputRef3.current.focus();
+                            }
+
+                        }} value={MaPin5} />
+                        <TextInput ref={inputRef5} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                             setMaPin6(val);
                             if (val == '') {
                                 inputRef4.current.focus();
                             }
                         }
-                    }
-                         value={MaPin6} />
-                </View>
-                <Text style={AppStyle.StyleScreenXacNhanSDT.textguilaisau}> Gửi laị sau 00:{TimeDown}</Text>
-                {
-                    MaPin1 != '' && MaPin2 != '' && MaPin3 != '' && MaPin4 != '' && MaPin5 != '' && MaPin6 != ''
-                        ? <TouchableOpacity onPress={onfirm_otp}>
+                        }
+                            value={MaPin6} />
+                    </View>
+                    <Text style={AppStyle.StyleScreenXacNhanSDT.textguilaisau}> Gửi laị sau 00:{TimeDown}</Text>
+                    {
+                        MaPin1 != '' && MaPin2 != '' && MaPin3 != '' && MaPin4 != '' && MaPin5 != '' && MaPin6 != ''
+                            ? <TouchableOpacity onPress={onfirm_otp}>
+                                <LinearGradient
+                                    style={AppStyle.StyleScreenXacNhanSDT.linear}
+
+                                    colors={['#8B3BFF', '#B738FF']}
+                                >
+
+                                    <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiếp tục</Text>
+                                </LinearGradient>
+                            </TouchableOpacity>
+                            :
                             <LinearGradient
-                            style={AppStyle.StyleScreenXacNhanSDT.linear}
+                                style={AppStyle.StyleScreenXacNhanSDT.linearnotactive}
 
-                            colors={['#8B3BFF', '#B738FF']}
-                        >
-                            
+                                colors={['#B738FF', '#8B3BFF']}
+                            >
                                 <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiếp tục</Text>
-                        </LinearGradient>
-                        </TouchableOpacity>
-                        :
-                        <LinearGradient
-                            style={AppStyle.StyleScreenXacNhanSDT.linearnotactive}
+                            </LinearGradient>
 
-                            colors={['#B738FF', '#8B3BFF']}
-                        >
-                            <Text style={AppStyle.StyleScreenXacNhanSDT.text}>Tiếp tục</Text>
-                        </LinearGradient>
+                    }
 
-                }
+                </View>
+                <View style={AppStyle.StyleScreenXacNhanSDT.footer}>
 
-            </View>
-            <View style={AppStyle.StyleScreenXacNhanSDT.footer}>
-
-            </View>
+                </View>
             </View>
             {/* <ReactCodeInput /> */}
         </SafeAreaView>

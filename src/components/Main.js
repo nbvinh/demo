@@ -8,8 +8,8 @@ import { changedata1 } from "../reducers/action";
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Province from "../components/Main/Province"
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import DataVoucher from "../components/Main/DuLieuVoucher";
+import rootSaga from '../Saga/mySaga';
 const Main = ({ navigation }) => {
     function numberWithCommas(x) {
         x = x.toString();
@@ -18,6 +18,7 @@ const Main = ({ navigation }) => {
             x = x.replace(pattern, "$1.$2");
         return x;
     }
+    const theLoai = useSelector(state => state.TheLoai)
     const token = useSelector(state => state.abc)
     const dispatch = useDispatch();
     const [Name, setName] = React.useState(hoten);
@@ -39,8 +40,8 @@ const Main = ({ navigation }) => {
     const callapiVoucher = () => {
         axios.get('http://175.41.184.177:6061/voucher?pageNumber=' + number).then(function (res) {
             const dulieuvoucher = res.data.data;
-            console.log('number : ' + number);
             Object.entries(dulieuvoucher);
+            console.log('theLoai', theLoai);
             setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
         }).catch(function (error) {
             console.log(error);
@@ -50,6 +51,7 @@ const Main = ({ navigation }) => {
         _storeData();
         _getData();
         const loadnhe = async () => {
+           
             const result = await axios.get('http://175.41.184.177:6061/category').then(function (res) {
                 const dulieu = res.data.data;
                 Object.entries(dulieu);
@@ -57,6 +59,7 @@ const Main = ({ navigation }) => {
             }).catch(function (error) {
                 console.log(error);
             });
+           console.log(theLoai);
             const result1 = await callapiVoucher();
             const result2 = await fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
                 method: 'GET'
@@ -208,6 +211,7 @@ const Main = ({ navigation }) => {
                         </View>
                         <View style={AppStyle.StyleMain.option}>
                             {
+                                
                                 DuLieuApi.map(item => {
                                     const ChiTietVoucherTheoLoai = () => {
                                         dispatch({ type: 'IDLOAI', id: item.id })

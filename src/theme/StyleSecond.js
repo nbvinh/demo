@@ -4,7 +4,9 @@ import {
 
 const StyleSecond = StyleSheet.create({
     content:{
-        marginHorizontal:15
+        marginHorizontal:15,
+        flex:11,
+        justifyContent:'center'
     },
     icon:{marginVertical:20},
     text0:{fontSize:19,fontWeight:'600',color:'#FFFFFF'},
@@ -19,7 +21,7 @@ const StyleSecond = StyleSheet.create({
         backgroundColor: '#272738', 
         marginBottom: 50, 
         borderRadius: 8,
-        padding: 18,
+        padding: 15,
         color:'white'
     },
     text2:{
