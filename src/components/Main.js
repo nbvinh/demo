@@ -200,7 +200,7 @@ const Main = ({ navigation, route }) => {
                             <View style={AppStyle.StyleMain.poin_your_left}>
                                 <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Điểm của bạn </Text>
 
-                                <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {diem}</Text>
+                                <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {numberWithCommas(diem)}</Text>
                             </View>
                             <View style={AppStyle.StyleMain.poin_your_right}>
                                 <LinearGradient
