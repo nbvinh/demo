@@ -41,8 +41,9 @@ const Main = ({ navigation, route }) => {
         axios.get('http://175.41.184.177:6061/voucher?pageNumber=' + number).then(function (res) {
             const dulieuvoucher = res.data.data;
             Object.entries(dulieuvoucher);
-            console.log('theLoai', theLoai);
-            setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
+            
+            //setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
+            setDuLieuVoucher(dulieuvoucher);
         }).catch(function (error) {
             console.log(error);
         });
