@@ -48,8 +48,7 @@ const Main = ({ navigation, route }) => {
         });
     }
     useEffect(() => {
-        _storeData();
-        _getData();
+        _getData()
         GetImg()
         const loadnhe = async () => {
 
@@ -70,7 +69,7 @@ const Main = ({ navigation, route }) => {
             setTime(false)
         }
         loadnhe();
-    }, [diem])
+    }, [])
     const modal = () => {
         setTest(false)
         dispatch({ type: 'MODALPROVINCE' })
@@ -80,26 +79,18 @@ const Main = ({ navigation, route }) => {
         dispatch({ type: 'CHECKKINGBREAD' })
         navigation.navigate('KingBread')
     }
-    const _storeData = async () => {
-        try {
-            await AsyncStorage.setItem(
-                'Diem',
-                JSON.stringify(diem)
-            );
-        } catch (error) {
-            // Error saving data
-        }
-    };
     const _getData = async () => {
         try {
-            await AsyncStorage.getItem("Diem").then(val => {
-                console.log(val);
-                setdiemlocal(val);
-
-            });
+            let val = await AsyncStorage.getItem("Diem")
+            if (val === null) {
+                await AsyncStorage.setItem('Diem', JSON.stringify(diem));
+            }
+            else {
+                dispatch({ type: 'DIEMUP', diem: val })
+            }
 
         } catch (error) {
-
+            console.log('AsyncStorage get data error in List component', error.message)
         }
 
     };
@@ -133,11 +124,11 @@ const Main = ({ navigation, route }) => {
             {
                 text: "Bỏ qua",
 
-              },
-          ],
-          { cancelable: false }
-        ) :  
-        navigation.navigate('DoiAvatar');
+            },
+        ],
+            { cancelable: false }
+        ) :
+            navigation.navigate('DoiAvatar');
     }
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
@@ -207,16 +198,14 @@ const Main = ({ navigation, route }) => {
                             <View style={AppStyle.StyleMain.poin_your_left}>
                                 <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Điểm của bạn </Text>
 
-                                <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {diemlocal}</Text>
+                                <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {diem}</Text>
                             </View>
                             <View style={AppStyle.StyleMain.poin_your_right}>
                                 <LinearGradient
                                     style={{ width: 27, height: 27, borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginRight: 15 }}
                                     colors={['#8B3BFF', '#B738FF']}
                                 >
-                                    <TouchableOpacity onPress={() => {
-                                        navigation.navigate('GiaoDich')
-                                    }}>
+                                    <TouchableOpacity onPress={() => {navigation.navigate('GiaoDich')}}>
                                         <Text style={{ color: 'white', fontSize: 22 }}>+</Text>
                                     </TouchableOpacity>
                                 </LinearGradient>

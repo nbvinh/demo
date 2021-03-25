@@ -4,6 +4,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import { useSelector, useDispatch } from "react-redux";
 import LinearGradient from 'react-native-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect } from 'react';
 const MuaDiem = ({ navigation }) => {
     const dispatch = useDispatch();
     const [diem, setDiem] = React.useState(0);
@@ -16,7 +18,37 @@ const MuaDiem = ({ navigation }) => {
             x = x.replace(pattern, "$1.$2");
         return x;
     }
+    const _storeData = async () => {
+        try {
+            await AsyncStorage.setItem(
+                'Diem',
+                JSON.stringify(diermthaydoi)
+            );
+            console.log('save ok')
+        } catch (error) {
+            // Error saving data
+        }
+    };
+    const _getData = async () => {
+        try {
+            let val = await AsyncStorage.getItem("Diem")
+            if (val === null) {
+                await AsyncStorage.setItem('Diem', JSON.stringify(diem));
+            }
+            else {
+                dispatch({ type: 'DIEMUP', diem: val })
+            }
+
+        } catch (error) {
+            console.log('AsyncStorage get data error in List component', error.message)
+        }
+
+    };
+    useEffect(() => {
+        dispatch({ type: 'UPDIEM', diem: diem });
+    }, [diem])
     const onSubmitThanhToan = () => {
+        _storeData()
         {
             if (check === false && check2 === false) {
                 Alert.alert('Thông báo', 'Bạn chưa chọn phương thức thanh toán!');
@@ -37,7 +69,7 @@ const MuaDiem = ({ navigation }) => {
                         onPress: () => {
 
                             navigation.navigate('Tabviewmain');
-                            dispatch({ type: 'UPDIEM', diem: diem });
+                            _getData()
                             let d = new Date();
                             dispatch({ type: 'HISTORY_POINT', point: '+' + diem, phuongthuc: check, tỉme: d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() });
                         }
@@ -53,6 +85,7 @@ const MuaDiem = ({ navigation }) => {
 
         }
     }
+    const diermthaydoi = useSelector(state => state.diem)
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
 
@@ -66,7 +99,7 @@ const MuaDiem = ({ navigation }) => {
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleVoucherCGV.text}>Mua Điểm</Text>
             </View>
-            <View style={{ marginHorizontal: 8,flex:11 }}>
+            <View style={{ marginHorizontal: 8, flex: 11 }}>
                 <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập số cần mua</Text>
                 <TextInput placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style={[AppStyle.StyleGiaoDich.Box_DoiDiem, { color: 'white' }]} onChangeText={(value) => setDiem(value)} />
                 <View style={AppStyle.StyleGiaoDich.TongTien}>
@@ -126,7 +159,6 @@ const MuaDiem = ({ navigation }) => {
                         </TouchableOpacity>
 
                 }
-
             </View>
         </SafeAreaView>
     );

@@ -351,7 +351,8 @@ const reducer = (state = initState, action) => {
         case 'TheLoai': {
             return { ...state, TheLoai: action.TheLoai}
         }
-       
+        case 'DIEMUP' :
+            return{...state , diem: parseInt(action.diem)}
         default:
             return state
     }
