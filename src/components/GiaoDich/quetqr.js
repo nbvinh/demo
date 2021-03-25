@@ -7,14 +7,40 @@ import {
   Image,
   TouchableOpacity,
   Linking,
-  SafeAreaView
+  SafeAreaView,
+  Alert
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { useDispatch, useSelector } from "react-redux";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ScanScreen = ({ navigation }) => {
+  const [check, setcheck] = React.useState(false);
+  const [e, setE] = React.useState()
+  const [opacity, setOpacity] = React.useState(false)
+  const diermthaydoi = useSelector(state => state.diem)
+  const _storeData = async () => {
+    AsyncStorage.setItem(
+      'Diem',
+      JSON.stringify(diermthaydoi),
+
+      () => {
+        AsyncStorage.getItem('Diem', (err, result) => {
+          dispatch({ type: 'DIEMUP', diem: result })
+        });
+      }
+    );
+  };
+  React.useEffect(() => {
+    _storeData()
+  }, [check])
+  async function asyncCall() {
+    dispatch({ type: 'UPDIEM', diem: e }),
+      navigation.navigate('Tabviewmain')
+    setcheck(true)
+  }
   const dispatch = useDispatch()
   // const [opacity, setOpacity] = useState(false)
   return (
@@ -28,15 +54,22 @@ const ScanScreen = ({ navigation }) => {
         </TouchableOpacity>
         <Text style={AppStyle.StyleVoucherCGV.text}>Mời Bạn Bè</Text>
       </View>
-      <View style={{flex:11}}>
+      <View style={{ flex: 11 }}>
         <QRCodeScanner
           showMarker={true}
-          onRead={(e) => (
+          onRead={(e) => {
             // setOpacity(true),
-            console.log('asdas', JSON.parse(e.data).trans_amount),
-            dispatch({ type: 'UPDIEM', diem: JSON.parse(e.data).trans_amount }),
-            navigation.navigate('Tabviewmain')
-          )}
+            try {
+              setOpacity(true)
+              setE(JSON.parse(e.data).trans_amount)
+
+              // dispatch({ type: 'UPDIEM', diem: JSON.parse(e.data).trans_amount }),
+              // navigation.navigate('Tabviewmain')
+            } catch (error) {
+              // setOpacity(false)
+              Alert.alert("Bạn phải dùng Mã QR của Nhà Cung Cấp");
+            }
+          }}
           flashMode={RNCamera.Constants.FlashMode.off}
           topContent={
             <Text style={styles.centerText}>
@@ -48,9 +81,9 @@ const ScanScreen = ({ navigation }) => {
         />
 
       </View>
-      {/* {
+      {
         opacity ?
-          <TouchableOpacity onPress={() => navigation.navigate('Tabviewmain')}>
+          <TouchableOpacity onPress={() => asyncCall()}>
             <LinearGradient style={[AppStyle.StyleFirst.linear, { marginBottom: 30 }]} colors={['#8B3BFF', '#B738FF']} >
               <Text style={AppStyle.StyleFirst.text}>Hoàn Thành</Text>
             </LinearGradient>
@@ -61,7 +94,7 @@ const ScanScreen = ({ navigation }) => {
               <Text style={AppStyle.StyleFirst.text}>Hoàn Thành</Text>
             </LinearGradient>
           </View>
-      } */}
+      }
     </SafeAreaView>
 
   );
