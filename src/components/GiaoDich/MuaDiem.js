@@ -11,6 +11,7 @@ const MuaDiem = ({ navigation }) => {
     const [diem, setDiem] = React.useState(0);
     const [check, setcheck] = React.useState(false);
     const [check2, setcheck2] = React.useState(false);
+    const [check3, setcheck3] = React.useState(false);
     function numberWithCommas(x) {
         x = x.toString();
         var pattern = /(-?\d+)(\d{3})/;
@@ -19,36 +20,25 @@ const MuaDiem = ({ navigation }) => {
         return x;
     }
     const _storeData = async () => {
-        try {
-            await AsyncStorage.setItem(
-                'Diem',
-                JSON.stringify(diermthaydoi)
-            );
-            console.log('save ok')
-        } catch (error) {
-            // Error saving data
-        }
-    };
-    const _getData = async () => {
-        try {
-            let val = await AsyncStorage.getItem("Diem")
-            if (val === null) {
-                await AsyncStorage.setItem('Diem', JSON.stringify(diem));
+        AsyncStorage.setItem(
+            'Diem',
+            JSON.stringify(diermthaydoi),
+            () => {
+                AsyncStorage.getItem('Diem', (err, result) => {
+                    dispatch({ type: 'DIEMUP', diem: result })
+                });
             }
-            else {
-                dispatch({ type: 'DIEMUP', diem: val })
-            }
-
-        } catch (error) {
-            console.log('AsyncStorage get data error in List component', error.message)
-        }
-
+        );
     };
     useEffect(() => {
-        dispatch({ type: 'UPDIEM', diem: diem });
-    }, [diem])
-    const onSubmitThanhToan = () => {
         _storeData()
+    }, [check3])
+    async function asyncCall() {
+        dispatch({ type: 'UPDIEM', diem: diem })
+        navigation.navigate('Tabviewmain');
+        setcheck3(true)
+    }
+    const onSubmitThanhToan = () => {
         {
             if (check === false && check2 === false) {
                 Alert.alert('Thông báo', 'Bạn chưa chọn phương thức thanh toán!');
@@ -60,27 +50,7 @@ const MuaDiem = ({ navigation }) => {
                 Alert.alert('Thông báo', 'Bạn chưa nhập số điểm cần mua !');
             }
             else {
-
-
-                Alert.alert('Thông Báo', 'Bạn Có Chắc Là Thanh Toán ' + numberWithCommas(diem * 100) + ' VNĐ Không!', [
-
-                    {
-                        text: "Có",
-                        onPress: () => {
-
-                            navigation.navigate('Tabviewmain');
-                            _getData()
-                            let d = new Date();
-                            dispatch({ type: 'HISTORY_POINT', point: '+' + diem, phuongthuc: check, tỉme: d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() });
-                        }
-                    },
-                    {
-                        text: "Không",
-                        onPress: () => console.log("Cancel Pressed"),
-                    },
-                ],
-                    { cancelable: false });
-
+                asyncCall()
             }
 
         }
@@ -101,7 +71,7 @@ const MuaDiem = ({ navigation }) => {
             </View>
             <View style={{ marginHorizontal: 8, flex: 11 }}>
                 <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập số cần mua</Text>
-                <TextInput placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style={[AppStyle.StyleGiaoDich.Box_DoiDiem, { color: 'white' }]} onChangeText={(value) => setDiem(value)} />
+                <TextInput placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style={[AppStyle.StyleGiaoDich.Box_DoiDiem, { color: 'white' }]} onChangeText={(value) => setDiem(parseInt(value))} />
                 <View style={AppStyle.StyleGiaoDich.TongTien}>
                     <Text style={AppStyle.StyleGiaoDich.Text_White}>Tổng Tiền</Text>
                     <Text style={AppStyle.StyleGiaoDich.Text_White}>{diem > 0 ? numberWithCommas(diem * 100) : 0} VNĐ</Text>

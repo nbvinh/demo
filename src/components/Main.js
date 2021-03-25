@@ -41,7 +41,7 @@ const Main = ({ navigation, route }) => {
         axios.get('http://175.41.184.177:6061/voucher?pageNumber=' + number).then(function (res) {
             const dulieuvoucher = res.data.data;
             Object.entries(dulieuvoucher);
-            
+
             //setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
             setDuLieuVoucher(dulieuvoucher);
         }).catch(function (error) {
@@ -87,6 +87,7 @@ const Main = ({ navigation, route }) => {
                 await AsyncStorage.setItem('Diem', JSON.stringify(diem));
             }
             else {
+                console.log('diemmmmm', val)
                 dispatch({ type: 'DIEMUP', diem: val })
             }
 
@@ -206,7 +207,7 @@ const Main = ({ navigation, route }) => {
                                     style={{ width: 27, height: 27, borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginRight: 15 }}
                                     colors={['#8B3BFF', '#B738FF']}
                                 >
-                                    <TouchableOpacity onPress={() => {navigation.navigate('GiaoDich')}}>
+                                    <TouchableOpacity onPress={() => { navigation.navigate('GiaoDich') }}>
                                         <Text style={{ color: 'white', fontSize: 22 }}>+</Text>
                                     </TouchableOpacity>
                                 </LinearGradient>
