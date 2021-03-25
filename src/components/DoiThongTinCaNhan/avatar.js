@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ImagePicker from 'react-native-image-crop-picker';
 import { useState } from 'react/cjs/react.development';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Header from '../Header';
 const DoiAvatar = ({ navigation }) => {
     const [isModalVisible, setModalVisible] = React.useState(false);
     const _HoTen = useSelector(state => state.hoten)
@@ -120,18 +121,13 @@ const DoiAvatar = ({ navigation }) => {
             setModalVisible(!isModalVisible)
         });
     }
-
+    const GOback =()=>{
+        navigation.goBack()
+    }
+    const item ='Thông tin cá nhân'
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-            <View style={AppStyle.StyleGiaoDich.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ marginLeft: 10 }}>
-                    <Image
-                        width={10} height={18}
-                        source={require('../../img/back.png')}
-                    />
-                </TouchableOpacity>
-                <Text style={AppStyle.StyleGiaoDich.header_text}>Thông tin cá nhân</Text>
-            </View>
+          <Header press={GOback} item ={item}/>
             <View style={{ marginHorizontal: 12 }}>
                 <View style={{ marginTop: 20, height: 80, justifyContent: 'center', alignItems: 'center' }}>
                     <Image

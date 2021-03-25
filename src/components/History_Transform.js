@@ -97,6 +97,7 @@ const History_Transform = ({ navigation }) => {
                 };
         }
     }
+    const item ='lịch sử giao dịch'
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
             <View style={{ flex: 1 }}>
@@ -187,7 +188,7 @@ const History_Transform = ({ navigation }) => {
                                 source={require('../img/back.png')}
                             />
                         </TouchableOpacity>
-                        <Text style={AppStyle.StyleVoucherCGV.text}>Lịch sử giao dịch</Text>
+                        <Text style={AppStyle.StyleVoucherCGV.text}>{item}</Text>
                         <TouchableOpacity onPress={_onPress} style={{ zIndex: 1 }}>
                             <Image
                                 style={AppStyle.Style_History_Tranform.Image1}

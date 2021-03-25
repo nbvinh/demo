@@ -5,6 +5,7 @@ import AppStyle from "../theme";
 import { useSelector, useDispatch } from "react-redux";
 import ListBank from "../components/Phuongthucthanhtoan/ListBank";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Header from '../components/Header';
 const PaymentConfirmation = ({ navigation }) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.data)
@@ -64,11 +65,15 @@ const PaymentConfirmation = ({ navigation }) => {
         console.log(billsCGV)
     }, [billsCGV])
     const product = useSelector(state => state.product)
+    const GOback =()=>{
+        navigation.goBack()
+    }
+    const item ='Xác nhận thanh toán'
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
 
             <View style={AppStyle.StyleVoucherCGV.container}>
-                <View style={AppStyle.StyleVoucherCGV.header}>
+                {/* <View style={AppStyle.StyleVoucherCGV.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()} >
                         <Image
                             width={10} height={18}
@@ -76,8 +81,9 @@ const PaymentConfirmation = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleVoucherCGV.text}>Xác nhận thanh toán </Text>
-                </View>
-
+                </View> */}
+                
+                <Header onpress={GOback} item ={item}/>
                 <View style={{ flex: 9 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
                         <ScrollView>

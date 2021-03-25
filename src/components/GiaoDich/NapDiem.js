@@ -4,11 +4,16 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
+import Header from '../Header'
 const NapDiem = ({ navigation }) => {
     const [ma, setma] = React.useState('');
+    const GOback =()=>{
+        navigation.goBack()
+    }
+    const item ='Nạp Điểm'
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-            <View style={AppStyle.StyleVoucherCGV.header}>
+            {/* <View style={AppStyle.StyleVoucherCGV.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} >
                     <Image
                         width={10} height={18}
@@ -16,7 +21,8 @@ const NapDiem = ({ navigation }) => {
                     />
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleVoucherCGV.text}>Nạp điểm</Text>
-            </View>
+            </View> */}
+            <Header onpress={GOback} item ={item}/>
             <View style={{marginHorizontal: 16,flex:11}}>
             <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập Mã Gift Card</Text>
             <TextInput onChangeText={(value) => setma(value)} placeholder='Nhập Mã Gift Card'  placeholderTextColor = 'rgba(255, 255, 255, 0.6)' style ={[AppStyle.StyleGiaoDich.Box_DoiDiem, {color: 'white'}]}/>

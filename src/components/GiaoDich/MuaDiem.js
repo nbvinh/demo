@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import LinearGradient from 'react-native-linear-gradient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
+import Header from '../Header'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 const MuaDiem = ({ navigation }) => {
     const dispatch = useDispatch();
     const [diem, setDiem] = React.useState(0);
@@ -55,20 +58,30 @@ const MuaDiem = ({ navigation }) => {
 
         }
     }
+    const GOback =()=>{
+        navigation.goBack()
+    }
+    const item ='Mua Điểm'
     const diermthaydoi = useSelector(state => state.diem)
     return (
+        <KeyboardAwareScrollView
+        style={{ backgroundColor: 'black',
+        flex: 1,}}
+
+    >
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
 
 
-            <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
+            {/* <View style={AppStyle.StyleVoucherCGV.header}>
+                <TouchableOpacity onPress={() => } >
                     <Image
                         width={10} height={18}
                         source={require('../../img/back.png')}
                     />
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleVoucherCGV.text}>Mua Điểm</Text>
-            </View>
+            </View> */}
+              <Header onpress={GOback} item ={item}/>
             <View style={{ marginHorizontal: 8, flex: 11 }}>
                 <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập số cần mua</Text>
                 <TextInput placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style={[AppStyle.StyleGiaoDich.Box_DoiDiem, { color: 'white' }]} onChangeText={(value) => setDiem(parseInt(value))} />
@@ -131,6 +144,7 @@ const MuaDiem = ({ navigation }) => {
                 }
             </View>
         </SafeAreaView>
+        </KeyboardAwareScrollView>
     );
 }
 export default MuaDiem;

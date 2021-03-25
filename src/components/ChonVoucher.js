@@ -4,7 +4,7 @@ import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import AppStyle from "../theme";
 import Khuyenmai from "../components/ChonVoucher/Khuyenmai";
 import { useSelector, useDispatch } from "react-redux";
-
+import Header from '../components/Header';
 const ChonVoucher = ({ navigation }) => {
     const dispatch = useDispatch();
     const arrPromotion = useSelector(state => state.arrPromotion)
@@ -29,11 +29,15 @@ const ChonVoucher = ({ navigation }) => {
         dispatch({ type: 'CHOOSEVOUCHERTRUE' })
         return true;
     }
+    const GOback =()=>{
+        navigation.goBack()
+    }
+    const item ='Chọn Voucher'
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
 
             <View style={AppStyle.StyleVoucherCGV.container}>
-                <View style={AppStyle.StyleVoucherCGV.header}>
+                {/* <View style={AppStyle.StyleVoucherCGV.header}>
                     <TouchableOpacity onPress={() => Goback()} >
                         <Image
                             width={10} height={18}
@@ -41,7 +45,8 @@ const ChonVoucher = ({ navigation }) => {
                         />
                     </TouchableOpacity>
                     <Text style={AppStyle.StyleVoucherCGV.text}>Chọn Voucher</Text>
-                </View>
+                </View> */}
+                 <Header onpress={GOback} item ={item}/>
                 <View style={{ flex: 10 }}>
                     <ScrollView>
                         <View style={AppStyle.StyleVoucherCGV.address}>

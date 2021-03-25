@@ -5,10 +5,13 @@ import { ScrollView } from "react-native-gesture-handler";
 import { useSelector, useDispatch } from "react-redux";
 const LichSuDiem = ({ navigation }) => {
     const arr_point = useSelector(state => state.history_point);
-
+    const GOback =()=>{
+        navigation.goBack();
+    }
+    const item ='Lich Su Diem'
     return (
         <SafeAreaView style={AppStyle.StyleLichSuDiem.container}>
-            <View style={AppStyle.StyleVoucherCGV.header}>
+            {/* <View style={AppStyle.StyleVoucherCGV.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} >
                     <Image
                         width={10} height={18}
@@ -16,7 +19,8 @@ const LichSuDiem = ({ navigation }) => {
                     />
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleVoucherCGV.text}>Lịch Sử Điểm</Text>
-            </View>
+            </View> */}
+            <Header onpress={GOback} item ={item}/>
             <View style={{ marginHorizontal: 12, flex: 11 }}>
 
                 {

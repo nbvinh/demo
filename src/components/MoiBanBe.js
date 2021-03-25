@@ -5,6 +5,8 @@ import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, Text
 import Contacts from 'react-native-contacts';
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import Communications from 'react-native-communications';
+import Header from '../components/Header';
+
 const MoiBanBe = ({ navigation }) => {
     const [DanhBa, setDanhBa] = React.useState([]);
     const [Tamp, setTamp] = React.useState([]);
@@ -79,11 +81,15 @@ const MoiBanBe = ({ navigation }) => {
             el.givenName.toLowerCase().indexOf(query.toLowerCase()) > -1
         );
     }
+    const GOback =()=>{
+        navigation.goBack();
+    }
+    const item ='Mời Bạn Bè';
 
     return (
 
         <SafeAreaView style={AppStyle.StyleLichSuDiem.container}>
-            <View style={AppStyle.StyleVoucherCGV.header}>
+            {/* <View style={AppStyle.StyleVoucherCGV.header}>
                 <TouchableOpacity onPress={() => navigation.goBack()} >
                     <Image
                         width={10} height={18}
@@ -91,7 +97,9 @@ const MoiBanBe = ({ navigation }) => {
                     />
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleVoucherCGV.text}>Mời Bạn Bè</Text>
-            </View>
+            </View> */}
+            <Header onpress={GOback} item ={item}/>
+
             <View style={{ marginHorizontal: 12, flex: 11 }}>
                 <View style={{ marginVertical: 20, backgroundColor: '#272738', borderRadius: 8, height: 40, justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row' }}>
                     <TouchableOpacity >

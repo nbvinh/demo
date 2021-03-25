@@ -5,7 +5,7 @@ import { useState } from 'react/cjs/react.development';
 import AppStyle from "../theme";
 import { useSelector, useDispatch } from "react-redux";
 import ListBank from "../components/Phuongthucthanhtoan/ListBank";
-
+import Header from '../components/Header';
 const PaymentMethods = ({ navigation }) => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.data)
@@ -19,21 +19,26 @@ const PaymentMethods = ({ navigation }) => {
     const onLienket = () => {
         dispatch({ type: 'LIENKET' })
     }
+    const GOback =()=>{
+        navigation.goBack()
+    }
+    const item ='Phương thức thanh toán' 
     const DataProduct = useSelector(state => state.DataProduct)
     const sum = useSelector(state => state.sum)
     const kingbread = useSelector(state => state.kingbread)
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
             <View style={AppStyle.StyleVoucherCGV.container}>
-                <View style={AppStyle.StyleVoucherCGV.header}>
+                {/* <View style={AppStyle.StyleVoucherCGV.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()} >
                         <Image
                             width={10} height={18}
                             source={require('../img/back.png')}
                         />
                     </TouchableOpacity>
-                    <Text style={AppStyle.StyleVoucherCGV.text}>Phương thức thanh toán </Text>
-                </View>
+                    <Text style={AppStyle.StyleVoucherCGV.text}></Text>
+                </View> */}
+                 <Header onpress={GOback} item ={item}/>
                 <View style={{ flex: 11 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
                         <ScrollView>
