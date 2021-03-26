@@ -3,61 +3,26 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar, TextInpu
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
-// const Data = [
-//     {
-//         id: '1',
-//         icon:"moibb_24px.png",
-//         text:'Mời bạn bè',
-//     },
-//     {
-//         id: '2',
-//         icon:'moibb_24px',
-//         text:'Lịch sử điểm',
-//     },
-//     {
-//         id: '3',
-//         icon:'moibb_24px',
-//         text:'Chính sách bảo mật',
-//     },
-//     {
-//         id: '4',
-//         icon:'moibb_24px',
-//         text:'Điều khoản sử dụng',
-//     },
-//     {
-//         id: '5',
-//         icon:'moibb_24px',
-//         text:'Câu hỏi thường gặp',
-//     },
-//     {
-//         id: '6',
-//         icon:'moibb_24px',
-//         text:'hỗ trợ',
-//     },
-//     {
-//         id: '7',
-//         icon:'moibb_24px',
-//         text:'Đăng xuất',
-//     },
-// ]
-// const Item = ({item}) =>{
-//     return (
-//         <View style={AppStyle.StyleLichSu.item}>
-//             <View style={AppStyle.StyleLichSu.item_left}>
-//                 <Image
-//                     style={{width: 24, height: 24}}
-//                     source={require("../../img/img_icon_24px/moibb_24px.png")}/>
-//                     <Text style={{color: '#ffffff', marginLeft: 10, fontSize: 15}}>{item.text}</Text>
-//             </View>
-//             <View style={AppStyle.StyleLichSu.item_right}>
-//                 <Image
-//                 style={{width: 10, height: 10}}
-//                 source={require('../../img/img_icon_24px/chevron_right_24px.png')}/>
-//             </View>
-//         </View>
-//     );
-// }
+import { useSelector, useDispatch } from "react-redux";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const ThongTin = ({ navigation }) => {
+    const dispatch = useDispatch()
+    const result = useSelector(state => state.abc)
+    const _storeData = async () => {
+        AsyncStorage.setItem(
+            'token',
+            '',
+            () => {
+                AsyncStorage.getItem('token', (err, result) => {
+                    dispatch({ type: 'TOKEN', abc: result })
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'ScreenFirst' }],
+                    });
+                });
+            }
+        );
+    };
     return (
         <SafeAreaView style={AppStyle.StyleLichSu.container}>
             <View style={AppStyle.StyleVoucherCGV.header}>
@@ -162,7 +127,9 @@ const ThongTin = ({ navigation }) => {
                             <Image
                                 style={{ width: 24, height: 24 }}
                                 source={require('../../img/img_icon_24px/logout_24px.png')} />
-                            <TouchableOpacity onPress={() => navigation.popToTop()}><Text style={{ color: '#ffffff', marginLeft: 10, fontSize: 15 }}>Đăng Xuất</Text></TouchableOpacity>
+                            <TouchableOpacity onPress={() => {
+                                _storeData()
+                            }}><Text style={{ color: '#ffffff', marginLeft: 10, fontSize: 15 }}>Đăng Xuất</Text></TouchableOpacity>
                         </TouchableOpacity>
 
 

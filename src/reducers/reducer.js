@@ -85,13 +85,13 @@ const initState = {
 const reducer = (state = initState, action) => {
     switch (action.type) {
         case 'SILDEPEWPEW':
-            let SlidePewPew =[...state.imagesbanhmi]
-            SlidePewPew.map((item,index)=>{
-                if (index>0){
-                    item.text =''
+            let SlidePewPew = [...state.imagesbanhmi]
+            SlidePewPew.map((item, index) => {
+                if (index > 0) {
+                    item.text = ''
                 }
             })
-            return {...state,imagesbanhmi:SlidePewPew}
+            return { ...state, imagesbanhmi: SlidePewPew }
         case 'PRODUCTAFTER':
             return { ...state, productafter: action.productafter }
         case 'ADDPRODUCT':
@@ -220,11 +220,11 @@ const reducer = (state = initState, action) => {
             return { ...state, productnuoc: newState1 }
         case 'ADDBILL':
             let newBills = [...state.bills]
-            newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount, product: action.product,timmer:action.timmer })
+            newBills.push({ id: action.id, sum: action.sum, tilte: 'Bánh Mì Pew Pew', sumamount: action.sumamount, product: action.product, timmer: action.timmer })
             return { ...state, bills: newBills, product: [] }
         case 'ADDBILLCGV':
             let newBillsCGV = [...state.billsCGV]
-            newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV, value: action.value, tilte: 'Voucher CGV Cinema',timmer:action.timmer  })
+            newBillsCGV.push({ id: action.id, priceCGV: action.priceCGV, value: action.value, tilte: 'Voucher CGV Cinema', timmer: action.timmer })
             return { ...state, billsCGV: newBillsCGV }
         case 'FILTERSTATUS':
             return { ...state, filterStatus: "" }
@@ -252,8 +252,10 @@ const reducer = (state = initState, action) => {
             return { ...state, temp1: action.temp1 }
         case 'HOTEN':
             return { ...state, hoten: action.hoten }
-        case 'TOCKEN':
+        case 'TOKEN':
             return { ...state, abc: action.abc }
+        case 'SIGNOUT':
+            return { ...state, abc: null }
         case 'SHOWPAYMENTCGV':
             return { ...state, ShowpaymentCGV: true }
         case 'ADDDATA1':
@@ -335,7 +337,7 @@ const reducer = (state = initState, action) => {
         case 'IDLOAI':
             return { ...state, id: action.id }
         case 'UPDIEM':
-           
+
             return { ...state, diem: state.diem + parseInt(action.diem) }
         case 'SDT':
             return { ...state, SDT: action.SDT }
@@ -350,11 +352,11 @@ const reducer = (state = initState, action) => {
             return { ...state, history_point: arr_point }
         }
         case 'TheLoai': {
-            
-            return { ...state, TheLoai: action.TheLoai}
+
+            return { ...state, TheLoai: action.TheLoai }
         }
-        case 'DIEMUP' :
-            return{...state , diem: parseInt(action.diem)}
+        case 'DIEMUP':
+            return { ...state, diem: parseInt(action.diem) }
         default:
             return state
     }

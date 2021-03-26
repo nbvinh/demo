@@ -127,7 +127,7 @@ const DoiAvatar = ({ navigation }) => {
     const item = 'Thông tin cá nhân'
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-            <Header press={GOback} item={item} />
+            <Header onpress={GOback} item={item} />
             <View style={{ marginHorizontal: 12 }}>
                 <View style={{ marginTop: 20, height: 80, justifyContent: 'center', alignItems: 'center' }}>
                     <Image

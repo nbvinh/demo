@@ -17,7 +17,9 @@ sagaMiddleware.run(rootSaga);
   return (
     //  <Main />
     <Provider store={store}>
-      <RootStack />
+      <RootStack>
+        
+      </RootStack>
     </Provider>
   )
 }

@@ -17,7 +17,6 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const [MaPin6, setMaPin6] = React.useState('');
     const dispatch = useDispatch()
     const SDT = route.params.data.phone;
-    //const data = route.params.data2;
     const [TimeDown, setTimeDown] = React.useState(59);
     React.useEffect(() => {
         const Time = setInterval(() => {
@@ -38,10 +37,8 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                 "phone_number": SDT,
                 "token": route.params.token,
             })
-            // .then((response) =>console.log( response.data.data.access_token))
-            //     .then((json) => { console.log(json) })
             let abc = result.data.data.access_token;
-            dispatch({ type: 'TOCKEN', abc: abc })
+            dispatch({ type: 'TOKEN', abc: abc })
             navigation.navigate('Profile', { SDT: SDT });
 
         } catch (error) {
