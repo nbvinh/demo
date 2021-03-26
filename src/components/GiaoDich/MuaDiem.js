@@ -39,6 +39,8 @@ const MuaDiem = ({ navigation }) => {
     async function asyncCall() {
         dispatch({ type: 'UPDIEM', diem: diem })
         navigation.navigate('Tabviewmain');
+        let d = new Date();
+        dispatch({ type: 'HISTORY_POINT', point: '+' + diem, phuongthuc: check, tỉme: d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() });
         setcheck3(true)
     }
     const onSubmitThanhToan = () => {
