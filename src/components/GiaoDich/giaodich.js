@@ -4,7 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import Header from '../Header'
 const GiaoDich = ({navigation}) =>{
-    const item='giao dich';
+    const item='Giao Dịch';
     const GOback =()=>{
         navigation.goBack()
     }

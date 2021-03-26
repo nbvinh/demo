@@ -3,24 +3,16 @@ import AppStyle from "../../theme";
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, TextInput, Alert, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { useSelector, useDispatch } from "react-redux";
+import Header from "../Header";
 const LichSuDiem = ({ navigation }) => {
     const arr_point = useSelector(state => state.history_point);
-    const GOback =()=>{
+    const GOback = () => {
         navigation.goBack();
     }
-    const item ='Lich Su Diem'
+    const item = 'Lich Su Diem'
     return (
         <SafeAreaView style={AppStyle.StyleLichSuDiem.container}>
-            {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
-                    <Image
-                        width={10} height={18}
-                        source={require('../../img/back.png')}
-                    />
-                </TouchableOpacity>
-                <Text style={AppStyle.StyleVoucherCGV.text}>Lịch Sử Điểm</Text>
-            </View> */}
-            <Header onpress={GOback} item ={item}/>
+            <Header onpress={GOback} item={item} />
             <View style={{ marginHorizontal: 12, flex: 11 }}>
 
                 {

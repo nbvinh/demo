@@ -97,7 +97,7 @@ const History_Transform = ({ navigation }) => {
                 };
         }
     }
-    const item ='lịch sử giao dịch'
+    const item ='Lịch Sử Giao Dịch'
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
             <View style={{ flex: 1 }}>

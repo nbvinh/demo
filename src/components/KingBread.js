@@ -122,22 +122,9 @@ const KingBread = ({ navigation }) => {
                     <View style={AppStyle.StyleVoucherCGV.container}>
 
                         {temp1 && temp1.map((item1) => {
-                            const item =item1.name;
+                            const item = item1.name;
                             return (
-
-                                // <View style={AppStyle.StyleVoucherCGV.header}>
-                                //     <TouchableOpacity onPress={() => GOback()} >
-                                //         <Image
-                                //             width={10} height={18}
-                                //             source={require('../img/back.png')}
-                                //         />
-                                //     </TouchableOpacity>
-                                //     <Text key={item.id.toString()} style={AppStyle.StyleVoucherCGV.text}>{item.name}</Text>
-
-                                      <Header onpress={GOback} item ={item}/>
-                                // </View>
-
-                              
+                                <Header key={item1.id.toString()} onpress={GOback} item={item} />
                             )
                         }
 
@@ -210,11 +197,6 @@ const KingBread = ({ navigation }) => {
                                                 <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Đồ Uống</Text>
                                             </TouchableOpacity>
                                         </View>
-                                        {/* <TouchableOpacity style={{width:20,height:30,backgroundColor:'white'}}
-                                onPress={()=>truonganhvinh()}
-                            >
-
-                            </TouchableOpacity> */}
                                         {DataProduct && DataProduct.map((item) => <ListProduct key={item.id.toString()} myListProduct={item} />)}
                                     </View>
                                 </View>

@@ -29,15 +29,6 @@ const PaymentMethods = ({ navigation }) => {
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
             <View style={AppStyle.StyleVoucherCGV.container}>
-                {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Image
-                            width={10} height={18}
-                            source={require('../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleVoucherCGV.text}></Text>
-                </View> */}
                  <Header onpress={GOback} item ={item}/>
                 <View style={{ flex: 11 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>

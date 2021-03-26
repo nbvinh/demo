@@ -29,24 +29,12 @@ const ChonVoucher = ({ navigation }) => {
         dispatch({ type: 'CHOOSEVOUCHERTRUE' })
         return true;
     }
-    const GOback =()=>{
-        navigation.goBack()
-    }
     const item ='Chọn Voucher'
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
 
             <View style={AppStyle.StyleVoucherCGV.container}>
-                {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                    <TouchableOpacity onPress={() => Goback()} >
-                        <Image
-                            width={10} height={18}
-                            source={require('../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleVoucherCGV.text}>Chọn Voucher</Text>
-                </View> */}
-                 <Header onpress={GOback} item ={item}/>
+                 <Header onpress={Goback} item ={item}/>
                 <View style={{ flex: 10 }}>
                     <ScrollView>
                         <View style={AppStyle.StyleVoucherCGV.address}>

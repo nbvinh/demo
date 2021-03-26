@@ -69,18 +69,7 @@ const MuaDiem = ({ navigation }) => {
         flex: 1,}}
 
     >
-        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-
-
-            {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => } >
-                    <Image
-                        width={10} height={18}
-                        source={require('../../img/back.png')}
-                    />
-                </TouchableOpacity>
-                <Text style={AppStyle.StyleVoucherCGV.text}>Mua Điểm</Text>
-            </View> */}
+        <SafeAreaView style={[AppStyle.StyleGiaoDich.container,{marginTop:10}]}>
               <Header onpress={GOback} item ={item}/>
             <View style={{ marginHorizontal: 8, flex: 11 }}>
                 <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập số cần mua</Text>

@@ -73,16 +73,6 @@ const PaymentConfirmation = ({ navigation }) => {
         <SafeAreaView style={AppStyle.StyleMain.container}>
 
             <View style={AppStyle.StyleVoucherCGV.container}>
-                {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Image
-                            width={10} height={18}
-                            source={require('../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleVoucherCGV.text}>Xác nhận thanh toán </Text>
-                </View> */}
-                
                 <Header onpress={GOback} item ={item}/>
                 <View style={{ flex: 9 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
