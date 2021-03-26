@@ -166,21 +166,7 @@ const History_Transform = ({ navigation }) => {
                 </Modal>
 
                 <View style={[AppStyle.Style_History_Tranform.container]}>
-                    {/* <View style={AppStyle.Style_History_Tranform.header}>
-                        <TouchableOpacity onPress={() => navigation.goBack()} >
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image}
-                                source={require('../img/back.png')}
-                            />
-                        </TouchableOpacity>
-                        <Text style={AppStyle.Style_History_Tranform.header_title}>Lịch sử giao dịch </Text>
-                        <TouchableOpacity onPress={_onPress} style={{ zIndex: 1 }}>
-                            <Image
-                                style={AppStyle.Style_History_Tranform.Image1}
-                                source={require('../img/Calendar.png')}
-                            />
-                        </TouchableOpacity>
-                    </View> */}
+
                     <View style={AppStyle.StyleVoucherCGV.header}>
                         <TouchableOpacity onPress={() => navigation.goBack()} >
                             <Image
@@ -198,9 +184,9 @@ const History_Transform = ({ navigation }) => {
                     </View>
                     <View style={{ flex: 11 }}>
                         <Text style={AppStyle.Style_History_Tranform.text}>Tháng {min}</Text>
-                       
-                          
-                            {confirm ?
+
+
+                        {confirm ?
                             <ScrollView style={AppStyle.Style_History_Tranform.content}>
                                 <View>
 
@@ -305,14 +291,14 @@ const History_Transform = ({ navigation }) => {
                                         // }
                                     })}
                                 </View>
-                                </ScrollView>
-                                :
-                                <View style={{justifyContent:'center', alignItems:'center', flex: 1}}>
-                                    <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Bạn chưa có giao dịch nào ?</Text>
-                                </View>
-                            }
+                            </ScrollView>
+                            :
+                            <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                                <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Bạn chưa có giao dịch nào ?</Text>
+                            </View>
+                        }
 
-                        
+
                     </View>
                     {/* <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'red' }} onPress={() => storeData()}></TouchableOpacity>
                 <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'yellow' }} onPress={() => getData ()}></TouchableOpacity> */}

@@ -19,10 +19,10 @@ const PaymentMethods = ({ navigation }) => {
     const onLienket = () => {
         dispatch({ type: 'LIENKET' })
     }
-    const GOback =()=>{
+    const GOback = () => {
         navigation.goBack()
     }
-    const item ='Phương thức thanh toán' 
+    const item = 'Phương thức thanh toán'
     const DataProduct = useSelector(state => state.DataProduct)
     const sum = useSelector(state => state.sum)
     const kingbread = useSelector(state => state.kingbread)
@@ -77,11 +77,11 @@ const PaymentMethods = ({ navigation }) => {
                                     <Text style={{ color: 'red' }}>Số dư hiện tại: 15 điểm</Text>
                                 </View>
                             }
-                            <View style={{height:300}}/>
+                            <View style={{ height: 300 }} />
                         </ScrollView>
                     </View>
                 </View>
-                <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10,flex:4 }}>
+                <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10, flex: 4 }}>
                     {kingbread ?
                         <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>

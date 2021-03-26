@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, Image, SafeAreaView,BackHandler } from "react-native";
+import { View, Text, TouchableOpacity, Image, SafeAreaView, BackHandler } from "react-native";
 import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import AppStyle from "../theme";
 import Khuyenmai from "../components/ChonVoucher/Khuyenmai";
@@ -77,4 +77,4 @@ const ChonVoucher = ({ navigation }) => {
         </SafeAreaView>
     )
 }
-export default ChonVoucher; 
+export default ChonVoucher;

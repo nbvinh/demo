@@ -121,13 +121,13 @@ const DoiAvatar = ({ navigation }) => {
             setModalVisible(!isModalVisible)
         });
     }
-    const GOback =()=>{
+    const GOback = () => {
         navigation.goBack()
     }
-    const item ='Thông tin cá nhân'
+    const item = 'Thông tin cá nhân'
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-          <Header press={GOback} item ={item}/>
+            <Header press={GOback} item={item} />
             <View style={{ marginHorizontal: 12 }}>
                 <View style={{ marginTop: 20, height: 80, justifyContent: 'center', alignItems: 'center' }}>
                     <Image

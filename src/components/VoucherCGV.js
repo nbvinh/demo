@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image,SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, SafeAreaView } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import SlideImg from "./VoucherCGV/sildeImg";
@@ -26,23 +26,15 @@ const VoucherCGV = ({ navigation }) => {
             dispatch({ type: 'PRICECGV' })
         }
     }
-    const GOback =()=>{
+    const GOback = () => {
         navigation.goBack()
     }
-    const item ='Voucher CGV Cinema'
+    const item = 'Voucher CGV Cinema'
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
             <View style={AppStyle.StyleVoucherCGV.container}>
-                {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                    <TouchableOpacity onPress={() => } >
-                        <Image
-                            width={10} height={18}
-                            source={require('../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleVoucherCGV.text}></Text>
-                </View> */}
-                 <Header onpress={GOback} item ={item}/>
+
+                <Header onpress={GOback} item={item} />
                 <View style={{ flex: 11 }}>
                     <ScrollView>
                         <SlideImg />
