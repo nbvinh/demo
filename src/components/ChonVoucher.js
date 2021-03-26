@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, Image, SafeAreaView,BackHandler } from "react-native";
+import { View, Text, TouchableOpacity, Image, SafeAreaView, BackHandler } from "react-native";
 import { FlatList, ScrollView, TextInput } from "react-native-gesture-handler";
 import AppStyle from "../theme";
 import Khuyenmai from "../components/ChonVoucher/Khuyenmai";
@@ -29,24 +29,16 @@ const ChonVoucher = ({ navigation }) => {
         dispatch({ type: 'CHOOSEVOUCHERTRUE' })
         return true;
     }
-    const GOback =()=>{
+    const GOback = () => {
         navigation.goBack()
     }
-    const item ='Chọn Voucher'
+    const item = 'Chọn Voucher'
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
 
             <View style={AppStyle.StyleVoucherCGV.container}>
-                {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                    <TouchableOpacity onPress={() => Goback()} >
-                        <Image
-                            width={10} height={18}
-                            source={require('../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleVoucherCGV.text}>Chọn Voucher</Text>
-                </View> */}
-                 <Header onpress={GOback} item ={item}/>
+
+                <Header onpress={GOback} item={item} />
                 <View style={{ flex: 10 }}>
                     <ScrollView>
                         <View style={AppStyle.StyleVoucherCGV.address}>
@@ -89,4 +81,4 @@ const ChonVoucher = ({ navigation }) => {
         </SafeAreaView>
     )
 }
-export default ChonVoucher; 
+export default ChonVoucher;

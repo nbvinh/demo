@@ -3,24 +3,16 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity, SafeAreaView, Statu
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import Header from '../Header'
-const GiaoDich = ({navigation}) =>{
-    const item='giao dich';
-    const GOback =()=>{
+const GiaoDich = ({ navigation }) => {
+    const item = 'Giao Dịch';
+    const GOback = () => {
         navigation.goBack()
     }
-    return(
+    return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-            {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => } >
-                    <Image
-                        width={10} height={18}
-                        source={require('../../img/back.png')}
-                    />
-                </TouchableOpacity>
-                <Text style={AppStyle.StyleVoucherCGV.text}>{item}</Text>
-            </View> */}
-             <Header onpress={GOback} item ={item}/>
-            <View style={{ marginHorizontal: 12, flex:12 }}>
+
+            <Header onpress={GOback} item={item} />
+            <View style={{ marginHorizontal: 12, flex: 12 }}>
                 <TouchableOpacity style={AppStyle.StyleGiaoDich.Box} onPress={() => navigation.navigate('DoiDiem')}>
                     <View style={AppStyle.StyleGiaoDich.Box_Left}>
                         <Image

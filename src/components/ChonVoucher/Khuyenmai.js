@@ -9,7 +9,7 @@ const Khuyenmai = (props) => {
 
     const onchoose = () => {
         dispatch({ type: 'CHOOSE', id: id })
-        dispatch ({type:'CONFIRMVOUCHER'})
+        dispatch({ type: 'CONFIRMVOUCHER' })
         if (dieukien === true) {
             Alert.alert(
                 "Title",
@@ -40,7 +40,7 @@ const Khuyenmai = (props) => {
     return (
         <View style={[AppStyle.StyleVoucherCGV.address, { marginTop: 20 }]}>
             <TouchableOpacity onPress={() => onchoose(props.myarrPromotion)}>
-                <View style={{ flexDirection: 'row',flex:1,justifyContent:'space-around' }}>
+                <View style={{ flexDirection: 'row', flex: 1, justifyContent: 'space-around' }}>
                     <Image
                         style={AppStyle.StyleChonVoucher.img2}
                         source={{ uri: img }}

@@ -122,22 +122,10 @@ const KingBread = ({ navigation }) => {
                     <View style={AppStyle.StyleVoucherCGV.container}>
 
                         {temp1 && temp1.map((item1) => {
-                            const item =item1.name;
+                            const item = item1.name;
                             return (
 
-                                // <View style={AppStyle.StyleVoucherCGV.header}>
-                                //     <TouchableOpacity onPress={() => GOback()} >
-                                //         <Image
-                                //             width={10} height={18}
-                                //             source={require('../img/back.png')}
-                                //         />
-                                //     </TouchableOpacity>
-                                //     <Text key={item.id.toString()} style={AppStyle.StyleVoucherCGV.text}>{item.name}</Text>
-
-                                      <Header onpress={GOback} item ={item}/>
-                                // </View>
-
-                              
+                                <Header onpress={GOback} item={item} />
                             )
                         }
 

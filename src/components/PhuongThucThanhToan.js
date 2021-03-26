@@ -19,26 +19,18 @@ const PaymentMethods = ({ navigation }) => {
     const onLienket = () => {
         dispatch({ type: 'LIENKET' })
     }
-    const GOback =()=>{
+    const GOback = () => {
         navigation.goBack()
     }
-    const item ='Phương thức thanh toán' 
+    const item = 'Phương thức thanh toán'
     const DataProduct = useSelector(state => state.DataProduct)
     const sum = useSelector(state => state.sum)
     const kingbread = useSelector(state => state.kingbread)
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
             <View style={AppStyle.StyleVoucherCGV.container}>
-                {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Image
-                            width={10} height={18}
-                            source={require('../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleVoucherCGV.text}></Text>
-                </View> */}
-                 <Header onpress={GOback} item ={item}/>
+
+                <Header onpress={GOback} item={item} />
                 <View style={{ flex: 11 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
                         <ScrollView>
@@ -86,11 +78,11 @@ const PaymentMethods = ({ navigation }) => {
                                     <Text style={{ color: 'red' }}>Số dư hiện tại: 15 điểm</Text>
                                 </View>
                             }
-                            <View style={{height:300}}/>
+                            <View style={{ height: 300 }} />
                         </ScrollView>
                     </View>
                 </View>
-                <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10,flex:4 }}>
+                <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10, flex: 4 }}>
                     {kingbread ?
                         <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>

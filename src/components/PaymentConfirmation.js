@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image,SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, TextInput, Alert, Image, SafeAreaView } from "react-native";
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../theme";
 import { useSelector, useDispatch } from "react-redux";
@@ -34,7 +34,7 @@ const PaymentConfirmation = ({ navigation }) => {
         setTodo((prevtodo) => {
             let newTodo = [...prevtodo]
             let d = new Date();
-            dispatch({ type: 'ADDBILL', id: Math.random().toString(), sum: sum, sumamount: sumamount, product: product ,timmer :  parseInt(d.getMonth() + 1)+"/" + d.getFullYear() })
+            dispatch({ type: 'ADDBILL', id: Math.random().toString(), sum: sum, sumamount: sumamount, product: product, timmer: parseInt(d.getMonth() + 1) + "/" + d.getFullYear() })
             return newTodo
         })
     }
@@ -57,7 +57,7 @@ const PaymentConfirmation = ({ navigation }) => {
         setTodoCGV((prevtodoCGV) => {
             let newTodoCGV = [...prevtodoCGV]
             let d = new Date();
-            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV, value: value,timmer :parseInt(d.getMonth() +1)+"/" +d.getFullYear()  })
+            dispatch({ type: 'ADDBILLCGV', id: Math.random().toString(), priceCGV: priceCGV, value: value, timmer: parseInt(d.getMonth() + 1) + "/" + d.getFullYear() })
             return newTodoCGV
         })
     }
@@ -65,25 +65,16 @@ const PaymentConfirmation = ({ navigation }) => {
         console.log(billsCGV)
     }, [billsCGV])
     const product = useSelector(state => state.product)
-    const GOback =()=>{
+    const GOback = () => {
         navigation.goBack()
     }
-    const item ='Xác nhận thanh toán'
+    const item = 'Xác nhận thanh toán'
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
 
             <View style={AppStyle.StyleVoucherCGV.container}>
-                {/* <View style={AppStyle.StyleVoucherCGV.header}>
-                    <TouchableOpacity onPress={() => navigation.goBack()} >
-                        <Image
-                            width={10} height={18}
-                            source={require('../img/back.png')}
-                        />
-                    </TouchableOpacity>
-                    <Text style={AppStyle.StyleVoucherCGV.text}>Xác nhận thanh toán </Text>
-                </View> */}
-                
-                <Header onpress={GOback} item ={item}/>
+
+                <Header onpress={GOback} item={item} />
                 <View style={{ flex: 9 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
                         <ScrollView>
@@ -167,12 +158,12 @@ const PaymentConfirmation = ({ navigation }) => {
                                     )
                                 )
                             })}
-                            <View style={{height:300}}/>
+                            <View style={{ height: 300 }} />
                         </ScrollView>
                     </View>
                 </View>
 
-                <View style={{ position:'absolute',bottom:0,width:'100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
+                <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: '#272738', borderTopLeftRadius: 16, borderTopRightRadius: 16, paddingVertical: 10 }}>
                     {kingbread ?
                         <View style={{ marginHorizontal: 10, marginTop: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
                             <Text style={AppStyle.StylePhuongthucthanhtoan.text1}>Tổng thanh toán</Text>

@@ -52,10 +52,10 @@ const DoiDiem = ({ navigation }) => {
         }
 
     }
-    const GOback =()=>{
+    const GOback = () => {
         navigation.goBack()
     }
-    const item ='Đổi Điểm '
+    const item = 'Đổi Điểm '
     return (
 
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
@@ -68,8 +68,8 @@ const DoiDiem = ({ navigation }) => {
                 </TouchableOpacity>
                 <Text style={AppStyle.StyleVoucherCGV.text}></Text>
             </View> */}
-             <Header onpress={GOback} item ={item}/>
-            <View style={{ marginHorizontal: 12, flex:11 }}>
+            <Header onpress={GOback} item={item} />
+            <View style={{ marginHorizontal: 12, flex: 11 }}>
                 <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Chọn đối tác</Text>
                 {/* <View style={AppStyle.StyleGiaoDich.Box_DoiDiem}>
                         <Image
