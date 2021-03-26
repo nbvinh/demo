@@ -10,7 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Province from "../components/Main/Province"
 import DataVoucher from "../components/Main/DuLieuVoucher";
 import rootSaga from '../Saga/mySaga';
-const Main = ({ navigation }) => {
+const Main = ({ navigation, route }) => {
     function numberWithCommas(x) {
         x = x.toString();
         var pattern = /(-?\d+)(\d{3})/;
@@ -41,17 +41,18 @@ const Main = ({ navigation }) => {
         axios.get('http://175.41.184.177:6061/voucher?pageNumber=' + number).then(function (res) {
             const dulieuvoucher = res.data.data;
             Object.entries(dulieuvoucher);
-            console.log('theLoai', theLoai);
-            setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
+
+            //setDuLieuVoucher([...DuLieuVoucher, ...dulieuvoucher]);
+            setDuLieuVoucher(dulieuvoucher);
         }).catch(function (error) {
             console.log(error);
         });
     }
     useEffect(() => {
-        _storeData();
-        _getData();
+        _getData()
+        GetImg()
         const loadnhe = async () => {
-           
+
             const result = await axios.get('http://175.41.184.177:6061/category').then(function (res) {
                 const dulieu = res.data.data;
                 Object.entries(dulieu);
@@ -59,7 +60,6 @@ const Main = ({ navigation }) => {
             }).catch(function (error) {
                 console.log(error);
             });
-           console.log(theLoai);
             const result1 = await callapiVoucher();
             const result2 = await fetch('http://175.41.184.177:6061/data-province?offset=2&pageNumber=2&pageSize=2&paged=false&sort.sorted=false&sort.unsorted=false&unpaged=false', {
                 method: 'GET'
@@ -70,7 +70,7 @@ const Main = ({ navigation }) => {
             setTime(false)
         }
         loadnhe();
-    }, [diem])
+    }, [])
     const modal = () => {
         setTest(false)
         dispatch({ type: 'MODALPROVINCE' })
@@ -80,52 +80,57 @@ const Main = ({ navigation }) => {
         dispatch({ type: 'CHECKKINGBREAD' })
         navigation.navigate('KingBread')
     }
-    const _storeData = async () => {
-        try {
-            await AsyncStorage.setItem(
-                'Diem',
-                JSON.stringify(diem)
-            );
-        } catch (error) {
-            // Error saving data
-        }
-    };
     const _getData = async () => {
         try {
-            await AsyncStorage.getItem("Diem").then(val => {
-                console.log(val);
-                setdiemlocal(val);
-
-            });
+            let val = await AsyncStorage.getItem("Diem")
+            if (val === null) {
+                await AsyncStorage.setItem('Diem', JSON.stringify(diem));
+            }
+            else {
+                console.log('diemmmmm', val)
+                dispatch({ type: 'DIEMUP', diem: val })
+            }
 
         } catch (error) {
-
+            console.log('AsyncStorage get data error in List component', error.message)
         }
 
     };
+    const GetImg = async () => {
+        try {
+            const value = await AsyncStorage.getItem('TASKS');
+            if (value !== null) {
+                // We have data!!
+                dispatch({ type: 'IMAGES', image: value })
+            }
+        } catch (error) {
+            // Error retrieving data
+        }
+    }
     const ListDuLieuVoucher = (chooseVoucher) => {
         if (chooseVoucher.id === 11) {
             navigation.navigate('VoucherCGV')
             dispatch({ type: 'KINGBREADFALSE' })
         }
     }
-    const checkLogin = () =>{
+    const checkLogin = () => {
         token === '' ? Alert.alert('Thông Báo', 'Bạn chưa đăng nhập, nên không để thay đổi thông tin được', [
-                        
+
             {
                 text: "Đăng Nhập",
                 onPress: () => {
                     navigation.navigate('SecondScreen')
-                    
+
                 }
             },
             {
                 text: "Bỏ qua",
-                
-              },
-          ],
-          { cancelable: false }
-        ) :  navigation.navigate('DoiAvatar');
+
+            },
+        ],
+            { cancelable: false }
+        ) :
+            navigation.navigate('DoiAvatar');
     }
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
@@ -195,14 +200,14 @@ const Main = ({ navigation }) => {
                             <View style={AppStyle.StyleMain.poin_your_left}>
                                 <Text style={{ color: 'white', fontSize: 15, fontWeight: '400' }}> Điểm của bạn </Text>
 
-                                <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {diemlocal}</Text>
+                                <Text style={{ color: 'white', fontSize: 18, fontWeight: '600' }}> {numberWithCommas(diem)}</Text>
                             </View>
                             <View style={AppStyle.StyleMain.poin_your_right}>
                                 <LinearGradient
                                     style={{ width: 27, height: 27, borderRadius: 8, justifyContent: 'center', alignItems: 'center', marginRight: 15 }}
                                     colors={['#8B3BFF', '#B738FF']}
                                 >
-                                    <TouchableOpacity onPress={() => navigation.navigate('GiaoDich')}>
+                                    <TouchableOpacity onPress={() => { navigation.navigate('GiaoDich') }}>
                                         <Text style={{ color: 'white', fontSize: 22 }}>+</Text>
                                     </TouchableOpacity>
                                 </LinearGradient>
@@ -211,7 +216,7 @@ const Main = ({ navigation }) => {
                         </View>
                         <View style={AppStyle.StyleMain.option}>
                             {
-                                
+
                                 DuLieuApi.map(item => {
                                     const ChiTietVoucherTheoLoai = () => {
                                         dispatch({ type: 'IDLOAI', id: item.id })

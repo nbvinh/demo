@@ -87,9 +87,18 @@ const History_Transform = ({ navigation }) => {
                 };
         }
     }
+    const onclick =()=>{
+        if(isShowCalendar == true){
+            return { flex:1,opacity:0.2}
+        }
+        else{
+            return { flex:1}
+        }
+    }
+    const item = 'lịch sử giao dịch'
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
-            <View style={click()}>
+            <View style={onclick()}>
                 <Modal
                     animationType="fade"
                     transparent={true}
@@ -116,11 +125,11 @@ const History_Transform = ({ navigation }) => {
 
                                 }}
                                 dayLabelsWrapper={{
-                                    borderTopWidth: 0,
-                                    borderBottomWidth: 1,
+                                   
+                                    borderWidth: 1,
                                     borderStyle: 'dashed',
                                     borderRadius: 1,
-                                    color: 'green'
+                                    
                                 }}
                                 customDatesStyles={customDatesStylesCallback}
                                 customDayHeaderStyles={customDayHeaderStylesCallback}
@@ -140,7 +149,8 @@ const History_Transform = ({ navigation }) => {
 
 
                             <View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15, borderTopWidth: 1, borderStyle: 'dashed', paddingVertical: 10, borderBottomLeftRadius: 16, borderBottomRightRadius: 16 }}>
+                                <View style={{borderWidth: 1, borderStyle: 'dashed',borderRadius:1,borderColor:'#ECEBED'}}></View>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15 ,paddingVertical: 10, borderBottomLeftRadius: 16, borderBottomRightRadius: 16 }}>
                                     <TouchableOpacity onPress={Cancel}>
                                         <Text style={{ color: '#9B9EA3', fontSize: 14, fontWeight: '500' }}>Xóa</Text>
                                     </TouchableOpacity>
@@ -155,7 +165,6 @@ const History_Transform = ({ navigation }) => {
                 </Modal>
 
                 <View style={[AppStyle.Style_History_Tranform.container]}>
-                  
                     <View style={AppStyle.StyleVoucherCGV.header}>
                         <TouchableOpacity onPress={() => navigation.goBack()} >
                             <Image
@@ -163,7 +172,7 @@ const History_Transform = ({ navigation }) => {
                                 source={require('../img/back.png')}
                             />
                         </TouchableOpacity>
-                        <Text style={AppStyle.StyleVoucherCGV.text}>Lịch sử giao dịch</Text>
+                        <Text style={AppStyle.StyleVoucherCGV.text}>{item}</Text>
                         <TouchableOpacity onPress={_onPress} style={{ zIndex: 1 }}>
                             <Image
                                 style={AppStyle.Style_History_Tranform.Image1}
@@ -172,10 +181,11 @@ const History_Transform = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                     <View style={{ flex: 11 }}>
+                        <Text style={AppStyle.Style_History_Tranform.text}>Tháng {min}</Text>
 
-                        <ScrollView style={AppStyle.Style_History_Tranform.content}>
-                            <Text style={AppStyle.Style_History_Tranform.text}>Tháng {min}</Text>
-                            {confirm ?
+
+                        {confirm ?
+                            <ScrollView style={AppStyle.Style_History_Tranform.content}>
                                 <View>
 
                                     {bills.map((item) => {
@@ -261,13 +271,14 @@ const History_Transform = ({ navigation }) => {
                                     
                                     })}
                                 </View>
-                                :
-                                <View>
-                                    <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Bạn chưa có giao dịch nào </Text>
-                                </View>
-                            }
+                            </ScrollView>
+                            :
+                            <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                                <Text style={{ color: 'white', fontSize: 18, textAlign: 'center' }}>Bạn chưa có giao dịch nào ?</Text>
+                            </View>
+                        }
 
-                        </ScrollView>
+
                     </View>
                     {/* <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'red' }} onPress={() => storeData()}></TouchableOpacity>
                 <TouchableOpacity style={{ width: 30, height: 30, backgroundColor: 'yellow' }} onPress={() => getData ()}></TouchableOpacity> */}

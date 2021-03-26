@@ -4,17 +4,44 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import { useSelector, useDispatch } from "react-redux";
 import LinearGradient from 'react-native-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect } from 'react';
+import Header from '../Header'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+
 const MuaDiem = ({ navigation }) => {
     const dispatch = useDispatch();
     const [diem, setDiem] = React.useState(0);
     const [check, setcheck] = React.useState(false);
     const [check2, setcheck2] = React.useState(false);
+    const [check3, setcheck3] = React.useState(false);
     function numberWithCommas(x) {
         x = x.toString();
         var pattern = /(-?\d+)(\d{3})/;
         while (pattern.test(x))
             x = x.replace(pattern, "$1.$2");
         return x;
+    }
+    const _storeData = async () => {
+        AsyncStorage.setItem(
+            'Diem',
+            JSON.stringify(diermthaydoi),
+            () => {
+                AsyncStorage.getItem('Diem', (err, result) => {
+                    dispatch({ type: 'DIEMUP', diem: result })
+                });
+            }
+        );
+    };
+    useEffect(() => {
+        _storeData()
+    }, [check3])
+    async function asyncCall() {
+        dispatch({ type: 'UPDIEM', diem: diem })
+        navigation.navigate('Tabviewmain');
+        let d = new Date();
+        dispatch({ type: 'HISTORY_POINT', point: '+' + diem, phuongthuc: check, tỉme: d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() });
+        setcheck3(true)
     }
     const onSubmitThanhToan = () => {
         {
@@ -28,47 +55,27 @@ const MuaDiem = ({ navigation }) => {
                 Alert.alert('Thông báo', 'Bạn chưa nhập số điểm cần mua !');
             }
             else {
-
-
-                Alert.alert('Thông Báo', 'Bạn Có Chắc Là Thanh Toán ' + numberWithCommas(diem * 100) + ' VNĐ Không!', [
-
-                    {
-                        text: "Có",
-                        onPress: () => {
-
-                            navigation.navigate('Tabviewmain');
-                            dispatch({ type: 'UPDIEM', diem: diem });
-                            let d = new Date();
-                            dispatch({ type: 'HISTORY_POINT', point: '+' + diem, phuongthuc: check, tỉme: d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() });
-                        }
-                    },
-                    {
-                        text: "Không",
-                        onPress: () => console.log("Cancel Pressed"),
-                    },
-                ],
-                    { cancelable: false });
-
+                asyncCall()
             }
 
         }
     }
+    const GOback =()=>{
+        navigation.goBack()
+    }
+    const item ='Mua Điểm'
+    const diermthaydoi = useSelector(state => state.diem)
     return (
-        <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
+        <KeyboardAwareScrollView
+        style={{ backgroundColor: 'black',
+        flex: 1,}}
 
-
-            <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
-                    <Image
-                        width={10} height={18}
-                        source={require('../../img/back.png')}
-                    />
-                </TouchableOpacity>
-                <Text style={AppStyle.StyleVoucherCGV.text}>Mua Điểm</Text>
-            </View>
-            <View style={{ marginHorizontal: 8,flex:11 }}>
+    >
+        <SafeAreaView style={[AppStyle.StyleGiaoDich.container,{marginTop:10}]}>
+              <Header onpress={GOback} item ={item}/>
+            <View style={{ marginHorizontal: 8, flex: 11 }}>
                 <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Nhập số cần mua</Text>
-                <TextInput placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style={[AppStyle.StyleGiaoDich.Box_DoiDiem, { color: 'white' }]} onChangeText={(value) => setDiem(value)} />
+                <TextInput placeholder='0' placeholderTextColor='rgba(255, 255, 255, 0.3)' keyboardType='numeric' style={[AppStyle.StyleGiaoDich.Box_DoiDiem, { color: 'white' }]} onChangeText={(value) => setDiem(parseInt(value))} />
                 <View style={AppStyle.StyleGiaoDich.TongTien}>
                     <Text style={AppStyle.StyleGiaoDich.Text_White}>Tổng Tiền</Text>
                     <Text style={AppStyle.StyleGiaoDich.Text_White}>{diem > 0 ? numberWithCommas(diem * 100) : 0} VNĐ</Text>
@@ -126,9 +133,9 @@ const MuaDiem = ({ navigation }) => {
                         </TouchableOpacity>
 
                 }
-
             </View>
         </SafeAreaView>
+        </KeyboardAwareScrollView>
     );
 }
 export default MuaDiem;

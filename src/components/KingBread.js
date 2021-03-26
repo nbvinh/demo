@@ -6,7 +6,7 @@ import SlideImg from "../components/KingBread/SlideImg";
 import ListProduct from "../components/KingBread/ListProduct";
 import { useSelector, useDispatch } from "react-redux";
 import Communications from 'react-native-communications';
-import call from 'react-native-phone-call'
+import Header from '../components/Header';
 const KingBread = ({ navigation }) => {
     const dispatch = useDispatch();
     const [time, setTime] = useState(true)
@@ -120,19 +120,17 @@ const KingBread = ({ navigation }) => {
                     </View>
                     :
                     <View style={AppStyle.StyleVoucherCGV.container}>
-                        <View style={AppStyle.StyleVoucherCGV.header}>
-                            <TouchableOpacity onPress={() => GOback()} >
-                                <Image
-                                    width={10} height={18}
-                                    source={require('../img/back.png')}
-                                />
-                            </TouchableOpacity>
-                            {temp1 && temp1.map((item) => {
-                                return (
-                                    <Text key={item.id.toString()} style={AppStyle.StyleVoucherCGV.text}>{item.name}</Text>
-                                )
-                            })}
-                        </View>
+
+                        {temp1 && temp1.map((item1) => {
+                            const item = item1.name;
+                            return (
+                                <Header key={item1.id.toString()} onpress={GOback} item={item} />
+                            )
+                        }
+
+
+                        )}
+
                         <View style={{ flex: 11 }}>
                             <ScrollView>
                                 <SlideImg />
@@ -166,7 +164,7 @@ const KingBread = ({ navigation }) => {
                                                                 source={require('../img/vinh31.png')}
                                                             />
                                                         </TouchableOpacity>
-                                                        <TouchableOpacity onPress={()=>onShare()}>
+                                                        <TouchableOpacity onPress={() => onShare()}>
                                                             <Image
                                                                 style={{ width: 50, height: 36, marginBottom: 10 }}
                                                                 source={require('../img/vinh32.png')}
@@ -199,11 +197,6 @@ const KingBread = ({ navigation }) => {
                                                 <Text style={[AppStyle.StyleKingBread.text, { color: '#FFFFFF', textAlign: 'center' }]}>Đồ Uống</Text>
                                             </TouchableOpacity>
                                         </View>
-                                        {/* <TouchableOpacity style={{width:20,height:30,backgroundColor:'white'}}
-                                onPress={()=>truonganhvinh()}
-                            >
-
-                            </TouchableOpacity> */}
                                         {DataProduct && DataProduct.map((item) => <ListProduct key={item.id.toString()} myListProduct={item} />)}
                                     </View>
                                 </View>

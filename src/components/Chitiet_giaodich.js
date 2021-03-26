@@ -4,6 +4,7 @@ import AppStyle from "../theme";
 import StepIndicator from 'react-native-step-indicator';
 import LinearGradient from "react-native-linear-gradient";
 import { useSelector, useDispatch } from 'react-redux';
+import Header from '../components/Header';
 
 const Chitiet_giaodich = ({ navigation, route }) => {
     const dispatch = useDispatch()
@@ -43,20 +44,16 @@ const Chitiet_giaodich = ({ navigation, route }) => {
     const productafter = useSelector(state => state.productafter)
     console.log('id la', id)
     console.log('producàter', productafter)
-
+    const GOback = () => {
+        navigation.goBack()
+    }
+    const item = 'Chi Tiết Giao Dịch'
     return (
 
         <SafeAreaView style={{ ...AppStyle.Style_Chitiet_giaodich.container, flex: 1 }}>
-            <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
-                    <Image
-                        width={10} height={18}
-                        source={require('../img/back.png')}
-                    />
-                </TouchableOpacity>
-                <Text style={AppStyle.StyleVoucherCGV.text}>Chi Tiết Giao Dịch</Text>
-            </View>
-            <View style={{flex:11}}>
+
+            <Header onpress={GOback} item={item} />
+            <View style={{ flex: 11 }}>
 
                 <ScrollView style={{ flex: 1, paddingHorizontal: 20, backgroundColor: 'black', }} >
 

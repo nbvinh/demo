@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
 import LinearGradient from 'react-native-linear-gradient';
 import { useSelector, useDispatch } from "react-redux";
+import Header from '../Header';
 const DoiDiem = ({ navigation }) => {
     const dispatch = useDispatch();
     const diem = useSelector(state => state.diem)
@@ -51,19 +52,24 @@ const DoiDiem = ({ navigation }) => {
         }
 
     }
+    const GOback = () => {
+        navigation.goBack()
+    }
+    const item = 'Đổi Điểm '
     return (
 
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-            <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => navigation.goBack()} >
+            {/* <View style={AppStyle.StyleVoucherCGV.header}>
+                <TouchableOpacity onPress={() => } >
                     <Image
                         width={10} height={18}
                         source={require('../../img/back.png')}
                     />
                 </TouchableOpacity>
-                <Text style={AppStyle.StyleVoucherCGV.text}>Đổi Điểm</Text>
-            </View>
-            <View style={{ marginHorizontal: 12, flex:11 }}>
+                <Text style={AppStyle.StyleVoucherCGV.text}></Text>
+            </View> */}
+            <Header onpress={GOback} item={item} />
+            <View style={{ marginHorizontal: 12, flex: 11 }}>
                 <Text style={AppStyle.StyleGiaoDich.Text_Tieude}>Chọn đối tác</Text>
                 {/* <View style={AppStyle.StyleGiaoDich.Box_DoiDiem}>
                         <Image

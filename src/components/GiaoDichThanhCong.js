@@ -8,6 +8,7 @@ const GiaoDichThanhCong = ({ navigation, route }) => {
     const bills = useSelector(state => state.bills)
     const data = useSelector(state => state.data)
     const billsCGV = useSelector(state => state.billsCGV)
+
     return (
         <View style={AppStyle.Style_Giao_Dich_TCong.container}>
             <View style={AppStyle.Style_Giao_Dich_TCong.header}>
