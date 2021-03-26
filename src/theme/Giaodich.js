@@ -6,7 +6,6 @@ const StyleGiaoDich = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "black",
-      
     },
     header:{
          height: 30, flexDirection: 'row'

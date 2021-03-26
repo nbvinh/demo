@@ -30,14 +30,8 @@ const MoiBanBe = ({ navigation }) => {
 
                         return 0;
                     });
-
                     setDanhBa(DanhBaSort);
-
                 }
-
-
-
-
             })
         }
         else if (Platform.OS == 'android') {
@@ -87,9 +81,7 @@ const MoiBanBe = ({ navigation }) => {
     const item = 'Mời Bạn Bè';
 
     return (
-
         <SafeAreaView style={AppStyle.StyleLichSuDiem.container}>
-
             <Header onpress={GOback} item={item} />
 
             <View style={{ marginHorizontal: 12, flex: 11 }}>
@@ -112,8 +104,6 @@ const MoiBanBe = ({ navigation }) => {
                             renderItem={({ item }) => {
                                 return (
                                     <View>
-
-                                        {/* <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text> */}
                                         <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
                                             <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
                                                 <View style={{ borderRadius: 50, backgroundColor: '#303051', height: 36, width: 36, justifyContent: 'center', alignItems: 'center' }}>
@@ -143,8 +133,6 @@ const MoiBanBe = ({ navigation }) => {
                                 );
                             }}
                         />
-
-
                         :
                         <FlatList
                             data={Tamp}
@@ -152,7 +140,6 @@ const MoiBanBe = ({ navigation }) => {
                             renderItem={({ item }) => {
                                 return (
                                     <View>
-
                                         <Text style={{ color: '#949494', fontWeight: 'bold', paddingLeft: 6, fontSize: 14 }}>{item.givenName.charAt(0)}</Text>
                                         <View style={{ flexDirection: 'row', height: 60, margin: 5 }}>
                                             <View style={{ flex: 1.5, justifyContent: 'center', alignItems: 'center' }}>
@@ -179,8 +166,6 @@ const MoiBanBe = ({ navigation }) => {
                                             </View>
                                         </View>
                                     </View>
-
-
                                 );
                             }}
                         />

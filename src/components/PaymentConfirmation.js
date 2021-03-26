@@ -73,8 +73,7 @@ const PaymentConfirmation = ({ navigation }) => {
         <SafeAreaView style={AppStyle.StyleMain.container}>
 
             <View style={AppStyle.StyleVoucherCGV.container}>
-
-                <Header onpress={GOback} item={item} />
+                <Header onpress={GOback} item ={item}/>
                 <View style={{ flex: 9 }}>
                     <View style={AppStyle.StylePhuongthucthanhtoan.content1}>
                         <ScrollView>

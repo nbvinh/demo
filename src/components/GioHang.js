@@ -5,6 +5,7 @@ import { set } from "react-native-reanimated";
 import AppStyle from "../theme";
 import Form from "../components/GioHang/Form";
 import { useDispatch, useSelector } from "react-redux";
+import Header from '../components/Header';
 const GioHang = ({ navigation }) => {
     const [show, setShow] = useState(false);
     const dispatch = useDispatch();
@@ -36,23 +37,12 @@ const GioHang = ({ navigation }) => {
         })
     }
     return (
-
         <SafeAreaView style={[AppStyle.StyleVoucherCGV.container]}>
-            <View style={AppStyle.StyleVoucherCGV.header}>
-                <TouchableOpacity onPress={() => GOback()} >
-                    <Image
-                        width={10} height={18}
-                        source={require('../img/back.png')}
-                    />
-                </TouchableOpacity>
-                <Text style={AppStyle.StyleVoucherCGV.text}>Giỏ Hàng</Text>
-            </View>
-
+            <Header onpress={GOback} item={'Giỏ Hàng'} />
             <View style={{ flex: 11 }}>
                 <ScrollView>
                     {kingbread ?
                         DataProduct && DataProduct.map((item) => {
-
                             return (
                                 item.OpenUP && (
                                     <View key={item.id.toString()} style={AppStyle.StyleVoucherCGV.address}>
@@ -143,7 +133,6 @@ const GioHang = ({ navigation }) => {
             <Form show={show} setShow={setShow} />
             {kingbread ?
                 <View style={AppStyle.StyleGioHang.footer}>
-
                     <View style={{ margin: 15 }}>
                         <View style={AppStyle.StyleGioHang.content2}>
                             <Text style={AppStyle.StyleVoucherCGV.text5}>Tạm tính</Text>
@@ -151,7 +140,6 @@ const GioHang = ({ navigation }) => {
                         </View>
                         <View style={AppStyle.StyleGioHang.content3}>
                             <Text style={AppStyle.StyleVoucherCGV.text8}>Khuyến mãi</Text>
-
                             {choosevoucher ? <Text style={AppStyle.StyleVoucherCGV.text8}>- 0 đ</Text>
                                 :
                                 arrPromotion.map((item, index) => (
@@ -181,7 +169,6 @@ const GioHang = ({ navigation }) => {
                 </View>
                 :
                 <View style={AppStyle.StyleGioHang.footer}>
-
                     <View style={{ margin: 15 }}>
                         <View style={AppStyle.StyleGioHang.content2}>
                             <Text style={AppStyle.StyleVoucherCGV.text5}>Tạm tính</Text>
@@ -189,7 +176,6 @@ const GioHang = ({ navigation }) => {
                         </View>
                         <View style={AppStyle.StyleGioHang.content3}>
                             <Text style={AppStyle.StyleVoucherCGV.text8}>Khuyến mãi</Text>
-
                             {choosevoucher ? <Text style={AppStyle.StyleVoucherCGV.text8}>- 0 đ</Text>
                                 :
                                 arrPromotion.map((item, index) => (
@@ -219,9 +205,6 @@ const GioHang = ({ navigation }) => {
                 </View>
             }
         </SafeAreaView>
-
-
-
     )
 }
 export default GioHang;
