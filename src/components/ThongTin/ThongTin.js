@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, StatusBar, TextInput, SafeAreaView, Alert, Image } from "react-native";
 import { ScrollView } from 'react-native-gesture-handler';
 import AppStyle from "../../theme";
-import LinearGradient from 'react-native-linear-gradient';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 // const Data = [
 //     {
 //         id: '1',
@@ -162,7 +164,9 @@ const ThongTin = ({ navigation }) => {
                             <Image
                                 style={{ width: 24, height: 24 }}
                                 source={require('../../img/img_icon_24px/logout_24px.png')} />
-                            <TouchableOpacity onPress={() => navigation.popToTop()}><Text style={{ color: '#ffffff', marginLeft: 10, fontSize: 15 }}>Đăng Xuất</Text></TouchableOpacity>
+                            <TouchableOpacity onPress={() =>  
+                            {AsyncStorage.setItem('Token',null); navigation.navigate('ScreenFirst')}
+            }><Text style={{ color: '#ffffff', marginLeft: 10, fontSize: 15 }}>Đăng Xuất</Text></TouchableOpacity>
                         </TouchableOpacity>
 
 

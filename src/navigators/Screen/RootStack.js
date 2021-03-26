@@ -25,22 +25,32 @@ import PhuongThucThanhToan from "../../components/PhuongThucThanhToan";
 import { NavigationContainer } from '@react-navigation/native';
 import PaymentConfirmation from "../../components/PaymentConfirmation";
 import KingBread from "../../components/KingBread";
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import GiaoDichThanhCong from "../../components/GiaoDichThanhCong";
 import ScanScreen from "../../components/GiaoDich/quetqr";
 import Chitiet_giaodich from "../../components/Chitiet_giaodich";
 import MoiBanBe from "../../components/MoiBanBe";
 const Root= createStackNavigator();
+
 const RootStack =()=>{
+    const [token_value, settoken_value] = React.useState('');
+    React.useEffect(() =>{
+        AsyncStorage.getItem('Token', (err, res) => {
+           settoken_value(res);
+            
+        });
+    })
     return(
         <NavigationContainer>
 
-        <Root.Navigator headerMode="none" initialRouteName={Main}>
+        <Root.Navigator headerMode="none" initialRouteName={Tabviewmain}>
+        
+            <Root.Screen name ="Tabviewmain" component={Tabviewmain} />
             <Root.Screen name ="ScreenFirst" component={ScreenFirst} />
             <Root.Screen name ="SecondScreen" component={SecondScreen} />
             <Root.Screen name ="ScreenXacThucSDT" component={ScreenXacThucSDT} />
             <Root.Screen name ="Profile" component={Profile} />
-            <Root.Screen name ="Tabviewmain" component={Tabviewmain} />
+            
             <Root.Screen name ="Main" component={Main} />
             <Root.Screen name ="TabVoucher" component={TabVoucher} />
             <Root.Screen name ="ThongTin" component={ThongTin} />

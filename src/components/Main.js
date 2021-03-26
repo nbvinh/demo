@@ -32,6 +32,7 @@ const Main = ({ navigation, route }) => {
     const [test, setTest] = useState(true)
     const [number, setnumber] = React.useState(1);
     const image = useSelector(state => state.image)
+    const [testapiuser, settestapiuser] = useState('');
     const [time, setTime] = useState(true)
     const handlerLoadmore = () => {
         setnumber(number + 1);
@@ -49,10 +50,31 @@ const Main = ({ navigation, route }) => {
         });
     }
     useEffect(() => {
+        AsyncStorage.getItem('Token', (err, res) => {
+            settestapiuser(res);
+            if(res === null){
+                navigation.navigate('ScreenFirst');
+            }
+        });
+        const getuser = () => {
+            try {
+                fetch(`http://175.41.184.177:6061/user`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer + ${testapiuser}`
+                    }
+                })
+                    .then((response) => console.log(response))
+                    .then((json) => { console.log(json) })
+               
+            } catch (error) {
+                Alert.alert('Thông báo', error + '');
+            }
+        }
         _getData()
         GetImg()
         const loadnhe = async () => {
-
+            
             const result = await axios.get('http://175.41.184.177:6061/category').then(function (res) {
                 const dulieu = res.data.data;
                 Object.entries(dulieu);

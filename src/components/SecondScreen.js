@@ -29,6 +29,7 @@ const SecondScreen = ({ navigation }) => {
                 "phone_number": data.phone,
             })
             navigation.navigate('ScreenXacThucSDT', { data: data, token: result.data.data.token });
+            console.log(result.data.data.token);
         } catch (error) {
             Alert.alert('Thông báo', error + '');
         }

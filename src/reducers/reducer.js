@@ -355,6 +355,9 @@ const reducer = (state = initState, action) => {
         }
         case 'DIEMUP' :
             return{...state , diem: parseInt(action.diem)}
+        case 'TOKEN_UP':{
+            return{...state , abc: action.abc}
+        }
         default:
             return state
     }

@@ -101,7 +101,7 @@ export default function TabViewMain() {
                             />}
                         />
                     )
-                }}home_24px
+                }}
             />
              <Tab.Screen
                 name="LichSu"

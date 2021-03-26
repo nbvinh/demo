@@ -7,6 +7,7 @@ import ReactCodeInput from 'react-verification-code-input';
 import { TextInput } from 'react-native-gesture-handler';
 import { set, Value } from 'react-native-reanimated';
 import { confirm_otp } from "./api";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch } from "react-redux";
 const ScreenXacThucSDT = ({ navigation, route }) => {
     const [MaPin1, setMaPin1] = React.useState('');
@@ -15,6 +16,8 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
     const [MaPin4, setMaPin4] = React.useState('');
     const [MaPin5, setMaPin5] = React.useState('');
     const [MaPin6, setMaPin6] = React.useState('');
+    const [check, setCheck] = React.useState(false);
+    const [value, setValue] = React.useState('');
     const dispatch = useDispatch()
     const SDT = route.params.data.phone;
     //const data = route.params.data2;
@@ -31,6 +34,20 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
             clearInterval(Time);
         }
     })
+    const _storeData = async () => {
+      
+        AsyncStorage.setItem(
+            'Token',
+            value, () => {
+                AsyncStorage.getItem('Token', (err, res) => {
+                    console.log('value từ local: ' + res)
+                });
+            }
+        );
+    };
+    React.useEffect(() => {
+        _storeData()
+    }, [check])
     const onfirm_otp = async () => {
         try {
             const result = await confirm_otp({
@@ -40,8 +57,11 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
             })
             // .then((response) =>console.log( response.data.data.access_token))
             //     .then((json) => { console.log(json) })
-            let abc = result.data.data.access_token;
-            dispatch({ type: 'TOCKEN', abc: abc })
+            let abc = route.params.token;
+            console.log('quiy',abc);
+            setValue(abc);
+            setCheck(true);
+            //dispatch({ type: 'TOCKEN', abc: abc })
             navigation.navigate('Profile', { SDT: SDT });
 
         } catch (error) {
