@@ -12,7 +12,7 @@ const History_Transform = ({ navigation }) => {
     const [isShowCalendar, setIsShowCalendar] = useState(false);
     const [selectedDate, setSelectedDate] = useState();
     const _onPress = () => {
-        setIsShowCalendar(true)
+        setIsShowCalendar(!isShowCalendar)
 
     }
     const onDatechange = (date) => {
@@ -97,10 +97,18 @@ const History_Transform = ({ navigation }) => {
                 };
         }
     }
+    const onclick =()=>{
+        if(isShowCalendar == true){
+            return { flex:1,opacity:0.2}
+        }
+        else{
+            return { flex:1}
+        }
+    }
     const item = 'lịch sử giao dịch'
     return (
         <SafeAreaView style={AppStyle.StyleScreenXacNhanSDT.container}>
-            <View style={{ flex: 1 }}>
+            <View style={onclick()}>
                 <Modal
                     animationType="fade"
                     transparent={true}
@@ -127,11 +135,11 @@ const History_Transform = ({ navigation }) => {
 
                                 }}
                                 dayLabelsWrapper={{
-                                    borderTopWidth: 0,
-                                    borderBottomWidth: 1,
+                                   
+                                    borderWidth: 1,
                                     borderStyle: 'dashed',
                                     borderRadius: 1,
-                                    color: 'green'
+                                    
                                 }}
                                 customDatesStyles={customDatesStylesCallback}
                                 customDayHeaderStyles={customDayHeaderStylesCallback}
@@ -151,7 +159,8 @@ const History_Transform = ({ navigation }) => {
 
 
                             <View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15, borderTopWidth: 1, borderStyle: 'dashed', paddingVertical: 10, borderBottomLeftRadius: 16, borderBottomRightRadius: 16 }}>
+                                <View style={{borderWidth: 1, borderStyle: 'dashed',borderRadius:1,borderColor:'#ECEBED'}}></View>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: 'white', height: 40, paddingHorizontal: 15 ,paddingVertical: 10, borderBottomLeftRadius: 16, borderBottomRightRadius: 16 }}>
                                     <TouchableOpacity onPress={Cancel}>
                                         <Text style={{ color: '#9B9EA3', fontSize: 14, fontWeight: '500' }}>Xóa</Text>
                                     </TouchableOpacity>
