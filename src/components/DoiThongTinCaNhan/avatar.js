@@ -26,6 +26,88 @@ const DoiAvatar = ({ navigation }) => {
     const [img, setImg] = useState()
     const dispatch = useDispatch()
 
+
+    const [hoten, setHoten] = useState("");
+    const [follow_hoten, setFollow_hoten] = useState(false);
+    // const [Email, setEmail] = useState("");
+    const [follow_email, setFollow_email] = useState(false);
+    function onchangText(text) {
+        if (text.length == 0) {
+            setFollow_hoten(false);
+        }
+        else {
+            setFollow_hoten(true);
+        }
+        setHoten({ hoten: text })
+    }
+
+    //so dien thoai
+    function onchangDt(number) {
+        if (number.length > 10) {
+            setFollow_sdt(true);
+        }
+        else {
+            setFollow_sdt(false);
+        }
+        setSDT({ SDT: number })
+    }
+
+    //email
+    function onchangEmail(email) {
+        if (email.length == 0) {
+            setFollow_email(false);
+        }
+        else {
+            setFollow_email(true);
+        }
+        setEmail({ Email: email })
+    }
+    const [check, setCheck] = useState(false)
+    const validate = (text) => {
+        console.log(text);
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (reg.test(text) === false) {
+
+
+            //   this.setState({ email: text })
+            setEmail(text)
+            setCheck(false);
+            return false;
+        }
+        else {
+            //   this.setState({ email: text })
+            setEmail(text)
+            setCheck(true)
+            console.log("Email is Correct");
+        }
+    }
+    const [checkHoten, setCheckhoten] = useState(false);
+    const validateHoten = (text1) => {
+        let reg = /^[a-zA-Z]{2,40}( [a-zA-Z]{2,40})+$/;
+        if (reg.test(text1) === false) {
+            setHoTen(text1)
+            setCheckhoten(false)
+            return false;
+            console.log("ho ten not is Correct");
+
+        } else {
+            setHoTen(text1);
+            setCheckhoten(true)
+            console.log("ho ten is Correct");
+
+        }
+    }
+    const _onPress = () => {
+
+
+        if (check === false && checkHoten === false) {
+            Alert.alert("Mời bạn nhập lạp Gmail và Họ Tên")
+        } else if (checkHoten === false) {
+            Alert.alert('Mời bạn nhập lại họ tên')
+        } else if (check === false) {
+            Alert.alert('Mời bạn nhập lại Email')
+        }
+    }
     const onupdate_info = async () => {
         SaveItem()
         try {
@@ -165,7 +247,7 @@ const DoiAvatar = ({ navigation }) => {
                             <TextInput placeholder='Mời nhập họ và tên của bạn'
                                 style={styles.textinput}
                                 placeholderTextColor='rgba(255, 255, 255, 0.3)'
-                                onChangeText={(value) => setHoTen(value)}
+                                onChangeText={(text1) => validateHoten(text1)}
                                 value={HoTen}
                             />
                         </View>
@@ -194,7 +276,7 @@ const DoiAvatar = ({ navigation }) => {
                                 //    /*  */
                                 //    /*  */
                                 placeholderTextColor='rgba(255, 255, 255, 0.3)'
-                                onChangeText={(value) => setEmail(value)}
+                                onChangeText={(text) => validate(text)}
                                 value={Email}
                             />
                         </View>
@@ -207,11 +289,23 @@ const DoiAvatar = ({ navigation }) => {
                         source={require('../../img/img_icon_24px/chevron_right_24px.png')}
                     />
                 </TouchableOpacity>
+
+               {
+                    Email !== '' && HoTen !=='' ?
                 <TouchableOpacity onPress={onupdate_info}>
                     <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']}>
                         <Text style={AppStyle.StyleFirst.text}>Lưu</Text>
                     </LinearGradient>
                 </TouchableOpacity>
+                :
+                <TouchableOpacity onPress={_onPress}>
+                    <LinearGradient style={AppStyle.StyleFirst.linear} colors={['#8B3BFF', '#B738FF']}>
+                        <Text style={AppStyle.StyleFirst.text}>Lưu</Text>
+                    </LinearGradient>
+                </TouchableOpacity>
+               }
+               
+               
 
             </View>
         </SafeAreaView>

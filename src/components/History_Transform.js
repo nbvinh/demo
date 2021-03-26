@@ -4,7 +4,7 @@ import AppStyle from "../theme";
 import { Calendar } from 'react-native-calendars'; // 1.5.3
 import { useDispatch, useSelector } from "react-redux";
 import moment from 'moment';
-
+import LinearGradient from "react-native-linear-gradient";
 import CalendarPicker from 'react-native-calendar-picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 const History_Transform = ({ navigation }) => {
