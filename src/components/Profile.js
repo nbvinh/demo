@@ -22,7 +22,7 @@ const Profile = ({ route, navigation }) => {
             () => {
                 AsyncStorage.getItem('token', (err, result) => {
                     dispatch({ type: 'TOKEN', abc: result })
-                    console.log('thanh cong',result)
+                    console.log('thanh cong', result)
                 });
             }
         );
@@ -182,13 +182,11 @@ const Profile = ({ route, navigation }) => {
                         </View>
                         <View style={styles.footer}>
                             {check && checkHoten ?
-                                <TouchableOpacity>
+                                <TouchableOpacity follow_hoten={follow_hoten}
+                                    style={[styles.touchable]} onPress={onupdate_info}>
                                     <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
                                         colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
-                                        <TouchableOpacity follow_hoten={follow_hoten}
-                                            style={[styles.touchable]} onPress={onupdate_info}>
-                                            <Text style={styles.button1}>Hoàn thành</Text>
-                                        </TouchableOpacity>
+                                        <Text style={styles.button1}>Hoàn thành</Text>
                                     </LinearGradient>
                                 </TouchableOpacity>
                                 :
