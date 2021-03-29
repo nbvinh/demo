@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, Alert, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView, Alert, Image, Platform } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AppStyle from "../theme";
@@ -83,72 +83,139 @@ const ScreenXacThucSDT = ({ navigation, route }) => {
                                     inputRef1.current.focus()
                                 }
                             }}
+                            onKeyPress ={(e)=>{
+                                if(Platform.OS === 'ios'){
+                                    if(e.nativeEvent.key !== 'Backspace'){
+                                        inputRef1.current.focus();
+                                    }
+                                }
+                            }}
                             autoFocus={true}
                         />
                         <TextInput ref={inputRef1} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                             setMaPin2(val)
-                            if (val != '') {
-                                inputRef2.current.focus()
+                            if (Platform.OS === 'android') {
+                                if (val != '') {
+                                    inputRef2.current.focus()
+                                }
                             }
                         }}
                             value={MaPin2}
                             onKeyPress={(e) => {
-                                if (e.nativeEvent.key = 'Backspace') {
-                                    inputRef.current.focus();
+                                if (Platform.OS === 'ios') {
+                                    if (e.nativeEvent.key === 'Backspace') {
+                                        inputRef.current.focus();
+                                    }
+                                    else {
+                                        inputRef2.current.focus()
+                                    }
                                 }
-                                setMaPin1('')
+                                if (Platform.OS === 'android') {
+                                    if (e.nativeEvent.key = 'Backspace') {
+                                        inputRef.current.focus();
+                                    }
+                                    setMaPin1('')
+
+                                }
                             }}
                         />
                         <TextInput ref={inputRef2} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                             setMaPin3(val)
-                            if (val != '') {
-                                inputRef3.current.focus()
+                            if (Platform.OS === 'android') {
+                                if (val != '') {
+                                    inputRef3.current.focus()
+                                }
                             }
                         }}
                             value={MaPin3}
                             onKeyPress={(e) => {
-                                if (e.nativeEvent.key = 'Backspace') {
-                                    inputRef1.current.focus();
+                                if (Platform.OS === 'ios') {
+                                    if (e.nativeEvent.key === 'Backspace') {
+                                        inputRef1.current.focus();
+                                    }
+                                    else {
+                                        inputRef3.current.focus()
+                                    }
                                 }
-                                setMaPin2('')
+                                if (Platform.OS === 'android') {
+                                    if (e.nativeEvent.key = 'Backspace') {
+                                        inputRef1.current.focus();
+                                    }
+                                    setMaPin2('')
+
+                                }
                             }}
                         />
                         <TextInput ref={inputRef3} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                             setMaPin4(val)
-                            if (val != '') {
-                                inputRef4.current.focus()
+                            if (Platform.OS === 'android') {
+                                if (val != '') {
+                                    inputRef4.current.focus()
+                                }
                             }
                         }}
-                            onKeyPress={(e) => {
+                        onKeyPress={(e) => {
+                            if (Platform.OS === 'ios') {
+                                if (e.nativeEvent.key === 'Backspace') {
+                                    inputRef2.current.focus();
+                                }
+                                else {
+                                    inputRef4.current.focus()
+                                }
+                            }
+                            if (Platform.OS === 'android') {
                                 if (e.nativeEvent.key = 'Backspace') {
                                     inputRef2.current.focus();
                                 }
                                 setMaPin3('')
-                            }}
+
+                            }
+                        }}
                             value={MaPin4} />
                         <TextInput ref={inputRef4} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                             setMaPin5(val)
-                            if (val != '') {
-                                inputRef5.current.focus()
+                            if (Platform.OS === 'android') {
+                                if (val != '') {
+                                    inputRef5.current.focus()
+                                }
                             }
                         }}
-                            onKeyPress={(e) => {
+                        onKeyPress={(e) => {
+                            if (Platform.OS === 'ios') {
+                                if (e.nativeEvent.key === 'Backspace') {
+                                    inputRef3.current.focus();
+                                }
+                                else {
+                                    inputRef5.current.focus()
+                                }
+                            }
+                            if (Platform.OS === 'android') {
                                 if (e.nativeEvent.key = 'Backspace') {
                                     inputRef3.current.focus();
                                 }
                                 setMaPin4('')
-                            }}
+
+                            }
+                        }}
                             value={MaPin5} />
                         <TextInput ref={inputRef5} maxLength={1} style={AppStyle.StyleScreenXacNhanSDT.input_item_OTP} keyboardType='numeric' onChangeText={(val) => {
                             setMaPin6(val);
                         }
                         }
-                            onKeyPress={(e) => {
+                        onKeyPress={(e) => {
+                            if (Platform.OS === 'ios') {
+                                if (e.nativeEvent.key === 'Backspace') {
+                                    inputRef4.current.focus();
+                                }
+                            }
+                            if (Platform.OS === 'android') {
                                 if (e.nativeEvent.key = 'Backspace') {
                                     inputRef4.current.focus();
                                 }
                                 setMaPin5('')
-                            }}
+
+                            }
+                        }}
                             value={MaPin6} />
                     </View>
                     <Text style={AppStyle.StyleScreenXacNhanSDT.textguilaisau}> Gửi laị sau 00:{TimeDown}</Text>
