@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VinhNamQuy</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">dtnjOhSYZasMGQO2zzRjl7DNIWOtEDeGFmPC_</string>
 </resources>

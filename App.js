@@ -7,7 +7,7 @@ import createSagaMiddleware from 'redux-saga';
 import { Provider } from "react-redux";
 import reducer from "./src/reducers/reducer";
 import rootSaga from './src/Saga/mySaga';
-
+import codePush from "react-native-code-push";
 
 const App = () => {
   const sagaMiddleware = createSagaMiddleware();
@@ -24,4 +24,4 @@ sagaMiddleware.run(rootSaga);
   )
 }
 
-export default App;
+export default codePush(App);
