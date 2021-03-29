@@ -127,8 +127,16 @@ const DoiAvatar = ({ navigation }) => {
     const item = 'Thông tin cá nhân'
     return (
         <SafeAreaView style={AppStyle.StyleGiaoDich.container}>
-            <Header press={GOback} item={item} />
-            <View style={{ marginHorizontal: 12 }}>
+            <View style={AppStyle.StyleVoucherCGV.header}>
+                <TouchableOpacity onPress={() => navigation.goBack()} >
+                    <Image
+                        width={10} height={18}
+                        source={require('../../img/back.png')}
+                    />
+                </TouchableOpacity>
+                <Text style={AppStyle.StyleVoucherCGV.text}>Đổi Thông Tin Cá Nhân</Text>
+            </View>
+            <View style={{ marginHorizontal: 12, flex: 11 }}>
                 <View style={{ marginTop: 20, height: 80, justifyContent: 'center', alignItems: 'center' }}>
                     <Image
                         style={{ width: 84, height: 84, borderRadius: 50, opacity: 0.4, }}
