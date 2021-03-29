@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator , BottomTabBar} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
 import Main from '../../components/Main';
 import ThongTin from '../../components/ThongTin/ThongTin';
 import TabVoucher from "./tabheaderVoucher";
@@ -9,12 +9,11 @@ import Svg, { Path } from 'react-native-svg';
 import History_Transform from "../../components/History_Transform";
 import LinearGradient from 'react-native-linear-gradient';
 import GiaoDich from '../../components/GiaoDich/giaodich';
-
 const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
     var isSelected = accessibilityState.selected
     if (isSelected) {
         return (
-            <View style={{ flex: 1, alignItems:'center'}}>
+            <View style={{ flex: 1, alignItems: 'center' }}>
                 <View style={{ flexDirection: 'row', position: 'absolute', top: 0 }}>
                     <View style={{ flex: 1, backgroundColor: '#151515' }}></View>
                     <Svg
@@ -27,29 +26,29 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
                             fill={'#151515'}
                         />
                     </Svg>
-                    <View style={{ flex: 1, backgroundColor: '#151515'  }}></View>
+                    <View style={{ flex: 1, backgroundColor: '#151515' }}></View>
                 </View>
                 <TouchableOpacity onPress={onPress} >
-                   <LinearGradient
-                            style={{
-                                top: -22.5,
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                width: 50,
-                                height: 50,
-                                borderRadius: 25,
-                            }}
-                            colors={['#8B3BFF', '#B738FF']}
-                        >
+                    <LinearGradient
+                        style={{
+                            top: -22.5,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            width: 50,
+                            height: 50,
+                            borderRadius: 25,
+                        }}
+                        colors={['#8B3BFF', '#B738FF']}
+                    >
                         {children}
-                        </LinearGradient>
+                    </LinearGradient>
                 </TouchableOpacity>
             </View>
         )
     } else {
         return (
-            <TouchableOpacity style={{ flex: 1, height: 60,backgroundColor: '#151515', justifyContent:'center',alignItems:'center' }} activeOpacity={1} onPress={onPress} >   
-                    {children}
+            <TouchableOpacity style={{ flex: 1, height: 60, backgroundColor: '#151515', justifyContent: 'center', alignItems: 'center' }} activeOpacity={1} onPress={onPress} >
+                {children}
             </TouchableOpacity>
         )
     }
@@ -58,11 +57,11 @@ const TabBarCustomButton = ({ accessibilityState, children, onPress }) => {
 const Tab = createBottomTabNavigator();
 
 const CustomTabBar = (props) => {
-        return (
-            <BottomTabBar
-                {...props.props}
-            />
-        )
+    return (
+        <BottomTabBar
+            {...props.props}
+        />
+    )
 
 }
 
@@ -70,7 +69,7 @@ export default function TabViewMain() {
     return (
         <Tab.Navigator
             tabBarOptions={{
-                
+
                 showLabel: false,
                 style: {
                     position: 'absolute',
@@ -92,25 +91,25 @@ export default function TabViewMain() {
                 name="Home"
                 component={Main}
                 options={{
-                    
+
                     tabBarButton: (props) => (
                         <TabBarCustomButton
-                            {...props} children = {<Image
+                            {...props} children={<Image
                                 style={{ height: 24, width: 24, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
                                 source={require('../../img/img_icon_24px/home_24px.png')}
                             />}
                         />
                     )
-                }}home_24px
+                }} home_24px
             />
-             <Tab.Screen
+            <Tab.Screen
                 name="LichSu"
                 component={History_Transform}
                 options={{
-                    
+
                     tabBarButton: (props) => (
                         <TabBarCustomButton
-                            {...props}  children = {<Image
+                            {...props} children={<Image
                                 style={{ height: 24, width: 24, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
                                 source={require('../../img/img_icon_24px/lsu_24px.png')}
                             />}
@@ -122,10 +121,10 @@ export default function TabViewMain() {
                 name="KhamPha"
                 component={GiaoDich}
                 options={{
-                   
+
                     tabBarButton: (props) => (
                         <TabBarCustomButton
-                            {...props} children = {<Image
+                            {...props} children={<Image
                                 style={{ height: 24, width: 24, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
                                 source={require('../../img/img_icon_24px/kampha_24px.png')}
                             />}
@@ -133,15 +132,15 @@ export default function TabViewMain() {
                     )
                 }}
             />
-            
+
             <Tab.Screen
                 name="Voucher"
                 component={TabVoucher}
                 options={{
-                   
+
                     tabBarButton: (props) => (
                         <TabBarCustomButton
-                            {...props} children = {<Image
+                            {...props} children={<Image
                                 style={{ height: 24, width: 24, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
                                 source={require('../../img/img_icon_24px/voucher_24px.png')}
                             />}
@@ -155,14 +154,14 @@ export default function TabViewMain() {
                 options={{
                     tabBarButton: (props) => (
                         <TabBarCustomButton
-                            {...props} children = {<Image
+                            {...props} children={<Image
                                 style={{ height: 24, width: 24, borderBottomLeftRadius: 8, borderBottomRightRadius: 8 }}
                                 source={require('../../img/img_icon_24px/list_24px.png')}
                             />}
                         />
                     )
                 }}
-            /> 
+            />
 
         </Tab.Navigator>
     );

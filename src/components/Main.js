@@ -49,6 +49,16 @@ const Main = ({ navigation, route }) => {
         });
     }
     useEffect(() => {
+        AsyncStorage.getItem('token', (err, result) => {
+            if (result === null) {
+                navigation.navigate('ScreenFirst')
+            }
+            else {
+                dispatch({ type: 'TOKEN', abc: result })
+            }
+        });
+    }, [])
+    useEffect(() => {
         _getData()
         GetImg()
         const loadnhe = async () => {
@@ -134,6 +144,7 @@ const Main = ({ navigation, route }) => {
     }
     return (
         <SafeAreaView style={AppStyle.StyleMain.container}>
+            <StatusBar backgroundColor="black" />
             {
                 time ?
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>

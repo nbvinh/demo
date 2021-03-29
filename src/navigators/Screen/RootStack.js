@@ -1,12 +1,12 @@
 
-import React from "react";
-import {View, Text} from 'react-native';
+import React, { useEffect } from "react";
+import { View, Text } from 'react-native';
 import ScreenFirst from '../../components/ScreenFirst';
 import 'react-native-gesture-handler';
 import SecondScreen from "../../components/SecondScreen";
-import {createStackNavigator} from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack'
 import ScreenXacThucSDT from "../../components/ScreenXacThucSDT";
-import Main  from "../../components/Main";
+import Main from "../../components/Main";
 import Profile from '../../components/Profile';
 import TabVoucher from "../Tabview/tabheaderVoucher";
 import ThongTin from "../../components/ThongTin/ThongTin";
@@ -30,39 +30,37 @@ import GiaoDichThanhCong from "../../components/GiaoDichThanhCong";
 import ScanScreen from "../../components/GiaoDich/quetqr";
 import Chitiet_giaodich from "../../components/Chitiet_giaodich";
 import MoiBanBe from "../../components/MoiBanBe";
-const Root= createStackNavigator();
-const RootStack =()=>{
-    return(
+const Root = createStackNavigator();
+const RootStack = () => {
+    return (
         <NavigationContainer>
-
-        <Root.Navigator headerMode="none" initialRouteName={Main}>
-            <Root.Screen name ="ScreenFirst" component={ScreenFirst} />
-            <Root.Screen name ="SecondScreen" component={SecondScreen} />
-            <Root.Screen name ="ScreenXacThucSDT" component={ScreenXacThucSDT} />
-            <Root.Screen name ="Profile" component={Profile} />
-            <Root.Screen name ="Tabviewmain" component={Tabviewmain} />
-            <Root.Screen name ="Main" component={Main} />
-            <Root.Screen name ="TabVoucher" component={TabVoucher} />
-            <Root.Screen name ="ThongTin" component={ThongTin} />
-            <Root.Screen name ="LichSuDiem" component={LichSuDiem} />
-            <Root.Screen name ="VoucherNam" component={Voucher} />
-            <Root.Screen name ="GiaoDich" component={GiaoDich} />
-            <Root.Screen name ="DoiDiem" component={DoiDiem} />
-            <Root.Screen name ="MuaDiem" component={MuaDiem} />
-            <Root.Screen name ="NapDiem" component={NapDiem} />
-            <Root.Screen name ="DoiAvatar" component={DoiAvatar} />
-            <Root.Screen name="VoucherCGV" component={VoucherCGV} />
-            {/* <Root.Screen name="VoucherBanhMi" component={VoucherBanhMi} /> */}
-            <Root.Screen name="GioHang" component={GioHang} />
-            <Root.Screen name="ChonVoucher" component={ChonVoucher} />
-            <Root.Screen name="PhuongThucThanhToan" component={PhuongThucThanhToan} />
-            <Root.Screen name="PaymentConfirmation" component={PaymentConfirmation} />
-            <Root.Screen name="KingBread" component={KingBread} />
-            <Root.Screen name="Giao_Dich_Thanh_Cong" component={GiaoDichThanhCong} />
-            <Root.Screen name="MoiBanBe" component={MoiBanBe} />
-            <Root.Screen name="Chitiet_giaodich" component={Chitiet_giaodich} />
-            <Root.Screen name="ScanScreen" component={ScanScreen} />
-        </Root.Navigator>
+            <Root.Navigator headerMode="none" initialRouteName={Main}>
+                <Root.Screen name="Tabviewmain" component={Tabviewmain} />
+                < Root.Screen name="ScreenFirst" component={ScreenFirst} />
+                <Root.Screen name="SecondScreen" component={SecondScreen} />
+                <Root.Screen name="ScreenXacThucSDT" component={ScreenXacThucSDT} />
+                <Root.Screen name="Profile" component={Profile} />
+                <Root.Screen name="Main" component={Main} />
+                <Root.Screen name="TabVoucher" component={TabVoucher} />
+                <Root.Screen name="ThongTin" component={ThongTin} />
+                <Root.Screen name="LichSuDiem" component={LichSuDiem} />
+                <Root.Screen name="VoucherNam" component={Voucher} />
+                <Root.Screen name="GiaoDich" component={GiaoDich} />
+                <Root.Screen name="DoiDiem" component={DoiDiem} />
+                <Root.Screen name="MuaDiem" component={MuaDiem} />
+                <Root.Screen name="NapDiem" component={NapDiem} />
+                <Root.Screen name="DoiAvatar" component={DoiAvatar} />
+                <Root.Screen name="VoucherCGV" component={VoucherCGV} />
+                <Root.Screen name="GioHang" component={GioHang} />
+                <Root.Screen name="ChonVoucher" component={ChonVoucher} />
+                <Root.Screen name="PhuongThucThanhToan" component={PhuongThucThanhToan} />
+                <Root.Screen name="PaymentConfirmation" component={PaymentConfirmation} />
+                <Root.Screen name="KingBread" component={KingBread} />
+                <Root.Screen name="Giao_Dich_Thanh_Cong" component={GiaoDichThanhCong} />
+                <Root.Screen name="MoiBanBe" component={MoiBanBe} />
+                <Root.Screen name="Chitiet_giaodich" component={Chitiet_giaodich} />
+                <Root.Screen name="ScanScreen" component={ScanScreen} />
+            </Root.Navigator>
         </NavigationContainer>
     )
 }

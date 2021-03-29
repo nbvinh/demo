@@ -6,6 +6,7 @@ import { update_info } from "./api";
 import { useDispatch, useSelector } from 'react-redux'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AppStyle from "../theme";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Profile = ({ route, navigation }) => {
     const dispatch = useDispatch();
     const [hoten, setHoten] = useState("");
@@ -14,8 +15,18 @@ const Profile = ({ route, navigation }) => {
     const result = useSelector(state => state.abc)
     const [Email, setEmail] = useState("");
     const [follow_email, setFollow_email] = useState(false);
-    console.log('tocken', result)
-
+    const _storeData = async () => {
+        AsyncStorage.setItem(
+            'token',
+            result,
+            () => {
+                AsyncStorage.getItem('token', (err, result) => {
+                    dispatch({ type: 'TOKEN', abc: result })
+                    console.log('thanh cong', result)
+                });
+            }
+        );
+    };
     const onupdate_info = async () => {
         try {
             fetch(`http://175.41.184.177:6061//api/v1.0/customer/update-info`, {
@@ -33,6 +44,7 @@ const Profile = ({ route, navigation }) => {
             dispatch({ type: 'SDT', SDT: SDT })
             dispatch({ type: 'Email', Email: Email })
             navigation.navigate('Tabviewmain');
+            _storeData()
         } catch (error) {
             Alert.alert('Thông báo', error + '');
         }
@@ -71,7 +83,6 @@ const Profile = ({ route, navigation }) => {
     }
     const [check, setCheck] = useState(false)
     const validate = (text) => {
-        console.log(text);
         let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if (reg.test(text) === false) {
 
@@ -121,7 +132,7 @@ const Profile = ({ route, navigation }) => {
             style={styles.containerTop}
 
         >
-            <SafeAreaView style={{ flex: 1, backgroundColor: 'black',marginTop:10 }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: 'black', marginTop: 10 }}>
                 <View style={AppStyle.StyleVoucherCGV.header}>
                     <TouchableOpacity onPress={() => navigation.goBack()} >
                         <Image
@@ -171,13 +182,11 @@ const Profile = ({ route, navigation }) => {
                         </View>
                         <View style={styles.footer}>
                             {check && checkHoten ?
-                                <TouchableOpacity>
+                                <TouchableOpacity follow_hoten={follow_hoten}
+                                    style={[styles.touchable]} onPress={onupdate_info}>
                                     <LinearGradient start={{ x: 0.0, y: 0.25 }} end={{ x: 0.5, y: 1.0 }}
                                         colors={['#8B3BFF', '#B738FF']} style={{ opacity: 1, height: 48, justifyContent: 'center', alignItems: 'center', borderRadius: 8 }}>
-                                        <TouchableOpacity follow_hoten={follow_hoten}
-                                            style={[styles.touchable]} onPress={onupdate_info}>
-                                            <Text style={styles.button1}>Hoàn thành</Text>
-                                        </TouchableOpacity>
+                                        <Text style={styles.button1}>Hoàn thành</Text>
                                     </LinearGradient>
                                 </TouchableOpacity>
                                 :

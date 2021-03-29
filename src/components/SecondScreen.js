@@ -60,14 +60,14 @@ const SecondScreen = ({ navigation }) => {
                         onChangeText={(val) => handlePhone(val)}
                     />
                     {data.isChecked ?
-                        <LinearGradient
-                            style={AppStyle.StyleFirst.linear}
-                            colors={['#8B3BFF', '#B738FF']}
-                        >
-                            <TouchableOpacity onPress={onsend_otp} >
+                        <TouchableOpacity onPress={onsend_otp} >
+                            <LinearGradient
+                                style={AppStyle.StyleFirst.linear}
+                                colors={['#8B3BFF', '#B738FF']}
+                            >
                                 <Text style={AppStyle.StyleFirst.text}>Tiếp Tục</Text>
-                            </TouchableOpacity>
-                        </LinearGradient>
+                            </LinearGradient>
+                        </TouchableOpacity>
                         :
 
                         <LinearGradient
