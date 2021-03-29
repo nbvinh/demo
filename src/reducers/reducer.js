@@ -165,6 +165,27 @@ const reducer = (state = initState, action) => {
                 openUpitem2.OpenUP = true
             }
             return { ...state, productbanhmi: openUp2 }
+            case 'OPENDOWNCOMBO':
+            let openDown = [...state.productcombo]
+            let openDownitem = openDown.find((comboitem) => comboitem.id == action.id)
+            if (openDownitem) {
+                openDownitem.OpenUP = false
+            }
+            return { ...state, productcombo: openDown }
+        case 'OPENDOWNPNUOC':
+            let openDown1 = [...state.productnuoc]
+            let openDownitem1 = openDown1.find((comboitem) => comboitem.id == action.id)
+            if (openDownitem1) {
+                openDownitem1.OpenUP = false
+            }
+            return { ...state, productnuoc: openDown1 }
+        case 'OPENDOWNBANHMI':
+            let openDown2 = [...state.productbanhmi]
+            let openDownitem2 = openDown2.find((comboitem) => comboitem.id == action.id)
+            if (openDownitem2) {
+                openDownitem2.OpenUP = false
+            }
+            return { ...state, productbanhmi: openDown2 }
         case 'PRICEITEMPRODUCTBANHMI':
             let PriceState = [...state.DataProduct]
             PriceState.find((item) => {

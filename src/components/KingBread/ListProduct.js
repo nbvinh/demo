@@ -23,6 +23,17 @@ const ListProduct = (props) => {
             if (filterStatus === 'COMBO') dispatch({ type: 'DOWNITEMPRODUCTCOMBO', id: choosediem.id })
             dispatch({ type: 'PRICEITEMPRODUCTBANHMI', id: choosediem.id })
         }
+        if(amount === 1){
+            if (filterStatus === 'COMBO') {
+                dispatch({ type: 'OPENDOWNCOMBO', id: choosediem.id })
+            }
+            if (filterStatus === 'NUOC') {
+                dispatch({ type: 'OPENDOWNPNUOC', id: choosediem.id })
+            }
+            if (filterStatus === 'BANHMI') {
+                dispatch({ type: 'OPENDOWNBANHMI', id: choosediem.id })
+            }
+        }
     }
     const checkKingBread = useSelector(state => state.checkKingBread)
     const UpAfter = (choosediem) => {
